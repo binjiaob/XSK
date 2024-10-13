@@ -98,6 +98,7 @@ OrionLib:MakeNotification({
                     Time = 4
                 })           
 Start = tick()
+wait(4)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/ui.lua.txt')))()
 local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V8.0",Name = "XK脚本中心", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
@@ -893,7 +894,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『自瞄』",
-    Icon = "rbxassetid://7733666258",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -1032,7 +1033,7 @@ Tab:AddButton({
 
 local DJTab = Window:MakeTab({
 	Name = "『旋转』",
-	Icon = "rbxassetid://7743873633",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -1308,7 +1309,7 @@ velocity.Name = "Spinbot"
 
 local Tab = Window:MakeTab({
     Name = "『范围』",
-    Icon = "rbxassetid://7733770689",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
