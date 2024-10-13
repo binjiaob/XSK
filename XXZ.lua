@@ -94,11 +94,11 @@ print("索引开启反挂机")
                 wait(1)
 OrionLib:MakeNotification({
                     Name = "反外挂已开启",
-                    Content = "XK脚本中心无更新内容",
+                    Content = "等待5秒",
                     Time = 4
                 })           
 Start = tick()
-wait(4)
+wait(5)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/ui.lua.txt')))()
 local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V8.0",Name = "XK脚本中心", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
