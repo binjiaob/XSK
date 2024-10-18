@@ -1595,23 +1595,23 @@ Tab:AddButton({
 })
 
 Tab:AddButton({
-	Name = "汉化脚本",
+	Name = "BobHUN",
 	Callback = function()
      --[[Doors Blackking And BobHub脚本汉化]]loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\54\53\84\119\84\56\106\97"))()
   	end    
 })
 
 Tab:AddButton({
-    Name="我不知道",
+    Name="FFJHUB",
     Callback=function()
         loadstring(game:HttpGet('https://rawscripts.net/raw/DOORS-FFJ-Hub-11365'))()
     end
 })
 
 Tab:AddButton({
-	Name = "MSHUB",
+	Name = "MSpaint V3【超级推荐】",
 	Callback = function()
-     loadstring(game:HttpGet(("https://raw.githubusercontent.com/mstudio45/MSDOORS/main/MSHUB_Loader.lua"),true))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/mspaint/main/main.lua"))()
   	end    
 })
 
