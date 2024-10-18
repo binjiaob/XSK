@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心8.5版本"
+LBL.Text = "XK脚本中心8.7版本"
 LBL.TextColor3 = Color3.new(155, 155, 155)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -101,7 +101,7 @@ Start = tick()
 wait(5)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V8.5",Name = "XK脚本中心", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V8.7",Name = "XK脚本中心", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "『关于』",
@@ -109,7 +109,7 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V8.5最新版9月20日更新")
+WSBTab:AddParagraph("当前版本","V8.7最新版9月20日更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -5733,7 +5733,28 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddButton({
-  Name = "必须要开",
+  Name = "黑洞脚本【XK作者汉化】",
+  Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本【XK作者汉化】",
+  Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本【XK作者汉化】",
+  Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "可以不开",
   Callback = function()
 if "you wanna use rochips universal" then
 	local z_x,z_z="gzrux646yj/raw/main.ts","https://glot.io/snippets/"
@@ -5745,7 +5766,7 @@ end
 })
 
 Tab:AddButton({
-  Name = "辅助脚本必须要开",
+  Name = "辅助脚本可以不开",
   Callback = function()
 loadstring(game:HttpGet("https://gist.githubusercontent.com/AxolotlBmgo/8888080921c2b426a32dd9ff587baff1/raw/d45e03afed3c1716f36523bbf6dd741d3d2aad00/gistfile1.txt"))()
   end
@@ -5856,9 +5877,9 @@ Tab:AddButton({
 })
 
 Tab:AddButton({
-  Name = "黑洞脚本",
+  Name = "黑洞脚本【XK作者汉化】",
   Callback = function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/lililiugg/main/jm114514.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
   end
 })
 
