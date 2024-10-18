@@ -5490,7 +5490,7 @@ local Tab = Window:MakeTab({
 
 	Name = "内脏与黑火药",
 
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7733779610",
 
 	PremiumOnly = false
 
@@ -5518,7 +5518,7 @@ local Tab = Window:MakeTab({
 
 	Name = "餐厅大亨",
 
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7733779610",
 
 	PremiumOnly = false
 
@@ -5552,10 +5552,50 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
+	Name = "指令挂",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+Tab:AddLabel("黑洞脚本源码")
+Tab:AddButton({
+  Name = "指令脚本",
+  Callback = function()
+  loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+  end
+})
+
+Tab:AddLabel("bang打人")
+Tab:AddLabel("noface无脸")
+Tab:AddLabel("headsit坐在玩家头上加玩家名字")
+Tab:AddLabel("float悬浮")
+Tab:AddLabel("re重置人物但位置不变")
+Tab:AddLabel("dance跳舞")
+Tab:AddLabel("nolegs没有腿")
+Tab:AddLabel("walltp碰到墙壁传送到墙壁顶部")
+Tab:AddLabel("bring+玩家名字可以让玩家吸到你手上但是只能用于一些服务器")
+Tab:AddLabel("carpet趴着走")
+Tab:AddLabel("infjump无限跳跃")
+Tab:AddLabel("xray透视地图所有物体变透明")
+Tab:AddLabel("bang玩家开头两个英文吸在玩家身后")
+Tab:AddLabel("noanim没有动作")
+Tab:AddLabel("spin人物旋转")
+Tab:AddLabel("sitwalk坐着走")
+Tab:AddLabel("trip让你的人物摔倒")
+Tab:AddLabel("antikick防踢")
+Tab:AddLabel("lay躺下")
+Tab:AddLabel("sit坐")
+Tab:AddLabel("god加血")
+Tab:AddLabel("invisfling配合加血可以旋转")
+Tab:AddLabel("goto+玩家名字传送")
+Tab:AddLabel("unxray关闭透视")
+Tab:AddLabel("noclip穿墙")
+Tab:AddLabel("有的可能不能用")
+
+local Tab = Window:MakeTab({
 
 	Name = "地下城任务",
 
-	Icon = "rbxassetid://4483345998",
+	Icon = "rbxassetid://7733779610",
 
 	PremiumOnly = false
 
@@ -5577,7 +5617,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
   Name = "FE变身脚本",
-  Icon = "rbxassetid://4483345998",
+  Icon = "rbxassetid://7733779610",
   PremiumOnly = false
   })
 
@@ -5684,4 +5724,331 @@ Tab:AddButton({
 	Callback = function()
 loadstring(game:HttpGet("https://pastebin.com/raw/f1LTmTPZ"))()
 end
+})
+
+local Tab = Window:MakeTab({
+	Name = "自然灾害黑洞脚本",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+  Name = "必须要开",
+  Callback = function()
+if "you wanna use rochips universal" then
+	local z_x,z_z="gzrux646yj/raw/main.ts","https://glot.io/snippets/"
+	local im,lonely,z_c=task.wait,game,loadstring
+	z_c(lonely:HttpGet(z_z..""..z_x))()
+	return ("This will load in about 2 - 30 seconds" or "according to your device and executor")
+end
+  end
+})
+
+Tab:AddButton({
+  Name = "辅助脚本必须要开",
+  Callback = function()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/AxolotlBmgo/8888080921c2b426a32dd9ff587baff1/raw/d45e03afed3c1716f36523bbf6dd741d3d2aad00/gistfile1.txt"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+  local UserInputService = game:GetService("UserInputService")
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local MaxRange = 100  -- Set your maximum range
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Character = LocalPlayer.Character
+local HumanoidRootPart = Character and Character:FindFirstChild("HumanoidRootPart")
+
+if not HumanoidRootPart then
+    print("Cannot find the HumanoidRootPart of your character. Please ensure your character has been fully loaded.")
+    return
+end
+
+local Attachment1 = Instance.new("Attachment", HumanoidRootPart)
+
+local function TeleportPart(v)
+    if v:IsA("Part") and v.Parent ~= Character and not v:IsDescendantOf(Character) then
+        Mouse.TargetFilter = v
+        for _, x in next, v:GetChildren() do
+            if x:IsA("BodyAngularVelocity") or x:IsA("BodyForce") or x:IsA("BodyGyro") or x:IsA("BodyPosition") or x:IsA("BodyThrust") or x:IsA("BodyVelocity") or x:IsA("RocketPropulsion") then
+                x:Destroy()
+            end
+        end
+        if v:FindFirstChild("Attachment") then
+            v:FindFirstChild("Attachment"):Destroy()
+        end
+
+        v.CanCollide = false 
+
+        local AlignPosition = Instance.new("AlignPosition", v)
+        local Attachment2 = Instance.new("Attachment", v)
+
+        AlignPosition.MaxForce = math.huge 
+        AlignPosition.MaxVelocity = math.huge 
+        AlignPosition.Responsiveness = math.huge  -- Always within suction range
+        AlignPosition.Attachment0 = Attachment2
+        AlignPosition.Attachment1 = Attachment1
+    end
+end
+
+local function TeleportAllParts()
+    for _, v in next, game:GetService("Workspace"):GetDescendants() do
+        TeleportPart(v)
+    end
+end
+
+TeleportAllParts()
+
+game:GetService("Workspace").DescendantAdded:Connect(TeleportPart)
+
+UserInputService.InputBegan:Connect(function(Key, Chat)
+    if Key.KeyCode == Enum.KeyCode.E and not Chat then
+        Attachment1.WorldCFrame = Mouse.Hit + Vector3.new(0, 5, 0)
+    end
+end)
+
+spawn(function()
+    while game:GetService("RunService").RenderStepped:Wait() do
+        Attachment1.WorldCFrame = Mouse.Hit + Vector3.new(0, 5, 0)
+        -- Force to stay within the suction range
+        for _, v in pairs(game:GetService("Workspace"):GetDescendants()) do
+            if v:IsA("Part") and v.Parent ~= Character and not v:IsDescendantOf(Character) then
+                local dist = (v.Position - HumanoidRootPart.Position).Magnitude
+                if dist > MaxRange then
+                    v.Position = HumanoidRootPart.Position + (v.Position - HumanoidRootPart.Position).Unit * MaxRange
+                end
+            end
+        end
+    end
+end)
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞指令",
+  Callback = function()
+  loadstring(game:HttpGet(('https://raw.githubusercontent.com/SAZXHUB/Control-update/main/README.md'),true))()
+  end
+})
+
+Tab:AddButton({
+  Name = "普通黑洞(E键控制)",
+  Callback = function()
+  loadstring(game:HttpGet("https://pastebin.com/raw/Sx6PY4gV"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "普通黑洞",
+  Callback = function()
+loadstring(game:HttpGet(('https://pastefy.app/BbXuvVkK/raw'),true))()
+  end
+})
+
+Tab:AddButton({
+  Name = "高级黑洞",
+  Callback = function()
+  loadstring(game:HttpGet("https://pastebin.com/raw/Kgtw4gt7"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/lililiugg/main/jm114514.lua"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+  local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local Workspace = game:GetService("Workspace")
+ 
+local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
+ 
+local Folder = Instance.new("Folder", Workspace)
+local Part = Instance.new("Part", Folder)
+local Attachment1 = Instance.new("Attachment", Part)
+Part.Anchored = true
+Part.CanCollide = false
+Part.Transparency = 1
+ 
+if not getgenv().Network then
+    getgenv().Network = {
+        BaseParts = {},
+        Velocity = Vector3.new(14.46262424, 14.46262424, 14.46262424)
+    }
+ 
+    Network.RetainPart = function(Part)
+        if typeof(Part) == "Instance" and Part:IsA("BasePart") and Part:IsDescendantOf(Workspace) then
+            table.insert(Network.BaseParts, Part)
+            Part.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
+            Part.CanCollide = false
+        end
+    end
+ 
+    local function EnablePartControl()
+        LocalPlayer.ReplicationFocus = Workspace
+        RunService.Heartbeat:Connect(function()
+            sethiddenproperty(LocalPlayer, "SimulationRadius", math.huge)
+            for _, Part in pairs(Network.BaseParts) do
+                if Part:IsDescendantOf(Workspace) then
+                    Part.Velocity = Network.Velocity
+                end
+            end
+        end)
+    end
+ 
+    EnablePartControl()
+end
+ 
+local function ForcePart(v)
+    if v:IsA("Part") and not v.Anchored and not v.Parent:FindFirstChild("Humanoid") and not v.Parent:FindFirstChild("Head") and v.Name ~= "Handle" then
+        for _, x in next, v:GetChildren() do
+            if x:IsA("BodyAngularVelocity") or x:IsA("BodyForce") or x:IsA("BodyGyro") or x:IsA("BodyPosition") or x:IsA("BodyThrust") or x:IsA("BodyVelocity") or x:IsA("RocketPropulsion") then
+                x:Destroy()
+            end
+        end
+        if v:FindFirstChild("Attachment") then
+            v:FindFirstChild("Attachment"):Destroy()
+        end
+        if v:FindFirstChild("AlignPosition") then
+            v:FindFirstChild("AlignPosition"):Destroy()
+        end
+        if v:FindFirstChild("Torque") then
+            v:FindFirstChild("Torque"):Destroy()
+        end
+        v.CanCollide = false
+        local Torque = Instance.new("Torque", v)
+        Torque.Torque = Vector3.new(100000, 100000, 100000)
+        local AlignPosition = Instance.new("AlignPosition", v)
+        local Attachment2 = Instance.new("Attachment", v)
+        Torque.Attachment0 = Attachment2
+        AlignPosition.MaxForce = 9999999999999999
+        AlignPosition.MaxVelocity = math.huge
+        AlignPosition.Responsiveness = 200
+        AlignPosition.Attachment0 = Attachment2
+        AlignPosition.Attachment1 = Attachment1
+    end
+end
+ 
+local blackHoleActive = true
+ 
+local function toggleBlackHole()
+    blackHoleActive = not blackHoleActive
+    if blackHoleActive then
+        for _, v in next, Workspace:GetDescendants() do
+            ForcePart(v)
+        end
+ 
+        Workspace.DescendantAdded:Connect(function(v)
+            if blackHoleActive then
+                ForcePart(v)
+            end
+        end)
+ 
+        spawn(function()
+            while blackHoleActive and RunService.RenderStepped:Wait() do
+                Attachment1.WorldCFrame = humanoidRootPart.CFrame
+            end
+        end)
+    end
+end
+ 
+local function createControlButton()
+    local screenGui = Instance.new("ScreenGui")
+    local button = Instance.new("TextButton")
+ 
+    screenGui.Name = "BlackHoleControlGUI"
+    screenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+ 
+    button.Name = "ToggleBlackHoleButton"
+    button.Size = UDim2.new(0, 200, 0, 50)
+    button.Position = UDim2.new(0.5, -100, 0, 100)
+    button.Text = "Desativar Buraco Negro"
+    button.Parent = screenGui
+ 
+    button.MouseButton1Click:Connect(function()
+        toggleBlackHole()
+        if blackHoleActive then
+            button.Text = "Desativar Buraco Negro"
+        else
+            button.Text = "Ativar Buraco Negro"
+        end
+    end)
+end
+ 
+createControlButton()
+toggleBlackHole()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+loadstring(game:HttpGet("https://pastefy.app/pYhER1z4/raw"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/BingusWR/BLACKHOLDSCRIPT/refs/heads/main/BLACK%20HOLD%20SCRIPT"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/qPcm2zPy"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/U29jR1Cf"))()
+  end
+})
+
+Tab:AddButton({
+  Name = "黑洞脚本",
+  Callback = function()
+
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/BOOSBS/199/refs/heads/main/V3"))()
+  
+end
+})
+
+local Tab = Window:MakeTab({
+	Name = "ucmt",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "跑酷完成",
+	Callback = function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(652.8524780273438, 127.80541229248047, 2729.637939453125)      
+  	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "ujd",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "大厅屠杀:)",
+	Callback = function()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(560.7625122070312, 26.577653884887695, 1121.4288330078125)      
+  	end    
 })
