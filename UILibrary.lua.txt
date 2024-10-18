@@ -879,8 +879,8 @@ function OrionLib:MakeWindow(WindowConfig)
 		MainWindow.Visible = false
 		UIHidden = true
 		OrionLib:MakeNotification({
-			Name = "Interface Hidden",
-			Content = 'Press "Q" to reopen the interface',
+			Name = "XK脚本中心新UI",
+			Content = '电脑玩家或键盘点击"Q"可再次打开',
 			Time = 10,
             Image = "rbxassetid://13321848320"
 		})
