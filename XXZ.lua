@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心8.0版本"
+LBL.Text = "XK脚本中心8.5版本"
 LBL.TextColor3 = Color3.new(155, 155, 155)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -100,8 +100,8 @@ OrionLib:MakeNotification({
 Start = tick()
 wait(5)
 Heartbeat:Connect(HeartbeatUpdate)
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/ui.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V8.0",Name = "XK脚本中心", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V8.5",Name = "XK脚本中心", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "『关于』",
@@ -109,7 +109,7 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V8.0最新版9月20日更新")
+WSBTab:AddParagraph("当前版本","V8.5最新版9月20日更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -1599,6 +1599,13 @@ Tab:AddButton({
 	Callback = function()
      --[[Doors Blackking And BobHub脚本汉化]]loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\54\53\84\119\84\56\106\97"))()
   	end    
+})
+
+Tab:AddButton({
+  Name = "门绘图显示",
+  Callback = function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/cbhlyy/lyycbh/main/doors1"))()
+  end
 })
 
 Tab:AddButton({
@@ -5477,4 +5484,204 @@ end)
 
 setreadonly(MT, true)
 	end
+})
+
+local Tab = Window:MakeTab({
+
+	Name = "内脏与黑火药",
+
+	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+Tab:AddButton({
+
+	Name = "KSKKS",
+
+	Callback = function()
+	loadstring(game:HttpGet("https://shz.al/~KSKKS"))()
+	end
+})
+
+Tab:AddButton({
+
+	Name = "内脏与黑火药",
+
+	Callback = function()
+	loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\34\104\116\116\112\115\58\47\47\102\114\101\101\110\111\116\101\46\98\105\122\47\114\97\119\47\109\117\122\110\104\101\114\104\114\117\34\41\44\116\114\117\101\41\41\40\41\10")()
+	end
+})
+
+local Tab = Window:MakeTab({
+
+	Name = "餐厅大亨",
+
+	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+Tab:AddButton({
+
+	Name = "餐厅大亨无限资金",
+
+	Callback = function()
+	loadstring(game:HttpGet("https://shz.al/~zkzkzisKAKAKK"))()
+	end
+})
+
+Tab:AddButton({
+
+	Name = "tycoon2",
+
+	Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/toosiwhip/snake-hub/main/restaurant-tycoon-2.lua"))()
+	end
+})
+
+Tab:AddButton({
+
+	Name = "ppqt0gib",
+
+	Callback = function()
+	loadstring(game:HttpGet("https://pastefy.app/Ppqt0Gib/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+
+	Name = "地下城任务",
+
+	Icon = "rbxassetid://4483345998",
+
+	PremiumOnly = false
+
+})
+
+Tab:AddButton({
+	Name = "地下城任务1",
+	Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/StepBroFurious/Script/main/FuriousFall.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "地下城任务2",
+	Callback = function()
+     loadstring(game:HttpGet("https://gist.githubusercontent.com/hngamingroblox/659adbebad6a9b3a07527e5f7e446d66/raw"))()   
+  	end    
+})
+
+local Tab = Window:MakeTab({
+  Name = "FE变身脚本",
+  Icon = "rbxassetid://4483345998",
+  PremiumOnly = false
+  })
+
+Tab:AddButton({
+	Name = "FE SANS",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/i0yEjAry"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE Reaper",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/5rVDct9n"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE死侍",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/NVvdEySK"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE Knife",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/uAnpMVZR"))()
+end
+})
+
+Tab:AddButton({
+	Name = "Void BOSS",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/uP0MV6As"))()
+end
+})
+
+Tab:AddButton({
+	Name = "变大小",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/yRyNgpGE"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE PUNCH",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/gBrRFj8K"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE DEATH",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/sUcgGXkC"))()
+end
+})
+
+Tab:AddButton({
+	Name = "炸服",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/eU2wngHG"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE Giant AXE",
+	Callback = function()
+loadstring(game:HttpGet(('https://pastefy.ga/lrjtanrp/raw'),true))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE Saitama",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/HgbE1e6E"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE giant eye",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/nXEnZrdH"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE小刀",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/PTQQGkYG"))()
+end
+})
+
+Tab:AddButton({
+	Name = "FE月亮之刃",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/rTSxZGSQ"))()
+end
+})
+
+Tab:AddButton({
+	Name = "Among us",
+	Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/f1LTmTPZ"))()
+end
 })
