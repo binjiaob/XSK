@@ -1554,9 +1554,9 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddButton({
-	Name = "MS汉化【推荐】",
+	Name = "mspaint V3汉化【已更新】",
 	Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-DOORS/refs/heads/main/main.lua"))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-Chinese-XXZ/refs/heads/main/rename.txt"))()
   	end    
 })
 
@@ -1581,9 +1581,9 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddButton({
-	Name = "MS汉化【推荐】",
+	Name = "mspaint V3汉化【无敌推荐】",
 	Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-DOORS/refs/heads/main/main.lua"))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-Chinese-XXZ/refs/heads/main/rename.txt"))()
   	end    
 })
 
