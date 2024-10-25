@@ -1261,7 +1261,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『自瞄』",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7733655912",
     PremiumOnly = false
 })
 
@@ -1400,7 +1400,7 @@ Tab:AddButton({
 
 local DJTab = Window:MakeTab({
 	Name = "『旋转』",
-	Icon = "rbxassetid://7733779610",
+	Icon = "rbxassetid://7743873633",
 	PremiumOnly = false
 })
 
@@ -1676,7 +1676,7 @@ velocity.Name = "Spinbot"
 
 local Tab = Window:MakeTab({
     Name = "『范围』",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7733920519",
     PremiumOnly = false
 })
 
@@ -5881,6 +5881,22 @@ Tab:AddButton({
 	end
 })
 
+Tab:AddButton({
+
+	Name = "清风脚本(老大版)",
+
+	Callback = function()
+	loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\40\34\104\116\116\112\115\58\47\47\102\114\101\101\110\111\116\101\46\98\105\122\47\114\97\119\47\109\117\122\110\104\101\114\104\114\117\34\41\44\116\114\117\101\41\41\40\41\10")()
+	end
+})
+
+Tab:AddButton({
+	Name = "茗月清风",
+	Callback = function()
+	loadstring(game:HttpGet(("\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\115\120\99\115\114\49\49\52\53\49\52\47\115\120\99\115\114\49\49\52\53\49\52\49\47\109\97\105\110\47\115\120\99\115\114\49\51\52\56\52\56\52\56\56\46\108\117\97"),true))()
+	end
+})
+
 local Tab = Window:MakeTab({
 
 	Name = "餐厅大亨",
@@ -6440,3 +6456,1043 @@ Tab:AddButton({
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(560.7625122070312, 26.577653884887695, 1121.4288330078125)      
   	end    
 })
+
+local Tab = Window:MakeTab({
+    Name = "『ROOMS&DOORS』",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+Tab:AddButton({  
+    Name = "电池透视",
+    Callback = function()
+    local objectName = "battery"
+local highlightColor = Color3.new(0, 139, 0)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({  
+    Name = "门透视",
+    Callback = function()
+    local objectName = "door"
+local highlightColor = Color3.new(139, 0, 0)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({  
+    Name = "柜子透视",
+    Callback = function()
+    local objectName = "locker"
+local highlightColor = Color3.new(0, 139, 0)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({  
+    Name = "桌子透视",
+    Callback = function()
+    local objectName = "table"
+local highlightColor = Color3.new(139, 115, 85)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({  
+    Name = "A-100透视",
+    Callback = function()
+    local objectName = "Spirit"
+local highlightColor = Color3.new(165, 42, 42)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({  
+    Name = "A-100尸体透视",
+    Callback = function()
+    local objectName = "corpse"
+local highlightColor = Color3.new(165, 42, 42)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({  
+    Name = "移除a90",
+    Callback = function()
+    local CoreGui = game:GetService("StarterGui")
+local errorCount = 0
+local fileNotFoundCount = 0
+local successCount = 0
+
+local function showNotification(title, text, duration)
+    CoreGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration,
+    })
+end
+
+local function removeFileRecursive(parent, fileName)
+    for _, child in pairs(parent:GetChildren()) do
+        if child:IsA("Folder") or child:IsA("Model") or child:IsA("Workspace") then
+            if removeFileRecursive(child, fileName) then
+                return true
+            end
+        elseif child.Name == fileName then
+            child:Destroy()
+            return true
+        end
+    end
+    return false
+end
+
+local function main()
+    while true do
+        local success, err = pcall(function()
+            local removed = removeFileRecursive(game, "a90face")
+            if removed then
+                successCount = successCount + 1
+                if successCount <= 2 then
+                    showNotification("XK脚本中心", "A90已经被删除", 5)
+                    showNotification("XK脚本中心", "A90 已经被删除", 5)
+                end
+            else
+                fileNotFoundCount = fileNotFoundCount + 1
+                if fileNotFoundCount <= 2 then
+                    showNotification("XK脚本中心", "A90文件失败", 5)
+                end
+            end
+        end)
+        if not success then
+            errorCount = errorCount + 1
+            if errorCount <= 2 then
+                showNotification("XK脚本中心", "移除文件时出错: " .. err, 5)
+            end
+        end
+        wait(1) 
+    end
+end
+
+showNotification("XK脚本中心", "欢迎", 5)
+
+main()
+    end
+})
+
+Tab:AddButton({  
+    Name = "A-200透视",
+    Callback = function()
+    local objectName = "monster2"
+local highlightColor = Color3.new(165, 42, 42)  
+local dotRadius = 5 
+local workspace = game:GetService("Workspace")
+local players = game:GetService("Players")
+local player = players.LocalPlayer
+local runService = game:GetService("RunService")
+
+local function createHighlight(parent)
+    local highlight = Instance.new("Highlight")
+    highlight.Adornee = parent
+    highlight.FillColor = highlightColor
+    highlight.OutlineColor = highlightColor
+    highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop  
+    highlight.Parent = parent
+    return highlight
+end
+
+local function createDot(parent)
+    local dot = Instance.new("Part")
+    dot.Shape = Enum.PartType.Ball
+    dot.Size = Vector3.new(dotRadius, dotRadius, dotRadius)
+    dot.Color = highlightColor
+    dot.Material = Enum.Material.Neon
+    dot.Anchored = true
+    dot.CanCollide = false
+    dot.CFrame = parent.CFrame
+    dot.Parent = parent
+    return dot
+end
+
+local function findAllChildren(name, parent, objects)
+    for _, obj in pairs(parent:GetChildren()) do
+        if obj.Name == name then
+            table.insert(objects, obj)
+        end
+        
+        findAllChildren(name, obj, objects)
+    end
+end
+
+local function setupTracking()
+    local objects = {}
+    findAllChildren(objectName, workspace, objects)
+    if #objects == 0 then
+        warn("Object " .. objectName .. " not found in workspace.")
+        return
+    end
+    local highlights = {}
+    local dots = {}
+    for _, object in pairs(objects) do
+        local highlight = createHighlight(object)
+        table.insert(highlights, highlight)
+        local dot = createDot(object)
+        table.insert(dots, dot)
+    end
+    runService.Heartbeat:Connect(function()
+        
+        for i = #objects, 1, -1 do
+            if objects[i] == nil or objects[i].Parent == nil then
+                highlights[i]:Destroy()
+                table.remove(highlights, i)
+                dots[i]:Destroy()
+                table.remove(dots, i)
+                table.remove(objects, i)
+            end
+        end
+        
+        for i, object in pairs(objects) do
+            if object and object.Parent then
+                highlights[i].Adornee = object
+                dots[i].CFrame = object.CFrame
+            end
+        end
+    end)
+end
+
+setupTracking()
+    end
+})
+
+Tab:AddButton({
+    Name = "怪物透视",
+    Callback = function()
+          getgenv().fleshesp = not getgenv().fleshesp
+	local highlightedfleshes = {}
+	task.spawn(function()
+		while wait() do
+			if not getgenv().fleshesp then
+				for _, objects in pairs(highlightedfleshes) do
+					if objects.highlight then
+						objects.highlight:Destroy()
+					end
+					if objects.ui then
+						objects.ui:Destroy()
+					end
+				end
+				highlightedfleshes = {}
+				break
+			end
+			for _, v in pairs(game:GetService("Workspace").Void:GetChildren()) do
+				if v.Name == "Main" and v:IsA("MeshPart") and v.Parent.Name == "Wardrobe" then
+					local distance = (v.Position - game:GetService("Players").LocalPlayer.Character.PrimaryPart.Position).magnitude
+					if distance > 1000 then
+						if highlightedfleshes[v] then
+							if highlightedfleshes[v].highlight then
+								highlightedfleshes[v].highlight:Destroy()
+							end
+							if highlightedfleshes[v].ui then
+								highlightedfleshes[v].ui:Destroy()
+							end
+							highlightedfleshes[v] = nil
+						end
+					else
+						if not highlightedfleshes[v] then
+							local Highlight = Instance.new("Highlight", v)
+							Highlight.FillColor = Color3.fromRGB(255,0,0)
+							Highlight.OutlineColor = Color3.fromRGB(255,0,0)
+							local UI = Instance.new("BillboardGui", v)
+							UI.Size = UDim2.new(0, 1000, 0, 30)
+							UI.AlwaysOnTop = true
+							UI.StudsOffset = Vector3.new(0, 3, 0)
+							local Label = Instance.new("TextLabel", UI)
+							Label.Size = UDim2.new(1, 0, 1, 0)
+							Label.BackgroundTransparency = 1
+							Label.TextScaled = true
+							Label.Text = "Flesh"
+							Label.TextColor3 = Color3.fromRGB()
+							Label.Font = Enum.Font.Oswald
+							Label.TextStrokeTransparency = 0
+							Label.TextStrokeColor3 = Color3.fromRGB(255,0,0)
+							highlightedfleshes[v] = {
+								highlight = Highlight,
+								ui = UI
+							}
+						end
+					end
+				end
+			end
+		end
+	end)
+      end
+})
+
+Tab:AddButton({  
+    Name = "移除A-100",
+    Callback = function()
+    local CoreGui = game:GetService("StarterGui")
+
+local function showNotification(title, text, duration)
+    CoreGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration,
+    })
+end
+
+local function removeFileRecursive(parent, fileName)
+    for _, child in pairs(parent:GetChildren()) do
+        if child:IsA("Folder") or child:IsA("Model") then
+            removeFileRecursive(child, fileName)
+        elseif child.Name == fileName then
+            child:Destroy()
+            
+            showNotification("XK脚本中心", fileName .. " A100移除.", 5)
+            return true
+        end
+    end
+    return false
+end
+
+local function main()
+    while true do
+        local success, err = pcall(function()
+            local removed = removeFileRecursive(game, "Spirit")
+            if not removed then
+                
+                showNotification("提示", "检查.", 5)
+            end
+        end)
+        if not success then
+            
+            showNotification("寻找文件", "检查实体 " .. err, 5)
+        end
+        wait(2) --这里是等待两秒，然后再找文件，然后再次移除
+    end
+end
+
+showNotification("成功", "你好", 5)
+
+main()
+    end
+})
+
+Tab:AddButton({  
+    Name = "移除A-40",
+    Callback = function()
+    local CoreGui = game:GetService("StarterGui")
+
+local function showNotification(title, text, duration)
+    CoreGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration,
+    })
+end
+
+local function removeFileRecursive(parent, fileName)
+    for _, child in pairs(parent:GetChildren()) do
+        if child:IsA("Folder") or child:IsA("Model") then
+            removeFileRecursive(child, fileName)
+        elseif child.Name == fileName then
+            child:Destroy()
+            
+            showNotification("XK脚本中心", fileName .. " A40移除.", 5)
+            return true
+        end
+    end
+    return false
+end
+
+local function main()
+    while true do
+        local success, err = pcall(function()
+            local removed = removeFileRecursive(game, "jack")
+            if not removed then
+                
+                showNotification("XK脚本中心", "检查实体.", 5)
+            end
+        end)
+        if not success then
+            
+            showNotification("怪物检测", "检查 " .. err, 5)
+        end
+        wait(2) --这里是等待两秒，然后再找文件，然后再次移除
+    end
+end
+
+showNotification("XK脚本中心", "rooms&doors", 5)
+
+main()
+    end
+})
+
+Tab:AddButton({  
+    Name = "移除A-250",
+    Callback = function()
+    local CoreGui = game:GetService("StarterGui")
+
+local function showNotification(title, text, duration)
+    CoreGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration,
+    })
+end
+
+local function removeFileRecursive(parent, fileName)
+    for _, child in pairs(parent:GetChildren()) do
+        if child:IsA("Folder") or child:IsA("Model") then
+            removeFileRecursive(child, fileName)
+        elseif child.Name == fileName then
+            child:Destroy()
+            
+            showNotification("XK脚本中心", fileName .. " A250移除.", 5)
+            return true
+        end
+    end
+    return false
+end
+
+local function main()
+    while true do
+        local success, err = pcall(function()
+            local removed = removeFileRecursive(game, "handdebris")
+            if not removed then
+                
+                showNotification("XK脚本中心", "检查实体.", 5)
+            end
+        end)
+        if not success then
+            
+            showNotification("XK脚本中心", "检查实体 " .. err, 5)
+        end
+        wait(2) --这里是等待两秒，然后再找文件，然后再次移除
+    end
+end
+
+showNotification("XK脚本中心", "脚本中心", 5)
+
+main()
+    end
+})
+
+Tab:AddButton({  
+    Name = "移除A-200或120",
+    Callback = function()
+    local CoreGui = game:GetService("StarterGui")
+
+local function showNotification(title, text, duration)
+    CoreGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration,
+    })
+end
+
+local function removeFileRecursive(parent, fileName)
+    for _, child in pairs(parent:GetChildren()) do
+        if child:IsA("Folder") or child:IsA("Model") then
+            removeFileRecursive(child, fileName)
+        elseif child.Name == fileName then
+            child:Destroy()
+            
+            showNotification("XK脚本中心", fileName .. " A200或120移除.", 5)
+            return true
+        end
+    end
+    return false
+end
+
+local function main()
+    while true do
+        local success, err = pcall(function()
+            local removed = removeFileRecursive(game, "monster2")
+            if not removed then
+                
+                showNotification("XK脚本中心", "检查实体.", 5)
+            end
+        end)
+        if not success then
+            
+            showNotification("XK脚本中心", "检查实体 " .. err, 5)
+        end
+        wait(2) --这里是等待两秒，然后再找文件，然后再次移除
+    end
+end
+
+showNotification("XK脚本中心", "脚本中心", 5)
+
+main()
+    end
+})
+
+Tab:AddButton({  
+    Name = "移除A-60",
+    Callback = function()
+    local CoreGui = game:GetService("StarterGui")
+
+local function showNotification(title, text, duration)
+    CoreGui:SetCore("SendNotification", {
+        Title = title,
+        Text = text,
+        Duration = duration,
+    })
+end
+
+local function removeFileRecursive(parent, fileName)
+    for _, child in pairs(parent:GetChildren()) do
+        if child:IsA("Folder") or child:IsA("Model") then
+            removeFileRecursive(child, fileName)
+        elseif child.Name == fileName then
+            child:Destroy()
+            
+            showNotification("XK脚本中心", fileName .. " A60移除.", 5)
+            return true
+        end
+    end
+    return false
+end
+
+local function main()
+    while true do
+        local success, err = pcall(function()
+            local removed = removeFileRecursive(game, "monster")
+            if not removed then
+                
+                showNotification("XK脚本中心", "检查实体.", 5)
+            end
+        end)
+        if not success then
+            
+            showNotification("XK脚本中心", "检查实体中" .. err, 5)
+        end
+        wait(2) --这里是等待两秒，然后再找文件，然后再次移除
+    end
+end
+
+showNotification("XK脚本中心", "欢迎使用", 5)
+
+main()
+    end
+})
+
+Tab:AddButton({
+    Name = "Find your name成就（假）",
+    Callback = function()
+          local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "已获得徽章",
+    Text = "你赢得了CJ4的“Find your name”徽章！",
+    Duration = 10, --时间
+})
+      end
+})
+
+Tab:AddButton({
+    Name = "000 000 000成就（假）",
+    Callback = function()
+          local CoreGui = game:GetService("StarterGui")
+
+CoreGui:SetCore("SendNotification", {
+    Title = "已获得徽章",
+    Text = "你赢得了CJ4的“000 000 000”徽章！",
+    Duration = 10, --时间
+})
+      end
+})
+
+Tab:AddButton({
+    Name = "提醒",
+    Callback = function()
+          local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
+
+function tableContains(table, element)
+    for key, value in pairs(table) do
+        if key == element then
+            return true
+        end
+    end
+    return false
+end
+
+function notify(text)
+    notification:ForceNotify({
+        Name = "XK脚本中心",
+        Text = text,
+        Icon = "rbxassetid://11401835376",
+        Duration = 5,
+    })
+end
+
+local MS = {
+    ["monster"] = "冲击怪物出现",
+    ["handdebris"] = "A-250出现",
+    ["godhand"] = "A-250攻击",
+    ["Spirit"] = "A-100出现",
+    ["corpse"] = "A-100死亡",
+    ["monster2"] = "涂鸦出现",
+    ["monsterstopped"] = "怪物消失"
+}
+
+workspace.ChildAdded:Connect(function(child)
+    
+    if tableContains(MS, child.Name) then 
+        notify(MS[child.Name])
+    end
+end)
+  end
+})
+
+
