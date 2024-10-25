@@ -7467,14 +7467,12 @@ function tableContains(table, element)
     return false
 end
 
-function notify(text)
-    notification:ForceNotify({
-        Name = "XK脚本中心",
-        Text = text,
-        Icon = "rbxassetid://11401835376",
-        Duration = 5,
-    })
-end
+OrionLib:MakeNotification({
+                    Name = "怪物出现",
+                    Content = "XK脚本中心",
+                    Icon = "rbxassetid://11401835376",
+                    Time = 2
+                })
 
 local MS = {
     ["monster"] = "冲击怪物出现",
