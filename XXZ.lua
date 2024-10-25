@@ -286,7 +286,20 @@ Tab:AddTextbox({
                 })
 	end
 })
-
+Tab:AddTextbox({
+	Name = "跳跃高度设置",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+		
+		OrionLib:MakeNotification({
+                    Name = "成功设置跳跃高度:  "..game.Players.LocalPlayer.Character.Humanoid.WalkSpeed.."   |高度",
+                    Content = "成功",
+                    Time = 3
+                })
+	end
+})
 Tab:AddTextbox({
     Name = '范围可随便调',
     Default = '',
@@ -7453,6 +7466,13 @@ function tableContains(table, element)
     end
     return false
 end
+
+OrionLib:MakeNotification({
+                    Name = "怪物出现",
+                    Content = "XK脚本中心",
+                    Icon = "rbxassetid://11401835376",
+                    Time = 2
+                })
 
 local MS = {
     ["monster"] = "冲击怪物出现",
