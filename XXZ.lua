@@ -41,7 +41,7 @@ end
 OrionLib:MakeNotification({
                     Name = "XSK 脚本中心",
                     Content = "欢迎使用【作者:小玄奘】",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -53,7 +53,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "你的注入器："..identifyexecutor(),
                     Content = "脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
                 local sound = Instance.new("Sound", workspace)
@@ -65,7 +65,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "用户名："..game.Players.LocalPlayer.Character.Name,
                     Content = "XSK脚本中心",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -77,7 +77,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "服务器ID："..game.PlaceId,
                     Content = "XK脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
     local sound = Instance.new("Sound", workspace)
@@ -95,7 +95,7 @@ print("索引开启反挂机")
 OrionLib:MakeNotification({
                     Name = "反外挂已开启",
                     Content = "等待2秒",
-                    Time = 2
+                    Time = 1
                 })           
 Start = tick()
 wait(2)
@@ -115,7 +115,18 @@ WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
 
 WSBTab:AddButton ({
-	Name = "复制一群【群已满人】",
+	Name = "复制作者【快手号】",
+	Callback = function ()
+	 setclipboard("XKMSV216")
+	 OrionLib:MakeNotification({
+                    Name = "提示信息",
+                    Content = "已复制，粘贴板中查看",
+                    Time = 3
+                })
+	end
+})
+
+	Name = "复制一群【已升2000人】",
 	Callback = function ()
 	 setclipboard("882709292")
 	 OrionLib:MakeNotification({
@@ -200,6 +211,27 @@ WSBTab:AddButton ({
 
 WSBTab:AddParagraph("更新内容:UI与小部分东西")
 WSBTab:AddParagraph("半缝合脚本","勿喷")
+
+local XUANTab = Window:MakeTab({
+	Name = "『黑名单』",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+XUANTab:AddParagraph("名单","猫 (doors限定)")
+XUANTab:AddParagraph("快手号","jnt367--")
+
+XUANTab:AddButton ({
+	Name = "复制上面人【快手号】",
+	Callback = function ()
+	 setclipboard("jnt367--")
+	 OrionLib:MakeNotification({
+                    Name = "提示信息",
+                    Content = "已复制，粘贴板中查看",
+                    Time = 3
+                })
+	end
+})
 
 local Tab = Window:MakeTab({
     Name = "『玩家与通用』",
@@ -893,7 +925,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "绘制",
+	Name = "『玩家透视』",
 	Icon = "rbxassetid://15862434941",
 	PremiumOnly = false
 })
