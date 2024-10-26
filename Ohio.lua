@@ -119,44 +119,23 @@ AutoRobBankFunc = function()
     end
 end
 
-Player:Dropdown Options = {'银行','珠宝店','沙滩','武器店（撬锁）','武士刀','射线枪','加特林','锯掉','沙漠之鹰','警察局（M4A1）','AUG','军事基地（军甲）'},
-    Callback = function(Value)
-    local epoh2 = game:GetService('Players')
-    local epoh3 = epoh2.LocalPlayer.Character.HumanoidRootPart
-    if Value == '银行' then
-        local epoh1 = CFrame.new(1055.94153, 15.11950874, -344.58374)
+tab:Dropdown("银行",{"珠宝店","沙滩","武器店","武士刀","射线枪","加特林","锯掉","沙漠之鹰","警察局","AUG","军事基地"},function(Value)
+if Value == "安全区" then
+local epoh1 = CFrame.new(1055.94153, 15.11950874, -344.58374)
         epoh3.CFrame = epoh1
-    elseif Value == '珠宝店' then
-        local epoh1 = CFrame.new(1719.02637, 14.2831011, -714.293091)
-        epoh3.CFrame = epoh1
-    elseif Value == '沙滩' then
-        local epoh1 = CFrame.new(998.4656372070312, 15, 395.9789733886719)
-        epoh3.CFrame = epoh1
-    elseif Value == '武器店（撬锁）' then
-        local epoh1 = CFrame.new(660.5284423828125, 6.4081127643585205, -716.489990234375)
-        epoh3.CFrame = epoh1
-    elseif Value == '武士刀' then
-        local epoh1 = CFrame.new(175.191, 13.937, -132.69)
-        epoh3.CFrame = epoh1
-    elseif Value == '射线枪' then
-        local epoh1 = CFrame.new(148.685471, -90, -529.280945)
-        epoh3.CFrame = epoh1
-    elseif Value == '加特林' then
-        local epoh1 = CFrame.new(364.97076416015625, 0.764974117279053, -1447.3302001953125)
-        epoh3.CFrame = epoh1
-    elseif Value == '锯掉' then
-        local epoh1 = CFrame.new(1179.98523,40,-436.812683)
-        epoh3.CFrame = epoh1
-    elseif Value == '沙漠之鹰' then
-        local epoh1 = CFrame.new(363.341461, 26.0798492, -259.681396)
-        epoh3.CFrame = epoh1
-    elseif Value == '警察局（M4A1）' then
-        local epoh1 = CFrame.new(603.4676513671875,25.662811279296875,-922.0442504882812)
-        epoh3.CFrame = epoh1
-    elseif Value == 'AUG' then
-        local epoh1 = CFrame.new(1170.500244140625,48.37138366699219,-772.55859375)
-        epoh3.CFrame = epoh1
-    elseif Value == '军事基地（军甲）' then
-        local epoh1 = CFrame.new(563.4422607421875,28.502071380615234,-1472.780517578125)
-        epoh3.CFrame = epoh1
-    end
+elseif Value == "竞技场" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
+elseif Value == "埃及岛" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
+elseif Value == "果实岛" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
+elseif Value == "盘子" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
+elseif Value == "锦标赛" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
+elseif Value == "默认竞技场" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(120,360,-3)
+end
+end)
+
+
