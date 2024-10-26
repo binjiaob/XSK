@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心9.0"
+LBL.Text = "XK脚本中心9.1"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -101,7 +101,7 @@ Start = tick()
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.0",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.1",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "『关于』",
@@ -109,22 +109,10 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V9.0最新版10月24日更新")
+WSBTab:AddParagraph("当前版本","V9.1最新版10月26日更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
-
-WSBTab:AddButton ({
-	Name = "复制作者【快手号】",
-	Callback = function ()
-	 setclipboard("XKMSV216")
-	 OrionLib:MakeNotification({
-                    Name = "提示信息",
-                    Content = "已复制，粘贴板中查看",
-                    Time = 3
-                })
-	end
-})
 
 WSBTab:AddButton ({
 	Name = "复制一群【已升2000人】",
@@ -213,16 +201,16 @@ WSBTab:AddButton ({
 WSBTab:AddParagraph("更新内容:UI与小部分东西")
 WSBTab:AddParagraph("半缝合脚本","勿喷")
 
-local XUANTab = Window:MakeTab({
+local XuanTab = Window:MakeTab({
 	Name = "『黑名单』",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
-XUANTab:AddParagraph("名单","猫 (doors限定)")
-XUANTab:AddParagraph("快手号","jnt367--")
+XuanTab:AddParagraph("一名单一","猫 (doors限定)")
+XuanTab:AddParagraph("快手号","jnt367--")
 
-XUANTab:AddButton ({
+XuanTab:AddButton ({
 	Name = "复制上面人【快手号】",
 	Callback = function ()
 	 setclipboard("jnt367--")
@@ -926,7 +914,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『玩家透视』",
+	Name = "『绘制玩家』",
 	Icon = "rbxassetid://15862434941",
 	PremiumOnly = false
 })
