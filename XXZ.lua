@@ -1915,6 +1915,131 @@ player:AddButton({
 })
 
 local Tab = Window:MakeTab({
+	Name = " 『Doors道具』",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "圣光手雷",
+	Callback = function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/HolyGrenadeByNerd.lua"))()
+  	end
+})
+  Tab:AddButton({
+	Name = "十字架",
+	Callback = function()
+	loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
+  	end
+})
+Tab:AddButton ({
+	Name = "臭猫",
+	Callback = function ()
+	 loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell Plushie"))()
+	end
+})
+Tab:AddButton({
+	Name = "seek枪",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/seekgun.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "魔法书",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Magic%20Book"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "无线电量的手电筒",
+	Callback = function()
+        loadstring(game:HttpGet('https://pastebin.com/raw/9Daqa4hD'))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "香蕉枪",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "糖果",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/candyscript/candy.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "幸运方块",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Lucky%20Block"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "磁铁",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/MagnetByNerd.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "变身",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Morphing/MorphScript.lua"))();
+  	end    
+})
+Tab:AddButton({
+	Name = "蜡烛",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Items/Candle.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "吸尘器",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/EverythingGunByNeRD.lua"))()
+  	end    
+})
+Tab:AddButton({
+	Name = "火箭筒",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/sharksharksharkshark/musical-pancake/main/huo.txt"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "臭猫",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell%20Plushie"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "巧克力",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell%20Plushie"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "炸弹",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/IcegunByNerd.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "木棍刚开门使用",
+	Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Debug%20Stick"))()
+  	end    
+})
+
+local Tab = Window:MakeTab({
 	Name = " 『Doors floor2脚本』",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
