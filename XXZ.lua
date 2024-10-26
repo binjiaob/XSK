@@ -41,7 +41,7 @@ end
 OrionLib:MakeNotification({
                     Name = "XSK 脚本中心",
                     Content = "欢迎使用【作者:小玄奘】",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -53,7 +53,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "你的注入器："..identifyexecutor(),
                     Content = "脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
                 local sound = Instance.new("Sound", workspace)
@@ -65,7 +65,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "用户名："..game.Players.LocalPlayer.Character.Name,
                     Content = "XSK脚本中心",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -77,7 +77,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "服务器ID："..game.PlaceId,
                     Content = "XK脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
     local sound = Instance.new("Sound", workspace)
@@ -95,7 +95,7 @@ print("索引开启反挂机")
 OrionLib:MakeNotification({
                     Name = "反外挂已开启",
                     Content = "等待2秒",
-                    Time = 2
+                    Time = 1
                 })           
 Start = tick()
 wait(2)
