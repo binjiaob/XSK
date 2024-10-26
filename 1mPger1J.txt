@@ -18,6 +18,25 @@ local OrionLib = {
 			Divider = Color3.fromRGB(60, 60, 60),
 			Text = Color3.fromRGB(240, 240, 240),
 			TextDark = Color3.fromRGB(150, 150, 150),
+			Accent = Color3.fromRGB(9, 99, 195)
+		},
+		TokyoNightOld = {
+			Text = Color3.fromHex("#ffffff"),
+			Main = Color3.fromHex("#0a0047"),
+			Second = Color3.fromHex("#0a0047"),
+			TextDark = Color3.fromHex("#0a0047"),
+			Stroke = Color3.fromHex("#323232"),
+			Divider = Color3.fromHex("#ffffff"),
+		},
+		TokyoNight = {
+			Text = Color3.fromRGB(200, 200, 200),
+			Second = Color3.fromRGB(38, 45, 71),
+			Main = Color3.fromRGB(26, 32, 58),
+			Stroke = Color3.fromRGB(43, 51, 80),
+			Divider = Color3.fromRGB(220, 220, 220),
+			TextDark = Color3.fromRGB(150, 150, 150),
+			Accent = Color3.fromRGB(83, 83, 203),
+			UsesGradient = true
 		}
 	},
 	SelectedTheme = "Default",
