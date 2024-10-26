@@ -45,7 +45,7 @@ setup:Colorpicker("更改用户界面颜色",Color3.fromRGB(44, 120, 224), funct
  lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255)) 
  end)
  
- Player = Window:Tab("主要功能")
+local Player = Window:Tab("主要功能")
 
 Player:Button("获取计数器手套", function()
 fireclickdetector(game.Workspace.CounterLever.ClickDetector)
