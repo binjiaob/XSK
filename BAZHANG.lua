@@ -28,9 +28,9 @@ end)
 
 uihide = false
 
- local win = lib:Window("XKHUB",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl) 
+ local win = lib:Window("XKHUB 巴掌模拟器 ",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl) 
   
- local setup = win:Tab("巴掌模拟器")
+ local setup = win:Tab("其余")
 
  setup:Label("作者：XUAN_RT")
  
@@ -45,19 +45,58 @@ setup:Colorpicker("更改用户界面颜色",Color3.fromRGB(44, 120, 224), funct
  lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255)) 
  end)
  
- local Player = win:Tab("巴掌模拟器")
+ local Player = win:Tab("主要功能")
 
 Player:Button("获取计数器手套", function()
-fireclickdetector(game.Workspace.CounterLever.ClickDetector)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
-wait(0.2)
-game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-wait(121)
-for i,v in pairs(workspace.Maze:GetDescendants()) do
-if v:IsA("ClickDetector") then
-fireclickdetector(v)
-end
-end
+    fireclickdetector(game.Workspace.CounterLever.ClickDetector)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
+    wait(0.2)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    wait(121)
+    for i,v in pairs(workspace.Maze:GetDescendants()) do
+    if v:IsA("ClickDetector") then
+    fireclickdetector(v)
+    end
+    end
+end)
+
+Player:Toggle("防击飞", false, function(Value)
+    AntiRagdoll = Value
+    if AntiRagdoll then
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+    game.Players.LocalPlayer.CharacterAdded:Connect(function()
+    game.Players.LocalPlayer.Character:WaitForChild("Ragdolled").Changed:Connect(function()
+    if game.Players.LocalPlayer.Character:WaitForChild("Ragdolled").Value == true and AntiRagdoll then
+    repeat task.wait() game.Players.LocalPlayer.Character.Torso.Anchored = true
+    until game.Players.LocalPlayer.Character:WaitForChild("Ragdolled").Value == false
+    game.Players.LocalPlayer.Character.Torso.Anchored = false
+    end
+    end)
+    end)
+    end
+end)
+
+Player:Toggle("防虚空", false, function(Value)
+    game.Workspace.dedBarrier.CanCollide = Value
+    game.Workspace.TAntiVoid.CanCollide = Value
+end)
+
+Player:Toggle("无技能冷却", false, function(Value)
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    local tool = character:FindFirstChildOfClass("Tool") or player.Backpack:FindFirstChildOfClass("Tool")
+    
+    bazhangmnq = Value
+    
+    while bazhangmnq do
+    local localscript = tool:FindFirstChildOfClass("LocalScript")
+    local localscriptclone = localscript:Clone()
+    localscriptclone = localscript:Clone()
+    localscriptclone:Clone()
+    localscript:Destroy()
+    localscriptclone.Parent = tool
+    wait(0.1)
+    end
 end)
 
 Player:Toggle("地牢亮度", false, function(Value)
@@ -393,7 +432,3 @@ end
 task.wait()
 end
 end)
-
-About = Window:Tab("关于")
-
-About:Label("作者:小玄奘")
