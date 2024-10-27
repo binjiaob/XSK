@@ -1,28 +1,3 @@
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
-local LatestRoom = game:GetService("ReplicatedStorage").GameData.LatestRoom
-local ChaseStart = game:GetService("ReplicatedStorage").GameData.ChaseStart
-local CF = CFrame.new
-local plr = game.Players.LocalPlayer
-local plrname = plr.Name
-local plrid = plr.UserId
-
-if game:GetService("CoreGui"):FindFirstChild("D O O R S") then
-   game:GetService("CoreGui"):FindFirstChild("D O O R S"):Destroy()
-end
-local UILib = loadstring(game:HttpGet('https://shz.al/~vapeui'))();
-
-local plr = game.Players.LocalPlayer
-local char = plr.Character or plr.CharacterAdded:Wait()
-local hum = char:FindFirstChildOfClass("Humanoid") or char:WaitForChild("Humanoid")
-
-if not fireproximityprompt then
-  local msg = Instance.new("Message",workspace)
-  msg.Text = "you have fireproximityprompt function bro get better executor"
-  task.wait(6)
-  msg:Destroy()
-  error("no prox")
-end
-
 function esp(what,color,core,name)
   local parts
 
