@@ -101,7 +101,7 @@ Start = tick()
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.1",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.3",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "『关于』",
@@ -109,7 +109,7 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V9.1最新版10月26日更新")
+WSBTab:AddParagraph("当前版本","V9.3最新版10月27日更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -1419,6 +1419,26 @@ Tab:AddButton({
 	end
 })
 
+local QWERTab = Window:MakeTab({
+    Name = "『XKHUB持续制作中』",
+    Icon = "rbxassetid://117494350103589",
+    PremiumOnly = false
+})
+
+Tab:AddButton ({
+	Name = "DOORS",
+	Callback = function ()
+	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
+	end
+})
+
+Tab:AddButton ({
+	Name = "巴掌模拟器",
+	Callback = function ()
+	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/XBAZHANGK.lua"))()
+	end
+})
+
 local DJTab = Window:MakeTab({
 	Name = "『旋转』",
 	Icon = "rbxassetid://7743873633",
@@ -2091,6 +2111,13 @@ local Tab = Window:MakeTab({
 	Name = " 『Doors脚本』",
 	Icon = "rbxassetid://117494350103589",
 	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "XKHUB",
+	Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
+  	end    
 })
 
 Tab:AddButton({
