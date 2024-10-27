@@ -46,7 +46,6 @@ uihide = false
 local win = lib:Window("XKHUB 丨 DOORS ",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl) 
 
 local Main = win:Tab("主要的")
-local ESP = win:Tab("追踪")
 local item = win:Tab("物品")
 local Other = win:Tab("其他")
 local tab = win:Tab("副主")
@@ -74,7 +73,7 @@ while _G.EnableSpeed == true do wait()
  end
 end)
 
-Main:Toggle("头灯",false, function(Value)
+Main:Toggle("灯",false, function(Value)
         pcl.Enabled = Value
 end)
 
@@ -187,75 +186,7 @@ _G.FBEX = true
 _G.FBE = not _G.FBE
 end)
 
-Main:Toggle("刷新时通知",false, function(s)
-_G.IE = (s and true or false)
-    LatestRoom.Changed:Connect(function()
-        if _G.IE == true then
-            local n = ChaseStart.Value - LatestRoom.Value
-            if 0 < n and n < 4 then
-                Notification:Notify(
-    {Title = "请注意", Description = "事件可能刷新于" .. tostring(n) .. " 房间"},
-    {OutlineColor = Color3.fromRGB(98, 37, 209),Time = 5, Type = "default"}
-)
-            end
-        end
-    end)
-
-workspace.ChildAdded:Connect(function(inst)
-if inst.Name == "RushMoving" and _G.IE == true then
-Notification:Notify(
-    {Title = "请注意", Description = "Rush 已刷新"},
-    {OutlineColor = Color3.fromRGB(98, 37, 209),Time = 5, Type = "default"}
-)
-
-elseif inst.Name == "AmbushMoving" and _G.IE == true then
-Notification:Notify(
-    {Title = "请注意", Description = "Ambush 已刷新"},
-    {OutlineColor = Color3.fromRGB(98, 37, 209),Time = 5, Type = "default"}
-)
-
-end
-end)
-end)
-
-Other:Toggle("自动躲避Rush/Ambush",false, function(s)
-_G.Avoid = (s and true or false)
-workspace.ChildAdded:Connect(function(inst)
-if inst.Name == "RushMoving" and _G.Avoid == true then
-Notification:Notify(
-    {Title = "请注意!", Description = "正在躲避 Rush."},
-    {OutlineColor = Color3.fromRGB(98, 37, 209),Time = 5, Type = "default"}
-)
-
-local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-local con = game:GetService("RunService").Heartbeat:Connect(function()
-game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,20,0))
-end)
-
-inst.Destroying:Wait()
-con:Disconnect()
-game.Players.LocalPlayer.Character:MoveTo(OldPos)
-
-elseif inst.Name == "AmbushMoving" and _G.Avoid == true then
-Notification:Notify(
-    {Title = "注意!", Description = "正在躲避 Ambush."},
-    {OutlineColor = Color3.fromRGB(98, 37, 209),Time = 5, Type = "default"}
-)
-
-local OldPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-local con = game:GetService("RunService").Heartbeat:Connect(function()
-game.Players.LocalPlayer.Character:MoveTo(OldPos + Vector3.new(0,20,0))
-end)
-
-inst.Destroying:Wait()
-con:Disconnect()
-game.Players.LocalPlayer.Character:MoveTo(OldPos)
-
-end
-end)
-end)
-
-Other:Toggle("无 Screech",false, function(s)
+Other:Toggle("移出Screech",false, function(s)
 _G.NS = (s and true or false)
 workspace.CurrentCamera.ChildAdded:Connect(function(child)
     if child.Name == "Screech" and _G.NS == true then
@@ -273,61 +204,6 @@ game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function
 end)
 end)
 
-Other:Toggle("自动跳过房间",false, function(s)
-_G.ASL = (s and true or false)
-while _G.ASL == true do wait()
-    pcall(function()
-            local HasKey = false
-            local CurrentDoor = workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door")
-            for i,v in ipairs(CurrentDoor.Parent:GetDescendants()) do
-                if v.Name == "KeyObtain" then
-                    HasKey = v
-                end
-            end
-            if HasKey then
-                game.Players.LocalPlayer.Character:PivotTo(CF(HasKey.Hitbox.Position))
-                wait(0.3)
-                fireproximityprompt(HasKey.ModulePrompt,0)
-                game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
-                wait(0.3)
-                fireproximityprompt(CurrentDoor.Lock.UnlockPrompt,0)
-            end
-            if LatestRoom == 50 then
-                CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
-            end
-            game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
-            wait(0.3)
-            CurrentDoor.ClientOpen:FireServer()
-    end)
- end
-end)
-
-Other:Button("跳过房间", function()
-        pcall(function()
-            local HasKey = false
-            local CurrentDoor = workspace.CurrentRooms[tostring(game:GetService("ReplicatedStorage").GameData.LatestRoom.Value)]:WaitForChild("Door")
-            for i,v in ipairs(CurrentDoor.Parent:GetDescendants()) do
-                if v.Name == "KeyObtain" then
-                    HasKey = v
-                end
-            end
-            if HasKey then
-                game.Players.LocalPlayer.Character:PivotTo(CF(HasKey.Hitbox.Position))
-                wait(0.3)
-                fireproximityprompt(HasKey.ModulePrompt,0)
-                game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
-                wait(0.3)
-                fireproximityprompt(CurrentDoor.Lock.UnlockPrompt,0)
-            end
-            if LatestRoom == 50 then
-                CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
-            end
-            game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
-            wait(0.3)
-            CurrentDoor.ClientOpen:FireServer()
-        end)
-end)
-
 Main:Button("无恐惧", function()
         pcall(function()
             game:GetService("ReplicatedStorage").Bricks.Jumpscare:Destroy()
@@ -340,460 +216,13 @@ Main:Button("完成100门破铁盒游戏", function()
   	end    
 )
 
-Main:Button("跳过50门", function()
-        local CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
-        game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
-  	end    
-)
-
-ESP:Toggle("透视门", false, function(val)
-    flags.espdoors = val
-    
-    if val then
-        local function setup(room)
-            local door = room:WaitForChild("Door"):WaitForChild("Door")
-            
-            task.wait(0.1)
-            local h = esp(door,Color3.fromRGB(255,240,0),door,"门")
-            table.insert(esptable.doors,h)
-            
-            door:WaitForChild("Open").Played:Connect(function()
-                h.delete()
-            end)
-            
-            door.AncestryChanged:Connect(function()
-                h.delete()
-            end)
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espdoors
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.doors) do
-            v.delete()
-        end 
-    end
-end)
-
-local entitynames = {"RushMoving","AmbushMoving","Snare","A60","A120"}
-ESP:Toggle("透视怪物", false, function(val)
-    flags.esprush = val
-    
-    if val then
-        local addconnect
-        addconnect = workspace.ChildAdded:Connect(function(v)
-            if table.find(entitynames,v.Name) then
-                task.wait(0.1)
-                
-                local h = esp(v,Color3.fromRGB(255,25,25),v.PrimaryPart,v.Name:gsub("Moving",""))
-                table.insert(esptable.entity,h)
-            end
-        end)
-        
-        local function setup(room)
-            if room.Name == "50" or room.Name == "100" then
-                local figuresetup = room:WaitForChild("FigureSetup")
-            
-                if figuresetup then
-                    local fig = figuresetup:WaitForChild("FigureRagdoll")
-                    task.wait(0.1)
-                    
-                    local h = esp(fig,Color3.fromRGB(255,25,25),fig.PrimaryPart,"Figure")
-                    table.insert(esptable.entity,h)
-                end 
-            else
-                local assets = room:WaitForChild("Assets")
-                
-                local function check(v)
-                    if v:IsA("Model") and table.find(entitynames,v.Name) then
-                        task.wait(0.1)
-                        
-                        local h = esp(v:WaitForChild("Base"),Color3.fromRGB(255,25,25),v.Base,"Snare")
-                        table.insert(esptable.entity,h)
-                    end
-                end
-                
-                assets.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(assets:GetDescendants()) do
-                    check(v)
-                end
-            end 
-        end
-        
-        local roomconnect
-        roomconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
-        end
-        
-        repeat task.wait() until not flags.esprush
-        addconnect:Disconnect()
-        roomconnect:Disconnect()
-        
-        for i,v in pairs(esptable.entity) do
-            v.delete()
-        end 
-    end
-end)
-
-ESP:Toggle("钥匙透视", false, function(val)
-    flags.espkeys = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") and (v.Name == "LeverForGate" or v.Name == "KeyObtain") then
-                task.wait(0.1)
-                if v.Name == "KeyObtain" then
-                    local hitbox = v:WaitForChild("Hitbox")
-                    local parts = hitbox:GetChildren()
-                    table.remove(parts,table.find(parts,hitbox:WaitForChild("PromptHitbox")))
-                    
-                    local h = esp(parts,Color3.fromRGB(90,255,40),hitbox,"钥匙")
-                    table.insert(esptable.keys,h)
-                    
-                elseif v.Name == "LeverForGate" then
-                    local h = esp(v,Color3.fromRGB(90,255,40),v.PrimaryPart,"Lever")
-                    table.insert(esptable.keys,h)
-                    
-                    v.PrimaryPart:WaitForChild("SoundToPlay").Played:Connect(function()
-                        h.delete()
-                    end) 
-                end
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            assets.DescendantAdded:Connect(function(v)
-                check(v) 
-            end)
-                
-            for i,v in pairs(assets:GetDescendants()) do
-                check(v)
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espkeys
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.keys) do
-            v.delete()
-        end 
-    end
-end)
-
-ESP:Toggle("物品透视", false, function(val)
-    flags.espitems = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") and (v:GetAttribute("Pickup") or v:GetAttribute("PropType")) then
-                task.wait(0.1)
-                
-                local part = (v:FindFirstChild("Handle") or v:FindFirstChild("Prop"))
-                local h = esp(part,Color3.fromRGB(160,190,255),part,v.Name)
-                table.insert(esptable.items,h)
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            if assets then  
-                local subaddcon
-                subaddcon = assets.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(assets:GetDescendants()) do
-                    check(v)
-                end
-                
-                task.spawn(function()
-                    repeat task.wait() until not flags.espitems
-                    subaddcon:Disconnect()  
-                end) 
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espitems
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.items) do
-            v.delete()
-        end 
-    end
-end)
-
-ESP:Toggle("书透视", false, function(val)
-    flags.espbooks = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
-                task.wait(0.1)
-                
-                local h = esp(v,Color3.fromRGB(160,190,255),v.PrimaryPart,"书")
-                table.insert(esptable.books,h)
-                
-                v.AncestryChanged:Connect(function()
-                    if not v:IsDescendantOf(room) then
-                        h.delete() 
-                    end
-                end)
-            end
-        end
-        
-        local function setup(room)
-            if room.Name == "50" or room.Name == "100" then
-                room.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(room:GetDescendants()) do
-                    check(v)
-                end
-            end
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
-        end
-        
-        repeat task.wait() until not flags.espbooks
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.books) do
-            v.delete()
-        end 
-    end
-end)
-
-ESP:Toggle("柜子透视", false, function(val)
-    flags.esplocker = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") then
-                task.wait(0.1)
-                if v.Name == "Wardrobe" then
-                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"柜子")
-                    table.insert(esptable.lockers,h) 
-                elseif (v.Name == "Rooms_Locker" or v.Name == "Rooms_Locker_Fridge") then
-                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"Locker")
-                    table.insert(esptable.lockers,h) 
-                end
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            if assets then
-                local subaddcon
-                subaddcon = assets.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(assets:GetDescendants()) do
-                    check(v)
-                end
-                
-                task.spawn(function()
-                    repeat task.wait() until not flags.esplocker
-                    subaddcon:Disconnect()  
-                end) 
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
-        end
-        
-        repeat task.wait() until not flags.esplocker
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.lockers) do
-            v.delete()
-        end 
-    end
-end)
-
-ESP:Toggle("玩家透视", false, function(val)
-    flags.esphumans = val
-    
-    if val then
-        local function personesp(v)
-            v.CharacterAdded:Connect(function(vc)
-                local vh = vc:WaitForChild("Humanoid")
-                local torso = vc:WaitForChild("UpperTorso")
-                task.wait(0.1)
-                
-                local h = esp(vc,Color3.fromRGB(255,255,255),torso,v.DisplayName)
-                table.insert(esptable.people,h) 
-            end)
-            
-            if v.Character then
-                local vc = v.Character
-                local vh = vc:WaitForChild("Humanoid")
-                local torso = vc:WaitForChild("UpperTorso")
-                task.wait(0.1)
-                
-                local h = esp(vc,Color3.fromRGB(255,255,255),torso,v.DisplayName)
-                table.insert(esptable.people,h) 
-            end
-        end
-        
-        local addconnect
-        addconnect = game.Players.PlayerAdded:Connect(function(v)
-            if v ~= plr then
-                personesp(v)
-            end
-        end)
-        
-        for i,v in pairs(game.Players:GetPlayers()) do
-            if v ~= plr then
-                personesp(v) 
-            end
-        end
-        
-        repeat task.wait() until not flags.esphumans
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.people) do
-            v.delete()
-        end 
-    end
-end)
-
-ESP:Toggle("金币透视", false, function(val)
-    flags.espgold = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") then
-                task.wait(0.1)
-                local goldvalue = v:GetAttribute("GoldValue")
-                
-                if goldvalue and goldvalue >= flags.goldespvalue then
-                    local hitbox = v:WaitForChild("Hitbox")
-                    local h = esp(hitbox:GetChildren(),Color3.fromRGB(255,255,0),hitbox,"金币 [".. tostring(goldvalue).."]")
-                    table.insert(esptable.gold,h)
-                end
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            local subaddcon
-            subaddcon = assets.DescendantAdded:Connect(function(v)
-                check(v) 
-            end)
-            
-            for i,v in pairs(assets:GetDescendants()) do
-                check(v)
-            end
-            
-            task.spawn(function()
-                repeat task.wait() until not flags.espchest
-                subaddcon:Disconnect()  
-            end)  
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espgold
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.gold) do
-            v.delete()
-        end 
-    end
-end)
-
-item:Button("johnny制作的普通十字架", function()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Johnny39871/assets/main/crucifixo'))()
-end)
-
-item:Button("Halt十字架", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/Xfj1mfnV'))()
-end)
-
-item:Button("雪球", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/PenguinManiack/every-gun/main/christmas%20balls"))()
-end)
-
-item:Button("手电", function()
-loadstring(game:HttpGet("https://pastebin.com/raw/Jub8w6jz"))()
-end)
-
 Other:Button("刷新 Eyes", function()
   local enableDamage = true
 repenttimes = 0
 local deadeyescrucifix = false
 local repentcomplete = false
 local currentLoadedRoom = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
-local eyes = game:GetObjects("rbxassetid://11488518082")[1]
+local eyes = game:GetObjects("rbxassetid://4809574295")[1]
 local num = math.floor(#currentLoadedRoom.Nodes:GetChildren() / 2)
 eyes.CFrame = (num == 0 and currentLoadedRoom.Base or currentLoadedRoom.Nodes[num]).CFrame + Vector3.new(0, 7, 0)
 
@@ -885,8 +314,8 @@ camShake:ShakeOnce(5,50,0.7,0.2)
 					getconnections(game:GetService("ReplicatedStorage").Bricks.DeathHint.OnClientEvent)[1].Function,
 					1,
 					{
-						"You died to the Eyes...",
-						"They don't like to be stared at.",
+						"你被鲨臂眼睛杀死了",
+						"我建议你赶紧重开",
 					}
 				)
 			end
@@ -902,7 +331,7 @@ repenttimes = 0
 local deadeyescrucifix = false
 local repentcomplete = false
 local currentLoadedRoom = workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
-local eyes = game:GetObjects("rbxassetid://11488518082")[1]
+local eyes = game:GetObjects("rbxassetid://4809574295")[1]
 local num = math.floor(#currentLoadedRoom.Nodes:GetChildren() / 2)
 eyes.CFrame = (num == 0 and currentLoadedRoom.Base or currentLoadedRoom.Nodes[num]).CFrame + Vector3.new(0, 7, 0)
 
@@ -994,8 +423,8 @@ camShake:ShakeOnce(5,50,0.7,0.2)
 					getconnections(game:GetService("ReplicatedStorage").Bricks.DeathHint.OnClientEvent)[1].Function,
 					1,
 					{
-						"You died to the Eyes...",
-						"They don't like to be stared at.",
+						"这个傻逼，你怎么死了？",
+						"赶紧重开吧",
 					}
 				)
 			end
@@ -1005,45 +434,12 @@ camShake:ShakeOnce(5,50,0.7,0.2)
 end
 end)
 
-Other:Button("火炬 (商店)", function()
-
-local Achievements = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Achievements/Source.lua"))()
-
-Achievements.Get({
-    Title = "火炬",
-    Desc = "哇哦.你竟然买了",
-    Reason = "太酷啦",
-    Image = "https://cdn.discordapp.com/attachments/882940450288324658/1046404183101800558/image.png",
-})
-
-local Functions = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Functions.lua"))()
-local CustomShop = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Custom%20Shop%20Items/Source.lua"))()
-
-local exampleTool = LoadCustomInstance("rbxassetid://3499523244")
-
-CustomShop.CreateItem(exampleTool, {
-    Title = "火炬",
-    Desc = "什么破玩意.怎么这么贵",
-    Image = "https://cdn.discordapp.com/attachments/882940450288324658/1046404183101800558/image.png",
-    Price = 99999999999999999999,
-    Stack = 1,
-})
-end)
-
-tab:Button("键盘", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
-end)
-
-tab:Button("穿墙低拉回（键盘按r）", function()
+tab:Button("穿墙低拉回", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/sharksharksharkshark/cuddly-chains/main/hi.txt", true))()
 end)
 
-tab:Button("每件物品蓝光", function()
+tab:Button("物品蓝光", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/StupidProAArsenal/main/main/deer%20customs',true))()
-end)
-
-tab:Button("幸运方块", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Lucky%20Block"))()
 end)
 
 tab:Button("无限心跳", function()
@@ -1051,20 +447,12 @@ _G.PlayerName = "baller"
 loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/wakeyoassupbecauseitstimetogobeastmode.lua"))()
 end)
 
-tab:Button("召唤宠物e", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Pet%20Sim%20X%20Pets%20script"))()
-end)
-
 tab:Button("把seek变成只因", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/iimateiYT/Scripts/main/Chicken%20Mod.lua", true))()
 end)
 
-tab:Button("Doors自走A-1000", function()
+tab:Button("Doors自动A-1000", function()
 loadstring(game:HttpGet('https://pastebin.com/raw/wjNJccfz'))()
-end)
-
-tab:Button("让大厅成为快餐店", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/MCDonalds"))()
 end)
 
 tab:Button("开启不可能模式", function()
@@ -1075,16 +463,8 @@ tab:Button("变身", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Morphing/MorphScript.lua"))();
 end)
 
-tab:Button("doors支离破碎mod", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/qD2MkEu3'))()
-end)
-
 tab:Button("DOORS低回拉穿墙", function()
 loadstring(game:HttpGet("https://github.com/DXuwu/OK/raw/main/clip"))()
-end)
-
-tab:Button("躲柜子时用r把飞哥撅飞", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/SpectateFigure.lua"))()
 end)
 
 tab:Button("100门时用挂机可以刷金币", function()
@@ -1099,81 +479,21 @@ tab:Button("召唤黑洞", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/iimateiYT/Scripts/main/Black%20Hole.lua"))()
 end)
 
-tab:Button("ak47", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Mye123/Roblox-Scripts/master/AK-47.lua"))()
-end)
-
-tab:Button("软糖手电筒", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Gummy%20Flashlight.lua"))()
-end)
-
-tab:Button("魔鬼辣火腿肠", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/sharksharksharkshark/musical-pancake/main/huo.txt"))()
-end)
-
-tab:Button("火箭筒", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/rushbazooka.lua"))()
-end)
-
-tab1:Button("臭猫", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell%20Plushie"))()
-end)
-
 tab1:Button("jeff玩偶", function()
 local tool = game:GetObjects("rbxassetid://13069619857")[1]
 tool.Parent = game.Players.LocalPlayer.Backpack
-end)
-
-tab1:Button("巧克力棒", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Chocolate%20Bar.lua"))()
-end)
-
-tab1:Button("夜视仪", function()
-_G.UpdateStars = false -- stars disappear after picking up a book/breaker pole | false: a little lag
-_G.OnShop = true -- can buy on pre run shop
-_G.Price = 1000 -- tablet price on shop
-_G.Description = "" -- tablet description on shop
-loadstring(game:HttpGet('https://raw.githubusercontent.com/DeividComSono/Scripts/main/Scanner.lua'))()
 end)
 
 tab1:Button("蜡烛", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Items/Candle.lua"))()
 end)
 
-tab1:Button("糖果(吃了变瞎)", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/candyscript/candy.lua"))()
-end)
-
-tab1:Button("小鸡在手上", function()
+tab1:Button("小鸡", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/PFERptU5", true))()
-end)
-
-tab1:Button("香蕉枪", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
-end)
-
-tab1:Button("召唤一堆枪（超卡", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/gffddhfdf/ssd/main/message%20(3).txt"))()
-end)
-
-tab1:Button("喷火枪", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Flamethrower"))()
-end)
-
-tab1:Button("时空裂缝", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/bucRxAMi'))()
 end)
 
 tab1:Button("剪刀", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/shears_done.lua"))()
-end)
-
-tab1:Button("激光枪", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Laser%20Gun"))()
-end)
-
-tab1:Button("神圣炸弹", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/HolyGrenadeByNerd.lua"))()
 end)
 
 tab1:Button("磁铁", function()
@@ -1200,44 +520,8 @@ tab1:Button("冰冻枪 e是锤子 r炸弹", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/IcegunByNerd.lua"))()
 end)
 
-tab2:Button("无限电手电筒", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/9Daqa4hD'))()
-end)
-
-tab2:Button("木棍（0门用）", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Debug%20Stick"))()
-end)
-
-tab2:Button("拯救上帝", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/j2Gad4gQ'))()
-end)
-
-tab2:Button("shit", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/mH3a7aLr'))()
-end)
-
-tab2:Button("蛋糕", function()
-loadstring(game:HttpGet('https://pastebin.com/y0XkhP88'))()
-end)
-
-tab2:Button("瞄准の枪", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/uNTM7sa1'))()
-end)
-
 tab2:Button("枪", function()
 loadstring(game:HttpGet('https://pastebin.com/raw/PDfmGFF0'))()
-end)
-
-tab2:Button("彩虹剑", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/6zqzsyQC'))()
-end)
-
-tab2:Button("火剑", function()
-loadstring(game:HttpGet('https://pastebin.com/raw/TGFuqWjw'))()
-end)
-
-tab3:Button("怪物", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/gffddhfdf/doorstoilet./main/doors%E6%A8%A1%E5%9E%8B%E5%A4%A7%E6%95%B4%E6%94%B9%EF%BC%81.txt"))()
 end)
 
 tab3:Button("doors floor", function()
