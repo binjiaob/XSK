@@ -1,6 +1,6 @@
 local GameName = "XKHUB 巴掌模拟器"
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
 local Window = OrionLib:MakeWindow({IntroText = "XKHUB巴掌", IntroIcon = "rbxassetid://15315284749",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
 
 OrionLib:MakeNotification({Name = "Warning",Content = "Use at your own risk.",Image = "rbxassetid://7733658504",Time = 5})
@@ -24,7 +24,7 @@ local Badge4 = Window:MakeTab({
 })
 
 local Badge3 = Window:MakeTab({
-	Name = "传送",
+	Name = "传送功能",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -36,7 +36,7 @@ local Teleport = Window:MakeTab({
 })
 
 local Badge5 = Window:MakeTab({
-	Name = "其他",
+	Name = "其他功能",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -48,25 +48,25 @@ local Badge6 = Window:MakeTab({
 })
 
 local Badge7 = Window:MakeTab({
-	Name = "其余",
+	Name = "获取",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local TeleportToGames1 = Teleport:AddSection({
-	Name = "Regular Gamemodes"
+	Name = "常规游戏模式"
 })
 
 local TeleportToGames = Teleport:AddSection({
-	Name = "Places Used For Glove Obtainments"
+	Name = "用于获取手套的地方"
 })
 
 local TeleportToGames2 = Teleport:AddSection({
-	Name = "Limited Time Gamemode"
+	Name = "限时游戏模式"
 })
 
 local TeleportToGames3 = Teleport:AddSection({
-	Name = "Other Gamemodes"
+	Name = "其他游戏模式"
 })
 
 TeleportToGames1:AddButton({
@@ -84,14 +84,14 @@ TeleportToGames1:AddButton({
 })
 
 TeleportToGames1:AddButton({
-	Name = "仅杀连胜",
+	Name = "开启连胜",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(11520107397)
 	 end
 })
 
 TeleportToGames1:AddButton({
-	Name = "皇家婚介",
+	Name = "皇家其余",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(9426795465)
 	 end
@@ -105,14 +105,14 @@ TeleportToGames1:AddButton({
 })
 
 TeleportToGames:AddButton({
-	Name = "躲避迷宫",
+	Name = "自动躲避迷宫",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(11828384869)
 	 end
 })
 
 TeleportToGames:AddButton({
-	Name = "冰上试验",
+	Name = "冰试验",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(17290438723)
 	 end
@@ -163,7 +163,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Repr
 })
 
 TeleportToGames:AddButton({
-	Name = "巴尔齐尔",
+	Name = "BER",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(7234087065)
 	 end
@@ -171,14 +171,14 @@ TeleportToGames:AddButton({
 
 
 TeleportToGames:AddButton({
-	Name = "人员应用程序(第一种方法)",
+	Name = "应用程序(第一种方法)",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(16034567693)
 	 end
 })
 
 TeleportToGames:AddButton({
-	Name = "人员应用程序(第二种方法)",
+	Name = "应用程序(第二种方法)",
 	Callback = function()
 			 if game:GetService("ReplicatedStorage").Assets.Retro then
 			 game.ReplicatedStorage.Assets.Retro.Parent = workspace
@@ -191,14 +191,14 @@ TeleportToGames:AddButton({
 })
 
 TeleportToGames:AddButton({
-	Name = "指南所在位置(第一种方法)",
+	Name = "指明所在位置(第一种方法)",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(18550498098)
 	 end
 })
 
 TeleportToGames:AddButton({
-	Name = "指南所在的位置(第二种方法)",
+	Name = "指明所在的位置(第二种方法)",
 	Callback = function()
 			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(17944.505859375, -130.1599884033203, -3562.9736328125)
 	 end
@@ -260,7 +260,7 @@ game:GetService("TeleportService"):Teleport(13833961666)
 })
 
 TeleportToGames:AddButton({
-	Name = "捆绑迷宫",
+	Name = "自动迷宫",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(74169485398268)
 	 end
@@ -281,14 +281,14 @@ TeleportToGames2:AddButton({
 })
 
 TeleportToGames3:AddButton({
-	Name = "Slap Battles Testing Server (first method)",
+	Name = "巴掌测试服务器(第一种方法)",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(9020359053)
 	 end
 })
 
 TeleportToGames3:AddButton({
-	Name = "Slap对战测试服务器(第二种方法)",
+	Name = "巴掌测试服务器(第二种方法)",
 	Callback = function()
 local teleportFunc = queueonteleport or queue_on_teleport
 if teleportFunc then
@@ -308,14 +308,14 @@ game:GetService("TeleportService"):Teleport(9020359053)
 })
 
 TeleportToGames3:AddButton({
-	Name = "Slap Royale测试服务器(第一种方法)",
+	Name = "巴掌模拟器测试服务器(第一种方法)",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(9412268818)
 	 end
 })
 
 TeleportToGames3:AddButton({
-	Name = "Slap Royale Testing Server (second method)",
+	Name = "巴掌模拟器测试服务器(第二种方法)",
 	Callback = function()
 local teleportFunc = queueonteleport or queue_on_teleport
 if teleportFunc then
@@ -335,14 +335,14 @@ game:GetService("TeleportService"):Teleport(9412268818)
 })
 
 TeleportToGames3:AddButton({
-	Name = "巴西",
+	Name = "巴西的",
 	Callback = function()
 			 game:GetService("TeleportService"):Teleport(7234087065)
 	 end
 })
 
 Badge5:AddButton({
-	Name = "得到泰坦手套",
+	Name = "获取泰坦手套",
 	Callback = function()
 for i, v in pairs(game:GetService("ReplicatedStorage")._NETWORK:GetChildren()) do
 	    -- Check if the name contains the character '{'
@@ -609,7 +609,7 @@ Badge7:AddButton({
 })
 
 Badge6:AddButton({
-	Name = "Copy Serverhop Slapples Farming { PUT INTO AUTOEXEC }",
+	Name = "复制Serverhop Slapples Farming {放入AUTOEXEC }",
 	Callback = function()
 			 setclipboard(tostring("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/slapfarming/main/main.lua'))()"))
 			 OrionLib:MakeNotification({Name = "Copied!",Content = "Copied script to clipboard",Image = "rbxassetid://7733658504",Time = 5})
@@ -1047,7 +1047,7 @@ game:GetService("TeleportService"):Teleport(14422118326)
 })
 
 Badge2:AddButton({
-	Name = "Auto Get Voodoo { use in lobby }",
+	Name = "自动获取巫毒{在大厅使用}",
 	Callback = function()
 if game.Players.LocalPlayer.leaderstats.Glove.Value == "Ghost" and game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then
 game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
@@ -1378,7 +1378,7 @@ end
 })
 
 Badge4:AddToggle({
-	Name = "Farm Trap { fast, using ability 3x faster }",
+	Name = "农场陷阱{快速，使用能力快3倍}",
     Default = false,
 	Callback = function(Value)
     trap2 = Value
@@ -1391,7 +1391,7 @@ end
 })
 
 Badge4:AddToggle({
-	Name = "Farm Trap { real fast, using ability 5x faster }",
+	Name = "农场陷阱{非常快，使用能力快5倍}",
     Default = false,
 	Callback = function(Value)
     trap3 = Value
@@ -1404,7 +1404,7 @@ end
 })
 
 Badge4:AddToggle({
-	Name = "Farm Trap { fastest, using ability 5.2x faster, can kick you sometimes}",
+	Name = "农场陷阱{最快，使用能力快5.2倍，有时可以踢你}",
     Default = false,
 	Callback = function(Value)
     trap3 = Value
@@ -1417,7 +1417,7 @@ end
 })
 
 Badge4:AddToggle({
-	Name = "Farm Hallow Jack { use when got 10 killstreak }",
+	Name = "农场圣器杰克{获得10连胜时使用}",
 	Callback = function(Value)
 _G.HallowJack = Value
 while _G.HallowJack do
@@ -1439,7 +1439,7 @@ end
 })
 
 Badge4:AddToggle({
-	Name = "Farm Toolbox",
+	Name = "农场工具箱",
 	Callback = function(Value)
 			Toolboxfarm = Value
 			while Toolboxfarm do
@@ -1457,7 +1457,7 @@ Badge4:AddToggle({
 })
 
 Badge4:AddToggle({
-	Name = "Farm Jet Orb",
+	Name = "农场喷射球",
 	Callback = function(Value)
 			_G.Jetfarm = Value
 			while _G.Jetfarm do
@@ -1473,7 +1473,7 @@ Badge4:AddToggle({
 })
 
 Badge4:AddToggle({
-	Name = "Farm Phase Orb",
+	Name = "农场阶段Orb",
 	Callback = function(Value)
 			_G.Phasefarm = Value
 			while _G.Phasefarm do
@@ -1489,7 +1489,7 @@ Badge4:AddToggle({
 })
 
 Badge4:AddToggle({
-	Name = "Farm Siphon Orb",
+	Name = "农场虹吸球",
 	Callback = function(Value)
 			_G.Siphonfarm = Value
 			while _G.Siphonfarm do
@@ -1507,7 +1507,7 @@ Badge4:AddToggle({
 })
 
 Badge4:AddToggle({
-	Name = "Farm Glitch Orb",
+	Name = "农场故障球",
 	Callback = function(Value)
 			_G.Glitchfarm = Value
 			while _G.Glitchfarm do
@@ -1525,7 +1525,7 @@ Badge4:AddToggle({
 })
 
 Badge4:AddToggle({
-	Name = "Farm Materialize Orb",
+	Name = "农场物化球体",
 	Callback = function(Value)
 			_G.Honorfarm = Value
 			while _G.Honorfarm do
@@ -1559,7 +1559,7 @@ Badge4:AddToggle({
 })
 
 Badge4:AddToggle({
-	Name = "Farm Slapples",
+	Name = "农场小吃",
 	Default = false,
 	Callback = function(Value)
 	    SlappleFarm = Value
@@ -1578,7 +1578,7 @@ end
 })
 
 Badge4:AddToggle({
-	Name = "Farm Candy",
+	Name = "农场糖果",
 	Default = false,
 	Callback = function(Value)
 	    CandyCornsFarm = Value
@@ -1595,7 +1595,7 @@ end
 })
 
 Badge5:AddTextbox({
-    Name = "Fake Badge Name",
+    Name = "假徽章名",
     Default = "Input",
     TextDisappear = false,
     Callback = function(Value)
@@ -1604,14 +1604,14 @@ _G.BadgeName = Value
 })
 
 Badge5:AddButton({
-    Name = "Give Fake Badge",
+    Name = "给假徽章",
     Callback = function()
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Badge Awarded",Text = ""..game.Players.LocalPlayer.Character.Name.." won Slap Battles's ''".._G.BadgeName.."'' award!" ,Duration = 5, Icon = "rbxthumb://type=Asset&id=206410289&w=150&h=150"})
     end
 })
 
 Badge5:AddButton({
-    Name = "Give All Fake Badges",
+    Name = "给所有假徽章",
     Callback = function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/getallbadges_fake/main/main.lua'))()
     end
