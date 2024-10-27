@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心9.1"
+LBL.Text = "XK脚本中心9.4"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -35,7 +35,7 @@ local function HeartbeatUpdate()
 	FrameUpdateTable[1] = LastIteration
 	local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
 	CurrentFPS = CurrentFPS - CurrentFPS % 1
-	FpsLabel.Text = ("XK时间:"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
+	FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
 end
 
 OrionLib:MakeNotification({
@@ -98,10 +98,21 @@ OrionLib:MakeNotification({
                     Time = 2
                 })           
 Start = tick()
+
+game:GetService("StarterGui"):SetCore("SendNotification",{ 
+     Title = "XK脚本中心", 
+     Text = "欢迎你的使用", 
+     Icon = "rbxassetid://117494350103589", 
+     Duration = 60, 
+     Callback = bindable, 
+     Button1 = "开启", 
+     Button2 = "关闭" 
+ })
+
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.3",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.4",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "『关于』",
@@ -109,7 +120,7 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V9.3最新版10月27日更新")
+WSBTab:AddParagraph("当前版本","V9.4最新版10月27日更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -207,16 +218,16 @@ local XuanTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-XuanTab:AddParagraph("一名单一","猫 (doors限定)")
-XuanTab:AddParagraph("快手号","jnt367--")
+XuanTab:AddParagraph("一名单一","暂时没有")
+XuanTab:AddParagraph("快手号","暂时没有")
 
 XuanTab:AddButton ({
 	Name = "复制上面人【快手号】",
 	Callback = function ()
-	 setclipboard("jnt367--")
+	 setclipboard("XK脚本中心")
 	 OrionLib:MakeNotification({
                     Name = "提示信息",
-                    Content = "已复制，粘贴板中查看",
+                    Content = "你想成为黑名单吗",
                     Time = 3
                 })
 	end
