@@ -1425,14 +1425,14 @@ local QWERTab = Window:MakeTab({
     PremiumOnly = false
 })
 
-Tab:AddButton ({
+QWERTab:AddButton ({
 	Name = "DOORS",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
 	end
 })
 
-Tab:AddButton ({
+QWERTab:AddButton ({
 	Name = "巴掌模拟器",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/XBAZHANGK.lua"))()
