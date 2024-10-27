@@ -46,12 +46,9 @@ uihide = false
 local win = lib:Window("XKHUB 丨 DOORS ",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl) 
 
 local Main = win:Tab("主要的")
-local item = win:Tab("物品")
 local Other = win:Tab("其他")
 local tab = win:Tab("副主")
 local tab1 = win:Tab("物品")
-local tab2 = win:Tab("商店免费物品")
-local tab3 = win:Tab("改模型")
 
 local pcl = Instance.new("SpotLight")
 pcl.Brightness = 1
@@ -60,7 +57,7 @@ pcl.Range = 90
 pcl.Parent = game.Players.LocalPlayer.Character.Head
 pcl.Enabled = false
 
-Other:Dropdown("Speed", {"18", "20", "22"}, function(v)
+Other:Dropdown("Speed", {"30", "40", "80"}, function(v)
     Select = v
 end)
 
@@ -520,11 +517,11 @@ tab1:Button("冰冻枪 e是锤子 r炸弹", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/IcegunByNerd.lua"))()
 end)
 
-tab2:Button("枪", function()
+tab1:Button("枪", function()
 loadstring(game:HttpGet('https://pastebin.com/raw/PDfmGFF0'))()
 end)
 
-tab3:Button("doors floor", function()
+Main:Button("doors floor", function()
 local materials = {
 	Enum.Material.Plastic,
 	Enum.Material.SmoothPlastic,
