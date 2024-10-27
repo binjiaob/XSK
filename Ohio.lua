@@ -48,7 +48,7 @@ setup:Colorpicker("更改用户界面颜色",Color3.fromRGB(44, 120, 224), funct
  
  local tab = win:Tab("自动化")
 
-tab:Toggle("收集物品现金", false, function(v)
+tab:Toggle("自动收集物品现金", false, function(v)
     ItemFarm = v
         
         if ItemFarm then
@@ -119,22 +119,25 @@ AutoRobBankFunc = function()
     end
 end
 
-tab:Dropdown("银行",{"珠宝店","沙滩","武器店","武士刀","射线枪","加特林","锯掉","沙漠之鹰","警察局","AUG","军事基地"},function(Value)
-if Value == "安全区" then
-local epoh1 = CFrame.new(1055.94153, 15.11950874, -344.58374)
-        epoh3.CFrame = epoh1
-elseif Value == "竞技场" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
-elseif Value == "埃及岛" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
-elseif Value == "果实岛" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
-elseif Value == "盘子" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
-elseif Value == "锦标赛" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
-elseif Value == "默认竞技场" then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(120,360,-3)
+tab:Dropdown("传送",{"银行""珠宝店","医院","杂货店","武器店","军事基地","沙滩","加油站","警察局"},function(Value)
+if Value == "银行" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1083.1456298828125, 8.1697998046875, -378.3573303222656)
+elseif Value == "珠宝店" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1590.5399169921875, 8.369791984558105, -691.6185302734375)
+elseif Value == "医院" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1128.8800048828125, 6.244926452636719, -967.571533203125)
+elseif Value == "杂货店" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(935.0187377929688, 6.24599027633667, -918.5844116210938)
+elseif Value == "武器店" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1594.6844482421875, 6.245392322540283, -615.3121337890625)
+elseif Value == "军事基地" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(751.8846435546875, 25.26483154296875, -1335.423583984375)
+elseif Value == "沙滩" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1141.0576171875, 16.618757247924805, 22.5679931640625)
+elseif Value == "加油站" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(473.80145263671875, -6.308847904205322, -272.1710205078125)
+elseif Value == "警察局" then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(654.2907104492188, 9.037808418273926, -896.7333984375)
 end
 end)
 
