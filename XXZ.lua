@@ -105,7 +105,7 @@ local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.3",Name = "XK�
 
 local WSBTab = Window:MakeTab({
 	Name = "『关于』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -203,7 +203,7 @@ WSBTab:AddParagraph("半缝合脚本","勿喷")
 
 local XuanTab = Window:MakeTab({
 	Name = "『黑名单』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -224,7 +224,7 @@ XuanTab:AddButton ({
 
 local Tab = Window:MakeTab({
     Name = "『玩家与通用』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -1421,7 +1421,7 @@ Tab:AddButton({
 
 local QWERTab = Window:MakeTab({
     Name = "『XKHUB持续制作中』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -1828,7 +1828,7 @@ Tab:AddButton({
 
 local XTab = Window:MakeTab({
     Name = "『骨折模拟器』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -1908,7 +1908,7 @@ XTab:AddParagraph("By","未知用户X")
 
 local STab = Window:MakeTab({
     Name = "『骨折模拟器脚本』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -1923,7 +1923,7 @@ STab:AddButton({
 
 local player = Window:MakeTab({
 	Name = "『其他注入器』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -1957,7 +1957,7 @@ player:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = " 『Doors道具』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2082,7 +2082,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = " 『Doors floor2脚本』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2109,7 +2109,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = " 『Doors脚本』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2185,7 +2185,7 @@ Tab:AddButton({
 
 local SZTab = Window:MakeTab({
 	Name = "『火箭发射模拟』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2329,7 +2329,7 @@ SZTab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『Color or die』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -2488,7 +2488,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『鱿鱼游戏』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -2557,7 +2557,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『驾驶帝国』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -2570,7 +2570,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『光影加画质』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -2625,7 +2625,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『战争大亨』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -2680,7 +2680,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = " sol’sRNG』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2700,7 +2700,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『口渴的吸血鬼』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2775,7 +2775,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『骑车模拟器』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2888,7 +2888,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『非常容易的奥比跑酷』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2978,7 +2978,7 @@ Tab:AddButton({
 
 local IATab = Window:MakeTab({
 	Name = "『自然灾害』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -2998,7 +2998,7 @@ IATab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『Doors but bad』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3076,7 +3076,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『ESP』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -3089,7 +3089,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『监狱人生』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -3162,7 +3162,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『监狱人生位置』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -3219,7 +3219,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『动感星期五』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 Tab:AddButton({
@@ -3231,7 +3231,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『nico s Nextbot』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3264,7 +3264,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『Refinery cave1』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3277,7 +3277,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『Refinery cave2』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3290,7 +3290,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『战斗勇士』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 Tab:AddButton({
@@ -3487,7 +3487,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/maste
 
 local Tab = Window:MakeTab({
 	Name = "『河北唐县』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3502,7 +3502,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『进击的僵尸』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3577,7 +3577,7 @@ Tab:AddButton({
 
 local NTab = Window:MakeTab({
 	Name = "『MM2』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3625,7 +3625,7 @@ NTab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『彩虹朋友』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3651,7 +3651,7 @@ end
 
 local Tab = Window:MakeTab({
 	Name = "『餐厅大亨』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3671,7 +3671,7 @@ Tab:AddButton({
 
 local NVTab = Window:MakeTab({
 	Name = "『最强战场』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3712,7 +3712,7 @@ NVTab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『巴掌模拟器』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3748,7 +3748,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『伐木大亨』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3782,7 +3782,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『BF』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3866,7 +3866,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『僵尸起义』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3879,7 +3879,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『健身联盟』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -3892,7 +3892,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『伐木大亨2』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -4038,7 +4038,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『超简单障碍跑』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -4188,7 +4188,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『巴掌大战』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -4201,7 +4201,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『造船寻宝』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -4225,7 +4225,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "『steep steps』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
  
@@ -4378,7 +4378,7 @@ Tab:AddButton({
  
 local Tab = Window:MakeTab({
 	Name = "『Antarctica』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -4398,7 +4398,7 @@ Tab:AddButton({
 
 local dongTab = Window:MakeTab({
 	Name = "『压力』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -4578,7 +4578,7 @@ dongTab:AddParagraph("压力可外传的压力脚本","中国人制作")
 
 local Tab = Window:MakeTab({
 	Name = "『忍者传奇』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5084,7 +5084,7 @@ Tab:AddButton({
 
 local WTab = Window:MakeTab({
 	Name = "『刀刃球』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5130,7 +5130,7 @@ WTab:AddParagraph("除了有两个","其他全是我找的")
 
 local RTab = Window:MakeTab({
 	Name = "『恐怖电梯』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5145,7 +5145,7 @@ RTab:AddButton({
 
 local PTab = Window:MakeTab({
 	Name = "『evade』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5181,7 +5181,7 @@ PTab:AddButton({
 
 local ZTab = Window:MakeTab({
 	Name = "『烹饪大亨』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5273,7 +5273,7 @@ end
 
 local MPTab = Window:MakeTab({
 	Name = "『一路向西』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5362,7 +5362,7 @@ end)
 
 local WDTab = Window:MakeTab({
 	Name = "『一次尘土飞扬的旅行』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5493,7 +5493,7 @@ WDTab:AddButton({
 
 local HSXTab = Window:MakeTab({
 	Name = "『越狱』",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -5548,7 +5548,7 @@ HSXTab:AddButton ({
 
 local Tab = Window:MakeTab({
     Name = "『俄亥俄州』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -5596,7 +5596,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『奇怪严格的爸爸』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -5609,7 +5609,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『群蜂模拟器』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -5643,7 +5643,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『the rake』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -5677,7 +5677,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『请捐赠【服务器】』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -5711,7 +5711,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『兵工厂』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
@@ -6030,7 +6030,7 @@ local Tab = Window:MakeTab({
 
 	Name = "内脏与黑火药",
 
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 
 	PremiumOnly = false
 
@@ -6074,7 +6074,7 @@ local Tab = Window:MakeTab({
 
 	Name = "餐厅大亨",
 
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 
 	PremiumOnly = false
 
@@ -6109,7 +6109,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "指令挂",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 Tab:AddLabel("黑洞脚本源码")
@@ -6151,7 +6151,7 @@ local Tab = Window:MakeTab({
 
 	Name = "地下城任务",
 
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 
 	PremiumOnly = false
 
@@ -6173,7 +6173,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
   Name = "FE变身脚本",
-  Icon = "rbxassetid://117494350103589",
+  Icon = "rbxassetid://7733779610",
   PremiumOnly = false
   })
 
@@ -6284,7 +6284,7 @@ end
 
 local Tab = Window:MakeTab({
 	Name = "自然灾害黑洞脚本",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -6606,7 +6606,7 @@ end
 
 local Tab = Window:MakeTab({
 	Name = "ucmt",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -6619,7 +6619,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
 	Name = "ujd",
-	Icon = "rbxassetid://117494350103589",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -6632,7 +6632,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "『ROOMS&DOORS』",
-    Icon = "rbxassetid://117494350103589",
+    Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
