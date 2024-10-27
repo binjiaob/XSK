@@ -1,3 +1,181 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Button = Instance.new("TextButton")
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Button.Name = "Button"
+Button.Parent = ScreenGui
+Button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Button.BackgroundTransparency = 0.700
+Button.Position = UDim2.new(0, 0, 0.469249964, 0)
+Button.Size = UDim2.new(0.131393284, 0, 0.082329005, 0)
+Button.Font = Enum.Font.Garamond
+Button.Text = "开/关"
+Button.TextColor3 = Color3.fromRGB(40, 40, 40)
+Button.TextSize = 30.000
+Button.TextWrapped = true
+Button.Draggable = true
+Button.Selectable = true
+Button.Active = true
+Button.MouseButton1Down:Connect(function()
+local vim = game:service("VirtualInputManager")
+	vim:SendKeyEvent(true, "RightControl", false, game)
+
+local vim = game:service("VirtualInputManager")
+	vim:SendKeyEvent(fales, "RightControl", false, game)
+end)
+wait(1)
+
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+local LatestRoom = game:GetService("ReplicatedStorage").GameData.LatestRoom
+local ChaseStart = game:GetService("ReplicatedStorage").GameData.ChaseStart
+local CF = CFrame.new
+local plr = game.Players.LocalPlayer
+local plrname = plr.Name
+local plrid = plr.UserId
+
+if game:GetService("CoreGui"):FindFirstChild("D O O R S") then
+   game:GetService("CoreGui"):FindFirstChild("D O O R S"):Destroy()
+end
+local UILib = loadstring(game:HttpGet('https://shz.al/~vapeui'))();
+
+local plr = game.Players.LocalPlayer
+local char = plr.Character or plr.CharacterAdded:Wait()
+local hum = char:FindFirstChildOfClass("Humanoid") or char:WaitForChild("Humanoid")
+
+if not fireproximityprompt then
+  local msg = Instance.new("Message",workspace)
+  msg.Text = "you have fireproximityprompt function bro get better executor"
+  task.wait(6)
+  msg:Destroy()
+  error("no prox")
+end
+
+function esp(what,color,core,name)
+  local parts
+
+  if typeof(what) == "Instance" then
+    if what:IsA("Model") then
+      parts = what:GetChildren()
+     elseif what:IsA("BasePart") then
+      parts = {what,table.unpack(what:GetChildren())}
+    end
+   elseif typeof(what) == "table" then
+    parts = what
+  end
+
+  local bill
+  local boxes = {}
+
+  for i,v in pairs(parts) do
+    if v:IsA("BasePart") then
+      local box = Instance.new("BoxHandleAdornment")
+      box.Size = v.Size
+      box.AlwaysOnTop = true
+      box.ZIndex = 1
+      box.AdornCullingMode = Enum.AdornCullingMode.Never
+      box.Color3 = color
+      box.Transparency = 0.7
+      box.Adornee = v
+      box.Parent = game.CoreGui
+
+      table.insert(boxes,box)
+
+      task.spawn(function()
+        while box do
+          if box.Adornee == nil or not box.Adornee:IsDescendantOf(workspace) then
+            box.Adornee = nil
+            box.Visible = false
+            box:Destroy()
+          end
+          task.wait()
+        end
+      end)
+    end
+  end
+
+  if core and name then
+    bill = Instance.new("BillboardGui",game.CoreGui)
+    bill.AlwaysOnTop = true
+    bill.Size = UDim2.new(0,400,0,100)
+    bill.Adornee = core
+    bill.MaxDistance = 2000
+
+    local mid = Instance.new("Frame",bill)
+    mid.AnchorPoint = Vector2.new(0.5,0.5)
+    mid.BackgroundColor3 = color
+    mid.Size = UDim2.new(0,8,0,8)
+    mid.Position = UDim2.new(0.5,0,0.5,0)
+    Instance.new("UICorner",mid).CornerRadius = UDim.new(1,0)
+    Instance.new("UIStroke",mid)
+
+    local txt = Instance.new("TextLabel",bill)
+    txt.AnchorPoint = Vector2.new(0.5,0.5)
+    txt.BackgroundTransparency = 1
+    txt.BackgroundColor3 = color
+    txt.TextColor3 = color
+    txt.Size = UDim2.new(1,0,0,20)
+    txt.Position = UDim2.new(0.5,0,0.7,0)
+    txt.Text = name
+    Instance.new("UIStroke",txt)
+
+    task.spawn(function()
+      while bill do
+        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+          bill.Enabled = false
+          bill.Adornee = nil
+          bill:Destroy()
+        end
+        task.wait()
+      end
+    end)
+  end
+
+  local ret = {}
+
+  ret.delete = function()
+    for i,v in pairs(boxes) do
+      v.Adornee = nil
+      v.Visible = false
+      v:Destroy()
+    end
+
+    if bill then
+      bill.Enabled = false
+      bill.Adornee = nil
+      bill:Destroy()
+    end
+  end
+
+  return ret
+end
+
+local entityinfo = game.ReplicatedStorage:WaitForChild("EntityInfo")
+function message(text)
+  local msg = Instance.new("Message",workspace)
+  msg.Text = tostring(text)
+  task.wait(5)
+  msg:Destroy()
+
+  --firesignal(entityinfo.Caption.OnClientEvent,tostring(text))
+end
+
+local flags = {
+    espDoors = false,
+    espkeys = false,
+    espitems = false,
+    espbooks = false,
+    espentity = false,
+    esphumans = false,
+    espgold = false,
+    esplocker = false,
+}
+
+local DELFLAGS = {table.unpack(flags)}
+local esptable = {Doors={},keys={},items={},books={},entity={},gold={},locker={},people={}}
+
 local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/refs/heads/main/Vape.txt")() 
 
 local OpenUI = Instance.new("ScreenGui") 
@@ -28,22 +206,8 @@ end)
 
 uihide = false
 
-local flags = {
-    espDoors = false,
-    espkeys = false,
-    espitems = false,
-    espbooks = false,
-    espentity = false,
-    esphumans = false,
-    espgold = false,
-    esplocker = false,
-}
 
-local DELFLAGS = {table.unpack(flags)}
-local esptable = {Doors={},keys={},items={},books={},entity={},gold={},locker={},people={}}
-
- local win = lib:Window("XKHUB 丨 DOORS ",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl) 
-  
+local win = lib:Window("XKHUB 丨 DOORS ",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl) 
 
 local Main = win:Tab("主要的")
 local ESP = win:Tab("追踪")
