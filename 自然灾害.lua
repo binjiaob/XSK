@@ -85,8 +85,10 @@ Aoajlak:Toggle(
         end
     )
     
-Aoajlak:Toggle("在水上行走", "ToggleInfo", false, function(bool)
- if bool == false then do game.Workspace.WaterLevel.CanCollide = false
+Aoajlak:Toggle(
+        "水上行走",
+        function()
+           if bool == false then do game.Workspace.WaterLevel.CanCollide = false
                             game.Workspace.WaterLevel.Size = Vector3.new(10, 1, 10)
                         end
                     end
@@ -94,45 +96,64 @@ Aoajlak:Toggle("在水上行走", "ToggleInfo", false, function(bool)
                             game.Workspace.WaterLevel.Size = Vector3.new(5000, 1, 5000)
                         end
                     end
-end)
+        end
+    )
 
-Aoajlak:Toggle("游戏岛悬崖碰撞", "Togglelnfo", false, function(bool)
-for i, v in pairs (game.workspace:GetDescendants())do
+Aoajlak:Toggle(
+        "游戏岛悬崖碰撞",
+        function()
+           for i, v in pairs (game.workspace:GetDescendants())do
                                 if v.Name == 'LowerRocks' then
                                     v.CanCollide = bool
                                 end
                             end
-end)
+        end
+    )
 
-Aoajlak:Button("禁用坠落损坏",function()
-local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
+Aoajlak:Toggle(
+        "坠落损坏移除",
+        function()
+           local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
                                 if FallDamageScript then
                                 FallDamageScript:Destroy()
                                 end
-end)
+        end
+    )
 
-Aoajlak:Toggle("自动禁用坠落伤害", "Toggleelnfo", false, function(bool)
-_G.NoFallDamage = bool;
+Aoajlak:Toggle(
+        "坠落伤害移除",
+        function()
+           _G.NoFallDamage = bool;
                             while wait(0.5) do
                                     if _G.NoFallDamage == true then
                             local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
                             if FallDamageScript then
                             FallDamageScript:Destroy()
                             end end end
-end)
+        end
+    )
 
-Aoajlak:Button("打印下一次灾难(/console)",function()
-warn(game.Players.LocalPlayer.Character.SurvivalTag.Value)
-end)
+Aoajlak:Toggle(
+        "复制灾难",
+        function()
+           warn(game.Players.LocalPlayer.Character.SurvivalTag.Value)
+        end
+    )
 
-Aoajlak:Button("移除灾难界面(暴风雪和沙尘暴)",function()
-game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
+Aoajlak:Toggle(
+        "移除2个灾难",
+        function()
+           game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
 		game.Players.LocalPlayer.PlayerGui.SandStormGui:destroy()
-end)
+        end
+    )
     
-Aoajlak:Toggle("地图投票用户界面", "t", false, function(Value)
-		plr.PlayerGui.MainGui.MapVotePage.Visible = Value
-	end)
+Aoajlak:Toggle(
+        "地图投票",
+        function()
+           plr.PlayerGui.MainGui.MapVotePage.Visible = Value
+        end
+    )
     
     Aoajlak:Toggle(
         "黑洞脚本",
