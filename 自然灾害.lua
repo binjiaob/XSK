@@ -1,94 +1,59 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/XK%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2.txt", true))()
-    local window = library:new("XKHUB自然灾害")
-    local creds = window:Tab("关于", "6031097229")
-    local bin = creds:section("信息", true)
-    bin:Label("你的注入器:" .. identifyexecutor())
-    bin:Label("你的地图id:"..game.PlaceId)
-    bin:Label("你的用户名:"..game.Players.LocalPlayer.Character.Name)
-    bin:Label("XKHUB")    
-    
-local creds = window:Tab("脚本", "6035145364")
-    local credits = creds:section("传送", true)
-    
-    credits:Button(
-        "自动获胜",
-        function()
-            _G.autowinfarm = bool;
+local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/refs/heads/main/Vape.txt")() 
+
+local OpenUI = Instance.new("ScreenGui") 
+local ImageButton = Instance.new("ImageButton") 
+local UICorner = Instance.new("UICorner") 
+OpenUI.Name = "OpenUI" 
+OpenUI.Parent = game.CoreGui 
+OpenUI.ZIndexBehavior = Enum.ZIndexBehavior.Sibling 
+ImageButton.Parent = OpenUI 
+ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+ImageButton.BackgroundTransparency = 0.500 
+ImageButton.Position = UDim2.new(0.0235790554, 0, 0.466334164, 0) 
+ImageButton.Size = UDim2.new(0, 50, 0, 50) 
+ImageButton.Image = "rbxassetid://117494350103589" 
+ImageButton.Draggable = true 
+UICorner.CornerRadius = UDim.new(0, 200) 
+UICorner.Parent = ImageButton 
+ImageButton.MouseButton1Click:Connect(function() 
+  if uihide == false then
+	uihide = true
+	game.CoreGui.ui.Main:TweenSize(UDim2.new(0, 0, 0, 0),"In","Quad",0.4,true)
+else
+	uihide = false
+	game.CoreGui.ui.Main:TweenSize(UDim2.new(0, 560, 0, 319),"Out","Quad",0.4,true)
+		end 
+		
+end)
+
+uihide = false
+
+local win = lib:Window("XKHUB--自然灾害",Color3.fromRGB(255, 24, 24), Enum.KeyCode.RightControl)
+
+
+local tab = win:Tab("主要")
+local tab2 = win:Tab("传送")
+
+tab:Toggle("自动赢", false, function(bool)
+    _G.autowinfarm = bool;
     while wait(.1) do
         if _G.autowinfarm == true then
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236, 180, 360, 1, 0, 0, 0, 1, 0, 0, 0, 1)
         end
 end
-        end
-    )
-    
-    credits:Button(
-        "出生点",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-248.8695831298828, 179.36607360839844, 338.4495544433594)
-        end
-    )
-    
-    credits:Button(
-        "游戏岛",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-99.99552154541016, 47.79999923706055, 1.7920396327972412)
-        end
-    )
-    
-    local Aoajlak = creds:section("其余", true)
-    
-    Aoajlak:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 end)
 
-    Aoajlak:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+tab:Toggle("投票地图", false, function(bool)
+if bool == false then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = false
+    end
+end
+if bool == true then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = true
+    end
+end
 end)
 
-    Aoajlak:Slider('修改重力', 'GravitySlider', 198, 198, 99999,false,function(Value)
-    game.Workspace.Gravity = Value
-end)
-
-    Aoajlak:Slider('修改高度', 'Slider', 2, 2, 9999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
-end)
-
-    Aoajlak:Slider('相机焦距上限', 'ZOOOOOM OUT!',  128, 128, 200000,false, function(Value)
-    game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = Value
-end)
-
-    Aoajlak:Slider('相机焦距【正常为70】', 'Sliderflag', 70, 0.1, 250, false, function(v)
-        game.Workspace.CurrentCamera.FieldOfView = v
-end)
-
-    Aoajlak:Slider('健康值上限', 'Sliderflag',  120, 120, 999999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.MaxHealth = Value
-end)
-
-    Aoajlak:Slider('玩家健康值', 'Sliderflag',  120, 120, 999999,false, function(Value)
-    game.Players.LocalPlayer.Character.Humanoid.Health = Value
-end)
-    
-    Aoajlak:Button("夜视脚本", "", false, function(state)
-        if state then
-        game.Lighting.Ambient = Color3.new(1, 1, 1)
-        else
-            game.Lighting.Ambient = Color3.new(0, 0, 0)
-        end
-    end)
-
-Aoajlak:Button(
-        "无限跳跃",
-        function()
-         loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()   
-        end
-    )
-    
-Aoajlak:Button(
-        "水上行走",
-        function()
-           if bool == false then do game.Workspace.WaterLevel.CanCollide = false
+tab:Toggle("在水上行走", false, function(bool)
+if bool == false then do game.Workspace.WaterLevel.CanCollide = false
                             game.Workspace.WaterLevel.Size = Vector3.new(10, 1, 10)
                         end
                     end
@@ -96,77 +61,31 @@ Aoajlak:Button(
                             game.Workspace.WaterLevel.Size = Vector3.new(5000, 1, 5000)
                         end
                     end
-        end
-    )
+end)
 
-Aoajlak:Button(
-        "游戏岛悬崖碰撞",
-        function()
-           for i, v in pairs (game.workspace:GetDescendants())do
-                                if v.Name == 'LowerRocks' then
-                                    v.CanCollide = bool
-                                end
-                            end
-        end
-    )
-
-Aoajlak:Button(
-        "坠落损坏移除",
-        function()
-           local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
-                                if FallDamageScript then
-                                FallDamageScript:Destroy()
-                                end
-        end
-    )
-
-Aoajlak:Button(
-        "坠落伤害移除",
-        function()
-           _G.NoFallDamage = bool;
+tab:Toggle("删除坠落伤害", false, function(bool)
+_G.NoFallDamage = bool;
                             while wait(0.5) do
                                     if _G.NoFallDamage == true then
                             local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
                             if FallDamageScript then
                             FallDamageScript:Destroy()
                             end end end
-        end
-    )
+end)
 
-Aoajlak:Button(
-        "复制灾难",
-        function()
-           warn(game.Players.LocalPlayer.Character.SurvivalTag.Value)
-        end
-    )
-
-Aoajlak:Button(
-        "移除2个灾难",
-        function()
-           game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
+tab:Button("删除暴风雪沙尘暴", function()
+game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
 		game.Players.LocalPlayer.PlayerGui.SandStormGui:destroy()
-        end
-    )
-    
-Aoajlak:Button(
-        "地图投票",
-        function()
-           plr.PlayerGui.MainGui.MapVotePage.Visible = Value
-        end
-    )
-    
-    Aoajlak:Button(
-        "黑洞脚本",
-        function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
-        end
-    )
-    
-    Aoajlak:Button(
-        "飞行脚本",
-        function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/%E9%A3%9E%E8%A1%8C%E8%84%9A%E6%9C%AC(%E5%8F%AF%E8%87%AA%E7%94%B1%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F)%20%E6%B1%89%E5%8C%96%20(3)%20(1).txt"))()
-        end
-    )
-   
-    
+end)
+
+tab2:Button("传送到地图", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-115.828506, 65.4863434, 18.8461514, 0.00697017973, 0.0789371505, -0.996855199, -3.13589936e-07, 0.996879458, 0.0789390653, 0.999975681, -0.000549906865, 0.00694845384)
+end)
+
+tab2:Button("游戏岛", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-99.99552154541016, 47.79999923706055, 1.7920396327972412)
+end)
+
+tab2:Button("产卵塔", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-248.8695831298828, 179.36607360839844, 338.4495544433594)
+end)
