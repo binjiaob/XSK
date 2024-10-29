@@ -36,41 +36,41 @@ end
         end
     )
     
-    local creditsC = creds:section("其余", true)
+    local Aoajlak = creds:section("其余", true)
     
-    creditsC:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
+    Aoajlak:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 end)
 
-    creditsC:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
+    Aoajlak:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
 end)
 
-    creditsC:Slider('修改重力', 'GravitySlider', 198, 198, 99999,false,function(Value)
+    Aoajlak:Slider('修改重力', 'GravitySlider', 198, 198, 99999,false,function(Value)
     game.Workspace.Gravity = Value
 end)
 
-    creditsC:Slider('修改高度', 'Slider', 2, 2, 9999,false, function(Value)
+    Aoajlak:Slider('修改高度', 'Slider', 2, 2, 9999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
 end)
 
-    creditsC:Slider('相机焦距上限', 'ZOOOOOM OUT!',  128, 128, 200000,false, function(Value)
+    Aoajlak:Slider('相机焦距上限', 'ZOOOOOM OUT!',  128, 128, 200000,false, function(Value)
     game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = Value
 end)
 
-    creditsC:Slider('相机焦距【正常为70】', 'Sliderflag', 70, 0.1, 250, false, function(v)
+    Aoajlak:Slider('相机焦距【正常为70】', 'Sliderflag', 70, 0.1, 250, false, function(v)
         game.Workspace.CurrentCamera.FieldOfView = v
 end)
 
-    creditsC:Slider('健康值上限', 'Sliderflag',  120, 120, 999999,false, function(Value)
+    Aoajlak:Slider('健康值上限', 'Sliderflag',  120, 120, 999999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.MaxHealth = Value
 end)
 
-    creditsC:Slider('玩家健康值', 'Sliderflag',  120, 120, 999999,false, function(Value)
+    Aoajlak:Slider('玩家健康值', 'Sliderflag',  120, 120, 999999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
     
-    creditsC:Toggle("夜视脚本", "", false, function(state)
+    Aoajlak:Toggle("夜视脚本", "", false, function(state)
         if state then
         game.Lighting.Ambient = Color3.new(1, 1, 1)
         else
@@ -78,7 +78,7 @@ end)
         end
     end)
 
-creditsC:Button(
+Aoajlak:Toggle(
         "无限跳跃",
         function()
          loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()   
@@ -134,14 +134,14 @@ Aoajlak:Toggle("地图投票用户界面", "t", false, function(Value)
 		plr.PlayerGui.MainGui.MapVotePage.Visible = Value
 	end)
     
-    creditsC:Button(
+    Aoajlak:Toggle(
         "黑洞脚本",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
         end
     )
     
-    creditsC:Button(
+    Aoajlak:Toggle(
         "飞行脚本",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/%E9%A3%9E%E8%A1%8C%E8%84%9A%E6%9C%AC(%E5%8F%AF%E8%87%AA%E7%94%B1%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F)%20%E6%B1%89%E5%8C%96%20(3)%20(1).txt"))()
