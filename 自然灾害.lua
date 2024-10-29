@@ -1,5 +1,5 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/XK%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2.txt", true))()
-    local window = library:new("自然灾害")
+    local window = library:new("XKHUB自然灾害")
     local creds = window:Tab("关于", "6031097229")
     local bin = creds:section("信息", true)
     bin:Label("你的注入器:" .. identifyexecutor())
@@ -85,35 +85,8 @@ creditsC:Button(
         end
     )
     
-    creditsC:Button(
-        "地图投票",
-        function()
-            if bool == false then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = false
-    end
-end
-if bool == true then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = true
-    end
-end
-        end
-    )
-    
-    creditsC:Button(
-        "移除坠落伤害",
-        function()
-            _G.NoFallDamage = bool;
-                            while wait(0.5) do
-                                    if _G.NoFallDamage == true then
-                            local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
-                            if FallDamageScript then
-                            FallDamageScript:Destroy()
-                            end end end
-        end
-    )
-    
-    creditsC:Button(
-        "开启水实体",
-        function()
-            if bool == false then do game.Workspace.WaterLevel.CanCollide = false
+Aoajlak:Toggle("在水上行走", "ToggleInfo", false, function(bool)
+ if bool == false then do game.Workspace.WaterLevel.CanCollide = false
                             game.Workspace.WaterLevel.Size = Vector3.new(10, 1, 10)
                         end
                     end
@@ -121,9 +94,45 @@ end
                             game.Workspace.WaterLevel.Size = Vector3.new(5000, 1, 5000)
                         end
                     end
-        end
-    )
+end)
+
+Aoajlak:Toggle("游戏岛悬崖碰撞", "Togglelnfo", false, function(bool)
+for i, v in pairs (game.workspace:GetDescendants())do
+                                if v.Name == 'LowerRocks' then
+                                    v.CanCollide = bool
+                                end
+                            end
+end)
+
+Aoajlak:Button("禁用坠落损坏",function()
+local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
+                                if FallDamageScript then
+                                FallDamageScript:Destroy()
+                                end
+end)
+
+Aoajlak:Toggle("自动禁用坠落伤害", "Toggleelnfo", false, function(bool)
+_G.NoFallDamage = bool;
+                            while wait(0.5) do
+                                    if _G.NoFallDamage == true then
+                            local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
+                            if FallDamageScript then
+                            FallDamageScript:Destroy()
+                            end end end
+end)
+
+Aoajlak:Button("打印下一次灾难(/console)",function()
+warn(game.Players.LocalPlayer.Character.SurvivalTag.Value)
+end)
+
+Aoajlak:Button("移除灾难界面(暴风雪和沙尘暴)",function()
+game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
+		game.Players.LocalPlayer.PlayerGui.SandStormGui:destroy()
+end)
     
+Aoajlak:Toggle("地图投票用户界面", "t", false, function(Value)
+		plr.PlayerGui.MainGui.MapVotePage.Visible = Value
+	end)
     
     creditsC:Button(
         "黑洞脚本",
