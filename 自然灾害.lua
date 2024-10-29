@@ -70,7 +70,7 @@ end)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
     
-    Aoajlak:Toggle("夜视脚本", "", false, function(state)
+    Aoajlak:Button("夜视脚本", "", false, function(state)
         if state then
         game.Lighting.Ambient = Color3.new(1, 1, 1)
         else
@@ -78,14 +78,14 @@ end)
         end
     end)
 
-Aoajlak:Toggle(
+Aoajlak:Button(
         "无限跳跃",
         function()
          loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()   
         end
     )
     
-Aoajlak:Toggle(
+Aoajlak:Button(
         "水上行走",
         function()
            if bool == false then do game.Workspace.WaterLevel.CanCollide = false
@@ -99,7 +99,7 @@ Aoajlak:Toggle(
         end
     )
 
-Aoajlak:Toggle(
+Aoajlak:Button(
         "游戏岛悬崖碰撞",
         function()
            for i, v in pairs (game.workspace:GetDescendants())do
@@ -110,7 +110,7 @@ Aoajlak:Toggle(
         end
     )
 
-Aoajlak:Toggle(
+Aoajlak:Button(
         "坠落损坏移除",
         function()
            local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil
@@ -120,7 +120,7 @@ Aoajlak:Toggle(
         end
     )
 
-Aoajlak:Toggle(
+Aoajlak:Button(
         "坠落伤害移除",
         function()
            _G.NoFallDamage = bool;
@@ -133,14 +133,14 @@ Aoajlak:Toggle(
         end
     )
 
-Aoajlak:Toggle(
+Aoajlak:Button(
         "复制灾难",
         function()
            warn(game.Players.LocalPlayer.Character.SurvivalTag.Value)
         end
     )
 
-Aoajlak:Toggle(
+Aoajlak:Button(
         "移除2个灾难",
         function()
            game.Players.LocalPlayer.PlayerGui.BlizzardGui:destroy()
@@ -148,21 +148,21 @@ Aoajlak:Toggle(
         end
     )
     
-Aoajlak:Toggle(
+Aoajlak:Button(
         "地图投票",
         function()
            plr.PlayerGui.MainGui.MapVotePage.Visible = Value
         end
     )
     
-    Aoajlak:Toggle(
+    Aoajlak:Button(
         "黑洞脚本",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
         end
     )
     
-    Aoajlak:Toggle(
+    Aoajlak:Button(
         "飞行脚本",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/%E9%A3%9E%E8%A1%8C%E8%84%9A%E6%9C%AC(%E5%8F%AF%E8%87%AA%E7%94%B1%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F)%20%E6%B1%89%E5%8C%96%20(3)%20(1).txt"))()
