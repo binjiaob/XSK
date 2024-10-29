@@ -213,7 +213,7 @@ OrionLib:MakeNotification({
                 })
 end)
 
-tab:Toggle("杀死全部", false, function(state)
+tab:Toggle("杀死全部人", false, function(state)
     if state then
                 print("Toggle On")
                 isAutoKillRunning = true
@@ -225,7 +225,7 @@ tab:Toggle("杀死全部", false, function(state)
             end
         end)
         
-tab:Toggle("声音折磨", false, function(bool)
+tab:Toggle("声音卡顿所有人", false, function(bool)
     getgenv().spamSoond = bool
         if bool then
             spamSound()
@@ -253,7 +253,7 @@ function spamSound()
 	end
 end
 
-tab:Toggle("删除门", false, function(state)
+tab:Toggle("移除所有门", false, function(state)
     if state then
         print("Toggle On")
         for i,v in pairs(workspace.Doors:GetChildren()) do
@@ -268,7 +268,7 @@ tab:Toggle("删除门", false, function(state)
     end
 end)
 
-tab:Button("逮捕所有罪犯", function()
+tab:Button("击杀所有罪犯", function()
     wait(0.1)
 	Player = game.Players.LocalPlayer
 	Pcf = Player.Character.HumanoidRootPart.CFrame
