@@ -1,5 +1,3 @@
-local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
-
 local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/refs/heads/main/Vape.txt")() 
 
 local OpenUI = Instance.new("ScreenGui") 
