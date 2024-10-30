@@ -82,7 +82,7 @@ local States = {}
 local plr = game.Players.LocalPlayer
 local char = plr.Character
 
-tab1:Button("将所有人传送至你的位置", function()
+tab:Button("将所有人传送至你的位置", function()
 local L_1_ = true;
 local L_2_ = game.Players.LocalPlayer.Character.HumanoidRootPart;
 local L_3_ = L_2_.Position - Vector3.new(5, 0, 0)
@@ -739,5 +739,4 @@ game.Players.PlayerAdded:Connect(function(newplr) --Parameter gets the new playe
         end)
     end
     coroutine.wrap(ESP)()
-end)
 end)
