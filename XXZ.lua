@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心9.4"
+LBL.Text = "XK脚本中心9.5"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -112,15 +112,15 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.4",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.5",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
-	Name = "『关于』",
+	Name = "关于",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V9.4最新版10月27日更新")
+WSBTab:AddParagraph("当前版本","V9.5最新版11月2日更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -213,7 +213,7 @@ WSBTab:AddParagraph("更新内容:UI与小部分东西")
 WSBTab:AddParagraph("半缝合脚本","勿喷")
 
 local XuanTab = Window:MakeTab({
-	Name = "『黑名单』",
+	Name = "黑名单",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -234,7 +234,7 @@ XuanTab:AddButton ({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『玩家与通用』",
+    Name = "玩家与通用",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -391,6 +391,88 @@ Tab:AddButton({
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/gclich/FPS-X-GUI/main/FPS_X.lua"))()
   	end    
+})
+
+Tab:AddButton ({
+	Name = "玩家进入提示",
+	Callback = function ()
+	 loadstring(game:HttpGet("https://raw.githubusercontent.com/boyscp/scriscriptsc/main/bbn.lua"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "死亡笔记",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/dingding123hhh/tt/main/%E6%AD%BB%E4%BA%A1%E7%AC%94%E8%AE%B0%20(1).txt"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "伪名说话",
+	Callback = function()
+		loadstring(game:HttpGet(('https://pastefy.ga/zCFEwaYq/raw'),true))()
+	end
+})
+
+Tab:AddButton({
+	Name = "跟踪玩家",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/F9PNLcXk"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "反挂机V2",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/9fFu43FF"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "最强透视",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/uw2P2fbY"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "工具包",
+	Callback = function()
+		loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/BTools.txt"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "查看游戏中所有玩家",
+	Callback = function()
+		loadstring(game:HttpGet(('https://pastebin.com/raw/G2zb992X'),true))()
+	end
+})
+
+Tab:AddButton({
+	Name = "隐身道具",
+	Callback = function()
+		loadstring(game:HttpGet("https://gist.githubusercontent.com/skid123skidlol/cd0d2dce51b3f20ad1aac941da06a1a1/raw/f58b98cce7d51e53ade94e7bb460e4f24fb7e0ff/%257BFE%257D%2520Invisible%2520Tool%2520(can%2520hold%2520tools)",true))()
+	end
+})
+
+Tab:AddButton({
+	Name = "自动互动",
+	Callback = function()
+		if state then
+            autoInteract = true
+            while autoInteract do
+                for _, descendant in pairs(workspace:GetDescendants()) do
+                    if descendant:IsA("ProximityPrompt") then
+                        fireproximityprompt(descendant)
+                    end
+                end
+                task.wait(0.25) -- Adjust the wait time as needed
+            end
+        else
+            autoInteract = false
+        end
+	end
 })
 
 Tab:AddButton ({
@@ -925,7 +1007,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『绘制玩家』",
+	Name = "绘制玩家",
 	Icon = "rbxassetid://15862434941",
 	PremiumOnly = false
 })
@@ -1292,7 +1374,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『自瞄』",
+    Name = "自瞄",
     Icon = "rbxassetid://7733655912",
     PremiumOnly = false
 })
@@ -1431,27 +1513,64 @@ Tab:AddButton({
 })
 
 local QWERTab = Window:MakeTab({
-    Name = "『XKHUB持续制作中』",
+    Name = "XKHUB持续制作中",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
 QWERTab:AddButton ({
-	Name = "DOORS",
+	Name = "DOORS（免费）",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
 	end
 })
 
+QWERTab:AddButton({
+	Name = "巴掌模拟器【超强暂免】",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/main.lua%20(3).txt"))()
+	end
+})
+QWERTab:AddButton({
+	Name = "彩虹朋友【暂免】",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E5%BD%A9%E8%99%B9%E6%9C%8B%E5%8F%8B.lua"))()
+	end
+})
+QWERTab:AddButton({
+	Name = "力量传奇【暂免】",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E5%8A%9B%E9%87%8F%E4%BC%A0%E5%A5%87.lua"))()
+	end
+})
+QWERTab:AddButton({
+	Name = "忍者传奇【暂免】",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E7%9B%91%E7%8B%B1.lua"))()
+	end
+})
+QWERTab:AddButton({
+	Name = "监狱人生【暂免】",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E7%9B%91%E7%8B%B1%E4%BA%BA%E7%94%9F.lua"))()
+	end
+})
+QWERTab:AddButton({
+	Name = "自然灾害【暂免】",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E8%87%AA%E7%84%B6%E7%81%BE%E5%AE%B3.lua"))()
+	end
+})
+
 QWERTab:AddButton ({
-	Name = "巴掌模拟器",
+	Name = "巴掌模拟器（免费且旧版）",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/XBAZHANGK.lua"))()
 	end
 })
 
 local DJTab = Window:MakeTab({
-	Name = "『旋转』",
+	Name = "旋转",
 	Icon = "rbxassetid://7743873633",
 	PremiumOnly = false
 })
@@ -1727,7 +1846,7 @@ velocity.Name = "Spinbot"
 })
 
 local Tab = Window:MakeTab({
-    Name = "『范围』",
+    Name = "范围",
     Icon = "rbxassetid://7733920519",
     PremiumOnly = false
 })
@@ -1838,7 +1957,7 @@ Tab:AddButton({
 })
 
 local XTab = Window:MakeTab({
-    Name = "『骨折模拟器』",
+    Name = "骨折模拟器",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -1918,7 +2037,7 @@ XTab:AddButton({
 XTab:AddParagraph("By","未知用户X")
 
 local STab = Window:MakeTab({
-    Name = "『骨折模拟器脚本』",
+    Name = "骨折模拟器脚本",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -1933,7 +2052,7 @@ STab:AddButton({
 })
 
 local player = Window:MakeTab({
-	Name = "『其他注入器』",
+	Name = "其他注入器",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -1967,7 +2086,7 @@ player:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = " 『Doors道具』",
+	Name = " Doors道具",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2092,7 +2211,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = " 『Doors floor2脚本』",
+	Name = " Doors floor2脚本",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2119,7 +2238,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = " 『Doors脚本』",
+	Name = " Doors脚本",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2195,7 +2314,7 @@ Tab:AddButton({
 })
 
 local SZTab = Window:MakeTab({
-	Name = "『火箭发射模拟』",
+	Name = "火箭发射模拟",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2339,7 +2458,7 @@ SZTab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『Color or die』",
+    Name = "Color or die",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -2498,7 +2617,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『鱿鱼游戏』",
+    Name = "鱿鱼游戏",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -2567,7 +2686,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『驾驶帝国』",
+    Name = "驾驶帝国",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -2580,7 +2699,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『光影加画质』",
+    Name = "光影加画质",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -2635,7 +2754,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『战争大亨』",
+    Name = "战争大亨",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -2690,7 +2809,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = " sol’sRNG』",
+	Name = " sol’sRNG",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2710,7 +2829,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『口渴的吸血鬼』",
+	Name = "口渴的吸血鬼",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2785,7 +2904,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『骑车模拟器』",
+	Name = "骑车模拟器",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2898,7 +3017,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『非常容易的奥比跑酷』",
+	Name = "非常容易的奥比跑酷",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -2988,7 +3107,7 @@ Tab:AddButton({
 })
 
 local IATab = Window:MakeTab({
-	Name = "『自然灾害』",
+	Name = "自然灾害",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3008,7 +3127,7 @@ IATab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『Doors but bad』",
+	Name = "Doors but bad",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3086,7 +3205,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『ESP』",
+    Name = "ESP",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -3099,7 +3218,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『监狱人生』",
+    Name = "监狱人生",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -3172,7 +3291,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『监狱人生位置』",
+    Name = "监狱人生位置",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -3229,7 +3348,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『动感星期五』",
+	Name = "动感星期五",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3241,7 +3360,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『nico s Nextbot』",
+	Name = "nico s Nextbot",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3274,7 +3393,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『Refinery cave1』",
+	Name = "Refinery cave1",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3287,7 +3406,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『Refinery cave2』",
+	Name = "Refinery cave2",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3300,7 +3419,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『战斗勇士』",
+	Name = "战斗勇士",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3497,7 +3616,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/maste
 })
 
 local Tab = Window:MakeTab({
-	Name = "『河北唐县』",
+	Name = "河北唐县",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3512,7 +3631,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『进击的僵尸』",
+	Name = "进击的僵尸",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3587,7 +3706,7 @@ Tab:AddButton({
 })
 
 local NTab = Window:MakeTab({
-	Name = "『MM2』",
+	Name = "MM2",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3635,7 +3754,7 @@ NTab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『彩虹朋友』",
+	Name = "彩虹朋友",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3661,7 +3780,7 @@ end
 })
 
 local Tab = Window:MakeTab({
-	Name = "『餐厅大亨』",
+	Name = "餐厅大亨",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3681,7 +3800,7 @@ Tab:AddButton({
 })
 
 local NVTab = Window:MakeTab({
-	Name = "『最强战场』",
+	Name = "最强战场",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3722,7 +3841,7 @@ NVTab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『巴掌模拟器』",
+	Name = "巴掌模拟器",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3758,7 +3877,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『伐木大亨』",
+	Name = "伐木大亨",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3792,7 +3911,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『BF』",
+	Name = "BF",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3876,7 +3995,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『僵尸起义』",
+	Name = "僵尸起义",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3889,7 +4008,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『健身联盟』",
+	Name = "健身联盟",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -3902,7 +4021,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『伐木大亨2』",
+	Name = "伐木大亨2",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -4048,7 +4167,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『超简单障碍跑』",
+	Name = "超简单障碍跑",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -4198,7 +4317,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『巴掌大战』",
+    Name = "巴掌大战",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -4211,7 +4330,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『造船寻宝』",
+	Name = "造船寻宝",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -4235,7 +4354,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "『steep steps』",
+	Name = "steep steps",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -4388,7 +4507,7 @@ Tab:AddButton({
 })
  
 local Tab = Window:MakeTab({
-	Name = "『Antarctica』",
+	Name = "Antarctica",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -4408,9 +4527,37 @@ Tab:AddButton({
 })
 
 local dongTab = Window:MakeTab({
-	Name = "『压力』",
+	Name = "压力",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
+})
+
+dongTab:AddButton({
+	Name = "无敌模式",
+	Callback = function()
+     loadstring(game:HttpGet("https://rawscripts.net/raw/Pressure-*-Mode-15992"))()
+end
+})
+
+dongTab:AddButton({
+	Name = "EyeHUB",
+	Callback = function()
+     loadstring(game:HttpGet("https://github.com/Drop56796/CreepyEyeHub/blob/main/obfuscate.lua?raw=true"))()
+end
+})
+
+dongTab:AddButton({
+	Name = "DX压力【万圣节】",
+	Callback = function()
+     loadstring(game:HttpGet(('https://github.com/DocYogurt/Main/raw/main/Scripts/Pressure')))()
+end
+})
+
+dongTab:AddButton({
+	Name = "o6LTiEB",
+	Callback = function()
+     loadstring(game:HttpGet(('https://pastefy.app/o6LTiEBy/raw'),true))()
+end
 })
 
 local Section = dongTab:AddSection({	Name = "有bug传送后会回不去"})
@@ -4588,7 +4735,7 @@ dongTab:AddParagraph("专门找我压力的","我啥也没搞，没事别来找�
 dongTab:AddParagraph("压力可外传的压力脚本","中国人制作")
 
 local Tab = Window:MakeTab({
-	Name = "『忍者传奇』",
+	Name = "忍者传奇",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5094,7 +5241,7 @@ Tab:AddButton({
 })
 
 local WTab = Window:MakeTab({
-	Name = "『刀刃球』",
+	Name = "刀刃球",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5140,7 +5287,7 @@ WTab:AddButton({
 WTab:AddParagraph("除了有两个","其他全是我找的")
 
 local RTab = Window:MakeTab({
-	Name = "『恐怖电梯』",
+	Name = "恐怖电梯",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5155,7 +5302,7 @@ RTab:AddButton({
 })
 
 local PTab = Window:MakeTab({
-	Name = "『evade』",
+	Name = "evade",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5191,7 +5338,7 @@ PTab:AddButton({
 })
 
 local ZTab = Window:MakeTab({
-	Name = "『烹饪大亨』",
+	Name = "烹饪大亨",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5283,7 +5430,7 @@ end
 })
 
 local MPTab = Window:MakeTab({
-	Name = "『一路向西』",
+	Name = "一路向西",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5372,7 +5519,7 @@ end)
 })
 
 local WDTab = Window:MakeTab({
-	Name = "『一次尘土飞扬的旅行』",
+	Name = "一次尘土飞扬的旅行",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5503,7 +5650,7 @@ WDTab:AddButton({
 })
 
 local HSXTab = Window:MakeTab({
-	Name = "『越狱』",
+	Name = "越狱",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
@@ -5558,7 +5705,7 @@ HSXTab:AddButton ({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『俄亥俄州』",
+    Name = "俄亥俄州",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -5606,7 +5753,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『奇怪严格的爸爸』",
+    Name = "奇怪严格的爸爸",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -5619,7 +5766,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『群蜂模拟器』",
+    Name = "群蜂模拟器",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -5653,7 +5800,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『the rake』",
+    Name = "the rake",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -5687,7 +5834,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『请捐赠【服务器】』",
+    Name = "请捐赠【服务器】",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -5721,7 +5868,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『兵工厂』",
+    Name = "兵工厂",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -6642,7 +6789,7 @@ Tab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-    Name = "『ROOMS&DOORS』",
+    Name = "ROOMS&DOORS",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
@@ -7677,4 +7824,280 @@ end)
   end
 })
 
+local Tab = Window:MakeTab({
+	Name = "旗帜战争",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
 
+Tab:AddButton({
+	Name = "DDDDD",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/otEg6PJV/raw"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "INFINITY",
+	Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/Infinity2346/Tect-Menu/main/Flag%20Wars.txt'))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "怪物宇宙",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "脚本1",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/oRWEIEcJ/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "恐怖奶奶",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "o688jvmn",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/o688Jvmn/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "奶酪逃亡",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "IIpzN8f5",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/IIpzN8f5/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "极速奔驰",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "Y7607jwb",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/Y7607jwb/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "射击光束模拟器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "51yMuaCc",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/51yMuaCc/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "合并滴管",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "NpBrBC",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/NpBrBCqM/raw"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "狂野西部",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "KeonrGithub",
+	Callback = function()
+		loadstring(game:HttpGet(("https://raw.githubusercontent.com/KeoneGithub/KeoneGithub/main/WildWestLean"),true))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "剑斗士模拟器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "DisticHUB",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/bebedi15/DisticHub/main/Loader.lua"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "军事大亨",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "军事大亨脚本1",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/thedragonslayer2/Key-System/main/Load.lua")()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "国王遗产",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "sannin9000",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/sannin9000/scripts/main/kinglegacy.lua"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "1F0yt",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/legacy"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "RIPPERHUB",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/hajibeza/RIPPER-HUB/main/King%20Leagacy"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "XDEPRESSIONX",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/xDepressionx/Free-Script/main/KingLegacy.lua")()
+	end
+})
+
+Tab:AddButton({
+	Name = "King Legacy",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/xOne2/King-Legacy/main/README.md"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "克隆大亨",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "脚本1",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/HELLLO1073/RobloxStuff/main/CT-Destroyer"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "短信模拟器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "短信模拟器脚本1",
+	Callback = function()
+		loadstring(game:HttpGet(('https://pastebin.com/raw/9hxkxUZ5'),true))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "杀手与警长",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "杀手与警长1",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastebin.com/raw/yadbPQUm",true))()
+	end
+})
+
+Tab:AddButton({
+	Name = "杀手与警长秒KILL",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Deni210/murdersvssherrifsduels/main/rubyhub", true))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "超级足球赛",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "超级足球赛【10xhub】",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/xtrey10x/xtrey10x-hub/main/neo")()
+	end
+})
+
+Tab:AddButton({
+	Name = "脚本2",
+	Callback = function()
+		loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/8fdf7c482d3b3d108ccdb282a7fc35e2.lua"))()
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "汽车经销大亨",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "刷星星",
+	Callback = function()
+		loadstring(game:HttpGet("https://scriptblox.com/raw/LIMITED!-Car-Dealership-Tycoon-Moon-Team-16181"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "脚本1",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/IExpIoit/Script/main/Car%20Dealership%20Tycoon.lua"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "脚本2",
+	Callback = function()
+		loadstring(game:HttpGet("https://pastefy.app/5o594Q0i/raw"))()
+	end
+})
+
+Tab:AddButton({
+	Name = "脚本3",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/03sAlt/BlueLockSeason2/main/README.md"))()
+	end
+})
