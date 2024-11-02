@@ -41,7 +41,7 @@ end
 OrionLib:MakeNotification({
                     Name = "傻逼kwkw"..game.PlaceId,
                     Content = "赶紧他妈的去在黑名单复制他的快手号啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
-                    Time = 99
+                    Time = 10
                 })
                 
     local sound = Instance.new("Sound", workspace)
