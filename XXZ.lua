@@ -39,16 +39,6 @@ local function HeartbeatUpdate()
 end
 
 OrionLib:MakeNotification({
-                    Name = "傻逼kwkw"..game.PlaceId,
-                    Content = "赶紧他妈的去在黑名单复制他的快手号啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
-                    Time = 10
-                })
-                
-    local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://4590662766"
-sound:Play()
-
-OrionLib:MakeNotification({
                     Name = "XSK 脚本中心",
                     Content = "欢迎使用【作者:小玄奘】",
                     Time = 2
