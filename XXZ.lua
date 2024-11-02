@@ -109,6 +109,16 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
      Button2 = "关闭" 
  })
 
+OrionLib:MakeNotification({
+                    Name = "傻逼kwkw"..game.PlaceId,
+                    Content = "赶紧他妈的去在黑名单复制他的快手号啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+                    Time = 99
+                })
+                
+    local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://4590662766"
+sound:Play()
+
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
@@ -218,13 +228,13 @@ local XuanTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-XuanTab:AddParagraph("一名单一","暂时没有")
-XuanTab:AddParagraph("快手号","暂时没有")
+XuanTab:AddParagraph("一名单一","Kwkw")
+XuanTab:AddParagraph("快手号","3358074444")
 
 XuanTab:AddButton ({
 	Name = "复制上面人【快手号】",
 	Callback = function ()
-	 setclipboard("XK脚本中心")
+	 setclipboard("3358074444")
 	 OrionLib:MakeNotification({
                     Name = "提示信息",
                     Content = "你想成为黑名单吗",
