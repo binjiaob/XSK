@@ -35,7 +35,7 @@ local function HeartbeatUpdate()
 	FrameUpdateTable[1] = LastIteration
 	local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
 	CurrentFPS = CurrentFPS - CurrentFPS % 1
-	FpsLabel.Text = ("在这里改显示字幕"))
+	FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
 end
 
 OrionLib:MakeNotification({
@@ -2324,26 +2324,9 @@ WSBTab:AddParagraph("以下是功能","脚本在最下面")
 SZTab:AddButton({  
     Name = "自动收集燃料",
 	Callback = function()
-    isFuelScoopEnabled = Value
+    isFuelScoopEnabled = ARL while true do wait() if isFuelScoopEnabled then for i, h in pairs(game.Players.LocalPlayer.Character:GetChildren()) do if h:IsA("Tool") and h.Name == "FuelScoop" then h:Activate() end end end end
 	end
 })
-
-function CollectFuel()
-    while true do
-        wait()
-        
-        if isFuelScoopEnabled then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4.878255367279053, 7.27484130859375, 7.71745491027832)
-            for i, h in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                if h:IsA("Tool") and h.Name == "FuelScoop" then
-                    h:Activate()
-                end
-            end
-        end
-    end
-end
-
-CollectFuel()
 
 SZTab:AddButton({  
     Name = "登上火箭",
@@ -5788,119 +5771,6 @@ local Tab = Window:MakeTab({
     PremiumOnly = false
 })
 
-local ToolCollect = false
-local Making = false
-
-Tab:AddButton({
-	Name = "自动使用花粉采集器",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动收集蒲公英花粉",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-47.992244720458984, 4.746883869171143, 217.41290283203125)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动收集花粉三叶草",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(142.328857421875, 34.24687957763672, 191.83651733398438)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动收集蓝花花粉",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(123.95781707763672, 4.746883869171143, 106.66554260253906)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动手机蘑菇孢子",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-77.71565246582031, 4.746883869171143, 114.29756927490234)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动收集向日葵花粉",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-203.63072204589844, 4.746883869171143, 172.4333953857422)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动收集蒲公英田",
-	Callback = function()
-		ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-47.992244720458984, 4.746883869171143, 217.41290283203125)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动制作蜂蜜",
-	Callback = function()
-		Making = state
-    if Making then
-    while Making do
-    game:GetService("ReplicatedStorage").Events.PlayerHiveCommand:FireServer("ToggleHoneyMaking")
-    wait()
-    end
-end
-	end
-})
-
 Tab:AddButton({  
     Name = "Macrov3需要卡密",
 	Callback = function()
@@ -8229,124 +8099,5 @@ Tab:AddButton({
 	Name = "脚本3",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/03sAlt/BlueLockSeason2/main/README.md"))()
-	end
-})
-
-local Tab = Window:MakeTab({
-	Name = "吃掉世界",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
-local gb = false
-local eat = false
-local sell = false
-local throw = false
-local buy = false
-
-Tab:AddButton({
-	Name = "自动抓取",
-	Callback = function()
-		gb = state
-    if gb then
-        while gb do
-        game:GetService("Players").LocalPlayer.Character.Events.Grab:FireServer(false, false)
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动进食",
-	Callback = function()
-		eat = state
-    if eat then
-        while eat do
-        game:GetService("Players").LocalPlayer.Character.Events.Eat:FireServer()
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动售卖",
-	Callback = function()
-		sell = state
-    if sell then
-        while sell do
-        game:GetService("Players").LocalPlayer.Character.Events.Sell:FireServer()
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动丢",
-	Callback = function()
-		throw = state
-    if throw then
-        while throw do
-        game:GetService("Players").LocalPlayer.Character.Events.Throw:FireServer()
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动购买最大尺寸",
-	Callback = function()
-	  buy = state
-    if buy then
-        while buy do
-        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("MaxSize")
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动购买速度",
-	Callback = function()
-		buy = state
-    if buy then
-        while buy do
-        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("Speed")
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动购买乘数",
-	Callback = function()
-		buy = state
-    if buy then
-        while buy do
-        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("Multiplier")
-        wait()
-    end
-end
-	end
-})
-
-Tab:AddButton({
-	Name = "自动购买吃的速度",
-	Callback = function()
-		buy = state
-    if buy then
-        while buy do
-        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("EatSpeed")
-        wait()
-    end
-end
-end)
-else
-game.Players.LocalPlayer:Kick("You're banned")
 	end
 })
