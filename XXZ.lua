@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心9.5"
+LBL.Text = "XK脚本中心10.0【测试版】"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -35,13 +35,13 @@ local function HeartbeatUpdate()
 	FrameUpdateTable[1] = LastIteration
 	local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
 	CurrentFPS = CurrentFPS - CurrentFPS % 1
-	FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
+	FpsLabel.Text = ("XK【测试版】"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
 end
 
 OrionLib:MakeNotification({
                     Name = "XSK 脚本中心",
-                    Content = "欢迎使用【作者:小玄奘】",
-                    Time = 2
+                    Content = "测试版无更新内容，请等待正式版发布",
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -53,7 +53,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "你的注入器："..identifyexecutor(),
                     Content = "脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
                 local sound = Instance.new("Sound", workspace)
@@ -65,7 +65,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "用户名："..game.Players.LocalPlayer.Character.Name,
                     Content = "XSK脚本中心",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -77,7 +77,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "服务器ID："..game.PlaceId,
                     Content = "XK脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
     local sound = Instance.new("Sound", workspace)
@@ -95,12 +95,12 @@ print("索引开启反挂机")
 OrionLib:MakeNotification({
                     Name = "反外挂已开启",
                     Content = "等待2秒",
-                    Time = 2
+                    Time = 1
                 })           
 Start = tick()
 
 game:GetService("StarterGui"):SetCore("SendNotification",{ 
-     Title = "XK脚本中心", 
+     Title = "XK脚本中心【测试版】", 
      Text = "欢迎你的使用", 
      Icon = "rbxassetid://117494350103589", 
      Duration = 60, 
@@ -112,7 +112,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V9.5",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.0测试版",Name = "XK脚本中心 V2【测试版】", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "关于",
@@ -120,7 +120,9 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V9.5最新版11月2日更新")
+WSBTab:AddParagraph("当前版本","V10.0测试版11月6日更新")
+WSBTab:AddParagraph("测试版","无更新内容")
+WSBTab:AddParagraph("请等待","V10.0正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
