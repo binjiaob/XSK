@@ -1023,6 +1023,104 @@ Tab:AddButton({
   end
 })
 
+local Section = Tab:AddSection({	Name = "音频"})
+
+Tab:AddButton({ 
+   Name = "国歌", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://1845918434" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+ 
+Tab:AddButton({ 
+   Name = "钢管落地", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6011094380" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "钢管落地【全损音质】", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6729922069" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "化粪池爆炸", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://3175432527" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "串稀", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://4809574295" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "全损音质【串稀】", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6445594239" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "骂人", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://7334239757" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "在我们之中", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6453086701" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "doors拿金币", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://8646410774" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "苹果手机【闹钟】", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://4203251375" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
 local Tab = Window:MakeTab({
 	Name = "音频",
 	Icon = "rbxassetid://7734020554",
