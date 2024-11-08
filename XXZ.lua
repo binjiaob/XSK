@@ -39,8 +39,8 @@ local function HeartbeatUpdate()
 end
 
 OrionLib:MakeNotification({
-                    Name = "XSK 脚本中心",
-                    Content = "测试版无更新内容，请等待正式版发布",
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
                     Time = 1
                 })    
                 
@@ -64,7 +64,7 @@ wait(1)
 
 OrionLib:MakeNotification({
                     Name = "用户名："..game.Players.LocalPlayer.Character.Name,
-                    Content = "XSK脚本中心",
+                    Content = "XK脚本中心",
                     Time = 1
                 })    
                 
@@ -100,7 +100,7 @@ OrionLib:MakeNotification({
 Start = tick()
 
 game:GetService("StarterGui"):SetCore("SendNotification",{ 
-     Title = "XK脚本中心【测试版】", 
+     Title = "XK脚本中心【正式版】", 
      Text = "欢迎你的使用", 
      Icon = "rbxassetid://117494350103589", 
      Duration = 60, 
