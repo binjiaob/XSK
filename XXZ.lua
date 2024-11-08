@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心10.0【测试版】"
+LBL.Text = "XK脚本中心10.6【正式版】"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -110,9 +110,10 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
  })
 
 wait(2)
-Heartbeat:Connect(HeartbeatUpdate)
+local GameName = "XK脚本中心 V3 丨 Load"
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.0测试版",Name = "XK脚本中心 V2【测试版】", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.6", IntroIcon = "rbxassetid://117494350103589",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
 
 local WSBTab = Window:MakeTab({
 	Name = "关于",
@@ -120,9 +121,23 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V10.0测试版11月6日更新")
-WSBTab:AddParagraph("测试版","无更新内容")
-WSBTab:AddParagraph("请等待","V10.0正式版更新")
+game:GetService("StarterGui"):SetCore("SendNotification",{ 
+     Title = "XK脚本中心【正式版V3】", 
+     Text = "加载成功", 
+     Icon = "rbxassetid://117494350103589", 
+     Duration = 60, 
+     Callback = bindable, 
+     Button1 = "开启", 
+     Button2 = "关闭" 
+ })
+ 
+ local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6729922069"
+sound:Play()
+
+WSBTab:AddParagraph("当前版本","V10.6正式版11月9日更新")
+WSBTab:AddParagraph("测试版","更新服务器与ID")
+WSBTab:AddParagraph("请等待","V10.6正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -1008,6 +1023,107 @@ Tab:AddButton({
   end
 })
 
+local player = Window:MakeTab({
+	Name = "音频",
+	Icon = "rbxassetid://7734020554",
+	PremiumOnly = false
+})
+
+Tab:AddButton({ 
+   Name = "国歌", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://1845918434" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+ 
+Tab:AddButton({ 
+   Name = "钢管落地", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6011094380" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "钢管落地【全损音质】", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6729922069" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "化粪池爆炸", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://3175432527" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "串稀", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://4809574295" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+
+Tab:AddButton({ 
+   Name = "全损音质【串稀】", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6445594239" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "骂人", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://7334239757" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "在我们之中", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://6453086701" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "doors拿金币", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://8646410774" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
+Tab:AddButton({ 
+   Name = "苹果手机【闹钟】", 
+   Callback = function () 
+         local sound = Instance.new("Sound") 
+     sound.SoundId = "rbxassetid://4203251375" 
+     sound.Parent = game.Workspace 
+     sound:Play() 
+   end 
+ })
 local Tab = Window:MakeTab({
 	Name = "绘制玩家",
 	Icon = "rbxassetid://15862434941",
@@ -1515,57 +1631,57 @@ Tab:AddButton({
 })
 
 local QWERTab = Window:MakeTab({
-    Name = "XKHUB持续制作中",
+    Name = "XKHUB",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
 QWERTab:AddButton ({
-	Name = "DOORS（免费）",
+	Name = "DOORS",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
 	end
 })
 
 QWERTab:AddButton({
-	Name = "巴掌模拟器【超强暂免】",
+	Name = "巴掌模拟器",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/main.lua%20(3).txt"))()
 	end
 })
 QWERTab:AddButton({
-	Name = "彩虹朋友【暂免】",
+	Name = "彩虹朋友",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E5%BD%A9%E8%99%B9%E6%9C%8B%E5%8F%8B.lua"))()
 	end
 })
 QWERTab:AddButton({
-	Name = "力量传奇【暂免】",
+	Name = "力量传奇",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E5%8A%9B%E9%87%8F%E4%BC%A0%E5%A5%87.lua"))()
 	end
 })
 QWERTab:AddButton({
-	Name = "忍者传奇【暂免】",
+	Name = "忍者传奇",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E7%9B%91%E7%8B%B1.lua"))()
 	end
 })
 QWERTab:AddButton({
-	Name = "监狱人生【暂免】",
+	Name = "监狱人生",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E7%9B%91%E7%8B%B1%E4%BA%BA%E7%94%9F.lua"))()
 	end
 })
 QWERTab:AddButton({
-	Name = "自然灾害【暂免】",
+	Name = "自然灾害",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E8%87%AA%E7%84%B6%E7%81%BE%E5%AE%B3.lua"))()
 	end
 })
 
 QWERTab:AddButton ({
-	Name = "巴掌模拟器（免费且旧版）",
+	Name = "巴掌模拟器（旧版）",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/XBAZHANGK.lua"))()
 	end
@@ -8103,3 +8219,246 @@ Tab:AddButton({
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/03sAlt/BlueLockSeason2/main/README.md"))()
 	end
 })
+
+local player = Window:MakeTab({
+	Name = "超级大力士",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+player:AddButton({ 
+	Name = "1",
+	Callback = function()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/ToraScript/Script/main/Strongman'))()
+  	end
+})
+
+local player = Window:MakeTab({
+	Name = "幸运方块",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+player:AddButton({ 
+	Name = "1",
+	Callback = function()
+      	loadstring(game:HttpGet("https://raw.githubusercontent.com/PlanetHubX/Lucky-Blocks/main/source", true))()
+  	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "索尔的RNG",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+	Name = "1",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Looser3itx/Hmmmmmmmmmmmmmmmmmmmmmmmmmmmm/main/loader.lua"))()
+  	end
+})
+
+Tab:AddButton({
+	Name = "hoho(需卡密)",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/acsu123/HOHO_H/main/Loading_UI'))()
+  	end
+})
+
+Tab:AddButton({
+	Name = "3(需卡密)",
+	Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LOLking123456/upd/main/rng"))()
+  	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "手臂摔跤模拟器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+
+  Name = "1",
+
+  Callback = function ()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KrzysztofHub/script/main/loader.lua"))()
+
+  end
+
+})
+
+Tab:AddButton({
+
+  Name = "2",
+
+  Callback = function ()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/zicus-scripts/SkullHub/main/Loader.lua"))()
+
+  end
+
+})
+
+local Tab = Window:MakeTab({
+	Name = "越狱",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+  Name = "自瞄",
+  Callback = function ()
+loadstring(game:HttpGet("https://pastebin.com/raw/1Gp9c57U"))()
+  end
+
+})
+
+Tab:AddButton({
+
+  Name = "青",
+  Callback = function ()
+loadstring(game:HttpGet('https://rentry.co/ct293/raw'))()
+  end
+
+})
+
+Tab:AddButton({
+  Name = "自动抢劫",
+  Callback = function ()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Pxsta72/ProjectAuto/main/free"))()
+  end
+})
+
+local Tab = Window:MakeTab({
+	Name = "法宝模拟器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton({
+  Name = "1",
+  Callback = function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/loader_1038"))()
+    end
+})
+
+local Tab= Window:MakeTab({ 
+         Name = "写一封信", 
+         Icon = "rbxassetid://7733779610", 
+         PremiumOnly = false 
+ }) 
+ Tab:AddButton({ 
+   Name = "Letter-Hub", 
+   Callback = function () 
+     loadstring(game:HttpGet(('https://raw.githubusercontent.com/insuretya/writealetter/main/writtealetter.lua')))() 
+   end 
+ }) 
+ Tab:AddButton({ 
+   Name = "自动注译", 
+   Callback = function () 
+ _G.AutoInfNotes = false 
+ while _G.AutoInfNotes == true do 
+  
+  
+ local A_1 = "made by demo" 
+ local A_2 = false 
+ local Event = game:GetService("ReplicatedStorage").COM.Game.RequestTakeNote 
+ Event:InvokeServer(A_1, A_2) 
+  
+ end 
+  
+   end 
+ }) 
+ Tab:AddButton({ 
+   Name = "免费动画", 
+   Callback = function () 
+     for _,v in pairs(game.ReplicatedStorage.Emotes.Packs:GetChildren()) do 
+    local anim = require(v) 
+    anim.Required = false; 
+ end 
+  
+   end 
+ }) 
+ Tab:AddButton({ 
+   Name = "免费动画-脚本", 
+   Callback = function () 
+     loadstring(game:HttpGet(('https://raw.githubusercontent.com/lobox920/Shar-Script/main/Write%20a%20Letter.lua')))() 
+   end 
+ })
+ 
+ Tab:AddButton({ 
+   Name = "无限文本", 
+   Callback = function () 
+     local text = "infinite notes made by tabz[#[9432" 
+ --[[ 
+    __                __                  
+   /  |              /  |                 
+  _$$ |_     ______  $$ |____   ________  
+ / $$   |   /      \ $$      \ /        | 
+ $$$$$$/    $$$$$$  |$$$$$$$  |$$$$$$$$/  
+   $$ | __  /    $$ |$$ |  $$ |  /  $$/   
+   $$ |/  |/$$$$$$$ |$$ |__$$ | /$$$$/__  
+   $$  $$/ $$    $$ |$$    $$/ /$$      | 
+    $$$$/   $$$$$$$/ $$$$$$$/  $$$$$$$$/  
+                                          
+                                          
+                                          
+  
+ Inf Notes Script by tabz#9432 | I GET BANNED ALLOT SO IT MIGHT NOT BE ACCURATE 
+ https://www.roblox.com/games/8425637426/Write-a-Letter 
+ ]]-- 
+ while wait() do 
+ local args = { 
+     [1] = text, 
+     [2] = false 
+ } 
+ wait() 
+ game:GetService("ReplicatedStorage").COM.Game.RequestTakeNote:InvokeServer(unpack(args)) 
+ local args = { 
+     [1] = "Drop" 
+ } 
+ game:GetService("Players").LocalPlayer.Character.Note.ClassEvent:FireServer(unpack(args)) 
+ end  
+  
+   end 
+ }) 
+ Tab:AddButton({ 
+   Name = "消除文本", 
+   Callback = function () 
+     --[[ 
+    __                __                  
+   /  |              /  |                 
+  _$$ |_     ______  $$ |____   ________  
+ / $$   |   /      \ $$      \ /        | 
+ $$$$$$/    $$$$$$  |$$$$$$$  |$$$$$$$$/  
+   $$ | __  /    $$ |$$ |  $$ |  /  $$/   
+   $$ |/  |/$$$$$$$ |$$ |__$$ | /$$$$/__  
+   $$  $$/ $$    $$ |$$    $$/ /$$      | 
+    $$$$/   $$$$$$$/ $$$$$$$/  $$$$$$$$/  
+                                          
+                                          
+                                          
+  
+ Clear everyone's Notes Script by tabz#9432 | I GET BANNED ALLOT SO IT MIGHT NOT BE ACCURATE 
+ https://www.roblox.com/games/6423728755/new-physics-engine 
+ ]]-- 
+ while wait() do 
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-67, 4, 95) 
+ wait() 
+ local args = { 
+     [1] = workspace.BulletinBoards.Notes.Note 
+ } 
+ wait() 
+ game:GetService("ReplicatedStorage").COM.Game.RequestPinPickUp:InvokeServer(unpack(args)) 
+ local args = { 
+     [1] = "Drop" 
+ } 
+ game:GetService("Players").LocalPlayer.Character.Note.ClassEvent:FireServer(unpack(args)) 
+ end  
+  
+   end 
+ })
