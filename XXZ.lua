@@ -1023,7 +1023,7 @@ Tab:AddButton({
   end
 })
 
-local player = Window:MakeTab({
+local Tab = Window:MakeTab({
 	Name = "音频",
 	Icon = "rbxassetid://7734020554",
 	PremiumOnly = false
