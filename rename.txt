@@ -1,4 +1,5 @@
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
+wait(1)
 OrionLib:MakeNotification({
                     Name = "mspaint V3汉化",
                     Content = "欢迎使用【修复补缺:小玄奘】",
@@ -9,6 +10,7 @@ OrionLib:MakeNotification({
 sound.SoundId = "rbxassetid://4590662766"
 sound:Play()
 
+wait(1)
 OrionLib:MakeNotification({
                     Name = "mspaint V3汉化",
                     Content = "汉化作者:R-Exploit",
@@ -19,6 +21,7 @@ OrionLib:MakeNotification({
 sound.SoundId = "rbxassetid://4590662766"
 sound:Play()
 
+wait(1)
 OrionLib:MakeNotification({
                     Name = "此脚本不再开源！",
                     Content = "测试员:NIDO_MUNCISEEK--",
@@ -4394,7 +4397,7 @@ elseif Script.IsMines then
         })
 
         Mines_AutomationGroupBox:AddToggle("TheMinesAnticheatBypass", {
-            Text = "反作弊绕过",
+            Text = "反作弊绕过【不建议开，因为梯子会爬不了】",
             Default = false
         })
     end
@@ -10289,7 +10292,7 @@ end
 
 function UICreator:CreateWindow()
     local Window = shared.Library:CreateWindow({
-        Title = "mspaint v3| 修复补缺 | " .. shared.ScriptName,
+        Title = "mspaint v3| 无需卡密版 | " .. shared.ScriptName,
         Center = true,
         AutoShow = true,
         Resizable = true,
@@ -10342,14 +10345,14 @@ function UICreator:CreateSettingsTab()
     MenuGroup:AddToggle("ShowCustomCursor", {Text = "Custom Cursor", Default = true, Callback = function(Value) shared.Library.ShowCustomCursor = Value end})
     MenuGroup:AddDivider()
     MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "RightShift", NoUI = true, Text = "Menu keybind" })
-    MenuGroup:AddButton("Join Discord", function()
+    MenuGroup:AddButton("加入MSPAINT的DC", function()
         local Inviter = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
         Inviter.Join("https://discord.com/invite/cfyMptntHr")
         Inviter.Prompt({
             name = "mspaint",
             invite = "https://discord.com/invite/cfyMptntHr",
         })
-    end):AddButton("Copy Link", function()
+    end):AddButton("复制Link", function()
         if setclipboard then
             setclipboard("https://discord.com/invite/cfyMptntHr")
             shared.Library:Notify("Copied discord link to clipboard!")
