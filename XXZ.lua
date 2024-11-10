@@ -41,7 +41,7 @@ end
 OrionLib:MakeNotification({
                     Name = "XK 脚本中心",
                     Content = "脚本中心正在加载",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -49,21 +49,11 @@ sound.SoundId = "rbxassetid://4590662766"
 sound:Play()
 
 wait(1)
-OrionLib:MakeNotification({
-                    Name = "更新内容"..game.PlaceId,
-                    Content = "nico nextbots怪物透视之类",
-                    Time = 2
-                })
-                
-    local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://4590662766"
-sound:Play()
-wait(1)
 
 OrionLib:MakeNotification({
                     Name = "你的注入器："..identifyexecutor(),
                     Content = "脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
                 local sound = Instance.new("Sound", workspace)
@@ -75,7 +65,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "用户名："..game.Players.LocalPlayer.Character.Name,
                     Content = "XK脚本中心",
-                    Time = 2
+                    Time = 1
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -87,7 +77,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "服务器ID："..game.PlaceId,
                     Content = "XK脚本中心",
-                    Time = 2
+                    Time = 1
                 })
                 
     local sound = Instance.new("Sound", workspace)
@@ -105,7 +95,7 @@ print("索引开启反挂机")
 OrionLib:MakeNotification({
                     Name = "反外挂已开启",
                     Content = "等待2秒",
-                    Time = 2
+                    Time = 1
                 })           
 Start = tick()
 
@@ -145,7 +135,7 @@ local WSBTab = Window:MakeTab({
 })
 
 WSBTab:AddParagraph("当前版本","V10.8正式版11月10日更新")
-WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-nico nextbots")
+WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视")
 WSBTab:AddParagraph("正式版版","更新服务器与ID")
 WSBTab:AddParagraph("通知","V10.8正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
@@ -12076,7 +12066,7 @@ ps.PlayerAdded:Connect(p_added)
 end
 })
 
-Tab:AddButton({
+NicoTab:AddButton({
 	Name = "适合速度",
 	Callback = function()
      getgenv().TPWalk = s
@@ -12109,21 +12099,21 @@ function teleport2()
   minions.CFrame = riseofgru
 end
 
-Tab:AddButton({
+NicoTab:AddButton({
 	Name = "安全点1",
 	Callback = function()
      teleport2()
   	end    
 })
 
-Tab:AddButton({
+NicoTab:AddButton({
 	Name = "安全点2",
 	Callback = function()
      teleport1()
   	end    
 })
 
-Tab:AddButton({
+NicoTab:AddButton({
 	Name = "打开所有门",
 	Callback = function()
      while task.wait(0.5) do
@@ -12134,7 +12124,7 @@ end
   	end    
 })
 
-Tab:AddButton({
+NicoTab:AddButton({
 	Name = "移除跳脸",
 	Callback = function()
      getgenv().InfJ = s
@@ -12144,4 +12134,18 @@ Tab:AddButton({
         end
     end)
   	end    
+})
+
+NicoTab:AddButton({
+  Name = "无限跳跃",
+  Callback = function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()
+  end
+})
+
+NicoTab:AddButton({
+    Name="高亮",
+    Callback=function()
+        loadstring(game:HttpGet("https://pastebin.com/raw/4LDKiJ5a"))()
+    end
 })
