@@ -8688,25 +8688,25 @@ local Tab= Window:MakeTab({
  
  local AutoFarmsTab = Window:MakeTab({
 	Name = "极速传奇-自动农场",
-	Icon = "rbxassetid://6015897843",
+	Icon = "rbxassetid://7733920226",
 	PremiumOnly = false
 })
 
 local CrystalsTab = Window:MakeTab({
 	Name = "极速传奇-晶体",
-	Icon = "rbxassetid://7733779610",
+	Icon = "rbxassetid://7733920226",
 	PremiumOnly = false
 })
 
 local TeleportTab = Window:MakeTab({
 	Name = "极速传奇-传送",
-	Icon = "rbxassetid://7733779610",
+	Icon = "rbxassetid://7733920226",
 	PremiumOnly = false
 })
 
 local SettingsTab = Window:MakeTab({
 	Name = "极速传奇-主要的",
-	Icon = "rbxassetid://7733779610",
+	Icon = "rbxassetid://7733920226",
 	PremiumOnly = false
 })
 
