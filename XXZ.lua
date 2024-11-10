@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心10.8"
+LBL.Text = "XK脚本中心10.7"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -35,7 +35,7 @@ local function HeartbeatUpdate()
 	FrameUpdateTable[1] = LastIteration
 	local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
 	CurrentFPS = CurrentFPS - CurrentFPS % 1
-	FpsLabel.Text = ("XK"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
+	FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
 end
 
 OrionLib:MakeNotification({
@@ -136,8 +136,9 @@ sound.SoundId = "rbxassetid://6729922069"
 sound:Play()
 
 WSBTab:AddParagraph("当前版本","V10.7正式版11月10日更新")
-WSBTab:AddParagraph("测试版","更新服务器与ID")
-WSBTab:AddParagraph("请等待","V10.7正式版更新")
+WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇")
+WSBTab:AddParagraph("正式版版","更新服务器与ID")
+WSBTab:AddParagraph("通知","V10.7正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
