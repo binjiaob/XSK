@@ -12146,7 +12146,7 @@ Tab:AddButton({
 Tab:AddButton({
   Name = "自动倒立身体",
   Callback = function ()
-    if ATDL then local part = Instance.new('Part', Workspace) part.Size = Vector3.new(1, 1, 1) part.Position = Vector3.new(0, 100000, 133.15) part.Anchored = true part.CanCollide = false while ATDL do wait() game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = part.CFrame + Vector3.new(0, 50, 0) for _, tool in ipairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do if tool:IsA("Tool") and tool.Name == "Handstands" then tool.Parent = game:GetService("Players").LocalPlayer.Character end end game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep") end part:Destroy() end
+    自动倒立身体if ATDL then local part = Instance.new('Part', Workspace) part.Size = Vector3.new(1, 1, 1) part.Position = Vector3.new(0, 100000, 133.15) part.Anchored = true part.CanCollide = false while ATDL do wait() game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = part.CFrame + Vector3.new(0, 50, 0) for _, tool in ipairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do if tool:IsA("Tool") and tool.Name == "Handstands" then tool.Parent = game:GetService("Players").LocalPlayer.Character end end game:GetService("Players").LocalPlayer.muscleEvent:FireServer("rep") end part:Destroy() end
   end
 })
 Tab:AddButton({
@@ -12918,7 +12918,6 @@ Tab:AddButton({
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-39, 10, 1838)
   end
 })
-
 Tab:AddButton({
   Name = "抽奖",
   Callback = function ()
