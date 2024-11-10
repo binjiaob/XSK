@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心10.6【正式版】"
+LBL.Text = "XK脚本中心10.8"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -113,7 +113,7 @@ wait(2)
 local GameName = "XK脚本中心 V3 丨 Load"
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.6", IntroIcon = "rbxassetid://117494350103589",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.7", IntroIcon = "rbxassetid://117494350103589",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
 
 local WSBTab = Window:MakeTab({
 	Name = "关于",
@@ -135,9 +135,9 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 sound.SoundId = "rbxassetid://6729922069"
 sound:Play()
 
-WSBTab:AddParagraph("当前版本","V10.6正式版11月9日更新")
+WSBTab:AddParagraph("当前版本","V10.7正式版11月10日更新")
 WSBTab:AddParagraph("测试版","更新服务器与ID")
-WSBTab:AddParagraph("请等待","V10.6正式版更新")
+WSBTab:AddParagraph("请等待","V10.7正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -2217,6 +2217,62 @@ Tab:AddButton({
 	Name = "C00lgui",
 	Callback = function()
      loadstring(game:GetObjects("rbxassetid://8127297852")[1].Source)()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "操人脚本",
+	Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/UWU/main/AHAJAJAKAK/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A.LUA", true))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "香蕉枪",
+	Callback = function()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "超长坤巴",
+	Callback = function()
+     loadstring(game:HttpGet("https://pastebin.com/raw/ESWSFND7", true))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "变怪物",
+	Callback = function()
+     loadstring(game:HttpGetAsync("https://pastebin.com/raw/jfryBKds"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "鼠标",
+	Callback = function()
+     loadstring(game:HttpGet(('https://pastefy.ga/V75mqzaz/raw'),true))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "复仇者",
+	Callback = function()
+     loadstring(game:HttpGet(('https://pastefy.ga/iGyVaTvs/raw'),true))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "头",
+	Callback = function()
+     loadstring(game:HttpGet("https://pastebin.com/raw/BK4Q0DfU"))()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "大长腿",
+	Callback = function()
+     loadstring(game:HttpGet('https://gist.githubusercontent.com/1BlueCat/7291747e9f093555573e027621f08d6e/raw/23b48f2463942befe19d81aa8a06e3222996242c/FE%2520Da%2520Feets'))()
   	end    
 })
 
@@ -8631,26 +8687,26 @@ local Tab= Window:MakeTab({
  })
  
  local AutoFarmsTab = Window:MakeTab({
-	Name = "自动农场",
+	Name = "极速传奇-自动农场",
 	Icon = "rbxassetid://6015897843",
 	PremiumOnly = false
 })
 
 local CrystalsTab = Window:MakeTab({
-	Name = "晶体",
-	Icon = "rbxassetid://6015897843",
+	Name = "极速传奇-晶体",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
 local TeleportTab = Window:MakeTab({
-	Name = "传送点",
-	Icon = "rbxassetid://6015897843",
+	Name = "极速传奇-传送",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
 local SettingsTab = Window:MakeTab({
-	Name = "主要的",
-	Icon = "rbxassetid://2708891598",
+	Name = "极速传奇-主要的",
+	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
@@ -9076,20 +9132,6 @@ TeleportTab:AddButton({
 	Name = "草原赛跑(城市)",
 	Callback = function()
       	game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1687.65, 1.007, -5943.91))
-	end    
-})
-
-TeleportTab:AddButton({
-	Name = "星程(太空)",
-	Callback = function()
-      	game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-4366.38, 42.98, -14036.68))
-	end    
-})
-
-TeleportTab:AddButton({
-	Name = "高速公路比赛(沙漠)",
-	Callback = function()
-      	game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2053.67, 71.93, 17943.08))
 	end    
 })
 
