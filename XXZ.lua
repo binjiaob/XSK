@@ -41,7 +41,7 @@ end
 OrionLib:MakeNotification({
                     Name = "XK 脚本中心",
                     Content = "脚本中心正在加载",
-                    Time = 1
+                    Time = 2
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -49,11 +49,21 @@ sound.SoundId = "rbxassetid://4590662766"
 sound:Play()
 
 wait(1)
+OrionLib:MakeNotification({
+                    Name = "更新内容"..game.PlaceId,
+                    Content = "nico nextbots怪物透视之类",
+                    Time = 2
+                })
+                
+    local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://4590662766"
+sound:Play()
+wait(1)
 
 OrionLib:MakeNotification({
                     Name = "你的注入器："..identifyexecutor(),
                     Content = "脚本中心",
-                    Time = 1
+                    Time = 2
                 })
                 
                 local sound = Instance.new("Sound", workspace)
@@ -65,7 +75,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "用户名："..game.Players.LocalPlayer.Character.Name,
                     Content = "XK脚本中心",
-                    Time = 1
+                    Time = 2
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -77,7 +87,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "服务器ID："..game.PlaceId,
                     Content = "XK脚本中心",
-                    Time = 1
+                    Time = 2
                 })
                 
     local sound = Instance.new("Sound", workspace)
@@ -95,7 +105,7 @@ print("索引开启反挂机")
 OrionLib:MakeNotification({
                     Name = "反外挂已开启",
                     Content = "等待2秒",
-                    Time = 1
+                    Time = 2
                 })           
 Start = tick()
 
@@ -135,7 +145,7 @@ local WSBTab = Window:MakeTab({
 })
 
 WSBTab:AddParagraph("当前版本","V10.8正式版11月10日更新")
-WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州")
+WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-nico nextbots")
 WSBTab:AddParagraph("正式版版","更新服务器与ID")
 WSBTab:AddParagraph("通知","V10.8正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
@@ -11942,3 +11952,196 @@ epoh3.CFrame = epoh1
 end
 end
 OrionLib:Init()
+
+local NicoTab = Window:MakeTab({
+	Name = "nico s Nextbot",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+function esp()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").bots:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,30,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(10, 25, 30)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+NicoTab:AddButton({ 
+   Name = "透视机器人", 
+   Callback = function () 
+     esp()
+   end 
+ })
+
+NicoTab: AddButton({
+	Name = "透视玩家名字",
+	Callback = function(value)
+		print(value)
+local c = workspace.CurrentCamera
+local ps = game:GetService("Players")
+local lp = ps.LocalPlayer
+local rs = game:GetService("RunService")
+
+local function esp(p,cr)
+	local h = cr:WaitForChild("Humanoid")
+	local hrp = cr:WaitForChild("Head")
+
+	local text = Drawing.new("Text")
+	text.Visible = false
+	text.Center = true
+	text.Outline = false 
+	text.Font = 3
+	text.Size = 16.16
+	text.Color = Color3.new(170,170,170)
+
+	local conection
+	local conection2
+	local conection3
+
+	local function dc()
+		text.Visible = false
+		text:Remove()
+		if conection then
+			conection:Disconnect()
+			conection = nil 
+		end
+		if conection2 then
+			conection2:Disconnect()
+			conection2 = nil 
+		end
+		if conection3 then
+			conection3:Disconnect()
+			conection3 = nil 
+		end
+	end
+
+	conection2 = cr.AncestryChanged:Connect(function(_,parent)
+		if not parent then
+			dc()
+		end
+	end)
+
+	conection3 = h.HealthChanged:Connect(function(v)
+		if (v<=0) or (h:GetState() == Enum.HumanoidStateType.Dead) then
+			dc()
+		end
+	end)
+
+	conection = rs.RenderStepped:Connect(function()
+		local hrp_pos,hrp_onscreen = c:WorldToViewportPoint(hrp.Position)
+		if hrp_onscreen then
+			text.Position = Vector2.new(hrp_pos.X, hrp_pos.Y - 27)
+			text.Text = "[ "..p.Name.." ]"
+			text.Visible = true
+		else
+			text.Visible = false
+		end
+	end)
+end
+
+local function p_added(p)
+	if p.Character then
+		esp(p,p.Character)
+	end
+	p.CharacterAdded:Connect(function(cr)
+		esp(p,cr)
+	end)
+end
+
+for i,p in next, ps:GetPlayers() do 
+	if p ~= lp then
+		p_added(p)
+	end
+end
+
+ps.PlayerAdded:Connect(p_added)
+end
+})
+
+Tab:AddButton({
+	Name = "适合速度",
+	Callback = function()
+     getgenv().TPWalk = s
+local hb = game:GetService("RunService").Heartbeat
+local player = game:GetService("Players")
+local lplr = player.LocalPlayer
+local chr = lplr.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+while getgenv().TPWalk and hb:Wait() and chr and hum and hum.Parent do
+  if hum.MoveDirection.Magnitude > 0 then
+    if getgenv().TPSpeed and isNumber(getgenv().TPSpeed) then
+      chr:TranslateBy(hum.MoveDirection * tonumber(getgenv().TPSpeed))
+    else
+      chr:TranslateBy(hum.MoveDirection)
+    end
+  end
+end
+  	end    
+})
+
+function teleport1()
+  local daddy = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local griddy = CFrame.new(Vector3.new(-70, 35, 362))
+  daddy.CFrame = griddy
+end
+
+function teleport2()
+  local minions = game.Players.LocalPlayer.Character.HumanoidRootPart
+  local riseofgru = CFrame.new(Vector3.new(-96, 19, -18))
+  minions.CFrame = riseofgru
+end
+
+Tab:AddButton({
+	Name = "安全点1",
+	Callback = function()
+     teleport2()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "安全点2",
+	Callback = function()
+     teleport1()
+  	end    
+})
+
+Tab:AddButton({
+	Name = "打开所有门",
+	Callback = function()
+     while task.wait(0.5) do
+   for i,v in next, workspace.doors:GetChildren() do
+       game.ReplicatedStorage.events.door:FireServer(v)
+   end
+end
+  	end    
+})
+
+Tab:AddButton({
+	Name = "移除跳脸",
+	Callback = function()
+     getgenv().InfJ = s
+    game:GetService("UserInputService").JumpRequest:connect(function()
+        if InfJ == true then
+            game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+        end
+    end)
+  	end    
+})
