@@ -110,7 +110,7 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
  })
 
 game:GetService("StarterGui"):SetCore("SendNotification",{ 
-     Title = "XK脚本中心【正式版V3】", 
+     Title = "XK脚本中心【正式版V2】", 
      Text = "加载成功", 
      Icon = "rbxassetid://117494350103589", 
      Duration = 60, 
@@ -124,10 +124,9 @@ sound.SoundId = "rbxassetid://6729922069"
 sound:Play()
 
 wait(2)
-local GameName = "XK脚本中心 V3 丨 Load"
-
+Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.8", IntroIcon = "rbxassetid://117494350103589",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.8",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local WSBTab = Window:MakeTab({
 	Name = "关于",
