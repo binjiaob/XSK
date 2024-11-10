@@ -15,7 +15,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心10.7"
+LBL.Text = "XK脚本中心10.8"
 LBL.TextColor3 = Color3.new(0, 85, 255)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -109,18 +109,6 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
      Button2 = "关闭" 
  })
 
-wait(2)
-local GameName = "XK脚本中心 V3 丨 Load"
-
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.7", IntroIcon = "rbxassetid://117494350103589",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
-
-local WSBTab = Window:MakeTab({
-	Name = "关于",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
 game:GetService("StarterGui"):SetCore("SendNotification",{ 
      Title = "XK脚本中心【正式版V3】", 
      Text = "加载成功", 
@@ -135,10 +123,22 @@ game:GetService("StarterGui"):SetCore("SendNotification",{
 sound.SoundId = "rbxassetid://6729922069"
 sound:Play()
 
-WSBTab:AddParagraph("当前版本","V10.7正式版11月10日更新")
-WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇")
+wait(2)
+local GameName = "XK脚本中心 V3 丨 Load"
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V10.8", IntroIcon = "rbxassetid://117494350103589",Name = GameName, HidePremium = false, SaveConfig = true, ConfigFolder = "Tutorial"})
+
+local WSBTab = Window:MakeTab({
+	Name = "关于",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+WSBTab:AddParagraph("当前版本","V10.8正式版11月10日更新")
+WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州")
 WSBTab:AddParagraph("正式版版","更新服务器与ID")
-WSBTab:AddParagraph("通知","V10.7正式版更新")
+WSBTab:AddParagraph("通知","V10.8正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
