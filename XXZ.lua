@@ -10852,7 +10852,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/getallbadge
 
 local HOME = Window:MakeTab({
     Name = "俄亥俄州-玩家",
-    Icon = "rbxassetid://7734068321",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
@@ -10949,7 +10949,7 @@ HOME:AddTextbox({
 
 local Tab = Window:MakeTab({
     Name = "俄亥俄州-瞬移功能",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
@@ -11088,7 +11088,7 @@ end
 
 local Tab = Window:MakeTab({
     Name = "俄亥俄州-绘制物品",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
@@ -11209,7 +11209,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "俄亥俄州-刷新提示",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
@@ -11345,7 +11345,7 @@ end
 
 local Tab = Window:MakeTab({
     Name = "俄亥俄州-瞬移功能",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
@@ -11558,7 +11558,7 @@ Tab:AddButton({
 
 local Tab = Window:MakeTab({
     Name = "俄亥俄州-自动功能",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
@@ -11760,7 +11760,7 @@ end
 
 local Tab = Window:MakeTab({
     Name = "俄亥俄州-其他功能",
-    Icon = "rbxassetid://7733779610",
+    Icon = "rbxassetid://7743872365",
     PremiumOnly = false
 })
 
