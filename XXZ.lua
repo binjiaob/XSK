@@ -12918,18 +12918,6 @@ Tab:AddButton({
   end
 })
 
-local noCD = false
-local br = false
-local punchCooldown = 1
-
-local function updatePunch()
-    local player = game:GetService("Players").LocalPlayer
-    local punchValue = player.Backpack.Punch:FindFirstChildOfClass("NumberValue")
-    if punchValue then
-        punchValue.Value = noCD and 0 or punchCooldown
-    end
-end
-
 Tab:AddButton({
   Name = "挥拳没有CD",
   Callback = function ()
