@@ -4182,42 +4182,6 @@ NVTab:AddButton({
 })
 
 local Tab = Window:MakeTab({
-	Name = "巴掌模拟器",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
-local Section = Tab:AddSection({	Name = "Kykyryz0 hub只支持忍者注入器"})
-
-Tab:AddButton({
-  Name = "Kykyryz0 HUB",
-  Callback = function ()
-    
-  end
-})
-
-Tab:AddButton({
-  Name = "脚本1",
-  Callback = function ()
-    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Unknownkellymc1/Unknownscripts/main/slap-battles')))()
-  end
-})
-
-Tab:AddButton({
-  Name = "脚本2",
-  Callback = function ()
-    loadstring(game:HttpGet(("https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Slap%20Battles")))()
-  end
-})
-
-Tab:AddButton({
-  Name = "脚本3",
-  Callback = function ()
-    loadstring(game:HttpGet("https://lkhub.net/s/loader.lua"))()
-  end
-})
-
-local Tab = Window:MakeTab({
 	Name = "伐木大亨",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
@@ -9235,4 +9199,1652 @@ SettingsTab:AddButton({
     }
         loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()	
 	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "巴掌模拟器",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({	Name = "Kykyryz0 hub只支持忍者注入器"})
+
+Tab:AddButton({
+  Name = "Kykyryz0 HUB",
+  Callback = function ()
+    
+  end
+})
+
+Tab:AddButton({
+  Name = "脚本1",
+  Callback = function ()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Unknownkellymc1/Unknownscripts/main/slap-battles')))()
+  end
+})
+
+Tab:AddButton({
+  Name = "脚本2",
+  Callback = function ()
+    loadstring(game:HttpGet(("https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Slap%20Battles")))()
+  end
+})
+
+Tab:AddButton({
+  Name = "脚本3",
+  Callback = function ()
+    loadstring(game:HttpGet("https://lkhub.net/s/loader.lua"))()
+  end
+})
+
+local Badge = Window:MakeTab({
+	Name = "巴掌模拟器-非自动",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+		
+local Badge2 = Window:MakeTab({
+	Name = "巴掌模拟器-自动获取",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge4 = Window:MakeTab({
+	Name = "巴掌模拟器-农场区",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge3 = Window:MakeTab({
+	Name = "巴掌模拟器-传送功能",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Teleport = Window:MakeTab({
+	Name = "巴掌模拟器-传送到地点",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge5 = Window:MakeTab({
+	Name = "巴掌模拟器-其他功能",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge6 = Window:MakeTab({
+	Name = "巴掌模拟器-自动农场",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge7 = Window:MakeTab({
+	Name = "巴掌模拟器-获取",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local TeleportToGames1 = Teleport:AddSection({
+	Name = "常规游戏模式"
+})
+
+local TeleportToGames = Teleport:AddSection({
+	Name = "用于获取手套的地方"
+})
+
+local TeleportToGames2 = Teleport:AddSection({
+	Name = "限时游戏模式"
+})
+
+local TeleportToGames3 = Teleport:AddSection({
+	Name = "其他游戏模式"
+})
+
+TeleportToGames1:AddButton({
+	Name = "巴掌模拟器",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(6403373529)
+	 end
+})
+
+TeleportToGames1:AddButton({
+	Name = "巴掌模拟器 - 无一次性手套",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(9015014224)
+	 end
+})
+
+TeleportToGames1:AddButton({
+	Name = "开启连胜",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(11520107397)
+	 end
+})
+
+TeleportToGames1:AddButton({
+	Name = "皇家其余",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(9426795465)
+	 end
+})
+
+TeleportToGames1:AddButton({
+	Name = "皇家耳光",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(9431156611)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "自动躲避迷宫",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(11828384869)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "冰试验",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(17290438723)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "零区(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(14422118326)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "零区(第二种方法)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        game:GetService("RunService").RenderStepped:Connect(function()
+            game:GetService("GuiService"):ClearError()
+game.CoreGui:WaitForChild("RobloxLoadingGUI"):Destroy()
+        end)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/TheNullZone/main/main.lua'))()
+	]])
+end	
+game:GetService("TeleportService"):Teleport(14422118326)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "空区(第三种方法，需要3个工件)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/null/main/main.lua'))()
+	]])
+end	
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.RepressedMemories.SimonSaysGate.Portal.CFrame
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "BER",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(7234087065)
+	 end
+})
+
+
+TeleportToGames:AddButton({
+	Name = "应用程序(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(16034567693)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "应用程序(第二种方法)",
+	Callback = function()
+			 if game:GetService("ReplicatedStorage").Assets.Retro then
+			 game.ReplicatedStorage.Assets.Retro.Parent = workspace
+			 wait(1.5)
+			 fireclickdetector(workspace.Retro.Map.RetroObbyMap:GetChildren()[5].StaffApp.Button.ClickDetector)
+			 else
+			 fireclickdetector(workspace.Retro.Map.RetroObbyMap:GetChildren()[5].StaffApp.Button.ClickDetector)
+			 end
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "指明所在位置(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(18550498098)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "指明所在的位置(第二种方法)",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(17944.505859375, -130.1599884033203, -3562.9736328125)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "农田和未知世界(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(15228348051)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "农田和未知世界(第二种方法)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        game:GetService("RunService").RenderStepped:Connect(function()
+            game:GetService("GuiService"):ClearError()
+game.CoreGui:WaitForChild("RobloxLoadingGUI"):Destroy()
+        end)
+	]])
+end
+game:GetService("TeleportService"):Teleport(15228348051)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "黑暗领域(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(13833961666)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "黑暗领域(第二种方法)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        game:GetService("RunService").RenderStepped:Connect(function()
+            game:GetService("GuiService"):ClearError()
+game.CoreGui:WaitForChild("RobloxLoadingGUI"):Destroy()
+        end)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/TheDarkRealm/main/main.lua'))()
+	]])
+end
+game:GetService("TeleportService"):Teleport(13833961666)
+	 end
+})
+
+TeleportToGames:AddButton({
+	Name = "自动迷宫",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(74169485398268)
+	 end
+})
+
+TeleportToGames2:AddButton({
+	Name = "圣诞节活动",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(15507333474)
+	 end
+})
+
+TeleportToGames2:AddButton({
+	Name = "巴掌联赛",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(18698003301)
+	 end
+})
+
+TeleportToGames3:AddButton({
+	Name = "巴掌测试服务器(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(9020359053)
+	 end
+})
+
+TeleportToGames3:AddButton({
+	Name = "巴掌测试服务器(第二种方法)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        game:GetService("RunService").RenderStepped:Connect(function()
+            game:GetService("GuiService"):ClearError()
+game.CoreGui:WaitForChild("RobloxLoadingGUI"):Destroy()
+        end)
+	]])
+end
+game:GetService("TeleportService"):Teleport(9020359053)
+	 end
+})
+
+TeleportToGames3:AddButton({
+	Name = "巴掌模拟器测试服务器(第一种方法)",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(9412268818)
+	 end
+})
+
+TeleportToGames3:AddButton({
+	Name = "巴掌模拟器测试服务器(第二种方法)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        game:GetService("RunService").RenderStepped:Connect(function()
+            game:GetService("GuiService"):ClearError()
+game.CoreGui:WaitForChild("RobloxLoadingGUI"):Destroy()
+        end)
+	]])
+end
+game:GetService("TeleportService"):Teleport(9412268818)
+	 end
+})
+
+TeleportToGames3:AddButton({
+	Name = "巴西的",
+	Callback = function()
+			 game:GetService("TeleportService"):Teleport(7234087065)
+	 end
+})
+
+Badge5:AddButton({
+	Name = "获取泰坦手套",
+	Callback = function()
+for i, v in pairs(game:GetService("ReplicatedStorage")._NETWORK:GetChildren()) do
+	    -- Check if the name contains the character '{'
+	    if v.Name:find("{") then
+	        local args = {
+	            [1] = "Titan"
+	        }
+	
+	        -- Check if v is a RemoteEvent and can FireServer
+	        if v:IsA("RemoteEvent") then
+	            v:FireServer(unpack(args))
+	        elseif v:IsA("RemoteFunction") then
+	            -- If it's a RemoteFunction, use InvokeServer
+	            local result = v:InvokeServer(unpack(args))
+	            print("Result from InvokeServer:", result)  -- Optional: Print the result
+	        else
+	            print("v is neither a RemoteEvent nor a RemoteFunction.")
+	        end
+	    end
+	end
+	 end
+})
+
+Badge2:AddToggle({
+	Name = "自动-存活",
+	Default = false,
+	Callback = function(Value)
+	   _G.AutoTpPlate = Value
+if game.Players.LocalPlayer.Character:FindFirstChild("entered") and #game.Players:GetPlayers() >= 7 then
+while _G.AutoTpPlate do
+if game.Players.LocalPlayer.Character:FindFirstChild("entered") and #game.Players:GetPlayers() >= 7 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.Plate.CFrame * CFrame.new(0,2,0)
+end
+task.wait()
+end
+elseif _G.AutoTpPlate == true then
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "You need to enter arena, or there's not enough players" ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+wait(0.05)
+AutoTycoon:Set(false)
+end
+	end    
+})
+
+Badge2:AddButton({
+	Name = "激活隐形{自动获得大亨，需要666巴掌}",
+	Default = false,
+	Callback = function(Value)
+	   fireclickdetector(workspace.Lobby["Ghost"].ClickDetector)
+			wait(0.1)
+			 game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
+	end    
+})
+
+Badge7:AddButton({
+	Name = "获得闹鬼手套界面{在僵尸游戏中使用}",
+	Callback = function()
+			 loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/GetPoltergeist/main/main.lua'))()
+	 end
+})
+
+Badge7:AddButton({
+	Name = "触摸Bob Plushie(在地狱边缘使用)",
+	Callback = function()
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.RepressedMemories._ugcQuestObjectBobPlushie.Handle.CFrame
+wait(1)
+fireclickdetector(workspace.RepressedMemories._ugcQuestObjectBobPlushie.ClickDetector)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "触摸炼金术士罩(用于躲避迷宫)",
+	Callback = function()
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace._ugcQuestObjectEludeHat.Handle.CFrame
+wait(1)
+fireclickdetector(workspace._ugcQuestObjectEludeHat.ClickDetector)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "触摸Rob Plushie(在零区使用)",
+	Callback = function()
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace._ugcQuestObjectBobPlushie.Handle.CFrame
+wait(1)
+fireclickdetector(workspace._ugcQuestObjectBobPlushie.ClickDetector)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得空手套(在空区使用)",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(5459.34521484375, -189.00048828125, 1845.4388427734375)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得修补手套(在零地带使用)",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4845.7861328125, -214.0004119873047, 799.2669067382812)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得修补手套(在零地带使用)",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4845.7861328125, -214.0004119873047, 799.2669067382812)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "获得绑定徽章[在绑定迷宫中使用，使用FCD ]",
+	Callback = function()
+			 fireclickdetector(workspace.Orb.ClickDetector)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "Teleport To Bind Badge [ Use In Binded Maze, Use If FCD Method Doesn't Work ]",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-154, 8, -171)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "自动 获取计数器+躲避{在躲避迷宫中使用}",
+	Callback = function()
+Time = 121
+fireclickdetector(game.Workspace.CounterLever.ClickDetector)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,10000,0)
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+for i = 1,Time do
+Time = Time - 1
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Wait [ "..Time.." ] seconds to receive.",Icon = "rbxassetid://7733658504",Duration = 1})
+wait(1)
+end
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+wait(0.7)
+firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 0)
+firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 1)
+for i,v in pairs(workspace.Maze:GetDescendants()) do
+if v:IsA("ClickDetector") then
+fireclickdetector(v)
+end
+end
+  	end    
+})
+
+Badge7:AddButton({
+	Name = "传送获得躲避手套{在躲避迷宫中使用}",
+	Callback = function()
+			 firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 0)
+			 firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 1)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得炼金术士兜帽神器{在躲避迷宫中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-53.19437789916992, 3.1999995708465576, -37.72947311401367)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得第一个神器{在躲避迷宫中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(223.61134338378906, 3.200000047683716, 83.69230651855469)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得第二个神器{在躲避迷宫中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-199.0915985107422, 3.200000047683716, -129.43972778320312)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得第三件神器{在躲避迷宫中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(84.27069854736328, 3.200000047683716, -207.86036682128906)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送获得第四个神器{在躲避迷宫中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(111.54388427734375, 3.200000047683716, 194.86898803710938)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "自动冻伤{用于冰上试验}",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-554, 177, 56)
+wait(0.7)
+for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
+            if v.ClassName == "ProximityPrompt" then
+                fireproximityprompt(v)
+            end
+        end
+wait(1.5)
+game:GetService("TeleportService"):Teleport(6403373529)
+  	end 
+})
+
+Badge7:AddButton({
+	Name = "瞬间移动被冻伤(在冰上试验中使用)",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-552.3557739257812, 177.17774963378906, 56.51939010620117)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送进入最终房间{在员工应用程序中使用}",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(502, 76, 59)
+task.wait(4)
+if getconnections then
+for i,v in next, getconnections(game.Players.LocalPlayer.Idled) do
+v:Disable() 
+end
+end
+OrionLib:MakeNotification({Name = "Error",Content = "Turned on Anti Afk",Image = "rbxassetid://7733658504",Time = 3})
+OrionLib:MakeNotification({Name = "Error",Content = "You have to wait the 1 hour to get",Image = "rbxassetid://7733658504",Time = 5})
+  	end    
+})
+
+Badge7:AddButton({
+	Name = "传送到小丑{在Barzil中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(189.0246124267578, 2.999999761581421, 222.7089385986328)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送到Oog {在Barzil中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-232.6268768310547, 2.999999761581421, 197.9968719482422)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送到关键地方{在巴西使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(247.56419372558594, -265.0000305175781, -370.77752685546875)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送到莫蒂斯办公室{在巴兹尔使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(249.06558227539062, -60.000003814697266, -358.0025329589844)
+	 end
+})
+
+Badge7:AddButton({
+	Name = "传送到拳击手套{在巴兹尔使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4231.26123046875, 3505.86376953125, 270.4519958496094)
+	 end
+})
+
+Badge6:AddButton({
+	Name = "复制Serverhop Slapples Farming {放入AUTOEXEC }",
+	Callback = function()
+			 setclipboard(tostring("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/slapfarming/main/main.lua'))()"))
+			 OrionLib:MakeNotification({Name = "Copied!",Content = "Copied script to clipboard",Image = "rbxassetid://7733658504",Time = 5})
+	 end
+})
+
+Badge7:AddButton({
+	Name = "获取风扇{在Barzil中使用}",
+	Callback = function()
+wait(1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "script by nexer" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(247.56419372558594, -265.0000305175781, -370.77752685546875)
+wait(0.5)
+game:GetService("ReplicatedStorage").RemoteEvents.SuitUpClown:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.KeyQuest:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.KeyAcquired:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.GOHOME:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.KeyBadgeReward:FireServer()
+wait(0.1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "nice job",Text = "you got fan :]" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+	 end
+})
+
+Badge7:AddButton({
+	Name = "获取Boxer {在Barzil中使用}",
+	Callback = function()
+wait(0.5)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "script by nexer" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4231.26123046875, 3505.86376953125, 270.4519958496094)
+wait(0.5)
+fireclickdetector(workspace.BoxingGloves.ClickDetector)
+wait(3)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "nice job",Text = "you got boxing gloves :]" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+	 end
+})
+
+Badge7:AddButton({
+	Name = "获取Fan + Boxer {在Barzil中使用}",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "script by nexer" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(247.56419372558594, -265.0000305175781, -370.77752685546875)
+wait(0.5)
+game:GetService("ReplicatedStorage").RemoteEvents.SuitUpClown:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.KeyQuest:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.KeyAcquired:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.GOHOME:FireServer()
+wait(0.1)
+game:GetService("ReplicatedStorage").RemoteEvents.KeyBadgeReward:FireServer()
+wait(0.1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "nice job",Text = "you got fan :]" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4231.26123046875, 3505.86376953125, 270.4519958496094)
+wait(0.5)
+fireclickdetector(workspace.BoxingGloves.ClickDetector)
+wait(1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "nice job",Text = "you got boxing gloves :]" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+	 end
+})
+
+Badge6:AddButton({
+	Name = " 复制Serverhop Boxer Farming {放入AUTOEXEC}",
+	Callback = function()
+			 setclipboard(tostring("GhostInvis = true AdminInvis = false SlappleFarm = true CandyFarm = false loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/BoxerFarmUpgraded/main/main.lua'))()"))
+			 OrionLib:MakeNotification({Name = "Copied!",Content = "Copied script to clipboard",Image = "rbxassetid://7733658504",Time = 5})
+	 end
+})
+
+Badge6:AddButton({
+	Name = "复制Serverhop Candy Farming {放入AUTOEXEC }",
+	Callback = function()
+			 setclipboard(tostring("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/CandyFarm/main/main.lua'))()"))
+			 OrionLib:MakeNotification({Name = "Copied!",Content = "Copied script to clipboard",Image = "rbxassetid://7733658504",Time = 5})
+	 end
+})
+
+Badge6:AddButton({
+	Name = "复制服务器hop所有球体+ Slapples +工具箱耕作{放入AUTOEXEC }",
+	Callback = function()
+			 setclipboard(tostring("serverhop = true loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autofarm-serverhop/main/main.lua'))()"))
+			 OrionLib:MakeNotification({Name = "Copied!",Content = "Copied script to clipboard",Image = "rbxassetid://7733658504",Time = 5})
+	 end
+})
+
+Badge6:AddButton({
+	Name = "复制Serverhop墓碑查找器{放入AUTOEXEC }",
+	Callback = function()
+			 setclipboard(tostring("loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/GravestoneFinder/main/main.lua'))()"))
+			 OrionLib:MakeNotification({Name = "Copied!",Content = "Copied script to clipboard",Image = "rbxassetid://7733658504",Time = 5})
+	 end
+})
+
+Badge3:AddButton({
+	Name = "传送到底板",
+	Callback = function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+	end    
+})
+
+Badge3:AddButton({
+	Name = "大厅",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-800,328,-2.5)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "竞技场",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Origo.CFrame * CFrame.new(0,-5,0)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "默认竞技场",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(120,360,-3)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "锦标赛",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Battlearena.Arena.CFrame * CFrame.new(0,10,0)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "岛屿1",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-211.210846, -5.27827597, 4.13719559, -0.0225322824, 1.83683113e-08, -0.999746144, -1.83560154e-08, 1, 1.87866842e-08, 0.999746144, 1.87746618e-08, -0.0225322824)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "岛屿2",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-8.17191315, -5.14452887, -205.249741, -0.98216176, -3.48867246e-09, -0.188037917, -4.19987778e-09, 1, 3.38382322e-09, 0.188037917, 4.11319823e-09, -0.98216176)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "岛屿3",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6.66747713, -5.06731462, 213.575378, 0.945777893, 2.52095178e-10, 0.324814111, -3.7823856e-08, 1, 1.09357536e-07, -0.324814111, -1.15713661e-07, 0.945777893)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "莫埃岛",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(215, -15.5, 0.5)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "斯拉普岛",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Arena.island5.Union.CFrame * CFrame.new(0,3.25,0)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "盘子",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Arena.Plate.CFrame
+	 end
+})
+
+Badge3:AddButton({
+	Name = "坎农岛",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Arena.CannonIsland.Cannon.Base.CFrame * CFrame.new(0,0,35)
+	 end
+})
+
+Badge3:AddButton({
+	Name = "死亡魔方",
+	Callback = function()
+			 if game.Workspace:FindFirstChild("the cube of death(i heard it kills)", 1) then
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Arena.CubeOfDeathArea["the cube of death(i heard it kills)"].Part.CFrame * CFrame.new(0,5,0)
+			 end
+	 end
+})
+
+Badge3:AddButton({
+	Name = "巴西门户网站",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Lobby.brazil.portal.CFrame
+	 end
+})
+
+Badge:AddButton({
+	Name = "为烟花准备蛋糕粉",
+	Callback = function()
+			 game:GetService("ReplicatedStorage").Firework:InvokeServer()
+			 game:GetService("ReplicatedStorage").AlchemistEvent:FireServer("AddItem","Cake Mix")
+			 game:GetService("ReplicatedStorage").AlchemistEvent:FireServer("EquipItem", "Cake Mix")
+	 end
+})		
+
+Badge:AddButton({
+	Name = "召回备忘单界面|传送到地狱时执行",
+	Callback = function()
+			 loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/recallcheatsheet/main/main.lua'))()
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取板",
+	Callback = function()
+			 if game.Players.LocalPlayer.leaderstats.Glove.Value == "Fort" then
+			 OGL = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3000, 97, 4)
+			 wait(0.2)
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+			 wait(0.3)
+			 game:GetService("ReplicatedStorage").Fortlol:FireServer()
+			 wait(3.5)
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+			 wait(0.1)
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3000, 106, -6)
+			 wait(0.5)
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = OGL
+			 else
+			 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Equip Fort First." ,Duration = 10, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+			 end
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取手套{在竞技场使用}",
+	Callback = function()
+			 if game.Players.LocalPlayer.Character:FindFirstChild("entered") then
+			 repeat task.wait()
+			 --game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-19.483200073242188, -5.144442081451416, -207.45977783203125)
+			 game:GetService("ReplicatedStorage").DigEvent:FireServer({["index"] = 2,["cf"] = CFrame.new(42.7222366, -6.17449856, 91.5175781, -0.414533257, 1.72594355e-05, -0.91003418, -5.57037238e-05, 1, 4.4339522e-05, 0.91003418, 6.90724992e-05, -0.414533257)})
+			 until game.Workspace:FindFirstChild("TreasureChestFolder") ~= nil and game.Workspace.TreasureChestFolder:FindFirstChild("TreasureChest") ~= nil
+			 wait(1)
+			 game.Workspace.TreasureChestFolder.TreasureChest.OpenRemote:FireServer()
+			 wait(0.9)
+			 game.ReplicatedStorage.HumanoidDied:FireServer(game.Players.LocalPlayer.Character,false)
+			 wait(3.75)
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.BountyHunterRoom.BountyHunterBooth._configPart.CFrame * CFrame.new(-5,0,0)
+			 else
+			 OrionLib:MakeNotification({Name = "Error",Content = "Enter Arena First.",Image = "rbxassetid://7733658504",Time = 5})
+			 end   
+	 end
+})		
+
+Badge2:AddButton({
+	Name = "自动获取[编辑]",
+	Callback = function()
+			 if game.Players.LocalPlayer.leaderstats.Slaps.Value >= 5000 then
+			 Door = 0
+			 for i = 1, 10 do
+			 Door = Door + 1
+			 if game.Players.LocalPlayer.leaderstats.Slaps.Value >= 5000 then
+			 Door = nil
+			 else
+			 firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.PocketDimension.Doors[Door].TouchInterest.Parent, 0)
+			 firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.PocketDimension.Doors[Door].TouchInterest.Parent, 1)
+			 wait(3.75)
+			 end
+			 end
+			 else
+			 OrionLib:MakeNotification({Name = "Error",Content = "You need 5000 slaps.",Image = "rbxassetid://7733658504",Time = 5})
+			 end
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获得混合动力汽车{积分to donjo？ig }",
+	Callback = function()
+			 game:GetService("ReplicatedStorage").GRRRRR:FireServer(true)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取法庭证据",
+	Callback = function()
+			 fireclickdetector(game.Workspace.Lobby.Scene.knofe.ClickDetector)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取孤独的橙色",
+	Callback = function()
+			 fireclickdetector(game.Workspace.Arena.island5.Orange.ClickDetector)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取橡胶鸭子",
+	Callback = function()
+			 fireclickdetector(game.Workspace.Arena["default island"]["Rubber Ducky"].ClickDetector)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取橡胶鸭子&孤独的橘子&法庭证据",
+	Callback = function()
+			 fireclickdetector(game.Workspace.Arena["default island"]["Rubber Ducky"].ClickDetector)
+			 fireclickdetector(game.Workspace.Arena.island5.Orange.ClickDetector)
+			 fireclickdetector(game.Workspace.Lobby.Scene.knofe.ClickDetector)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取溜冰鞋",
+	Callback = function()
+			 if not game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2906002612987222) then
+			 game:GetService("ReplicatedStorage").IceSkate:FireServer("Freeze")
+			 else
+			 game:GetService("ReplicatedStorage").IceSkate:FireServer("Freeze")
+			 end
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取灯",
+	Callback = function()
+			 if game.Players.LocalPlayer.leaderstats.Glove.Value == "ZZZZZZZ" then
+			 repeat task.wait()
+			 game:GetService("ReplicatedStorage").nightmare:FireServer("LightBroken")
+			 until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 490455814138437)
+			 else
+			 OrionLib:MakeNotification({Name = "Error",Content = "Equip ZZZZZZZ First",Image = "rbxassetid://7733658504",Time = 5})
+			 end
+	 end
+})		
+
+Badge2:AddButton({
+	Name = "自动获取Bob {需要上帝之手，归功于OMO/DonjoSx }",
+	Callback = function()
+			 loadstring(game:HttpGet"https://pastefy.app/7qbY4h0Z/raw")()
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取追溯{在追溯中使用}",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.FinishDoor_Retro.Part.CFrame
+	 end
+})		
+
+Badge2:AddButton({
+	Name = "自动获取巴西徽章",
+	Callback = function()
+			 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Lobby.brazil.portal.CFrame
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取Bob Plushie",
+	Callback = function()
+if game:GetService("ReplicatedStorage").RepressedMemoriesMap then
+game.ReplicatedStorage.RepressedMemoriesMap.Parent = game.Workspace
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.RepressedMemories._ugcQuestObjectBobPlushie.Handle.CFrame
+wait(0.5)
+fireclickdetector(workspace.RepressedMemories._ugcQuestObjectBobPlushie.ClickDetector)
+wait(2)
+game.Workspace.RepressedMemoriesMap.Parent = game.ReplicatedStorage
+else
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.RepressedMemories._ugcQuestObjectBobPlushie.Handle.CFrame
+wait(0.7)
+fireclickdetector(workspace.RepressedMemories._ugcQuestObjectBobPlushie.ClickDetector)
+wait(2)
+game.Workspace.RepressedMemoriesMap.Parent = game.ReplicatedStorage
+end
+	end
+})
+
+Badge2:AddButton({
+	Name = "自动获取炼金术士罩",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "script by nexer" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "OK"})
+wait(1)
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace._ugcQuestObjectEludeHat.Handle.CFrame
+wait(0.5)
+fireclickdetector(workspace._ugcQuestObjectEludeHat.ClickDetector)
+wait(1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Alchemist Hood Acquired" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "yippe"})
+wait(5)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Yo im teleporting you back" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=9649923610&w=150&h=150",Button1 = "pls nooo"})
+wait(3)
+game:GetService("TeleportService"):Teleport(6403373529)
+	]])
+end	
+game:GetService("TeleportService"):Teleport(11828384869)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取Rob Plushie(不工作)",
+	Callback = function()
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        game:GetService("RunService").RenderStepped:Connect(function()
+            game:GetService("GuiService"):ClearError()
+game.CoreGui:WaitForChild("RobloxLoadingGUI"):Destroy()
+        end)
+wait(1)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace._ugcQuestObjectBobPlushie.Handle.CFrame
+wait(1)
+fireclickdetector(workspace._ugcQuestObjectBobPlushie.ClickDetector)
+wait(1)
+game:GetService("TeleportService"):Teleport(6403373529)
+	]])
+end	
+game:GetService("TeleportService"):Teleport(14422118326)
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取巫毒{在大厅使用}",
+	Callback = function()
+if game.Players.LocalPlayer.leaderstats.Glove.Value == "Ghost" and game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then
+game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
+wait(0.2)
+repeat task.wait() until game.Players.LocalPlayer.Character
+if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+repeat task.wait()
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
+until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+end
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+end
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+	 end
+})
+
+
+Badge2:AddButton({
+	Name = "自动获取鱼{在大厅使用}",
+	Callback = function()
+if game.Players.LocalPlayer.leaderstats.Glove.Value == "ZZZZZZZ" and game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then
+repeat task.wait() until game.Players.LocalPlayer.Character
+if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+repeat task.wait()
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
+until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+end
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+wait(0.2)
+game:GetService("ReplicatedStorage").ZZZZZZZSleep:FireServer()
+wait(0.1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+end
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取巫毒+鱼{在大厅使用}",
+	Callback = function()
+if game.Players.LocalPlayer.leaderstats.Glove.Value == "Ghost" and game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then
+game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
+fireclickdetector(workspace.Lobby["ZZZZZZZ"].ClickDetector)
+wait(0.2)
+repeat task.wait() until game.Players.LocalPlayer.Character
+if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+repeat task.wait()
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
+until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+end
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+wait(0.2)
+game:GetService("ReplicatedStorage").ZZZZZZZSleep:FireServer()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+end
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动获取巫毒+鱼+陷阱{在大厅使用}",
+	Callback = function()
+if game.Players.LocalPlayer.leaderstats.Glove.Value == "Ghost" and game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then
+game.ReplicatedStorage.Ghostinvisibilityactivated:FireServer()
+fireclickdetector(workspace.Lobby["ZZZZZZZ"].ClickDetector)
+wait(0.2)
+game:GetService("ReplicatedStorage").ZZZZZZZSleep:FireServer()
+fireclickdetector(workspace.Lobby["Brick"].ClickDetector)
+wait(0.2)
+if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+repeat task.wait()
+game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(workspace.Lobby.Teleport1.CFrame)
+until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+end
+wait(0.35)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+wait(0.2)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+wait(0.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+repeat wait(1.1)
+game:GetService("ReplicatedStorage").lbrick:FireServer()
+game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text = game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text + 1
+until game:GetService("BadgeService"):UserHasBadgeAsync(game.Players.LocalPlayer.UserId, 2127567042)
+else
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Equip Ghost First" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+end
+  	end 
+})
+
+
+Badge2:AddButton({
+	Name = "自动获取MEGAROCK {在大厅使用}",
+	Callback = function()
+if game.Players.LocalPlayer.leaderstats.Glove.Value == "Diamond" and game.Players.LocalPlayer.Character:FindFirstChild("entered") == nil then
+repeat task.wait() until game.Players.LocalPlayer.Character
+if not game.Players.LocalPlayer.Character:FindFirstChild("entered") and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+repeat task.wait()
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 0)
+firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), workspace.Lobby.Teleport1.TouchInterest.Parent, 1)
+until game.Players.LocalPlayer.Character:FindFirstChild("entered")
+end
+wait(0.2)
+game:GetService("ReplicatedStorage"):WaitForChild("Rockmode"):FireServer()
+wait(0.1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "warning",Text = "you can get kicked if u afk for 20 mins, i dont have anti afk feature, so yeah" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "nah bro add anti afk script plez"})
+end
+	 end
+})
+
+Badge2:AddButton({
+	Name = "自动 冻伤",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+local teleportFunc = queueonteleport or queue_on_teleport
+    if teleportFunc then
+        teleportFunc([[
+            if not game:IsLoaded() then
+                game.Loaded:Wait()
+            end
+            repeat wait() until game.Players.LocalPlayer
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-554, 177, 56)
+wait(0.7)
+for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
+            if v.ClassName == "ProximityPrompt" then
+                fireproximityprompt(v)
+		game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "You Got Frostbite!!!" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+            end
+        end
+]])
+end
+game:GetService("TeleportService"):Teleport(17290438723)
+  	end    
+})
+
+Badge2:AddButton({
+	Name = "自动获取手套管理",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+local teleportFunc = queueonteleport or queue_on_teleport
+    if teleportFunc then
+        teleportFunc([[
+            if not game:IsLoaded() then
+                game.Loaded:Wait()
+            end
+            repeat wait() until game.Players.LocalPlayer
+wait(13.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(502, 76, 59)
+task.wait(6)
+if getconnections then
+for i,v in next, getconnections(game.Players.LocalPlayer.Idled) do
+v:Disable() 
+end
+end
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Anti-AFK Enabled (i think so)" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+]])
+end
+if game:GetService("ReplicatedStorage").Assets.Retro then
+game.ReplicatedStorage.Assets.Retro.Parent = workspace
+wait(1.5)
+fireclickdetector(workspace.Retro.Map.RetroObbyMap:GetChildren()[5].StaffApp.Button.ClickDetector)
+else
+fireclickdetector(workspace.Retro.Map.RetroObbyMap:GetChildren()[5].StaffApp.Button.ClickDetector)
+end
+  	end    
+})
+
+Badge2:AddButton({
+	Name = "自动躲避",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+	wait(3)
+firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 0)
+firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 1)
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "You Got Elude!!!" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+    ]])
+end
+game:GetService("TeleportService"):Teleport(11828384869)
+	end
+})
+
+Badge2:AddButton({
+	Name = "自动获取计数器",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        wait(3)
+Time = 121
+fireclickdetector(game.Workspace.CounterLever.ClickDetector)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+for i = 1,Time do
+Time = Time - 1
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Wait [ "..Time.." ] seconds to get counter glove.",Icon = "rbxassetid://7733658504",Duration = 1})
+wait(1)
+end
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+wait(0.5)
+for i,v in pairs(workspace.Maze:GetDescendants()) do
+if v:IsA("ClickDetector") then
+fireclickdetector(v)
+end
+end
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "You Got Counter!!!" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+    ]])
+end
+game:GetService("TeleportService"):Teleport(11828384869)
+	end
+})
+
+Badge2:AddButton({
+	Name = "自动获取计数器+躲避",
+	Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "Script By Nexer1234" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+local teleportFunc = queueonteleport or queue_on_teleport
+if teleportFunc then
+    teleportFunc([[
+        if not game:IsLoaded() then
+            game.Loaded:Wait()
+        end
+        repeat wait() until game.Players.LocalPlayer
+        wait(3)
+Time = 121
+fireclickdetector(game.Workspace.CounterLever.ClickDetector)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
+wait(0.2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+for i = 1,Time do
+Time = Time - 1
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "Wait [ "..Time.." ] seconds to get counter + elude glove.",Icon = "rbxassetid://7733658504",Duration = 1})
+wait(1)
+end
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+wait(0.5)
+firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 0)
+firetouchinterest(game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart"), game.Workspace.Ruins.Elude.Glove, 1)
+for i,v in pairs(workspace.Maze:GetDescendants()) do
+if v:IsA("ClickDetector") then
+fireclickdetector(v)
+end
+end
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Credits",Text = "You Got Elude & Counter!!!" ,Duration = 1000, Icon = "rbxthumb://type=Asset&id=4567880251&w=150&h=150",Button1 = "yipee"})
+    ]])
+end
+game:GetService("TeleportService"):Teleport(11828384869)
+	end
+})
+
+Badge2:AddButton({
+	Name = "自动获取风扇",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanglove/main/main.lua'))()
+  	end    
+})
+
+Badge2:AddButton({
+	Name = "自动获取拳击手",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetboxerglove/main/main.lua'))()
+  	end    
+})
+
+Badge2:AddButton({
+	Name = "自动获取粉丝+拳击手",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/autogetfanboxer/main/main.lua'))()
+  	end    
+})
+
+Badge2:AddButton({
+	Name = "自动绑定{不需要炼金术士}",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/bind/main/main.lua'))()
+  	end    
+})
+
+Badge2:AddButton({
+	Name = "自动获取闹鬼",
+	Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/AutoGetPoltergeist/main/main.lua'))()
+  	end    
+})
+
+Badge4:AddToggle({
+	Name = "农场陷阱{慢，使用能力快1倍}",
+    Default = false,
+	Callback = function(Value)
+    trap1 = Value
+while trap1 == true do
+game:GetService("ReplicatedStorage").lbrick:FireServer()
+game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text = game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text + 1
+wait(5)
+end
+  	end    
+})
+
+Badge4:AddToggle({
+	Name = "农场陷阱{快速，使用能力快3倍}",
+    Default = false,
+	Callback = function(Value)
+    trap2 = Value
+while trap2 == true do
+game:GetService("ReplicatedStorage").lbrick:FireServer()
+game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text = game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text + 1
+wait(2)
+end
+  	end    
+})
+
+Badge4:AddToggle({
+	Name = "农场陷阱{非常快，使用能力快5倍}",
+    Default = false,
+	Callback = function(Value)
+    trap3 = Value
+while trap3 == true do
+game:GetService("ReplicatedStorage").lbrick:FireServer()
+game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text = game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text + 1
+wait(1.15)
+end
+  	end    
+})
+
+Badge4:AddToggle({
+	Name = "农场陷阱{最快，使用能力快5.2倍，有时可以踢你}",
+    Default = false,
+	Callback = function(Value)
+    trap3 = Value
+while trap3 == true do
+game:GetService("ReplicatedStorage").lbrick:FireServer()
+game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text = game:GetService("Players").LocalPlayer.PlayerGui.BRICKCOUNT.ImageLabel.TextLabel.Text + 1
+wait(1.05)
+end
+  	end    
+})
+
+Badge4:AddToggle({
+	Name = "农场圣器杰克{获得10连胜时使用}",
+	Callback = function(Value)
+_G.HallowJack = Value
+while _G.HallowJack do
+if workspace:FindFirstChild("Gravestone") then
+for i,v in pairs(game.Workspace:GetChildren()) do
+                    if v.Name == "Gravestone" and v:FindFirstChild("ClickDetector") then
+if game.Players.LocalPlayer.Character:FindFirstChild("KillstreakLevel") and game.Players.LocalPlayer.Character:FindFirstChild("KillstreakLevel").Value > 9 then
+fireclickdetector(v.ClickDetector, 0)
+fireclickdetector(v.ClickDetector, 1)
+end
+                    end
+                end
+elseif workspace:FindFirstChild("Gravestone") == nil and game.Players.LocalPlayer.Character:FindFirstChild("KillstreakLevel") and game.Players.LocalPlayer.Character:FindFirstChild("KillstreakLevel").Value > 9 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace["Baseplate"].CFrame * CFrame.new(0,10,0)
+end
+task.wait()
+end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场工具箱",
+	Callback = function(Value)
+			Toolboxfarm = Value
+			while Toolboxfarm do
+			if game.Workspace:FindFirstChild("Toolbox") then
+			for i,v in pairs(game.Workspace:GetDescendants()) do
+                    			if v.Name == "Toolbox" and v:FindFirstChild("ClickDetector") then
+			fireclickdetector(v.ClickDetector, 0)
+			fireclickdetector(v.ClickDetector, 1)
+                    			end
+                			end
+            			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场喷射球",
+	Callback = function(Value)
+			_G.Jetfarm = Value
+			while _G.Jetfarm do
+			for i,v in pairs(game.Workspace:GetChildren()) do
+                    			if v.Name == "JetOrb" then
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 0)
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 1)
+                    			end
+                			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场阶段Orb",
+	Callback = function(Value)
+			_G.Phasefarm = Value
+			while _G.Phasefarm do
+			for i,v in pairs(game.Workspace:GetChildren()) do
+                    			if v.Name == "PhaseOrb" then
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 0)
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 1)
+                    			end
+                			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场虹吸球",
+	Callback = function(Value)
+			_G.Siphonfarm = Value
+			while _G.Siphonfarm do
+			if game.Workspace:FindFirstChild("SiphonOrb") then
+			for i,v in pairs(game.Workspace:GetChildren()) do
+                    			if v.Name == "SiphonOrb" then
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 0)
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 1)
+                    				end
+                			end
+                			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场故障球",
+	Callback = function(Value)
+			_G.Glitchfarm = Value
+			while _G.Glitchfarm do
+			if game.Workspace:FindFirstChild("GlitchOrb") then
+			for i,v in pairs(game.Workspace:GetChildren()) do
+                    			if v.Name == "GlitchOrb" then
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 0)
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 1)
+                    				end
+                			end
+                			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场物化球体",
+	Callback = function(Value)
+			_G.Honorfarm = Value
+			while _G.Honorfarm do
+			if game.Workspace:FindFirstChild("MATERIALIZEOrb") then
+			for i,v in pairs(game.Workspace:GetChildren()) do
+                    			if v.Name == "MATERIALIZEOrb" then
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 0)
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v, 1)
+                    				end
+                			end
+                			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "Farm Gift",
+	Callback = function(Value)
+			Giftfarm = Value
+			while Giftfarm do
+			for i,v in pairs(game.Workspace:GetChildren()) do
+                    			if v.Name == "Gift" then
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"), v, 0)
+			firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart"), v, 1)
+                    			end
+                			end
+			task.wait()
+			end
+	 end
+})
+
+Badge4:AddToggle({
+	Name = "农场小吃",
+	Default = false,
+	Callback = function(Value)
+	    SlappleFarm = Value
+while SlappleFarm do
+if game.Players.LocalPlayer.Character:FindFirstChild("entered") then
+for i, v in pairs(workspace.Arena.island5.Slapples:GetChildren()) do
+                if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character:FindFirstChild("entered") and v.Name == "Slapple" or v.Name == "GoldenSlapple" and v:FindFirstChild("Glove") and v.Glove:FindFirstChildWhichIsA("TouchTransmitter") then
+                    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Glove, 0)
+                    firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Glove, 1)
+                end
+            end
+       end
+task.wait()
+end
+	end    
+})
+
+Badge4:AddToggle({
+	Name = "农场糖果",
+	Default = false,
+	Callback = function(Value)
+	    CandyCornsFarm = Value
+while CandyCornsFarm do
+for i, v in pairs(game.Workspace.CandyCorns:GetChildren()) do
+                if game.Players.LocalPlayer.Character:FindFirstChild("Head") and v:FindFirstChildWhichIsA("TouchTransmitter") then
+                    firetouchinterest(game.Players.LocalPlayer.Character.Head, v, 0)
+                    firetouchinterest(game.Players.LocalPlayer.Character.Head, v, 1)
+                end
+            end
+task.wait()
+end
+	end    
+})
+
+Badge5:AddTextbox({
+    Name = "假徽章名",
+    Default = "Input",
+    TextDisappear = false,
+    Callback = function(Value)
+_G.BadgeName = Value
+    end
+})
+
+Badge5:AddButton({
+    Name = "给假徽章",
+    Callback = function()
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Badge Awarded",Text = ""..game.Players.LocalPlayer.Character.Name.." won Slap Battles's ''".._G.BadgeName.."'' award!" ,Duration = 5, Icon = "rbxthumb://type=Asset&id=206410289&w=150&h=150"})
+    end
+})
+
+Badge5:AddButton({
+    Name = "给所有假徽章",
+    Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Pro666Pro/getallbadges_fake/main/main.lua'))()
+    end
 })
