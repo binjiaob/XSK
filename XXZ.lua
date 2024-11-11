@@ -12112,3 +12112,16 @@ NicoTab:AddButton({
         loadstring(game:HttpGet("https://pastebin.com/raw/4LDKiJ5a"))()
     end
 })
+
+local coTab = Window:MakeTab({
+	Name = "狗熊岭危机",
+	Icon = "rbxassetid://7733765592",
+	PremiumOnly = false
+})
+
+coTab:AddButton({
+    Name="狗熊岭危机【XK自制测试版】",
+    Callback=function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%87%AA%E5%88%B6%E6%B5%8B%E8%AF%95%E7%89%88%E6%BA%90%E7%A0%81.txt"))()
+    end
+})
