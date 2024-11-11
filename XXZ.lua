@@ -135,7 +135,7 @@ local WSBTab = Window:MakeTab({
 })
 
 WSBTab:AddParagraph("当前版本","V10.9正式版11月10日更新")
-WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇")
+WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机")
 WSBTab:AddParagraph("正式版版","更新服务器与ID")
 WSBTab:AddParagraph("通知","V10.9正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
