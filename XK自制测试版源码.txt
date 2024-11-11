@@ -1,0 +1,79 @@
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao143/thaibao/main/Librarykavoui"))()
+
+
+
+local Window = Library.CreateLib("狗熊岭危机【XK自制测试版】", "DarkTheme")
+
+
+
+local Tab = Window:NewTab("主要的")
+local Section = Tab:NewSection("主要的")
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Toggle"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
+end)
+
+
+
+local Light = game:GetService("Lighting")
+function dofullbright()
+			Light.Ambient = Color3.new(1, 1, 1)
+			Light.ColorShift_Bottom = Color3.new(1, 1, 1)
+			Light.ColorShift_Top = Color3.new(1, 1, 1)
+			game.Lighting.FogEnd = 100000
+			game.Lighting.FogStart = 0
+			game.Lighting.ClockTime = 14
+			game.Lighting.Brightness = 2
+			game.Lighting.GlobalShadows = false
+		end
+
+
+Section:NewButton("完全明亮", "ButtonInfo", function(value)
+    dofullbright(value)  		
+end)
+
+function esp()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Model:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(0, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("Esp熊大", "ButtonInfo", function()
+ esp()
+end)
