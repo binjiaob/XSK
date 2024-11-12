@@ -4853,6 +4853,77 @@ local dongTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
+function esp12()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Rooms.RightStraight1.Entrances:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+dongTab:AddButton({
+	Name = "透视门孔【自制】",
+	Callback = function()
+     esp129()
+end
+})
+
+dongTab:AddButton({
+	Name = "透视门的一切【自制】",
+	Callback = function()
+     esp129()
+end
+})
+
+function esp1299()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Rooms.Start.Interactables["1BigDrawer"].SpawnLocations:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(255,0,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 30
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+dongTab:AddButton({
+	Name = "透视钱【自制】",
+	Callback = function()
+     esp1299()
+end
+})
+
 dongTab:AddButton({
 	Name = "无敌模式",
 	Callback = function()
@@ -12124,4 +12195,80 @@ coTab:AddButton({
     Callback=function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%87%AA%E5%88%B6%E6%B5%8B%E8%AF%95%E7%89%88%E6%BA%90%E7%A0%81.txt"))()
     end
+})
+
+local 6764Tab = Window:MakeTab({
+	Name = "元素力量大亨",
+	Icon = "rbxassetid://7733765592",
+	PremiumOnly = false
+})
+
+function Esp12()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Map.Trees:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+6764Tab:AddButton({
+    Name="透视大树",
+    Callback=function()
+        Esp12()
+    end
+})
+
+local 673Tab = Window:MakeTab({
+	Name = "rooms",
+	Icon = "rbxassetid://7733765592",
+	PremiumOnly = false
+})
+
+function esp12998()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").rooms["1"]:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(255,0,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 30
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+673Tab:AddButton({
+	Name = "透视门【自制】",
+	Callback = function()
+     esp12998()
+end
 })
