@@ -3,12 +3,14 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/tbao1
 
 
 
-local Window = Library.CreateLib("狗熊岭危机【XK自制测试版】", "DarkTheme")
+local Window = Library.CreateLib("狗熊岭危机【测试版】", "DarkTheme")
 
 
 
 local Tab = Window:NewTab("主要的")
-local Section = Tab:NewSection("主要的")
+local Section = Tab:NewSection("功能")
+
+local Section = Tab:NewSection("狗熊岭危机测试版 丨 XK自制 【作者:小玄奘】")
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
@@ -62,7 +64,7 @@ function esp()
         b.Size = UDim2.new(1,0, 1,0)
         b.BackgroundTransparency = 0.80
         b.BorderSizePixel = 0
-        b.BackgroundColor3 = Color3.new(0, 0, 0)
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
         local c = Instance.new('TextLabel',b)
         c.Size = UDim2.new(2,0,2,0)
         c.BorderSizePixel = 0
@@ -74,6 +76,6 @@ function esp()
   end
 end
 
-Section:NewButton("Esp熊大", "ButtonInfo", function()
+Section:NewButton("透视【熊大/光头强/熊二/光扣屁/警察】", "ButtonInfo", function()
  esp()
 end)
