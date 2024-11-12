@@ -7,7 +7,7 @@ local Window = Library.CreateLib("狗熊岭危机【测试版】", "DarkTheme")
 
 
 
-local Tab = Window:NewTab("主要的")
+local Tab = Window:NewTab("狗熊岭危机")
 local Section = Tab:NewSection("功能")
 
 local Section = Tab:NewSection("狗熊岭危机测试版 丨 XK自制 【作者:小玄奘】")
@@ -76,6 +76,189 @@ function esp()
   end
 end
 
-Section:NewButton("透视【熊大/光头强/熊二/光扣屁/警察】", "ButtonInfo", function()
+Section:NewButton("透视【熊大/光头强/熊二/光扣屁/警察", "ButtonInfo", function()
  esp()
+end)
+
+local Tab = Window:NewTab("元素力量大亨")
+local Section = Tab:NewSection("功能")
+
+function esp12()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Map.Trees:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("透视树", "ButtonInfo", function()
+ esp12()
+end)
+
+function esp122()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").GetChildren()[20]:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("透视箱子【制作中】", "ButtonInfo", function()
+ esp122()
+end)
+
+local Tab = Window:NewTab("压力")
+local Section = Tab:NewSection("功能")
+
+function esp129()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").AmbiencePart.Straight5.Entrances:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("压力一键开启透视门的功能", "ButtonInfo", function()
+ esp129()
+end)
+
+function esp12()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Rooms.RightStraight1.Entrances:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(2,0,2,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 15
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("透视门孔", "ButtonInfo", function()
+ esp12()
+end)
+
+function esp1299()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").Rooms.Start.Interactables["1BigDrawer"].SpawnLocations:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(255,0,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 30
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("透视钱", "ButtonInfo", function()
+ esp1299()
+end)
+
+local Tab = Window:NewTab("rooms")
+local Section = Tab:NewSection("功能")
+
+function esp12998()
+  while task.wait(1) do
+     for __,v in pairs(game:GetService("Workspace").rooms["1"]:GetDescendants()) do
+      if v:IsA("Model") then
+        local a = Instance.new("BillboardGui",v)
+        a.Name = "Sex"
+        a.Size = UDim2.new(7,0,7,0)
+        a.AlwaysOnTop = true
+        a.MaxDistance = 250
+        local b = Instance.new("Frame",a)
+        b.Size = UDim2.new(1,0, 1,0)
+        b.BackgroundTransparency = 0.80
+        b.BorderSizePixel = 0
+        b.BackgroundColor3 = Color3.new(255, 0, 0)
+        local c = Instance.new('TextLabel',b)
+        c.Size = UDim2.new(255,0,0)
+        c.BorderSizePixel = 0
+        c.TextSize = 30
+        c.Text = v.Name
+        c.BackgroundTransparency = 1
+      end
+     end
+  end
+end
+
+Section:NewButton("透视一切", "ButtonInfo", function()
+ esp12998()
 end)
