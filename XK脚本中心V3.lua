@@ -5,7 +5,6 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINji
     bin:Label("你的注入器:" .. identifyexecutor())
     bin:Label("你的地图id:"..game.PlaceId)
     bin:Label("你的用户名:"..game.Players.LocalPlayer.Character.Name)
-    bin:Label("账号年龄:"..player.AccountAge.."天")
 
     bin:Button("复制一群【2000人】", function()
     setclipboard("915207093")
