@@ -1447,25 +1447,19 @@ local colorMap = {
     ["黑色"] = Color3.fromRGB(0, 0, 0)
 }
 
-dogsun:Toggle("队伍检测", "Enable/Disable Team Check", false, function(state)
-    bin.teamCheck = state
-end)
-dogsun:Toggle("其余检测","Alive Check",false,function(state)
-    bin.aliveCheck = state
-end)
-dogsun:Toggle("墙壁检测", "Enable/Disable Wall Check", false, function(state)
-    bin.wallCheck = state
-end)
-
-dogsun:Toggle("显示圈圈自瞄", "open/close", false, function(state)
+dogsun:Toggle("显示自瞄", "open/close", false, function(state)
     if state then
         createFOV(bin.fovsize, bin.fovcolor, bin.fovthickness, bin.Transparency)
     else
         destroyFOV()
     end
 end)
-dogsun:Toggle("圈圈自瞄", "open/close", false, function(state)
+dogsun:Toggle("启动或关闭圈圈自瞄", "open/close", false, function(state)
     bin.fovlookAt = state
+end)
+dogsun:Slider("圈圈自瞄厚度", "thickness", 2, 0, 10, false, function(value)
+    bin.fovthickness = value
+    updateFOV()
 end)
 dogsun:Slider("圈圈自瞄大小", "Size", 20, 0, 100, false, function(value)
     bin.fovsize = value
@@ -1475,11 +1469,6 @@ dogsun:Slider("圈圈自瞄透明度", "Transparency", 1, 0, 10, false, function
     bin.Transparency = value
     updateFOV()
 end)
-dogsun:Slider("圈圈自瞄厚度", "thickness", 2, 0, 10, false, function(value)
-    bin.fovthickness = value
-    updateFOV()
-end)
-
 dogsun:Slider("圈圈自瞄距离", "distance", 40, 10, 500, false, function(value)
     bin.distance = value
 end)
@@ -1490,6 +1479,15 @@ end)
 dogsun:Dropdown('选择部位', 'Dropdown', {"Head", "HumanoidRootPart", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "LeftHand", "RightHand", "LeftLowerArm", "RightLowerArm", "LeftUpperArm", "RightUpperArm", "LeftFoot", "LeftLowerLeg", "UpperTorso", "LeftUpperLeg", "RightFoot", "RightLowerLeg", "LowerTorso", "RightUpperLeg"}, function(Value)
     bin.Position = Value
     updateFOV()
+end)
+dogsub:Toggle("队伍检测", "Enable/Disable Team Check", false, function(state)
+    bin.teamCheck = state
+end)
+dogsun:Toggle("生存检测","Alive Check",false,function(state)
+    bin.aliveCheck = state
+end)
+dogsun:Toggle("墙壁检测", "Enable/Disable Wall Check", false, function(state)
+    bin.wallCheck = state
 end)
 
 dogsun:Button("自瞄30", function()
