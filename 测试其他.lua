@@ -1,5 +1,5 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/XK%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2.txt", true))()
-    local window = library:new("Xhxh's")
+    local window = library:new("Xhxh's backrooms")
     local creds = window:Tab("关于", "6031097229")
         local bin = creds:section("信息", true)
     bin:Label("你的注入器:" .. identifyexecutor())
@@ -9,51 +9,51 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINji
     bin:Label("只是做了个小服务器脚本")
     bin:Label("乱搞的，别喷")
     bin:Label("功能不是很多")
-    bin:Label("XK所有者")
+    bin:Label("XK")
         
     local creds = window:Tab("通用", "6035145364")
-    local credits = creds:section("通用内容", true)
+    local about = creds:section("通用内容", true)
     
-credits:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
+about:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
 end)
 
-    credits:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
+    about:Slider('修改跳跃', 'JumpPowerSlider', 50, 50, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
 end)
 
-    credits:Slider('修改重力', 'GravitySlider', 198, 198, 99999,false,function(Value)
+    about:Slider('修改重力', 'GravitySlider', 198, 198, 99999,false,function(Value)
     game.Workspace.Gravity = Value
 end)
 
-    credits:Slider('修改高度', 'Slider', 2, 2, 9999,false, function(Value)
+    about:Slider('修改高度', 'Slider', 2, 2, 9999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.HipHeight = Value
 end)
 
-    credits:Slider('相机焦距上限', 'ZOOOOOM OUT!',  128, 128, 200000,false, function(Value)
+    about:Slider('相机焦距上限', 'ZOOOOOM OUT!',  128, 128, 200000,false, function(Value)
     game:GetService("Players").LocalPlayer.CameraMaxZoomDistance = Value
 end)
 
-    credits:Slider('相机焦距【正常为70】', 'Sliderflag', 70, 0.1, 250, false, function(v)
+    about:Slider('相机焦距【正常为70】', 'Sliderflag', 70, 0.1, 250, false, function(v)
         game.Workspace.CurrentCamera.FieldOfView = v
 end)
 
-    credits:Slider('健康值上限', 'Sliderflag',  120, 120, 999999,false, function(Value)
+    about:Slider('健康值上限', 'Sliderflag',  120, 120, 999999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.MaxHealth = Value
 end)
 
-    credits:Slider('玩家健康值', 'Sliderflag',  120, 120, 999999,false, function(Value)
+    about:Slider('玩家健康值', 'Sliderflag',  120, 120, 999999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.Health = Value
 end)
 
-credits:Button(
+about:Button(
         "无限跳跃",
         function()
          loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()   
         end
     )
     
-    credits:Toggle("夜视", "", false, function(state)
+about:Toggle("夜视", "", false, function(state)
         if state then
         game.Lighting.Ambient = Color3.new(1, 1, 1)
         else
@@ -61,107 +61,51 @@ credits:Button(
         end
     end)
     
-    creditsd:Button(
+about:Button(
         "飞行V3",
         function()
             loadstring(game:HttpGet("https://pastebin.com/raw/UVAj0uWu"))()
         end
     )
+  
+        local creds = window:Tab("功能", "6035145364")
+    local about = creds:section("内容", true)
+        
+about:Button(
+        "牢大安慰告示牌【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-328.5845031738281, 25.902616500854492, 839.1260986328125)
+        end
+    )
     
-    local creds = window:Tab("功能", "6031097229")
-        local about = creds:section("信息", true)
+about:Button(
+        "获取枪【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438)
+        end
+    )
     
-    about:Toggle("获取枪","Valkiry",false,function(state)
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
-local humanoidRootPart = character:WaitForChild("HumanoidRootPart")
-local teleportLocations = {
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-    CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438),
-}
-local teleportDelay = 0.5
-local function teleportToLocations()
-    for _, location in ipairs(teleportLocations) do
-        -- 
-        humanoidRootPart.CFrame = location
-        print("xiaoxuanzang" .. tostring(location))
-        wait(teleportDelay)
-    end
-    print("lol")
-end
-
-teleportToLocations()
-    end)
+    about:Button(
+        "A60 VS Rush 【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-355.3669738769531, 1346.1978759765625, 995.461181640625)
+        end
+    )
     
-    about:Toggle("传送至牢大安慰告示牌","Valkiry",false,function(state)
-ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-328.5845031738281, 25.902616500854492, 839.1260986328125)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-    end)
+    about:Button(
+        "DOORS彩蛋【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(171.97772216796875, 53.54102325439453, 699.5234375)
+        end
+    )
     
-    about:Toggle("传送至A60 VS Rush","Valkiry",false,function(state)
-ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-355.3669738769531, 1346.1978759765625, 995.461181640625)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-    end)
+    about:Button(
+        "传送至A-90【Dex显示A60】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(533.6226806640625, 14.097269058227539, -145.69972229003906)
+        end
+    )
     
-    about:Toggle("传送至DOORS菜单","Valkiry",false,function(state)
-ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(171.97772216796875, 53.54102325439453, 699.5234375doors)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-    end)
-
-about:Toggle("传送至A-90【Dex显示的是A60】","Valkiry",false,function(state)
-ToolCollect = state
-    if ToolCollect then
-    while ToolCollect do
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(533.6226806640625, 14.097269058227539, -145.69972229003906)
-    game:GetService("ReplicatedStorage").Events.ToolCollect:FireServer()
-    wait()
-    end
-end
-    end)
-
     about:Toggle("怪物透视","Valkiry",false,function(state)
         if state then
             _G.Tree2ESPInstances = {}
@@ -221,14 +165,15 @@ end
             table.insert(_G.Tree2ESPInstances, esptable)
 				
         else
-        function ESP:delete()
-        for _, box in pairs(self.boxes) do
-        box:Destroy()
-    end
-    if self.bill then
-        self.bill:Destroy()
-    end
-end
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
     end)
     
     about:Toggle("A90透视","Valkiry",false,function(state)
@@ -301,7 +246,7 @@ end
         end
     end)
     
-    about:Toggle("展示台透视","Valkiry",false,function(state)
+    about:Toggle("老大飞机透视","Valkiry",false,function(state)
         if state then
             _G.Tree2ESPInstances = {}
             local esptable = {doors = {}}
