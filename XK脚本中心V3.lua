@@ -2508,7 +2508,10 @@ if state then
         end
     end)
 
-Tab85:Button(
+
+local Tab85 = creds:section("酒店", false)
+   
+   Tab85:Button(
         "NBDOORS",
         function()
        loadstring(game:HttpGet("https://github.com/DocYogurt/Main/raw/main/Scripts/DF2RW.lua"))()     
@@ -2520,10 +2523,8 @@ Tab85:Button(
         function()
        loadstring(game:HttpGet("https://raw.githubusercontent.com/zuohongjian/bjb/main/ZS%20III", true))()     
         end
-    )
-
-local Tab85 = creds:section("酒店", false)
-    
+    ) 
+      
 Tab85:Button(
         "汉化脚本",
         function()
