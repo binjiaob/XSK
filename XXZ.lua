@@ -24,6 +24,13 @@ WSBTab:AddButton({
     end
 })
 
+WSBTab:AddButton({
+    Name="Mireng XKcore V3【XK脚本中心V3测试版】",
+    Callback=function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%BF%83V3.lua"))()
+    end
+})
+
 local coTab = Window:MakeTab({
 	Name = "Mireng XKcore V3",
 	Icon = "rbxassetid://7733779610",
