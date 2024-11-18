@@ -26,7 +26,7 @@ end)
 end)
 
 local creds = window:Tab("通用", "6035145364")
-    local credits = creds:section("通用内容", true)
+    local credits = creds:section("通用内容", false)
     
 credits:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -77,7 +77,7 @@ LBL.BorderColor3 = Color3.new(0, 0, 0)
 LBL.Position = UDim2.new(0.75,0,0.010,0)
 LBL.Size = UDim2.new(0, 133, 0, 30)
 LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心max"
+LBL.Text = "XK脚本中心V3"
 LBL.TextColor3 = Color3.new(1, 1, 1)
 LBL.TextScaled = true
 LBL.TextSize = 14
@@ -114,7 +114,7 @@ credits:Toggle("夜视脚本", "", false, function(state)
 credits:Button(
         "无限跳跃",
         function()
-         loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", true))()   
+         loadstring(game:HttpGet("https://pastebin.com/raw/V5PQy3y0", false))()   
         end
     )
 
@@ -1263,7 +1263,7 @@ credits:Button(
         end
     )
     
-local creditsd = creds:section("飞行功能", true)
+local creditsd = creds:section("飞行功能", false)
    
 creditsd:Button(
         "XK飞行",
@@ -1286,7 +1286,7 @@ creditsd:Button(
         end
     )
 
-local Wredits = creds:section("范围功能", true)
+local Wredits = creds:section("范围功能", false)
 
 Wredits:Button(
         "普通范围",
@@ -1317,7 +1317,7 @@ Wredits:Button(
     )
 
 local creds = window:Tab("俄亥俄州", "7733779668")
-    local creditsb = creds:section("脚本内容", true)
+    local creditsb = creds:section("脚本内容", false)
 
 creditsb:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -1674,7 +1674,7 @@ creditsb:Button(
     )
 
 local creds = window:Tab("造船寻宝", "7733765398")
-    local creditsMLSB = creds:section("功能", true)   
+    local creditsMLSB = creds:section("功能", false)   
 
 creditsMLSB:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -2005,7 +2005,153 @@ creditsMLSB:Button(
     )
 
     local creds = window:Tab("DOORS", "7733779610")
-    local Tab61 = creds:section("floor2", true)    
+    local Tab61 = creds:section("floor2", false)    
+
+creditsb:Toggle("警察局透视","Sign",false,function(state)
+if state then
+            _G.doorESPInstances = {}
+            local esptable = {doors = {}}
+            local flags = {espdoors = true}
+
+            local function esp(what, color, core, name)
+                local parts
+                
+                if typeof(what) == "Instance" then
+                    if what:IsA("Model") then
+                        parts = what:GetChildren()
+                    elseif what:IsA("BasePart") then
+                        parts = {what, table.unpack(what:GetChildren())}
+                    end
+                elseif typeof(what) == "table" then
+                    parts = what
+                end
+                
+                local bill
+                local boxes = {}
+                
+                for i, v in pairs(parts) do
+                    if v:IsA("BasePart") then
+                        local box = Instance.new("BoxHandleAdornment")
+                        box.Size = v.Size
+                        box.AlwaysOnTop = true
+                        box.ZIndex = 1
+                        box.AdornCullingMode = Enum.AdornCullingMode.Never
+                        box.Color3 = color
+                        box.Transparency = 1
+                        box.Adornee = v
+                        box.Parent = game.CoreGui
+                        
+                        table.insert(boxes, box)
+                        
+                        task.spawn(function()
+                            while box do
+                                if box.Adornee == nil or not box.Adornee:IsDescendantOf(workspace) then
+                                    box.Adornee = nil
+                                    box.Visible = false
+                                    box:Destroy()
+                                end  
+                                task.wait()
+                            end
+                        end)
+                    end
+                end
+                
+                if core and name then
+                    bill = Instance.new("BillboardGui", game.CoreGui)
+                    bill.AlwaysOnTop = true
+                    bill.Size = UDim2.new(0, 400, 0, 100)
+                    bill.Adornee = core
+                    bill.MaxDistance = 2000
+                    
+                    local mid = Instance.new("Frame", bill)
+                    mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                    mid.BackgroundColor3 = color
+                    mid.Size = UDim2.new(0, 8, 0, 8)
+                    mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                    Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                    Instance.new("UIStroke", mid)
+                    
+                    local txt = Instance.new("TextLabel", bill)
+                    txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                    txt.BackgroundTransparency = 1
+                    txt.BackgroundColor3 = color
+                    txt.TextColor3 = color
+                    txt.Size = UDim2.new(1, 0, 0, 20)
+                    txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                    txt.Text = name
+                    Instance.new("UIStroke", txt)
+                    
+                    task.spawn(function()
+                        while bill do
+                            if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                                bill.Enabled = false
+                                bill.Adornee = nil
+                                bill:Destroy() 
+                            end  
+                            task.wait()
+                        end
+                    end)
+                end
+                
+                local ret = {}
+                
+                ret.delete = function()
+                    for i, v in pairs(boxes) do
+                        v.Adornee = nil
+                        v.Visible = false
+                        v:Destroy()
+                    end
+                    
+                    if bill then
+                        bill.Enabled = false
+                        bill.Adornee = nil
+                        bill:Destroy() 
+                    end
+                end
+                
+                return ret 
+            end
+
+            local function setup(room)
+                local door = room:WaitForChild("Door"):WaitForChild("Door")
+                
+                task.wait(0.1)
+                local h = esp(door, Color3.fromRGB(90, 255, 40), door, "门")
+                table.insert(esptable.doors, h)
+                
+                door:WaitForChild("Open").Played:Connect(function()
+                    h.delete()
+                end)
+                
+                door.AncestryChanged:Connect(function()
+                    h.delete()
+                end)
+            end
+            
+            local addconnect
+            addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+                setup(room)
+            end)
+            
+            for i, room in pairs(workspace.CurrentRooms:GetChildren()) do
+                if room:FindFirstChild("Assets") then
+                    setup(room) 
+                end
+            end
+
+            table.insert(_G.doorESPInstances, esptable)
+
+        else
+            if _G.doorESPInstances then
+                for _, instance in pairs(_G.doorESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.doorESPInstances = nil
+            end
+        end
+    end)
 
 Tab61:Button(
         "NBDOORS",
@@ -2021,7 +2167,7 @@ Tab61:Button(
         end
     )
 
-local Tab85 = creds:section("酒店", true)
+local Tab85 = creds:section("酒店", false)
     
 Tab85:Button(
         "汉化脚本",
@@ -2059,7 +2205,7 @@ Tab85:Button(
     )
           
     local creds = window:Tab("河北唐县", "7733770599")
-    local Tab21 = creds:section("脚本内容", true)
+    local Tab21 = creds:section("脚本内容", false)
     
     Tab21:Label("自动刷钱 需要成为送货司机")
 local virtualUser = game:GetService('VirtualUser')
@@ -2099,7 +2245,7 @@ Tab21:Button(
     )
    
 local creds = window:Tab("火箭发射器", "7733770982")
-    local creditsML = creds:section("功能", true)   
+    local creditsML = creds:section("功能", false)   
    
 creditsML:Button(
         "自动收集燃料",
@@ -2122,7 +2268,7 @@ creditsML:Button(
         end
     )
    
-local creditsDSB = creds:section("通用内容", true)
+local creditsDSB = creds:section("通用内容", false)
       
 creditsDSB:Button(
         "发射台岛",
@@ -2237,7 +2383,7 @@ creditsDSB:Button(
     )
 
 local creds = window:Tab("破坏者谜团", "7733741741")
-    local creditsHUB = creds:section("脚本内容", true)
+    local creditsHUB = creds:section("脚本内容", false)
 
 creditsHUB:Button(
         "Highlight MM2",
@@ -2272,7 +2418,7 @@ creditsHUB:Button(
     )
     
 local creds = window:Tab("战斗勇士", "7733788966")
-    local credits = creds:section("脚本内容", true)    
+    local credits = creds:section("脚本内容", false)    
     
 credits:Button(
         "无限体力1",
@@ -2460,7 +2606,7 @@ credits:Button(
     )
     
 local creds = window:Tab("光影类", "7743872365")
-    local credits = creds:section("脚本内容", true)
+    local credits = creds:section("脚本内容", false)
     
 credits:Button(
         "光影1",
@@ -2510,184 +2656,9 @@ credits:Button(
             loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
         end
     )
-
-local creds = window:Tab("Color or die", "7733701455")
-    local credits = creds:section("刷子", true)
-    
-credits:Button(
-        "刷子10％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(108.3765869140625, 2.8261330127716064, -56.11078643798828)
-        end
-    )
-   
-   credits:Button(
-        "刷子20％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(176.77020263671875, 2.8261330127716064, -122.37640380859375)
-        end
-    )
-    
-credits:Button(
-        "刷子30％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(106.70597839355469, 2.8261330127716064, 77.07504272460938)
-        end
-    )
-   
-   credits:Button(
-        "刷子40％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(109.28363037109375, 2.8261330127716064, -6.814320087432861)
-        end
-    )
-    
-credits:Button(
-        "刷子50％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(216.3707733154297, 2.8261332511901855, 75.98402404785156)
-        end
-    )
-   
-   credits:Button(
-        "刷子60％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(216.3707733154297, 2.8261332511901855, 75.98402404785156)
-        end
-    )
-    
-credits:Button(
-        "刷子70％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(710.4590454101562, 151.68980407714844, 378.8439636230469)
-        end
-    )
-   
-   credits:Button(
-        "刷子80％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(850.8873291015625, 42.06087112426758, -74.47248077392578)
-        end
-    )
-    
-credits:Button(
-        "刷子90％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(837.8712768554688, 69.13433074951172, -594.424560546875)
-        end
-    )
-   
-   credits:Button(
-        "刷子100％",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(310.772705078125, 27.880992889404297, -128.11724853515625)
-        end
-    )
-
-local creditsfan = creds:section("隐藏房间", true)
-    
-creditsfan:Button(
-        "隐藏房间1",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11.780367851257324, 2.8261330127716064, 47.119266510009766)
-        end
-    )
-   
-   creditsfan:Button(
-        "隐藏房间2",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(45.382774353027344, 27.826128005981445, -27.568164825439453)
-        end
-    )
-    
-creditsfan:Button(
-        "隐藏房间3",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(682.5320434570312, 5.827143669128418, -43.59938049316406)
-        end
-    )
-
-creditsfan:Button(
-        "隐藏房间4",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-345.1400451660156, 4.7261528968811035, -2612.85302734375)
-        end
-    )
-   
-   creditsfan:Button(
-        "隐藏房间5",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-405.47802734375, 3.176142930984497, -2390.422607421875)
-        end
-    )
-    
-creditsfan:Button(
-        "隐藏房间6",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-380.22491455078125, 3.3010048866271973, -1925.7362060546875)
-        end
-    )
-    
-creditsfan:Button(
-        "隐藏房间7",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-967.6585083007812, 2.8261330127716064, 333.0981750488281)
-        end
-    )
-    
-local creditsC = creds:section("门", true)   
-
-   creditsC:Button(
-        "橙色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(256.5617980957031, 2.924128770828247, 38.21192932128906)
-        end
-    )
-    
-creditsC:Button(
-        "绿色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(322.87713623046875, 2.9405789375305176, 70.53765106201172)
-        end
-    )    
-    
-creditsC:Button(
-        "粉色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(328.2287902832031, 2.9444220066070557, 9.933579444885254)
-        end
-    )
-   
-   creditsC:Button(
-        "黄色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(201.60107421875, 2.9451215267181396, -34.76359939575195)
-        end
-    )
-    
-creditsC:Button(
-        "红色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(195.18211364746094, 2.8261330127716064, 28.475357055664062)
-        end
-    )    
-    
-creditsC:Button(
-        "紫色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(216.9456329345703, 2.8261330127716064, -127.30233764648438)
-        end
-    )
-   
-   creditsC:Button(
-        "蓝色门",
-        function()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(287.21331787109375, 2.8261330127716064, -106.50820922851562)
-        end
-    )
     
   local creds = window:Tab("一次尘土飞扬的旅行", "7733674153")
-    local credits = creds:section("到达20000过程", true)  
+    local credits = creds:section("到达20000过程", false)  
     
   credits:Button(
         "自动到达20000",
@@ -2725,7 +2696,7 @@ teleportToLocations()
         end
     )
 
-    local credits = creds:section("传送", true)
+    local credits = creds:section("传送", false)
    
    credits:Button(
         "距离1000",
@@ -2812,7 +2783,7 @@ credits:Button(
     )
 
 local creds = window:Tab("忍者传奇", "7733798747")
-    local RZCQ = creds:section("功能", true)
+    local RZCQ = creds:section("功能", false)
 
 autoswing = false
 function swinging()
@@ -3041,7 +3012,7 @@ RZCQ:Button("解锁所有岛", function()
   for _, v in next, game.workspace.islandUnlockParts:GetChildren() do if v then game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.islandSignPart.CFrame wait(.5) end end
 end)
 
-    local RZQC = creds:section("传送", true)
+    local RZQC = creds:section("传送", false)
 
 RZQC:Button("传送到出生点", function()
   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(25.665502548217773, 3.4228405952453613, 29.919952392578125)
@@ -3117,7 +3088,7 @@ RZQC:Button("传送到死亡宠物", function()
 end)
 
     local creds = window:Tab("狗熊岭危机-大厅", "6031097229")
-        local about = creds:section("信息", true)
+        local about = creds:section("信息", false)
 
     about:Toggle("房子透视(光头强家门口)","MainHouse",false,function(state)
         if state then
@@ -3750,7 +3721,7 @@ about:Toggle("第一章透视","TeleportPlayer",false,function(state)
     end)
     
     local creds = window:Tab("狗熊岭危机-第二章", "6031097229")
-        local about = creds:section("ESP", true)
+        local about = creds:section("ESP", false)
         
         about:Toggle("怪物熊大【透视】","Sign",false,function(state)
         if state then
@@ -4033,7 +4004,7 @@ about:Toggle("第一章透视","TeleportPlayer",false,function(state)
     end)
     
         local creds = window:Tab("恐怖旅店", "6031097229")
-        local about = creds:section("脚本", true)
+        local about = creds:section("脚本", false)
 
     about:Toggle("柜子透视","MainHouse",false,function(state)
         if state then
@@ -4174,3 +4145,862 @@ about:Toggle("第一章透视","TeleportPlayer",false,function(state)
             end
         end
     end)
+    
+            local creds = window:Tab("xhxh backrooms", "6035145364")
+    local about = creds:section("内容", false)
+        
+about:Button(
+        "牢大安慰告示牌【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-328.5845031738281, 25.902616500854492, 839.1260986328125)
+        end
+    )
+    
+about:Button(
+        "获取枪【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(241.3916473388672, 25.939472198486328, 887.3378295898438)
+        end
+    )
+    
+    about:Button(
+        "A60 VS Rush 【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-355.3669738769531, 1346.1978759765625, 995.461181640625)
+        end
+    )
+    
+    about:Button(
+        "DOORS彩蛋【传送】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(171.97772216796875, 53.54102325439453, 699.5234375)
+        end
+    )
+    
+    about:Button(
+        "传送至A-90【Dex显示A60】",
+        function()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(533.6226806640625, 14.097269058227539, -145.69972229003906)
+        end
+    )
+    
+    about:Toggle("怪物透视","Valkiry",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "stare" then
+                        createBillboard(instance, "怪物", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "stare" then
+                        createBillboard(instance, "怪物", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
+        else
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
+    end)
+    
+    about:Toggle("A90透视","Valkiry",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "A60" then
+                        createBillboard(instance, "A90(但是作者标的是A60)", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "A60" then
+                        createBillboard(instance, "怪物", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
+        else
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
+    end)
+    
+    about:Toggle("老大飞机透视","Valkiry",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "Helicopter" then
+                        createBillboard(instance, "牢大的飞机", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "Helicopter" then
+                        createBillboard(instance, "牢大的飞机", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
+        else
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
+    end)
+    
+    about:Button(
+        "移除很多东西【测试】",
+        function()
+            game:GetService('Workspace').InviteSigns:Destroy()
+    game:GetService('Workspace').Game.Props["Bloxy Cola"]:Destroy()
+    game:GetService('Workspace').Game.Props.Dumpster:Destroy()
+    game:GetService('Workspace').Game.PropsGetChildren()[64]:Destroy()
+    game:GetService('Workspace').Game.Propsworkspace:GetChildren()[63]:Destroy()
+    game:GetService('Workspace').Game.Props['stare']:Destroy()
+    game:GetService('Workspace').Game.Props.Hydrant:Destroy()
+    game:GetService('Workspace').Game.Props['workspace.stare']:Destroy()
+    game:GetService('Workspace').Game.Props["Bloxy Cola"]:Destroy()
+    game:GetService('Workspace').Game.Props['Wood Fence']:Destroy()
+    game:GetService('Workspace').Game.Props.BusStop:Destroy()
+    game:GetService('Workspace').Game.Props.Roadblock:Destroy()
+    game:GetService('Workspace').Game.Props.Bollard:Destroy()
+    game:GetService('Workspace').Game.Props.Light:Destroy()
+    game:GetService('Workspace').Game.Props.Roadblock:Destroy()
+    game:GetService('Workspace').Game.Props.Glass:Destroy()
+    game:GetService('Workspace').Game.Props.Bench:Destroy()
+    game:GetService('Workspace').Game.Props["Trash Bin"]:Destroy()
+    game:GetService('Workspace').Game.Props.Bollard:Destroy()
+    game:GetService('Workspace').Game.Props["Office Chair"]:Destroy()
+    game:GetService('Workspace').Game.Props.Table:Destroy()
+    game:GetService("Workspace").BankRobbery.BankWalls:Destroy()
+    game:GetService("Workspace").BankRobbery.AlarmLightModel:Destroy()
+    game:GetService("Workspace").BankRobbery.AlarmLights:Destroy()
+        end
+    )
+    
+        local creds = window:Tab("吃掉世界", "6035145364")
+    local about = creds:section("脚本", false)
+
+    local EAT = false
+    local sell = false
+    local throw = false
+    local buy = false
+    
+    about:Toggle("自动购买吃掉速度", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("EatSpeed")
+        wait()
+    end
+end
+end)
+    
+    about:Toggle("自动购买乘数", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("Multiplier")
+        wait()
+    end
+end
+end)
+    
+    about:Toggle("自动购买行走速度", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("Speed")
+        wait()
+    end
+end
+end)
+
+about:Toggle("自动抓", "", false, function(state)
+    sell = state
+    if sell then
+        while sell do
+            local args = {
+    [1] = false,
+    [2] = false
+}
+game:GetService("Players").LocalPlayer.Character.Events.Grab:FireServer(unpack(args))
+            wait()
+            end
+        end
+end)
+
+    about:Toggle("自动吃", "", false, function(state)
+    EAT = state
+    if EAT then
+        while EAT do
+        game:GetService("Players").LocalPlayer.Character.Events.Eat:FireServer()
+        wait()
+    end
+end
+end)
+    
+about:Toggle("自动丢", "", false, function(state)
+    throw = state
+    if throw then
+        while throw do
+        game:GetService("Players").LocalPlayer.Character.Events.Throw:FireServer()
+        wait()
+    end
+end
+end)
+
+about:Toggle("自动购买最大尺寸", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("MaxSize")
+        wait()
+    end
+end
+end)
+
+local UITab84 = win:Tab("拔出一把剑",'6035145364')
+
+local about = UITab84:section("脚本",false)
+
+about:Toggle("自动打怪前提", "", false, function(state)
+    if state then
+        while state do
+            game:GetService("ReplicatedStorage").RemoveC:FireServer(1)
+            wait()
+            end
+        end
+end)
+about:Toggle("自动打怪", "", false, function(state)
+    if state then
+        while state do
+            game:GetService("ReplicatedStorage").HALLOWEEN2024FOLDER.WinBossEvent:FireServer(26)
+            wait()
+            end
+        end
+end)
+about:Toggle("自动传送到活动区域", "", false, function(state)
+    if state then
+        while state do
+            game:GetService("ReplicatedStorage").PortalC:FireServer("-4", game:GetService("Players").LocalPlayer.Character, false)
+            wait()
+            end
+        end
+end)
+
+local UITab25 = win:Tab("『河北唐县』",'6035145364')
+
+local about = UITab25:section("『河北唐县』",false)
+ 
+about:Button("传送到警察局", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5513.97412109375, 8.656171798706055, 4964.291015625)
+end)
+about:Button("传送到出生点", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3338.31982421875, 10.048742294311523, 3741.84033203125)
+end)
+about:Button("传送到医院", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5471.482421875, 14.149418830871582, 4259.75341796875)
+end)
+about:Button("传送到手机店", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6789.2041015625, 11.197686195373535, 1762.687255859375)
+end)
+about:Button("传送到火锅店", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5912.84765625, 12.217276573181152, 1058.29443359375)
+end)
+ 
+about:Button("河北唐县脚本",function()
+loadstring(game:HttpGet("https://pastefy.app/s20nni0h/raw"))()
+end)
+
+about:Button("河北唐县脚本",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Sw1ndlerScripts/RobloxScripts/main/Tang%20Country.lua"))()
+end)
+
+about:Label("成为送货司机自动刷钱")
+local function autoFarm()
+    while _G.autoFarm do
+        local clickDetector = game:GetService("Workspace").DeliverySys.Misc["Package Pile"].ClickDetector
+        if clickDetector then
+            local success, errorMsg = pcall(function()
+                fireclickdetector(clickDetector)
+            end)
+            if not success then
+                warn("Failed to fire ClickDetector: " .. errorMsg)
+            end
+        else
+            warn("ClickDetector not found!")
+        end
+        
+        task.wait(2.2)
+
+        local deliveryPoints = game:GetService("Workspace").DeliverySys.DeliveryPoints:GetChildren()
+        local delivered = false
+        for _, point in ipairs(deliveryPoints) do
+            if point:FindFirstChild("Locate") and point.Locate.Locate.Enabled then
+                local hrp = game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if hrp then
+                    hrp.CFrame = point.CFrame
+                    delivered = true
+                    break
+                end
+            end
+        end
+        
+        if not delivered then
+            warn("No delivery point found!")
+        end
+
+        task.wait(0)
+    end
+end
+
+about:Button("河北唐县脚本",function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Marco8642/science/ok/T%20ang%20County"))()
+end)
+
+about:Toggle("自动刷钱", "AL", false, function(AM)
+    _G.autoFarm = AM
+    
+    if AM then
+        if not _G.autoFarmThread or not _G.autoFarmThread.Running then
+            _G.autoFarmThread = coroutine.create(autoFarm)
+            coroutine.resume(_G.autoFarmThread)
+        end
+    else
+        if _G.autoFarmThread and _G.autoFarmThread.Running then
+            coroutine.close(_G.autoFarmThread)
+        end
+    end
+end)
+
+about:Toggle("自动刷钱", "AM", false, function(AM)
+    local virtualUser = game:GetService('VirtualUser') virtualUser:CaptureController() function teleportTo(CFrame) game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame end _G.autoFarm = false function autoFarm() while _G.autoFarm do fireclickdetector(game:GetService("Workspace").DeliverySys.Misc["Package Pile"].ClickDetector) task.wait(2.2) for _,point in pairs(game:GetService("Workspace").DeliverySys.DeliveryPoints:GetChildren()) do if point.Locate.Locate.Enabled then teleportTo(point.CFrame) end end task.wait(0) end end
+end)
+
+    local creds = window:Tab("自瞄", "6035145364")
+    local about = creds:section("通用内容", false)
+  local bin = {
+    fovsize = 20,
+    fovlookAt = false,
+    fovcolor = Color3.fromRGB(255, 255, 255),
+    fovthickness = 2,
+    Visible = false,
+    distance = 40,
+    ViewportSize = 2,
+    Transparency = 1,
+    Position = "Head",
+}
+
+local function createFOV(fov, color, thickness, transparency)
+    local RunService = game:GetService("RunService")
+    local UserInputService = game:GetService("UserInputService")
+    local Players = game:GetService("Players")
+    local Cam = game.Workspace.CurrentCamera
+
+    if FOVring then
+        FOVring:Remove()
+    end
+
+    FOVring = Drawing.new("Circle")
+    FOVring.Visible = true
+    FOVring.Thickness = thickness
+    FOVring.Color = color
+    FOVring.Filled = false
+    FOVring.Radius = fov
+    FOVring.Position = Cam.ViewportSize / 2
+    FOVring.Transparency = transparency
+
+    local function updateDrawings()
+        local camViewportSize = Cam.ViewportSize
+        FOVring.Position = camViewportSize / 2
+    end
+
+    local function onKeyDown(input)
+        if input.KeyCode == Enum.KeyCode.Delete then
+            RunService:UnbindFromRenderStep("FOVUpdate")
+            FOVring:Remove()
+        end
+    end
+
+    UserInputService.InputBegan:Connect(onKeyDown)
+
+    local function lookAt(target)
+        local lookVector = (target - Cam.CFrame.Position).unit
+        local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector)
+        Cam.CFrame = newCFrame
+    end
+
+    local function isPlayerAlive(player)
+        return player.Character and player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health > 0
+    end
+
+local function getClosestPlayerInFOV(trg_part)
+    local nearest = nil
+    local last = math.huge
+    local playerMousePos = Cam.ViewportSize / 2
+    local maxDistance = bin.distance
+    for _, player in ipairs(Players:GetPlayers()) do
+        if (not bin.aliveCheck or isPlayerAlive(player)) and player ~= Players.LocalPlayer then
+            local part = player.Character and player.Character:FindFirstChild(trg_part)
+            if part then
+                local ePos, isVisible = Cam:WorldToViewportPoint(part.Position)
+                if ePos and isVisible then
+                    local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude
+                    if distance < last and distance <= bin.fovsize and distance <= maxDistance then
+                        if not bin.teamCheck or (bin.teamCheck and isSameTeam(player)) then
+                            if not bin.wallCheck or (bin.wallCheck and isNearWall(player, maxDistance)) then
+                                last = distance
+                                nearest = player
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return nearest
+end
+
+    RunService.RenderStepped:Connect(function()
+        updateDrawings()
+        if bin.fovlookAt then
+            local closest = getClosestPlayerInFOV(bin.Position)
+            if closest and closest.Character:FindFirstChild(bin.Position) then
+                local targetPosition = closest.Character[bin.Position].Position
+                if not bin.teamCheck or not isSameTeam(closest) then
+                    if not bin.wallCheck or not isNearWall(closest, bin.distance) then
+                        lookAt(targetPosition)
+                    end
+                end
+            end
+        end
+    end)
+end
+
+local function destroyFOV()
+    if FOVring then
+        local RunService = game:GetService("RunService")
+        RunService:UnbindFromRenderStep("FOVUpdate")
+        FOVring:Remove()
+        FOVring = nil
+    end
+end
+
+local function updateFOV()
+    if FOVring then
+        FOVring.Thickness = bin.fovthickness
+        FOVring.Radius = bin.fovsize
+        FOVring.Color = bin.fovcolor
+        FOVring.Transparency = bin.Transparency / 10
+    end
+end
+
+local colorMap = {
+    ["红色"] = Color3.fromRGB(255, 0, 0),
+    ["蓝色"] = Color3.fromRGB(0, 0, 255),
+    ["黄色"] = Color3.fromRGB(255, 255, 0),
+    ["绿色"] = Color3.fromRGB(0, 255, 0),
+    ["青色"] = Color3.fromRGB(0, 255, 255),
+    ["橙色"] = Color3.fromRGB(255, 165, 0),
+    ["紫色"] = Color3.fromRGB(128, 0, 128),
+    ["白色"] = Color3.fromRGB(255, 255, 255),
+    ["黑色"] = Color3.fromRGB(0, 0, 0)
+}
+
+about:Toggle("显示丨圈圈自瞄", "open/close", false, function(state)
+    if state then
+        createFOV(bin.fovsize, bin.fovcolor, bin.fovthickness, bin.Transparency)
+    else
+        destroyFOV()
+    end
+end)
+about:Toggle("开启丨关闭圈圈自瞄", "open/close", false, function(state)
+    bin.fovlookAt = state
+end)
+about:Slider("圈圈自瞄厚度", "thickness", 2, 0, 10, false, function(value)
+    bin.fovthickness = value
+    updateFOV()
+end)
+about:Slider("圈圈自瞄大小", "Size", 20, 0, 100, false, function(value)
+    bin.fovsize = value
+    updateFOV()
+end)
+about:Slider("圈圈自瞄透明度", "Transparency", 1, 0, 10, false, function(value)
+    bin.Transparency = value
+    updateFOV()
+end)
+about:Slider("圈圈自瞄距离", "distance", 40, 10, 500, false, function(value)
+    bin.distance = value
+end)
+about:Dropdown('圈圈自瞄颜色', 'Dropdown', {"红色","蓝色","黄色","绿色","青色","橙色","紫色","白色","黑色"}, function(value)
+    bin.fovcolor = colorMap[value]
+    updateFOV()
+end)
+about:Dropdown('选择部位', 'Dropdown', {"Head", "HumanoidRootPart", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "LeftHand", "RightHand", "LeftLowerArm", "RightLowerArm", "LeftUpperArm", "RightUpperArm", "LeftFoot", "LeftLowerLeg", "UpperTorso", "LeftUpperLeg", "RightFoot", "RightLowerLeg", "LowerTorso", "RightUpperLeg"}, function(Value)
+    bin.Position = Value
+    updateFOV()
+end)
+about:Toggle("队伍检测", "Enable/Disable Team Check", false, function(state)
+    bin.teamCheck = state
+end)
+about:Toggle("活体检测","Alive Check",false,function(state)
+    bin.aliveCheck = state
+end)
+about:Toggle("墙壁检测", "Enable/Disable Wall Check", false, function(state)
+    bin.wallCheck = state
+end)
+
+local UITab4 = window:Tab("感染性微笑",'6035145364')
+
+local about = UITab4:section("主要功能",false)
+
+about:Button("防止微笑感染",function()
+for _,v in pairs(game.workspace:GetDescendants()) do
+
+if string.find(v.Name,"Infector") then
+v:Destroy()
+end
+end
+end)
+about:Button("删除门",function()
+for _,v in pairs(game.workspace:GetDescendants()) do
+
+if string.find(v.Name,"AntiSmiler") then
+v:Destroy()
+end
+end
+end)
+about:Button("反外挂",function()
+workspace.Map.AntiHack:Destroy() game.Players.LocalPlayer.Character.AntiFly:Destroy()
+end)
+about:Toggle("速度-微笑感染","text",false,function(s)
+getgenv().SlowDownSpeed = getgenv().SlowDownSpeed or 16
+        getgenv().NoSlowDown = Value
+        if getgenv().NoSlowDown then
+            SteppedConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().SlowDownSpeed
+                end)
+            end)
+        else
+            if SteppedConnection then
+                SteppedConnection:Disconnect()
+                SteppedConnection = nil
+            end
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        end
+end)
+about:Toggle("打击微笑感染","text",false,function(s)
+getgenv().InfectAura = Value
+        if getgenv().InfectAura then
+            getgenv().InfectAuraConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    game:GetService("Players").LocalPlayer.Character.Infected.InfectEvent:FireServer()
+                end)
+            end)
+        else
+            if getgenv().InfectAuraConnection then
+                getgenv().InfectAuraConnection:Disconnect()
+                getgenv().InfectAuraConnection = nil
+            end
+        end
+end)
+about:Toggle("Bat自动打击","text",false,function(s)
+getgenv().HitAura = s
+        if getgenv().HitAura then
+            getgenv().HitAuraConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    local character = game:GetService("Players").LocalPlayer.Character
+                    if character then
+                        local bat = character:FindFirstChildOfClass("Tool")
+                        if bat and bat.Name == "Bat" and bat:FindFirstChild("SwingEvent") then
+                            bat.SwingEvent:FireServer()
+                        end
+                           if packedice and packedice.Name == "Packed Ice" and packedice:FindFirstChild("SwingEvent") then
+                           packedice.SwingEvent:FireServer()
+                        end
+                    end
+                end)
+            end)
+        else
+            if getgenv().HitAuraConnection then
+                getgenv().HitAuraConnection:Disconnect()
+                getgenv().HitAuraConnection = nil
+            end
+        end
+end)
+about:Toggle("瓶子自动打击","text",false,function(s)
+getgenv().HitAura = s
+        if getgenv().HitAura then
+            getgenv().HitAuraConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    local character = game:GetService("Players").LocalPlayer.Character
+                    if character then
+                        local bottle = character:FindFirstChildOfClass("Tool")
+                        if bottle and bottle.Name == "Bottle" and bottle:FindFirstChild("SwingEvent") then
+                            bottle.SwingEvent:FireServer()
+                        end
+                           if packedice and packedice.Name == "Packed Ice" and packedice:FindFirstChild("SwingEvent") then
+                           packedice.SwingEvent:FireServer()
+                        end
+                    end
+                end)
+            end)
+        else
+            if getgenv().HitAuraConnection then
+                getgenv().HitAuraConnection:Disconnect()
+                getgenv().HitAuraConnection = nil
+            end
+        end
+end)    
+    
+ local UITab4 = window:Tab("彩虹朋友",'6035145364')
+
+local about = UITab4:section("功能",false)
+
+about:Toggle(
+    "自动收集物品并存放",
+    "text",
+    false,
+    function()
+    for _,v in ipairs(game:GetService("Workspace"):GetChildren()) do
+        if v:FindFirstChild("TouchTrigger") then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.TouchTrigger.CFrame
+            wait(0.1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52, 140, -8)
+            wait(0.2)
+        end
+    end
+    end
+)
+
+about:Toggle(
+    "怪物ESP",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(0, 0, 255)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+    
+     local UITab4 = window:Tab("自然灾害",'6035145364')
+
+local about = UITab4:section("功能",false)
+
+about:Toggle("自动存活", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236, 180, 360, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        end
+end
+end)
+about:Toggle("禁用掉落伤害", "AJH", false, function(AJH)
+  _G.NoFallDamage = AJH; while wait(0.5) do if _G.NoFallDamage == true then local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil if FallDamageScript then FallDamageScript:Destroy() end end end
+end)
+
+about:Toggle("地图投票用户界面", "Map Voting UI", false, function(bool)
+if bool == false then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = false
+    end
+end
+if bool == true then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = true
+    end
+end
+end)
+
+about:Toggle("在水上行走", "ToggleInfo", false, function(bool)
+ if bool == false then do game.Workspace.WaterLevel.CanCollide = false
+                            game.Workspace.WaterLevel.Size = Vector3.new(10, 1, 10)
+                        end
+                    end
+                    if bool == true then do game.Workspace.WaterLevel.CanCollide = true
+                            game.Workspace.WaterLevel.Size = Vector3.new(5000, 1, 5000)
+                        end
+                    end
+end)
+
+about:Toggle("开启游戏岛悬崖碰撞体积", "Togglelnfo", false, function(bool)
+for i, v in pairs (game.workspace:GetDescendants())do
+                                if v.Name == 'LowerRocks' then
+                                    v.CanCollide = bool
+                                end
+                            end
+end)
+
+about:Toggle("自动存活", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236, 180, 360, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+        end
+end
+end)
+
+about:Toggle("自动存活", "ToggleInfo", false, function(bool)
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/HeiDongscript.lua"))()
+end)
