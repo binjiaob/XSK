@@ -1,4 +1,4 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/XK%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2.txt", true))()
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2.txt", true))()
     local window = library:new("Mireng XKcore V3")
     local creds = window:Tab("关于", "6031097229")
     local bin = creds:section("信息", true)
@@ -26,7 +26,7 @@ end)
 end)
 
 local creds = window:Tab("通用", "6035145364")
-    local credits = creds:section("通用内容", false)
+    local credits = creds:section("通用内容", true)
     
 credits:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -1317,7 +1317,7 @@ Wredits:Button(
     )
 
 local creds = window:Tab("俄亥俄州", "7733779668")
-    local creditsb = creds:section("脚本内容", false)
+    local creditsb = creds:section("脚本内容", true)
 
 creditsb:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -1674,7 +1674,7 @@ creditsb:Button(
     )
 
 local creds = window:Tab("造船寻宝", "7733765398")
-    local creditsMLSB = creds:section("功能", false)   
+    local creditsMLSB = creds:section("功能", true)   
 
 creditsMLSB:Slider('修改速度', 'WalkspeedSlider', 16, 16, 99999,false, function(Value)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -2005,7 +2005,7 @@ creditsMLSB:Button(
     )
 
     local creds = window:Tab("DOORS", "7733779610")
-    local bin = creds:section("脚本", false)    
+    local bin = creds:section("脚本", true)    
 
 bin:Toggle("书透视","Valkiry",false,function(state)
     EAT = state
@@ -2509,7 +2509,7 @@ if state then
     end)
 
 
-local Tab85 = creds:section("酒店", false)
+local Tab85 = creds:section("酒店", true)
    
    Tab85:Button(
         "NBDOORS",
@@ -2561,7 +2561,7 @@ Tab85:Button(
     )
           
     local creds = window:Tab("河北唐县", "7733770599")
-    local Tab21 = creds:section("脚本内容", false)
+    local Tab21 = creds:section("脚本内容", true)
     
     Tab21:Label("自动刷钱 需要成为送货司机")
 local virtualUser = game:GetService('VirtualUser')
@@ -2601,7 +2601,7 @@ Tab21:Button(
     )
    
 local creds = window:Tab("火箭发射器", "7733770982")
-    local creditsML = creds:section("功能", false)   
+    local creditsML = creds:section("功能", true)   
    
 creditsML:Button(
         "自动收集燃料",
@@ -2624,7 +2624,7 @@ creditsML:Button(
         end
     )
    
-local creditsDSB = creds:section("通用内容", false)
+local creditsDSB = creds:section("通用内容", true)
       
 creditsDSB:Button(
         "发射台岛",
@@ -2739,7 +2739,7 @@ creditsDSB:Button(
     )
 
 local creds = window:Tab("破坏者谜团", "7733741741")
-    local creditsHUB = creds:section("脚本内容", false)
+    local creditsHUB = creds:section("脚本内容", true)
 
 creditsHUB:Button(
         "Highlight MM2",
@@ -2774,7 +2774,7 @@ creditsHUB:Button(
     )
     
 local creds = window:Tab("战斗勇士", "7733788966")
-    local credits = creds:section("脚本内容", false)    
+    local credits = creds:section("脚本内容", true)    
     
 credits:Button(
         "无限体力1",
@@ -2962,7 +2962,7 @@ credits:Button(
     )
     
 local creds = window:Tab("光影类", "7743872365")
-    local credits = creds:section("脚本内容", false)
+    local credits = creds:section("脚本内容", true)
     
 credits:Button(
         "光影1",
@@ -3052,7 +3052,7 @@ teleportToLocations()
         end
     )
 
-    local credits = creds:section("传送", false)
+    local credits = creds:section("传送", true)
    
    credits:Button(
         "距离1000",
@@ -3139,7 +3139,7 @@ credits:Button(
     )
 
 local creds = window:Tab("忍者传奇", "7733798747")
-    local RZCQ = creds:section("功能", false)
+    local RZCQ = creds:section("功能", true)
 
 autoswing = false
 function swinging()
@@ -3444,7 +3444,7 @@ RZQC:Button("传送到死亡宠物", function()
 end)
 
     local creds = window:Tab("狗熊岭危机-大厅", "6031097229")
-        local about = creds:section("信息", false)
+        local about = creds:section("信息", true)
 
     about:Toggle("房子透视(光头强家门口)","MainHouse",false,function(state)
         if state then
@@ -4077,7 +4077,7 @@ about:Toggle("第一章透视","TeleportPlayer",false,function(state)
     end)
     
     local creds = window:Tab("狗熊岭危机-第二章", "6031097229")
-        local about = creds:section("ESP", false)
+        local about = creds:section("ESP", true)
         
         about:Toggle("怪物熊大【透视】","Sign",false,function(state)
         if state then
@@ -4360,7 +4360,7 @@ about:Toggle("第一章透视","TeleportPlayer",false,function(state)
     end)
     
         local creds = window:Tab("恐怖旅店", "6031097229")
-        local about = creds:section("脚本", false)
+        local about = creds:section("脚本", true)
 
     about:Toggle("柜子透视","MainHouse",false,function(state)
         if state then
@@ -4503,7 +4503,7 @@ about:Toggle("第一章透视","TeleportPlayer",false,function(state)
     end)
     
             local creds = window:Tab("xhxh backrooms", "6035145364")
-    local about = creds:section("内容", false)
+    local about = creds:section("内容", true)
         
 about:Button(
         "牢大安慰告示牌【传送】",
@@ -4781,7 +4781,7 @@ about:Button(
     )
     
         local creds = window:Tab("吃掉世界", "6035145364")
-    local about = creds:section("脚本", false)
+    local about = creds:section("脚本", true)
 
     local EAT = false
     local sell = false
@@ -4864,7 +4864,7 @@ end)
 
 local UITab84 = win:Tab("拔出一把剑",'6035145364')
 
-local about = UITab84:section("脚本",false)
+local about = UITab84:section("脚本",true)
 
 about:Toggle("自动打怪前提", "", false, function(state)
     if state then
@@ -4892,7 +4892,7 @@ about:Toggle("自动传送到活动区域", "", false, function(state)
 end)
 
 local UITab25 = win:Tab("河北唐县",'6035145364')
-local about = UITab25:section("『河北唐县』",false)
+local about = UITab25:section("『河北唐县』",true)
 
  about:Button("传送到警察局", function()
   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5513.97412109375, 8.656171798706055, 4964.291015625)
@@ -4980,7 +4980,7 @@ about:Toggle("自动刷钱", "AM", false, function(AM)
 end)
 
 local creds = window:Tab("自瞄", "6035145364")
-local XKKK = creds:section("通用内容", false)
+local XKKK = creds:section("通用内容", true)
 
   local bin = {
     fovsize = 20,
@@ -5154,7 +5154,7 @@ XKKK:Toggle("墙壁检测", "Enable/Disable Wall Check", false, function(state)
 end)
 
 local UITab464 = window:Tab("感染性微笑",'6035145364')
-local about = UITab464:section("主要功能",false)
+local about = UITab464:section("主要功能",true)
 
 about:Button("防止微笑感染",function()
 for _,v in pairs(game.workspace:GetDescendants()) do
@@ -5257,7 +5257,7 @@ getgenv().HitAura = s
 end)    
     
 local UITab94 = window:Tab("彩虹朋友",'6035145364')
-local about = UITab94:section("功能",false)
+local about = UITab94:section("功能",true)
 
 about:Toggle(
     "自动收集物品并存放",
@@ -5359,7 +5359,7 @@ about:Toggle("黑洞脚本", "ToggleInfo", false, function(bool)
 end)
 
         local creds = window:Tab("吃掉世界", "6035145364")
-    local about = creds:section("脚本", false)
+    local about = creds:section("脚本", true)
 
     local EAT = false
     local sell = false
