@@ -4891,11 +4891,10 @@ about:Toggle("自动传送到活动区域", "", false, function(state)
         end
 end)
 
-local UITab25 = win:Tab("『河北唐县』",'6035145364')
-
+local UITab25 = win:Tab("河北唐县",'6035145364')
 local about = UITab25:section("『河北唐县』",false)
- 
-about:Button("传送到警察局", function()
+
+ about:Button("传送到警察局", function()
   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5513.97412109375, 8.656171798706055, 4964.291015625)
 end)
 about:Button("传送到出生点", function()
@@ -4980,8 +4979,9 @@ about:Toggle("自动刷钱", "AM", false, function(AM)
     local virtualUser = game:GetService('VirtualUser') virtualUser:CaptureController() function teleportTo(CFrame) game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame end _G.autoFarm = false function autoFarm() while _G.autoFarm do fireclickdetector(game:GetService("Workspace").DeliverySys.Misc["Package Pile"].ClickDetector) task.wait(2.2) for _,point in pairs(game:GetService("Workspace").DeliverySys.DeliveryPoints:GetChildren()) do if point.Locate.Locate.Enabled then teleportTo(point.CFrame) end end task.wait(0) end end
 end)
 
-    local creds = window:Tab("自瞄", "6035145364")
-    local about = creds:section("通用内容", false)
+local creds = window:Tab("自瞄", "6035145364")
+local XKKK = creds:section("通用内容", false)
+
   local bin = {
     fovsize = 20,
     fovlookAt = false,
@@ -5110,52 +5110,51 @@ local colorMap = {
     ["黑色"] = Color3.fromRGB(0, 0, 0)
 }
 
-about:Toggle("显示丨圈圈自瞄", "open/close", false, function(state)
+XKKK:Toggle("显示丨圈圈自瞄", "open/close", false, function(state)
     if state then
         createFOV(bin.fovsize, bin.fovcolor, bin.fovthickness, bin.Transparency)
     else
         destroyFOV()
     end
 end)
-about:Toggle("开启丨关闭圈圈自瞄", "open/close", false, function(state)
+XKKK:Toggle("开启丨关闭圈圈自瞄", "open/close", false, function(state)
     bin.fovlookAt = state
 end)
-about:Slider("圈圈自瞄厚度", "thickness", 2, 0, 10, false, function(value)
+XKKK:Slider("圈圈自瞄厚度", "thickness", 2, 0, 10, false, function(value)
     bin.fovthickness = value
     updateFOV()
 end)
-about:Slider("圈圈自瞄大小", "Size", 20, 0, 100, false, function(value)
+XKKK:Slider("圈圈自瞄大小", "Size", 20, 0, 100, false, function(value)
     bin.fovsize = value
     updateFOV()
 end)
-about:Slider("圈圈自瞄透明度", "Transparency", 1, 0, 10, false, function(value)
+XKKK:Slider("圈圈自瞄透明度", "Transparency", 1, 0, 10, false, function(value)
     bin.Transparency = value
     updateFOV()
 end)
-about:Slider("圈圈自瞄距离", "distance", 40, 10, 500, false, function(value)
+XKKK:Slider("圈圈自瞄距离", "distance", 40, 10, 500, false, function(value)
     bin.distance = value
 end)
-about:Dropdown('圈圈自瞄颜色', 'Dropdown', {"红色","蓝色","黄色","绿色","青色","橙色","紫色","白色","黑色"}, function(value)
+XKK:Dropdown('圈圈自瞄颜色', 'Dropdown', {"红色","蓝色","黄色","绿色","青色","橙色","紫色","白色","黑色"}, function(value)
     bin.fovcolor = colorMap[value]
     updateFOV()
 end)
-about:Dropdown('选择部位', 'Dropdown', {"Head", "HumanoidRootPart", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "LeftHand", "RightHand", "LeftLowerArm", "RightLowerArm", "LeftUpperArm", "RightUpperArm", "LeftFoot", "LeftLowerLeg", "UpperTorso", "LeftUpperLeg", "RightFoot", "RightLowerLeg", "LowerTorso", "RightUpperLeg"}, function(Value)
+XKKK:Dropdown('选择部位', 'Dropdown', {"Head", "HumanoidRootPart", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "LeftHand", "RightHand", "LeftLowerArm", "RightLowerArm", "LeftUpperArm", "RightUpperArm", "LeftFoot", "LeftLowerLeg", "UpperTorso", "LeftUpperLeg", "RightFoot", "RightLowerLeg", "LowerTorso", "RightUpperLeg"}, function(Value)
     bin.Position = Value
     updateFOV()
 end)
-about:Toggle("队伍检测", "Enable/Disable Team Check", false, function(state)
+XKKK:Toggle("队伍检测", "Enable/Disable Team Check", false, function(state)
     bin.teamCheck = state
 end)
-about:Toggle("活体检测","Alive Check",false,function(state)
+XKKK:Toggle("活体检测","Alive Check",false,function(state)
     bin.aliveCheck = state
 end)
-about:Toggle("墙壁检测", "Enable/Disable Wall Check", false, function(state)
+XKKK:Toggle("墙壁检测", "Enable/Disable Wall Check", false, function(state)
     bin.wallCheck = state
 end)
 
-local UITab4 = window:Tab("感染性微笑",'6035145364')
-
-local about = UITab4:section("主要功能",false)
+local UITab464 = window:Tab("感染性微笑",'6035145364')
+local about = UITab464:section("主要功能",false)
 
 about:Button("防止微笑感染",function()
 for _,v in pairs(game.workspace:GetDescendants()) do
@@ -5257,9 +5256,8 @@ getgenv().HitAura = s
         end
 end)    
     
- local UITab4 = window:Tab("彩虹朋友",'6035145364')
-
-local about = UITab4:section("功能",false)
+local UITab94 = window:Tab("彩虹朋友",'6035145364')
+local about = UITab94:section("功能",false)
 
 about:Toggle(
     "自动收集物品并存放",
@@ -5304,8 +5302,7 @@ about:Toggle(
     end
 )
     
-     local UITab4 = window:Tab("自然灾害",'6035145364')
-
+local UITab4 = window:Tab("自然灾害",'6035145364')
 local about = UITab4:section("功能",false)
 
 about:Toggle("自动存活", "ToggleInfo", false, function(bool)
