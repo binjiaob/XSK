@@ -2141,41 +2141,43 @@ end
         end
     end)
   
-creditsb:Button(
+  local creditsBb = creds:section("其余脚本", true)
+  
+creditsBb:Button(
         "XK俄亥俄州",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/xk%E4%BF%84%E4%BA%A5%E4%BF%84%E5%B7%9E.lua"))()
         end
     )
 
-creditsb:Button(
+creditsBb:Button(
         "XA一击秒",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Xingtaiduan/Script/main/Games/Ohio"))()
         end
     )
     
-creditsb:Button(
+creditsBb:Button(
         "Ohio Visurus",
         function()          loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\115\99\114\105\112\116\115\46\118\105\115\117\114\117\115\46\100\101\118\47\111\104\105\111\47\115\111\117\114\99\101"))()
         end
     )
 
-creditsb:Button(
+creditsBb:Button(
         "纳西姬",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/rbxluau/Roblox/main/ScriptHub.lua"))()
         end
     )
     
-creditsb:Button(
+creditsBb:Button(
         "Legend Handles YT",
         function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/LOLking123456/ohio/main/Roblox232"))()
         end
     )
     
-    creditsb:Button(
+    creditsBb:Button(
         "Swag Like Ohio",
         function()
             loadstring(game:HttpGet("https://pastebin.com/raw/hkvHeHed",true))()
@@ -5761,55 +5763,9 @@ getgenv().HitAura = s
         end
 end)    
     
-local UITab94 = window:Tab("彩虹朋友",'6035145364')
-local aboutSB = UITab94:section("功能",true)
-
-aboutSB:Toggle(
-    "自动收集物品并存放",
-    "text",
-    false,
-    function()
-    for _,v in ipairs(game:GetService("Workspace"):GetChildren()) do
-        if v:FindFirstChild("TouchTrigger") then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.TouchTrigger.CFrame
-            wait(0.1)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52, 140, -8)
-            wait(0.2)
-        end
-    end
-    end
-)
-
-aboutSB:Toggle(
-    "怪物ESP",
-    "text",
-    false,
-    function(bool)
-    if bool then
-        local runService = game:GetService("RunService")
-        event = runService.RenderStepped:Connect(function()
-            for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
-                if not v:FindFirstChild("Lol") then
-                    local esp = Instance.new("Highlight", v)
-                    esp.Name = "Lol"
-                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                    esp.FillColor = Color3.new(0, 0, 255)
-                end
-            end
-        end)
-    end
-    if not bool then
-        event:Disconnect()
-        for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
-            v:FindFirstChild("Lol"):Destroy()
-        end
-    end
-    end
-)
+local creds = window:Tab("自然灾害", "6031097229")
+    local about = creds:section("信息", true)
     
-local UITab4 = window:Tab("自然灾害",'6035145364')
-local about = UITab4:section("功能",false)
-
 about:Toggle("自动存活", "ToggleInfo", false, function(bool)
     _G.autowinfarm = bool;
     while wait(.1) do
@@ -5863,6 +5819,41 @@ about:Toggle("黑洞脚本", "ToggleInfo", false, function(bool)
     loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%BF%83V3.lua"))()
 end)
 
+local creds = window:Tab("彩虹朋友", "6031097229")
+local bin = creds:section("脚本", true)
+
+creditsb:Toggle("怪物ESP","Sign",false,function(state)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(0, 0, 255)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end)
+    
+creditsb:Toggle("自动收集","Sign",false,function(state)
+    for _,v in ipairs(game:GetService("Workspace"):GetChildren()) do
+        if v:FindFirstChild("TouchTrigger") then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.TouchTrigger.CFrame
+            wait(0.1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52, 140, -8)
+            wait(0.2)
+        end
+    end
+    end)
         local creds = window:Tab("吃掉世界", "6035145364")
     local about = creds:section("脚本", true)
 
