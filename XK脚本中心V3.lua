@@ -5817,62 +5817,6 @@ aboutSB:Toggle(
     end
 )
     
-local UITab4 = window:Tab("自然灾害",'6035145364')
-local about = UITab4:section("功能",false)
-
-about:Toggle("自动存活", "ToggleInfo", false, function(bool)
-    _G.autowinfarm = bool;
-    while wait(.1) do
-        if _G.autowinfarm == true then
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236, 180, 360, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-        end
-end
-end)
-about:Toggle("禁用掉落伤害", "AJH", false, function(AJH)
-  _G.NoFallDamage = AJH; while wait(0.5) do if _G.NoFallDamage == true then local FallDamageScript = (game.Players.LocalPlayer.Character ~= nil) and game.Players.LocalPlayer.Character:FindFirstChild("FallDamageScript") or nil if FallDamageScript then FallDamageScript:Destroy() end end end
-end)
-
-about:Toggle("地图投票用户界面", "Map Voting UI", false, function(bool)
-if bool == false then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = false
-    end
-end
-if bool == true then do game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage.Visible = true
-    end
-end
-end)
-
-about:Toggle("在水上行走", "ToggleInfo", false, function(bool)
- if bool == false then do game.Workspace.WaterLevel.CanCollide = false
-                            game.Workspace.WaterLevel.Size = Vector3.new(10, 1, 10)
-                        end
-                    end
-                    if bool == true then do game.Workspace.WaterLevel.CanCollide = true
-                            game.Workspace.WaterLevel.Size = Vector3.new(5000, 1, 5000)
-                        end
-                    end
-end)
-
-about:Toggle("开启游戏岛悬崖碰撞体积", "Togglelnfo", false, function(bool)
-for i, v in pairs (game.workspace:GetDescendants())do
-                                if v.Name == 'LowerRocks' then
-                                    v.CanCollide = bool
-                                end
-                            end
-end)
-
-about:Toggle("自动存活", "ToggleInfo", false, function(bool)
-    _G.autowinfarm = bool;
-    while wait(.1) do
-        if _G.autowinfarm == true then
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-236, 180, 360, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-        end
-end
-end)
-
-about:Toggle("黑洞脚本", "ToggleInfo", false, function(bool)
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%BF%83V3.lua"))()
-end)
-    
     local creds = window:Tab("压力", "6035145364")
     local about = creds:section("通用内容", true)
     
