@@ -5876,22 +5876,22 @@ end)
     local creds = window:Tab("压力", "6035145364")
     local about = creds:section("通用内容", true)
     
-    about:Toggle("怪物提示","Valkiry",false,function(state)
+about:Toggle("怪物提示","Valkiry",false,function(state)
     if state then
             local entityNames = {"Angler", "Eyefestation", "Blitz", "Pinkie", "Froger", "Chainsmoker", "Pandemonium", "Body"}  --enity
             local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))() --Lib1
-            local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))() --Lib2
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
 
             -- Ensure flags and plr are defined
             local flags = flags or {} --Prevent Error
             local plr = game.Players.LocalPlayer --Prevent Error2
 
             local function notifyEntitySpawn(entity)
-                Notification:Notify(
-                    {Title = "XK Core", Description = entity.Name:gsub("Moving", ""):lower() .. " 怪物出现"},
-                    {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 5, Type = "image"},
-                    {Image = "http://www.roblox.com/asset/?id=10802751252", ImageColor = Color3.fromRGB(255, 255, 255)}
-                )
+                    OrionLib:MakeNotification({
+                    Name = "怪物已刷新【躲起来！】【Mireng XKCore】",
+                    Content = "请注意刷新的怪物声音，因为我不会提示怪物的名字",
+                    Time = 3
+                })     
             end
 
             local function onChildAdded(child)
@@ -5920,76 +5920,6 @@ end)
         else 
             -- Close message or any other cleanup if needed
             running = false
-        end
-    end)
-    
-    about:Toggle("门透视","Valkiry",false,function(state)
-        if state then
-            _G.Tree2ESPInstances = {}
-            local esptable = {doors = {}}
-
-            local function createBillboard(instance, name, color)
-                local bill = Instance.new("BillboardGui", game.CoreGui)
-                bill.AlwaysOnTop = true
-                bill.Size = UDim2.new(0, 100, 0, 50)
-                bill.Adornee = instance
-                bill.MaxDistance = 2000
-
-                local mid = Instance.new("Frame", bill)
-                mid.AnchorPoint = Vector2.new(0.5, 0.5)
-                mid.BackgroundColor3 = color
-                mid.Size = UDim2.new(0, 8, 0, 8)
-                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
-                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
-                Instance.new("UIStroke", mid)
-
-                local txt = Instance.new("TextLabel", bill)
-                txt.AnchorPoint = Vector2.new(0.5, 0.5)
-                txt.BackgroundTransparency = 1
-                txt.TextColor3 = color
-                txt.Size = UDim2.new(1, 0, 0, 20)
-                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
-                txt.Text = name
-                Instance.new("UIStroke", txt)
-
-                task.spawn(function()
-                    while bill do
-                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
-                            bill.Enabled = false
-                            bill.Adornee = nil
-                            bill:Destroy()
-                        end
-                        task.wait()
-                    end
-                end)
-            end
-
-            local function monitorTree2()
-                for _, instance in pairs(workspace:GetDescendants()) do
-                    if instance:IsA("Model") and instance.Name == "Door" then
-                        createBillboard(instance, "门", Color3.new(255, 0, 0)) -- Change color as needed
-                    end
-                end
-
-                workspace.DescendantAdded:Connect(function(instance)
-                    if instance:IsA("Model") and instance.Name == "Door" then
-                        createBillboard(instance, "门", Color3.new(255, 0, 0)) -- Change color as needed
-                    end
-                end)
-            end
-
-            monitorTree2()
-            table.insert(_G.Tree2ESPInstances, esptable)
-				
-        else
-            if _G.Tree2ESPInstances then
-                for _, instance in pairs(_G.Tree2ESPInstances) do
-                    for _, v in pairs(instance.doors) do
-                        v.delete()
-                    end
-                end
-                _G.Tree2ESPInstances = nil
-            end
         end
     end)
     
@@ -6079,7 +6009,7 @@ end)
     end)
     
     about:Toggle("假门透视","Valkiry",false,function(state)
-    假门if state then
+    if state then
             _G.TricksterRoomESPInstances = {}
             local esptable = {doors = {}}
 
@@ -6286,76 +6216,6 @@ end)
                     end
                 end
                 _G.MonsterLockerESPInstances = nil
-            end
-        end
-    end)
-    
-    about:Toggle("章鱼哥透视","Valkiry",false,function(state)
-    if state then
-            _G.BodyESPInstances = {}
-            local esptable = {doors = {}}
-
-            local function createBillboard(instance, name, color)
-                local bill = Instance.new("BillboardGui", game.CoreGui)
-                bill.AlwaysOnTop = true
-                bill.Size = UDim2.new(0, 100, 0, 50)
-                bill.Adornee = instance
-                bill.MaxDistance = 2000
-
-                local mid = Instance.new("Frame", bill)
-                mid.AnchorPoint = Vector2.new(0.5, 0.5)
-                mid.BackgroundColor3 = color
-                mid.Size = UDim2.new(0, 8, 0, 8)
-                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
-                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
-                Instance.new("UIStroke", mid)
-
-                local txt = Instance.new("TextLabel", bill)
-                txt.AnchorPoint = Vector2.new(0.5, 0.5)
-                txt.BackgroundTransparency = 1
-                txt.TextColor3 = color
-                txt.Size = UDim2.new(1, 0, 0, 20)
-                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
-                txt.Text = name
-                Instance.new("UIStroke", txt)
-
-                task.spawn(function()
-                    while bill do
-                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
-                            bill.Enabled = false
-                            bill.Adornee = nil
-                            bill:Destroy()
-                        end
-                        task.wait()
-                    end
-                end)
-            end
-
-            local function monitorBody()
-                for _, instance in pairs(workspace:GetDescendants()) do
-                    if instance:IsA("Model") and instance.Name == "Body" then
-                        createBillboard(instance, "章鱼哥", Color3.new(50, 100, 25)) -- Change color as neededPipesDoorESPInstances
-                    end
-                end
-
-                workspace.DescendantAdded:Connect(function(instance)
-                    if instance:IsA("Model") and instance.Name == "Body" then
-                        createBillboard(instance, "章鱼哥", Color3.new(50, 100, 25)) -- Change color as needed
-                    end
-                end)
-            end
-
-            monitorBody()
-            table.insert(_G.BodyESPInstances, esptable)
-				
-        else
-            if _G.BodyESPInstances then
-                for _, instance in pairs(_G.BodyESPInstances) do
-                    for _, v in pairs(instance.doors) do
-                        v.delete()
-                    end
-                end
-                _G.BodyESPInstances = nil
             end
         end
     end)
