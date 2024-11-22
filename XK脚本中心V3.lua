@@ -5876,6 +5876,53 @@ end)
     local creds = window:Tab("压力", "6035145364")
     local about = creds:section("通用内容", true)
     
+    about:Toggle("怪物提示","Valkiry",false,function(state)
+    if state then
+            local entityNames = {"Angler", "Eyefestation", "Blitz", "Pinkie", "Froger", "Chainsmoker", "Pandemonium", "Body"}  --enity
+            local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))() --Lib1
+            local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))() --Lib2
+
+            -- Ensure flags and plr are defined
+            local flags = flags or {} --Prevent Error
+            local plr = game.Players.LocalPlayer --Prevent Error2
+
+            local function notifyEntitySpawn(entity)
+                Notification:Notify(
+                    {Title = "XK Core", Description = entity.Name:gsub("Moving", ""):lower() .. " 怪物出现"},
+                    {OutlineColor = Color3.fromRGB(80, 80, 80), Time = 5, Type = "image"},
+                    {Image = "http://www.roblox.com/asset/?id=10802751252", ImageColor = Color3.fromRGB(255, 255, 255)}
+                )
+            end
+
+            local function onChildAdded(child)
+                if table.find(entityNames, child.Name) then
+                    repeat
+                        task.wait()
+                    until plr:DistanceFromCharacter(child:GetPivot().Position) < 1000 or not child:IsDescendantOf(workspace)
+                    
+                    if child:IsDescendantOf(workspace) then
+                        notifyEntitySpawn(child)
+                    end
+                end
+            end
+
+            -- Infinite loop to keep the script running and check for hintrush flag
+            local running = true
+            while running do
+                local connection = workspace.ChildAdded:Connect(onChildAdded)
+                
+                repeat
+                    task.wait(1) -- Adjust the wait time as needed
+                until not flags.hint or not running
+                
+                connection:Disconnect()
+            end 
+        else 
+            -- Close message or any other cleanup if needed
+            running = false
+        end
+    end)
+    
     about:Toggle("门透视","Valkiry",false,function(state)
         if state then
             _G.Tree2ESPInstances = {}
@@ -5990,13 +6037,13 @@ end)
             local function monitorNormalKeyCard()
                 for _, instance in pairs(workspace:GetDescendants()) do
                     if instance:IsA("Model") and instance.Name == "NormalKeyCard" then
-                        createBillboard(instance, "NormalKeyCard", Color3.new(1, 0, 0)) -- Change color as needed
+                        createBillboard(instance, "钥匙", Color3.new(1, 0, 0)) -- Change color as needed
                     end
                 end
 
                 workspace.DescendantAdded:Connect(function(instance)
                     if instance:IsA("Model") and instance.Name == "NormalKeyCard" then
-                        createBillboard(instance, "NormalKeyCard", Color3.new(1, 0, 0)) -- Change color as needed
+                        createBillboard(instance, "钥匙", Color3.new(1, 0, 0)) -- Change color as needed
                     end
                 end)
             end
@@ -6102,7 +6149,7 @@ end)
     end)
     
     about:Toggle("大门透视","Valkiry",false,function(state)
-    大门if state then
+    if state then
             _G.bigRoomDoorESPInstances = {}
             local esptable = {doors = {}}
 
@@ -6172,106 +6219,9 @@ end)
             end
         end
     end)
-    
-    about:Toggle("自动躲避","Valkiry",false,function(state)
-    自动躲避if state then
-            local entityNames = {"Angler", "Blitz", "Pinkie", "Froger", "Chainsmoker", "Pandemonium"} -- List of entities to monitor
-            local platformHeight = 900 -- Height for the safe platform
-            local platformSize = Vector3.new(1000, 1, 1000) -- Size of the platform
-            local platform -- Variable to hold the created platform
-            local entityTriggerMap = {} -- Map to keep track of which entities triggered the platform
-            local playerOriginalPositions = {} -- Table to store original positions of players
-            local isMonitoring = true
-
-            -- Function to create or update the safe platform
-            local function createSafePlatform()
-                if platform then
-                    platform:Destroy() -- Remove existing platform if any
-                end
-
-                platform = Instance.new("Part")
-                platform.Size = platformSize
-                platform.Position = Vector3.new(0, platformHeight, 0) -- Center position
-                platform.Anchored = true
-                platform.Parent = workspace
-            end
-
-            -- Function to teleport a player to the safe platform
-            local function teleportPlayerToPlatform(player)
-                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                    local targetPosition = platform.Position + Vector3.new(0, platform.Size.Y / 2 + 5, 0)
-                    playerOriginalPositions[player.UserId] = player.Character.HumanoidRootPart.CFrame -- Store original position
-                    player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPosition)
-                end
-            end
-
-            -- Function to teleport a player back to their original position
-            local function teleportPlayerBack(player)
-                if playerOriginalPositions[player.UserId] then
-                    player.Character.HumanoidRootPart.CFrame = playerOriginalPositions[player.UserId]
-                    playerOriginalPositions[player.UserId] = nil -- Clear the stored position
-                end
-            end
-
-            -- Function to handle entity detection
-            local function onChildAdded(child)
-                if table.find(entityNames, child.Name) then
-                    -- Create platform and teleport players when entity is detected
-                    createSafePlatform()
-                    entityTriggerMap[child] = true -- Mark entity as having triggered the platform
-                    for _, player in pairs(game.Players:GetPlayers()) do
-                        teleportPlayerToPlatform(player)
-                    end
-                end
-            end
-
-            -- Function to handle entity removal
-            local function onChildRemoved(child)
-                if entityTriggerMap[child] then
-                    -- Entity was previously responsible for creating the platform
-                    entityTriggerMap[child] = nil -- Remove entity from the map
-                    -- Teleport players back to their original positions
-                    for _, player in pairs(game.Players:GetPlayers()) do
-                        teleportPlayerBack(player)
-                    end
-                end
-            end
-
-            -- Connect the ChildAdded and ChildRemoved events
-            local addConnection = workspace.ChildAdded:Connect(onChildAdded)
-            local removeConnection = workspace.ChildRemoved:Connect(onChildRemoved)
-
-            -- Loop to keep the script running based on the toggle state
-            while isMonitoring do
-                task.wait(1) -- Adjust the wait time as needed
-
-                if not state then
-                    -- Cleanup if defense is turned off
-                    if platform then
-                        -- Keep the platform, but ensure players are teleported back
-                        for _, player in pairs(game.Players:GetPlayers()) do
-                            teleportPlayerBack(player)
-                        end
-                    end
-                    isMonitoring = false
-                    addConnection:Disconnect() -- Disconnect the event listener
-                    removeConnection:Disconnect() -- Disconnect the event listener
-                end
-            end 
-        else
-            -- Cleanup if defense is turned off
-            if platform then
-                -- Keep the platform, but ensure players are teleported back
-                for _, player in pairs(game.Players:GetPlayers()) do
-                    teleportPlayerBack(player)
-                end
-            end
-        end
-    end)
-    
-    
+      
     about:Toggle("假柜子透视","Valkiry",false,function(state)
-    假柜子if state then
+    if state then
             _G.MonsterLockerESPInstances = {}
             local esptable = {doors = {}}
 
@@ -6341,7 +6291,7 @@ end)
     end)
     
     about:Toggle("章鱼哥透视","Valkiry",false,function(state)
-    章鱼哥if state then
+    if state then
             _G.BodyESPInstances = {}
             local esptable = {doors = {}}
 
