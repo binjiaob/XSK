@@ -1,15 +1,3 @@
-local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
-wait(1)
-OrionLib:MakeNotification({
-                    Name = "mspaint V3",
-                    Content = "暂时借用LOLHAX【已同意】",
-                    Time = 30
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://4590662766"
-sound:Play()
-
 local Loadtime = tick()
 local Repository = "https://raw.githubusercontent.com/RectangularObject/LinoriaLib/main/"
 
