@@ -3,7 +3,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "mspaint V3汉化",
                     Content = "欢迎使用【修复补缺:小玄奘】",
-                    Time = 30
+                    Time = 5
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -14,7 +14,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "mspaint V3汉化",
                     Content = "汉化作者:R-Exploit",
-                    Time = 30
+                    Time = 5
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -23,9 +23,9 @@ sound:Play()
 
 wait(1)
 OrionLib:MakeNotification({
-                    Name = "此脚本不再开源！",
+                    Name = "此汉化不再开源！",
                     Content = "测试员:NIDO_MUNCISEEK--",
-                    Time = 30
+                    Time = 5
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
@@ -37,7 +37,7 @@ wait(1)
 OrionLib:MakeNotification({
                     Name = "你的注入器："..identifyexecutor(),
                     Content = "测试",
-                    Time = 30
+                    Time = 5
                 })
                 
                 local sound = Instance.new("Sound", workspace)
@@ -1112,10 +1112,10 @@ shared.Load("Utils", "ConnectionsFuncs")
 
 --// Tabs \\--
 Script.Tabs = {
-    Main = shared.Window:AddTab("主要功能"),
-    Exploits = shared.Window:AddTab("移除功能"),
-    Visuals = shared.Window:AddTab("透视通知"),
-    Floor = shared.Window:AddTab("楼层功能")
+    Main = shared.Window:AddTab("主要"),
+    Exploits = shared.Window:AddTab("移除"),
+    Visuals = shared.Window:AddTab("透视"),
+    Floor = shared.Window:AddTab("楼层")
 }
 
 shared.Load("Tabs", "Main")
@@ -2873,25 +2873,25 @@ local PlayerGroupBox = Tabs.Main:AddLeftGroupbox("Player") do
     })
 end
 
-local ReachGroupBox = Tabs.Main:AddRightGroupbox("Automation") do
-    ReachGroupBox:AddToggle("AutoRespawn", {
+local AutomationGroupBox = Tabs.Main:AddRightGroupbox("Automation") do
+    AutomationGroupBox:AddToggle("AutoRespawn", {
         Text = "Auto Respawn",
         Default = false
     })
 
-    ReachGroupBox:AddToggle("AutoPush", {
+    AutomationGroupBox:AddToggle("AutoPush", {
         Text = "Auto Push Employees",
         Default = false
     })
 
-    ReachGroupBox:AddDivider()
+    AutomationGroupBox:AddDivider()
 
-    ReachGroupBox:AddToggle("AutoTPWhistle", {
+    AutomationGroupBox:AddToggle("AutoTPWhistle", {
         Text = "Enable player whistle teleport",
         Default = false
     })
 
-    ReachGroupBox:AddDropdown("AutoTPWhistlePlayers", {
+    AutomationGroupBox:AddDropdown("AutoTPWhistlePlayers", {
         SpecialType = "Player",
         Multi = true,
         Text = "Go to player(s)'s whistle."
@@ -3356,37 +3356,37 @@ local Tabs = Script.Tabs
 --// Exploits \\--
 local AntiEntityGroupBox = Tabs.Exploits:AddLeftGroupbox("防怪物伤害") do
     AntiEntityGroupBox:AddToggle("AntiDread", {
-        Text = "移除dread伤害或跳杀",
+        Text = "移除恩酱伤害或跳杀",
         Default = false
     })
 
     AntiEntityGroupBox:AddToggle("AntiHalt", {
-        Text = "移除Halt",
+        Text = "移除恩酱",
         Default = false
     })
 
     AntiEntityGroupBox:AddToggle("AntiScreech", {
-        Text = "移除Screech",
+        Text = "移除恩酱",
         Default = false
     })
 
     AntiEntityGroupBox:AddToggle("AntiDupe", {
-        Text = "移除" .. (Script.IsBackdoor and "Vacuum" or "假门"),
+        Text = "移除" .. (Script.IsBackdoor and "恩酱" or "恩酱"),
         Default = false
     })
 
     AntiEntityGroupBox:AddToggle("AntiEyes", {
-        Text = "移除" .. (Script.IsBackdoor and "Lookman伤害" or "Eyes伤害"),
+        Text = "移除" .. (Script.IsBackdoor and "恩酱伤害" or "恩酱伤害"),
         Default = false
     })
 
     AntiEntityGroupBox:AddToggle("AntiSnare", {
-        Text = "移除夹子伤害",
+        Text = "移除恩酱伤害",
         Default = false
     })
 
     AntiEntityGroupBox:AddToggle("AntiHearing", {
-        Text = "移除Figure听觉",
+        Text = "移除恩酱听觉",
         Default = false,
         Visible = not Script.IsFools
     })
@@ -3398,7 +3398,7 @@ local TrollingGroupBox = Tabs.Exploits:AddLeftGroupbox("娱乐") do
         Default = false
     }):AddKeyPicker("SpamOtherTools", {
         Default = "X",
-        Text = "我也不知道这个是啥玩意",
+        Text = "恩酱",
         Mode = shared.Library.IsMobile and "Toggle" or "Hold",
         SyncToggleState = shared.Library.IsMobile
     })
@@ -4326,8 +4326,8 @@ elseif Script.IsMines then
         })
     end
 
-    local Mines_ReachGroupBox = Tabs.Floor:AddRightGroupbox("自动化") do
-        Mines_ReachGroupBox:AddButton({
+    local Mines_AutomationGroupBox = Tabs.Floor:AddRightGroupbox("自动化") do
+        Mines_AutomationGroupBox:AddButton({
             Text = "自动门200水泵",
             Func = function()
                 if Script.LatestRoom.Value < 99 then
@@ -4396,8 +4396,8 @@ elseif Script.IsMines then
             end
         })
 
-        Mines_ReachGroupBox:AddToggle("TheMinesAnticheatBypass", {
-            Text = "反作弊绕过【不建议开，因为梯子会爬不了】",
+        Mines_AutomationGroupBox:AddToggle("TheMinesAnticheatBypass", {
+            Text = "反作弊绕过",
             Default = false
         })
     end
@@ -4640,22 +4640,22 @@ elseif Script.IsRooms then
         })
     end
 
-    local Rooms_ReachGroupBox = Tabs.Floor:AddRightGroupbox("Automation") do
-        Rooms_ReachGroupBox:AddToggle("AutoRooms", {
+    local Rooms_AutomationGroupBox = Tabs.Floor:AddRightGroupbox("Automation") do
+        Rooms_AutomationGroupBox:AddToggle("AutoRooms", {
             Text = "Auto Rooms",
             Default = false
         })
 
-        Rooms_ReachGroupBox:AddLabel("Recommended Settings:\nSpeed Bypass and Noclip disabled", true)
+        Rooms_AutomationGroupBox:AddLabel("Recommended Settings:\nSpeed Bypass and Noclip disabled", true)
 
-        Rooms_ReachGroupBox:AddDivider()
+        Rooms_AutomationGroupBox:AddDivider()
 
-        Rooms_ReachGroupBox:AddToggle("AutoRoomsDebug", { 
+        Rooms_AutomationGroupBox:AddToggle("AutoRoomsDebug", { 
             Text = "Show Debug Info",
             Default = false
         })
         
-        Rooms_ReachGroupBox:AddToggle("ShowAutoRoomsPathNodes", { 
+        Rooms_AutomationGroupBox:AddToggle("ShowAutoRoomsPathNodes", { 
             Text = "Show Pathfinding Nodes",
             Default = false
         })
@@ -5212,7 +5212,7 @@ local PlayerGroupBox = Tabs.Main:AddLeftGroupbox("玩家") do
     })
 end
 
-local ReachGroupBox = Tabs.Main:AddLeftGroupbox("其余主要功能") do
+local ReachGroupBox = Tabs.Main:AddLeftGroupbox("其余功能") do
     ReachGroupBox:AddToggle("DoorReach", {
         Text = "远程开门",
         Default = false
@@ -5290,8 +5290,6 @@ end
             Compact = true
         })
 
-        ReachGroupBox:AddDivider()
-
         ReachGroupBox:AddDropdown("AutoBreakerSolverMethod", {
             AllowNull = false,
             Values = {"Legit", "Exploit"},
@@ -5333,7 +5331,7 @@ end
             end
         end)
     elseif Script.IsMines then
-        ReachGroupBox:AddToggle("AutoAnchorSolver", {
+        AutomationGroupBox:AddToggle("AutoAnchorSolver", {
             Text = "自动锚点",
             Default = false
         })
@@ -5456,42 +5454,42 @@ end
 local ESPTabBox = Tabs.Visuals:AddLeftTabbox() do
     local ESPTab = ESPTabBox:AddTab("透视") do
         ESPTab:AddToggle("DoorESP", {
-            Text = "门透视",
+            Text = "门恩酱透视",
             Default = false,
         }):AddColorPicker("DoorEspColor", {
             Default = Color3.new(0, 1, 1),
         })
     
         ESPTab:AddToggle("ObjectiveESP", {
-            Text = "钥匙透视",
+            Text = "恩酱透视",
             Default = false,
         }):AddColorPicker("ObjectiveEspColor", {
             Default = Color3.new(0, 1, 0),
         })
     
         ESPTab:AddToggle("EntityESP", {
-            Text = "怪物透视",
+            Text = "恐怖的恩酱透视",
             Default = false,
         }):AddColorPicker("EntityEspColor", {
             Default = Color3.new(1, 0, 0),
         })
     
         ESPTab:AddToggle("ItemESP", {
-            Text = "物品透视",
+            Text = "恩酱物品透视",
             Default = false,
         }):AddColorPicker("ItemEspColor", {
             Default = Color3.new(1, 0, 1),
         })
     
         ESPTab:AddToggle("ChestESP", {
-            Text = "箱子透视",
+            Text = "小偷家透视",
             Default = false,
         }):AddColorPicker("ChestEspColor", {
             Default = Color3.new(1, 1, 0),
         })
     
         ESPTab:AddToggle("PlayerESP", {
-            Text = "玩家透视",
+            Text = "恩酱透视",
             Default = false,
         }):AddColorPicker("PlayerEspColor", {
             Default = Color3.new(1, 1, 1),
@@ -5505,14 +5503,14 @@ local ESPTabBox = Tabs.Visuals:AddLeftTabbox() do
         })
     
         ESPTab:AddToggle("GoldESP", {
-            Text = "金币透视",
+            Text = "银行透视",
             Default = false,
         }):AddColorPicker("GoldEspColor", {
             Default = Color3.new(1, 1, 0),
         })
     
         ESPTab:AddToggle("GuidingLightESP", {
-            Text = "引导之光",
+            Text = "恩酱透视",
             Default = false,
         }):AddColorPicker("GuidingLightEspColor", {
             Default = Color3.new(0, 0.5, 1),
@@ -10288,7 +10286,7 @@ end
 
 function UICreator:CreateWindow()
     local Window = shared.Library:CreateWindow({
-        Title = "mspaint v3| 无需卡密版 | " .. shared.ScriptName,
+        Title = "mspaint v3| 恩酱版 | " .. shared.ScriptName,
         Center = true,
         AutoShow = true,
         Resizable = true,
@@ -10341,14 +10339,14 @@ function UICreator:CreateSettingsTab()
     MenuGroup:AddToggle("ShowCustomCursor", {Text = "Custom Cursor", Default = true, Callback = function(Value) shared.Library.ShowCustomCursor = Value end})
     MenuGroup:AddDivider()
     MenuGroup:AddLabel("Menu bind"):AddKeyPicker("MenuKeybind", { Default = "RightShift", NoUI = true, Text = "Menu keybind" })
-    MenuGroup:AddButton("加入MSPAINT的DC", function()
+    MenuGroup:AddButton("Join Discord", function()
         local Inviter = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Discord%20Inviter/Source.lua"))()
         Inviter.Join("https://discord.com/invite/cfyMptntHr")
         Inviter.Prompt({
             name = "mspaint",
             invite = "https://discord.com/invite/cfyMptntHr",
         })
-    end):AddButton("复制Link", function()
+    end):AddButton("Copy Link", function()
         if setclipboard then
             setclipboard("https://discord.com/invite/cfyMptntHr")
             shared.Library:Notify("Copied discord link to clipboard!")
@@ -10364,13 +10362,7 @@ function UICreator:CreateSettingsTab()
     CreditsGroup:AddLabel("mstudio45")
     CreditsGroup:AddLabel("bacalhauz")
     CreditsGroup:AddLabel("devs")
-    CreditsGroup:AddLabel("合作团队:")
-    CreditsGroup:AddLabel("汉化作者:R-Exploit")
-    CreditsGroup:AddLabel("测试员:NIDO_MUNCISEEK--")   
-    CreditsGroup:AddLabel("汉化修补:小玄奘")
-    CreditsGroup:AddLabel("警告")
-    CreditsGroup:AddLabel("已经有源码的人，不准外传，外传死全家")
-    CreditsGroup:AddLabel("知晓人我都知道")
+    CreditsGroup:AddLabel("定制版")
 
     shared.Library.ToggleKeybind = shared.Options.MenuKeybind
 
