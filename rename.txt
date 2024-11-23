@@ -2873,25 +2873,25 @@ local PlayerGroupBox = Tabs.Main:AddLeftGroupbox("Player") do
     })
 end
 
-local AutomationGroupBox = Tabs.Main:AddRightGroupbox("Automation") do
-    AutomationGroupBox:AddToggle("AutoRespawn", {
+local ReachGroupBox = Tabs.Main:AddRightGroupbox("Automation") do
+    ReachGroupBox:AddToggle("AutoRespawn", {
         Text = "Auto Respawn",
         Default = false
     })
 
-    AutomationGroupBox:AddToggle("AutoPush", {
+    ReachGroupBox:AddToggle("AutoPush", {
         Text = "Auto Push Employees",
         Default = false
     })
 
-    AutomationGroupBox:AddDivider()
+    ReachGroupBox:AddDivider()
 
-    AutomationGroupBox:AddToggle("AutoTPWhistle", {
+    ReachGroupBox:AddToggle("AutoTPWhistle", {
         Text = "Enable player whistle teleport",
         Default = false
     })
 
-    AutomationGroupBox:AddDropdown("AutoTPWhistlePlayers", {
+    ReachGroupBox:AddDropdown("AutoTPWhistlePlayers", {
         SpecialType = "Player",
         Multi = true,
         Text = "Go to player(s)'s whistle."
@@ -4326,8 +4326,8 @@ elseif Script.IsMines then
         })
     end
 
-    local Mines_AutomationGroupBox = Tabs.Floor:AddRightGroupbox("自动化") do
-        Mines_AutomationGroupBox:AddButton({
+    local Mines_ReachGroupBox = Tabs.Floor:AddRightGroupbox("自动化") do
+        Mines_ReachGroupBox:AddButton({
             Text = "自动门200水泵",
             Func = function()
                 if Script.LatestRoom.Value < 99 then
@@ -4396,7 +4396,7 @@ elseif Script.IsMines then
             end
         })
 
-        Mines_AutomationGroupBox:AddToggle("TheMinesAnticheatBypass", {
+        Mines_ReachGroupBox:AddToggle("TheMinesAnticheatBypass", {
             Text = "反作弊绕过【不建议开，因为梯子会爬不了】",
             Default = false
         })
@@ -4640,22 +4640,22 @@ elseif Script.IsRooms then
         })
     end
 
-    local Rooms_AutomationGroupBox = Tabs.Floor:AddRightGroupbox("Automation") do
-        Rooms_AutomationGroupBox:AddToggle("AutoRooms", {
+    local Rooms_ReachGroupBox = Tabs.Floor:AddRightGroupbox("Automation") do
+        Rooms_ReachGroupBox:AddToggle("AutoRooms", {
             Text = "Auto Rooms",
             Default = false
         })
 
-        Rooms_AutomationGroupBox:AddLabel("Recommended Settings:\nSpeed Bypass and Noclip disabled", true)
+        Rooms_ReachGroupBox:AddLabel("Recommended Settings:\nSpeed Bypass and Noclip disabled", true)
 
-        Rooms_AutomationGroupBox:AddDivider()
+        Rooms_ReachGroupBox:AddDivider()
 
-        Rooms_AutomationGroupBox:AddToggle("AutoRoomsDebug", { 
+        Rooms_ReachGroupBox:AddToggle("AutoRoomsDebug", { 
             Text = "Show Debug Info",
             Default = false
         })
         
-        Rooms_AutomationGroupBox:AddToggle("ShowAutoRoomsPathNodes", { 
+        Rooms_ReachGroupBox:AddToggle("ShowAutoRoomsPathNodes", { 
             Text = "Show Pathfinding Nodes",
             Default = false
         })
@@ -5212,7 +5212,7 @@ local PlayerGroupBox = Tabs.Main:AddLeftGroupbox("玩家") do
     })
 end
 
-local ReachGroupBox = Tabs.Main:AddLeftGroupbox("范围") do
+local ReachGroupBox = Tabs.Main:AddLeftGroupbox("其余主要功能") do
     ReachGroupBox:AddToggle("DoorReach", {
         Text = "远程开门",
         Default = false
@@ -5232,8 +5232,7 @@ local ReachGroupBox = Tabs.Main:AddLeftGroupbox("范围") do
     })
 end
 
-local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
-    AutomationGroupBox:AddToggle("AutoInteract", {
+    ReachGroupBox:AddToggle("AutoInteract", {
         Text = "自动互动",
         Default = false
     }):AddKeyPicker("AutoInteractKey", {
@@ -5243,7 +5242,7 @@ local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
         SyncToggleState = shared.Library.IsMobile
     })
 
-    AutomationGroupBox:AddDropdown("AutoInteractIgnore", {
+    ReachGroupBox:AddDropdown("AutoInteractIgnore", {
         AllowNull = true,
         Values = {"Jeff Items", "Unlock w/ Lockpick", "Paintings", "Gold", "Light Source Items", "Skull Prompt"},
         Default = {"Jeff Items"},
@@ -5252,14 +5251,12 @@ local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
         Text = "忽略列表"
     })
 
-    AutomationGroupBox:AddDivider()
-
-    AutomationGroupBox:AddToggle("AutoWardrobeNotif", {
+    ReachGroupBox:AddToggle("AutoWardrobeNotif", {
         Text = "自动" .. Script.HidingPlaceName[Script.Floor.Value] .. "提示",
         Default = false
     })
 
-    AutomationGroupBox:AddToggle("AutoWardrobe", {
+    ReachGroupBox:AddToggle("AutoWardrobe", {
         Text = "自动" .. Script.HidingPlaceName[Script.Floor.Value],
         Default = false,
         Tooltip = "1145141919180",
@@ -5271,21 +5268,20 @@ local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
         Text = "Auto " .. Script.HidingPlaceName[Script.Floor.Value],
         SyncToggleState = true
     })
-    AutomationGroupBox:AddDivider()
 
-    AutomationGroupBox:AddToggle("AutoHeartbeat", {
+    ReachGroupBox:AddToggle("AutoHeartbeat", {
         Text = "自动心跳游戏",
         Default = false,
         Visible = wax.shared.ExecutorSupport["getnamecallmethod"]
     })
 
     if Script.IsHotel or Script.IsFools then
-        AutomationGroupBox:AddToggle("AutoLibrarySolver", {
+        ReachGroupBox:AddToggle("AutoLibrarySolver", {
             Text = "自动图书馆密码",
             Default = false
         })
 
-        AutomationGroupBox:AddSlider("AutoLibraryDistance", {
+        ReachGroupBox:AddSlider("AutoLibraryDistance", {
             Text = "解锁距离",
             Default = 20,
             Min = 1,
@@ -5294,9 +5290,9 @@ local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
             Compact = true
         })
 
-        AutomationGroupBox:AddDivider()
+        ReachGroupBox:AddDivider()
 
-        AutomationGroupBox:AddDropdown("AutoBreakerSolverMethod", {
+        ReachGroupBox:AddDropdown("AutoBreakerSolverMethod", {
             AllowNull = false,
             Values = {"Legit", "Exploit"},
             Default = "Legit",
@@ -5305,7 +5301,7 @@ local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
             Text = "自动电闸模式"
         })
 
-        AutomationGroupBox:AddToggle("AutoBreakerSolver", {
+        ReachGroupBox:AddToggle("AutoBreakerSolver", {
             Text = "自动电闸盒",
             Default = false
         })
@@ -5337,7 +5333,7 @@ local AutomationGroupBox = Tabs.Main:AddRightGroupbox("自动化") do
             end
         end)
     elseif Script.IsMines then
-        AutomationGroupBox:AddToggle("AutoAnchorSolver", {
+        ReachGroupBox:AddToggle("AutoAnchorSolver", {
             Text = "自动锚点",
             Default = false
         })
