@@ -45,7 +45,7 @@ OrionLib:MakeNotification({
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://4590662766"
+sound.SoundId = "rbxassetid://6129291390"
 sound:Play()
 
 wait(1)
@@ -57,7 +57,7 @@ OrionLib:MakeNotification({
                 })
                 
                 local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://13783313268"
+sound.SoundId = "rbxassetid://6129291390"
 sound:Play()
 
 wait(1)
@@ -69,7 +69,7 @@ OrionLib:MakeNotification({
                 })    
                 
                 local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://18365724387"
+sound.SoundId = "rbxassetid://7153945201"
 sound:Play()
 
 wait(1)
@@ -81,7 +81,7 @@ OrionLib:MakeNotification({
                 })
                 
     local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://4590662766"
+sound.SoundId = "rbxassetid://134446555948919"
 sound:Play()
 
 print("索引开启反挂机")
@@ -133,6 +133,86 @@ local WSBTab = Window:MakeTab({
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+OrionLib:MakeNotification({
+                    Name = "XK 脚本中心",
+                    Content = "脚本中心正在加载",
+                    Time = 1
+                })    
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
 
 WSBTab:AddParagraph("当前版本","V11.0正式版11月10日更新")
 WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机")
