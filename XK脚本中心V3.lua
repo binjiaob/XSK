@@ -1,8 +1,8 @@
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/XK%E7%94%A8%E6%88%B7%E7%95%8C%E9%9D%A2.txt", false))()
-    local window = library:new("压力")   
+    local window = library:new("压力脚本")   
     
     local creds = window:Tab("压力", "6035145364")
-    local about = creds:section("通用内容", true)
+    local about = creds:section("功能", true)
     
     about:Toggle("怪物提示","Valkiry",false,function(state)
     if state then
@@ -720,6 +720,36 @@ local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/BINji
                 for _, player in pairs(game.Players:GetPlayers()) do
                     teleportPlayerBack(player)
                 end
+            end
+        end
+    end)
+    
+    local function fireAllProximityPrompts()
+    for _, descendant in pairs(workspace:GetDescendants()) do
+        if descendant:IsA("ProximityPrompt") then
+            local parentModel = descendant:FindFirstAncestorOfClass("Model")
+            if parentModel and parentModel.Name ~= "MonsterLocker" and parentModel.Name ~= "Locker" then
+                fireproximityprompt(descendant)
+            end
+        end
+    end
+end
+
+local function removeSpecificObjects()
+    for _, descendant in pairs(workspace:GetDescendants()) do
+        if descendant:IsA("Model") and (descendant.Name == "MonsterLocker" or descendant.Name == "Locker" or descendant.Name == "TricksterRoom") then
+            descendant:Destroy()
+        end
+    end
+end
+    
+    about:Toggle("自动交互","Valkiry",false,function(state)
+    autoInteract = state
+        if autoInteract then
+            while autoInteract do
+                removeSpecificObjects()
+                fireAllProximityPrompts()
+                task.wait(0.25) -- Adjust the wait time as needed
             end
         end
     end)
