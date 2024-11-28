@@ -107,7 +107,7 @@ HEHE:Slider("跳跃高度", "JumpPower", game.Players.LocalPlayer.Character.Huma
   spawn(function() while task.wait() do game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jump end end)
 end)
 
-HEHE:Textbox("飞行速度设置", 'TextBoxfalg', "输入速度的数字", function(s)
+HEHE:Textbox("飞车速度设置", 'TextBoxfalg', "输入速度的数字", function(s)
     while (true) do
         game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
         game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChildOfClass("BodyVelocity"):Destroy()
@@ -124,7 +124,7 @@ HEHE:Textbox("飞行速度设置", 'TextBoxfalg', "输入速度的数字", funct
     end
 end)
 
-HEHE:Toggle("开启飞行", 'Toggleflag', false, function(state)
+HEHE:Toggle("开启飞车", 'Toggleflag', false, function(state)
     if state then
         local BV = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
         local BG = Instance.new("BodyGyro", game.Players.LocalPlayer.Character.HumanoidRootPart)
@@ -540,6 +540,25 @@ nb:Toggle("mspaint汉化11月28日", 'Toggleflag', false, function(state)
 end)
         
     local bin = creds:section("脚本", true)    
+
+HEHE:Textbox("速度请输入【1】需要一点一点走否则会拉回", "tpwalking", "输入速度", function(king)
+local tspeed = king
+local hb = game:GetService("RunService").Heartbeat
+local tpwalking = true
+local player = game:GetService("Players")
+local lplr = player.LocalPlayer
+local chr = lplr.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+  if hum.MoveDirection.Magnitude > 0 then
+    if tspeed then
+      chr:TranslateBy(hum.MoveDirection * tonumber(tspeed))
+    else
+      chr:TranslateBy(hum.MoveDirection)
+    end
+  end
+end
+end)
 
 bin:Toggle("怪物提示","Valkiry",false,function(state)
     if state then
@@ -1747,44 +1766,6 @@ if state then
             end
         end
     end)
-
-local xkxx = creds:section("移除", true)
-
-Doo:Toggle("Rush透视","Valkiry",false,function(value)
-    Default = false
-    end)
-
-Toggles.AntiA90:OnChanged(function(value)
-        if not Script.MainGame then return end
-        local module = Script.MainGame:FindFirstChild("A90", true) or Script.MainGame:FindFirstChild("_A90", true)
-    
-        if module then
-            module.Name = value and "_A90" or "A90"
-        end
-    end)
-
-if value then
-            Toggles.AntiA90:SetValue(true)
-            local lastRoomValue = 0
-
-            local function createNewBlockedPoint(point: PathWaypoint)
-                local block = Instance.new("Part", _internal_mspaint_pathfinding_block)
-                local pathMod = Instance.new("PathfindingModifier", block)
-                pathMod.Label = "_ms_pathBlock"
-
-                block.Name = "_mspaint_blocked_path"
-                block.Shape = Enum.PartType.Block
-
-                local sizeY = 10
-                
-                block.Size = Vector3.new(1, sizeY, 1)
-                block.Color = Color3.fromRGB(255, 130, 30)
-                block.Material = Enum.Material.Neon
-                block.Position = point.Position + Vector3.new(0, sizeY / 2, 0)
-                block.Anchored = true
-                block.CanCollide = false
-                block.Transparency = Toggles.ShowAutoRoomsPathNodes.Value and 0.9 or 1
-            end
 
     local creds = window:Tab("压力", "7743875358")
     local xxxk = creds:section("功能", true)
