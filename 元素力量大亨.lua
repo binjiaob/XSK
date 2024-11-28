@@ -77,8 +77,8 @@ end)
 
 game:GetService("RunService").Heartbeat:Connect(teleportPlayer)
     
-    local creds = window:Tab("脚本", "6035145364")
-    local HEHE = creds:section("通用内容", true)
+    local creds = window:Tab("元素力量大亨", "6035145364")
+    local HEHE = creds:section("内容", true)
    
    HEHE:Textbox("速度永远不掉【推荐1和2】", "tpwalking", "输入速度", function(king)
 local tspeed = king
@@ -491,56 +491,8 @@ game:GetService("ReplicatedStorage").GameClient.Events.RemoteEvent.ClickChangeEv
     end
 end
 end)
-
-about:Toggle("自动升级力量倍数【×11】", "", false, function(state)
-    buy = state
-    if buy then
-        while buy do
-        local args = {
-    local args = {
-    [1] = game:GetService("ReplicatedStorage").Items.Pencil:FindFirstChild("10"),
-    [2] = false
-}
-
-game:GetService("ReplicatedStorage").GameClient.Events.RemoteEvent.ClickChangeEvent:FireServer(unpack(args))
-        wait()
-    end
-end
-end)
-
-about:Toggle("自动升级力量倍数【×12】", "", false, function(state)
-    buy = state
-    if buy then
-        while buy do
-        local args = {
-    local args = {
-    [1] = game:GetService("ReplicatedStorage").Items.Pencil:FindFirstChild("11"),
-    [2] = false
-}
-
-game:GetService("ReplicatedStorage").GameClient.Events.RemoteEvent.ClickChangeEvent:FireServer(unpack(args))
-        wait()
-    end
-end
-end)
-
-about:Toggle("自动升级力量倍数【×15】", "", false, function(state)
-    buy = state
-    if buy then
-        while buy do
-        local args = {
-    local args = {
-    [1] = game:GetService("ReplicatedStorage").Items.Pencil:FindFirstChild("12"),
-    [2] = false
-}
-
-game:GetService("ReplicatedStorage").GameClient.Events.RemoteEvent.ClickChangeEvent:FireServer(unpack(args))
-        wait()
-    end
-end
-end)
     
-    about:Toggle("力量倍数×155", "", false, function(state)
+about:Toggle("力量倍数×155", "", false, function(state)
     buy = state
     if buy then
         while buy do
@@ -595,10 +547,24 @@ bin:Toggle("怪物提示","Valkiry",false,function(state)
 
             local function notifyEntitySpawn(entity)
                     OrionLib:MakeNotification({
-                    Name = "WARN！",
+                    Name = "警告WARN！",
                     Content = "怪物刷新，躲起来！",
                     Time = 3
                 })     
+                
+                                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://4590662766"
+sound:Play()
+
+                    OrionLib:MakeNotification({
+                    Name = "by 小玄奘",
+                    Content = "DOORS",
+                    Time = 7
+                })
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://4590662766"
+sound:Play()
             end
 
             local function onChildAdded(child)
