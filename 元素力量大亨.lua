@@ -533,6 +533,12 @@ about:Toggle("自动传送到活动区域", "", false, function(state)
 end)
 
         local creds = window:Tab("DOORS", "7733779610")
+            local nb = creds:section("脚本", true)    
+            
+nb:Toggle("mspaint汉化11月28日", 'Toggleflag', false, function(state)
+    getgenv().Spy="mspaint" loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/DOORS.txt"))()
+end)
+        
     local bin = creds:section("脚本", true)    
 
 bin:Toggle("怪物提示","Valkiry",false,function(state)
