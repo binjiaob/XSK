@@ -3879,8 +3879,7 @@ if state then
         end
     )
     
-    local creds = window:Tab("颜色或者死亡 透视物品", "6035145364")
-    local about = creds:section("功能", true)
+    local about = creds:section("其余", true)
     
     about:Toggle("狗洞透视","Valkiry",false,function(state)
         if state then
@@ -4301,9 +4300,8 @@ if state then
             end
         end
     end)
-    
-    local creds = window:Tab("颜色或者死亡 油漆桶透视", "6035145364")
-    local about = creds:section("脚本", true)
+  
+    local about = creds:section("油漆桶", true)
     
     about:Toggle("白色油漆桶透视","Valkiry",false,function(state)
         if state then
@@ -4934,9 +4932,8 @@ if state then
             end
         end
     end)
-    
-    local creds = window:Tab("颜色或者死亡 怪物与门类", "6035145364")
-    local about = creds:section("脚本", true)
+   
+    local about = creds:section("怪物", true)
     
     about:Toggle("怪物透视","Valkiry",false,function(state)
         if state then
