@@ -1607,7 +1607,7 @@ HEHE:Toggle("钱箱透视【无法关闭】","Valkiry",false,function(state)
     
     about:Label("XKscript")
     about:Label("作者:认准神兽【小玄奘】")
-    bin:Label("元素力量大亨")
+    about:Label("V3")
     about:Label("XK脚本中心")
     about:Label("更新时间11月27日")
     about:Label("2024年")
