@@ -5989,3 +5989,85 @@ game:GetService("Players").LocalPlayer.Character.Communicate:FireServer(unpack(a
     end
 end
 end)
+
+        local creds = window:Tab("吃掉世界", "6035145364")
+    local about = creds:section("脚本", true)
+
+    local EAT = false
+    local sell = false
+    local throw = false
+    local buy = false
+    
+    about:Toggle("自动购买吃掉速度", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("EatSpeed")
+        wait()
+    end
+end
+end)
+    
+    about:Toggle("自动购买乘数", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("Multiplier")
+        wait()
+    end
+end
+end)
+    
+    about:Toggle("自动购买行走速度", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("Speed")
+        wait()
+    end
+end
+end)
+
+about:Toggle("自动抓", "", false, function(state)
+    sell = state
+    if sell then
+        while sell do
+            local args = {
+    [1] = false,
+    [2] = false
+}
+game:GetService("Players").LocalPlayer.Character.Events.Grab:FireServer(unpack(args))
+            wait()
+            end
+        end
+end)
+
+    about:Toggle("自动吃", "", false, function(state)
+    EAT = state
+    if EAT then
+        while EAT do
+        game:GetService("Players").LocalPlayer.Character.Events.Eat:FireServer()
+        wait()
+    end
+end
+end)
+    
+about:Toggle("自动丢", "", false, function(state)
+    throw = state
+    if throw then
+        while throw do
+        game:GetService("Players").LocalPlayer.Character.Events.Throw:FireServer()
+        wait()
+    end
+end
+end)
+
+about:Toggle("自动购买最大尺寸", "", false, function(state)
+    buy = state
+    if buy then
+        while buy do
+        game:GetService("ReplicatedStorage").Events.PurchaseEvent:FireServer("MaxSize")
+        wait()
+    end
+end
+end)
