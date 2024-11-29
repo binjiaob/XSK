@@ -1612,15 +1612,6 @@ HEHE:Toggle("钱箱透视【无法关闭】","Valkiry",false,function(state)
     about:Label("更新时间11月27日")
     about:Label("2024年")
     
-        about:Label("注入器:"..identifyexecutor())
-    about:Label("用户名:"..game.Players.LocalPlayer.Character.Name)
-    about:Label("名称:"..game.Players.LocalPlayer.DisplayName)
-    about:Label("服务器:"..game.GameId) 
-    about:Label("用户:"..game.Players.LocalPlayer.UserId)
-    about:Label("服务器的:"..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
-    about:Label("客户端ID:"..game:GetService("RbxAnalyticsService"):GetClientId())
-about:Label("时间:"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
-    
     local creds = window:Tab("拔剑", "7743875358")
     local about = creds:section("脚本", true)
 
