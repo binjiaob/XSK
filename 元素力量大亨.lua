@@ -1374,6 +1374,94 @@ Wredits:Button(
     local creds = window:Tab("元素力量大亨", "6035145364")
     local HEHE = creds:section("内容", true)
    
+       HEHE:Toggle(
+    "钱箱透视高亮（可以关闭）",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").BalloonCrate:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(255, 0, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").BalloonCrate:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+   
+   HEHE:Toggle(
+    "收集物品项目",
+    "text",
+    false,
+    function()
+    for _,v in ipairs(game:GetService("Workspace"):GetChildren()) do
+        if v:FindFirstChild("BalloonCrate") then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.TouchTrigger.CFrame
+            wait(0.1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52, 140, -8)
+            wait(0.2)
+        end
+    end
+    end
+)
+
+
+
+about:Toggle("自动存活", "ToggleInfo", false, function(bool)
+    AutoBank1 = bool
+        if AutoBank1 then
+            AutoBank2()
+        end
+end)
+
+AutoBank2 = function()
+    while AutoBank1 do
+        wait()
+        local BankDoor = game:GetService("Workspace").BalloonCrate
+        local BankCashs = game:GetService("Workspace").BalloonCrate
+        local epoh2 = game:GetService('Players')
+        local epoh3 = epoh2.LocalPlayer.Character.HumanoidRootPart
+        if BankDoor.Door.Attachment.ProximityPrompt.Enabled == true then
+            BankDoor.Door.Attachment.ProximityPrompt.HoldDuration = 0
+            BankDoor.Door.Attachment.ProximityPrompt.MaxActivationDistance = 16
+            local epoh1 = CFrame.new(1071.955810546875, 9, -343.80816650390625)
+            epoh3.CFrame = epoh1
+           wait(1)
+            BankDoor.Door.Attachment.ProximityPrompt:InputHoldBegin()
+            BankDoor.Door.Attachment.ProximityPrompt:InputHoldEnd()
+            BankDoor.Door.Attachment.ProximityPrompt.Enabled = false
+        end
+        if BankCashs.Cash.Bundle then
+            local epoh1 = CFrame.new(1055.872802734375, 10, -344.6944580078125)
+            epoh3.CFrame = epoh1
+            BankCashs.Main.Attachment.ProximityPrompt.MaxActivationDistance = 16
+            if BankCashs.Cash.Bundle then
+            BankCashs.Main.Attachment.ProximityPrompt:InputHoldBegin()
+            wait(45)
+            BankCashs.Main.Attachment.ProximityPrompt:InputHoldEnd()
+            local epoh1 = CFrame.new(240.52850341796875, -120, -620)
+            epoh3.CFrame = epoh1
+            end
+        end   
+        if not BankCashs.Cash.Bundle then
+            local epoh1 = CFrame.new(240.52850341796875, -120, -620)
+            epoh3.CFrame = epoh1
+        end
+    end
+end
+   
    HEHE:Textbox("速度永远不掉【推荐1和2】", "tpwalking", "输入速度", function(king)
 local tspeed = king
 local hb = game:GetService("RunService").Heartbeat
@@ -7122,3 +7210,491 @@ about:Toggle("怪物刷新提示","Valkiry",false,function(state)
         end
     end)
    
+   
+   local UITab4 = window:Tab("造船寻宝",'18930406865')
+
+local about = UITab4:section("主要功能",true)
+
+about:Toggle(
+    "自动刷金条",
+    "text",
+    false,
+    function(FARM)
+        _G.FARMs = FARM
+        while _G.FARMs do
+            wait()
+            pcall(
+                function()
+                    game.Workspace.Gravity = 0
+                    wait(0.5)
+                    local TweenService = game:GetService("TweenService")
+                    local Tw =
+                        TweenService:Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0),
+                        {
+                            CFrame = CFrame.new(
+                                -51.05019,
+                                43.5682182,
+                                702.193481,
+                                -0.999886811,
+                                -0.000135422233,
+                                0.0150433034,
+                                8.65181704e-09,
+                                0.999959469,
+                                0.00900237076,
+                                -0.0150439134,
+                                0.00900135189,
+                                -0.999846339
+                            )
+                        }
+                    ):Play()
+                    wait(1)
+                    local TweenService = game:GetService("TweenService")
+                    local Tw =
+                        TweenService:Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(30, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0),
+                        {
+                            CFrame = CFrame.new(
+                                -50.4467354,
+                                34.108551,
+                                8676.95117,
+                                -0.999937415,
+                                -0.000405743311,
+                                0.0111814411,
+                                -6.1212857e-09,
+                                0.999342263,
+                                0.0362627953,
+                                -0.0111888004,
+                                0.0362605266,
+                                -0.999279737
+                            )
+                        }
+                    ):Play()
+                    wait(30)
+                    local TweenService = game:GetService("TweenService")
+                    local Tw =
+                        TweenService:Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0),
+                        {
+                            CFrame = CFrame.new(
+                                -54.1517258,
+                                -359.077667,
+                                9497.03418,
+                                -0.99982208,
+                                0.00359633542,
+                                -0.0185163822,
+                                -7.16419102e-09,
+                                0.981655717,
+                                0.190661997,
+                                0.0188623965,
+                                0.190628082,
+                                -0.981481075
+                            )
+                        }
+                    ):Play()
+                    wait(5)
+                    game.Workspace.Gravity = 200
+                    wait(20)
+                end
+            )
+        end
+    end
+)
+about:Toggle(
+    "自动刷金条快速版",
+    "text",
+    false,
+    function(FARM2)
+        _G.FARM2s = FARM2
+        while _G.FARM2s do
+            wait()
+            pcall(
+                function()
+                    game.Workspace.Gravity = 0
+                    wait(0.5)
+                    local TweenService = game:GetService("TweenService")
+                    local Tw =
+                        TweenService:Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0),
+                        {
+                            CFrame = CFrame.new(
+                                -51.05019,
+                                43.5682182,
+                                702.193481,
+                                -0.999886811,
+                                -0.000135422233,
+                                0.0150433034,
+                                8.65181704e-09,
+                                0.999959469,
+                                0.00900237076,
+                                -0.0150439134,
+                                0.00900135189,
+                                -0.999846339
+                            )
+                        }
+                    ):Play()
+                    wait(1)
+                    local TweenService = game:GetService("TweenService")
+                    local Tw =
+                        TweenService:Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0),
+                        {
+                            CFrame = CFrame.new(
+                                -50.4467354,
+                                34.108551,
+                                8676.95117,
+                                -0.999937415,
+                                -0.000405743311,
+                                0.0111814411,
+                                -6.1212857e-09,
+                                0.999342263,
+                                0.0362627953,
+                                -0.0111888004,
+                                0.0362605266,
+                                -0.999279737
+                            )
+                        }
+                    ):Play()
+                    wait(5)
+                    local TweenService = game:GetService("TweenService")
+                    local Tw =
+                        TweenService:Create(
+                        game.Players.LocalPlayer.Character.HumanoidRootPart,
+                        TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0),
+                        {
+                            CFrame = CFrame.new(
+                                -51.05019,
+                                43.5682182,
+                                702.193481,
+                                -0.999886811,
+                                -0.000135422233,
+                                0.0150433034,
+                                8.65181704e-09,
+                                0.999959469,
+                                0.00900237076,
+                                -0.0150439134,
+                                0.00900135189,
+                                -0.999846339
+                            )
+                        }
+                    ):Play()
+                    wait(5)
+                    local Event = game:GetService("Workspace").ClaimRiverResultsGold
+                    Event:FireServer()
+                    wait(0.1)
+                    game.Players.LocalPlayer.Character.Humanoid.Health = -1000
+                    wait(0.1)
+                    game.Workspace.Gravity = 200
+                    wait(7)
+                end
+            )
+        end
+    end
+)
+about:Toggle(
+    "自动索赔金条",
+    "text",
+    false,
+    function(GlaimGold)
+        _G.ClaimGolds = ClaimGold
+        while _G.ClaimGolds do
+            wait()
+            pcall(
+                function()
+                    local Event = game:GetService("Workspace").ClaimRiverResultsGold
+                    Event:FireServer()
+                end
+            )
+        end
+
+        MainSection:Button(
+            "ClearAllBoatParts",
+            function()
+                local Event = game:GetService("Workspace").ClearAllPlayersBoatParts
+                Event:FireServer()
+            end
+        )
+
+        wait(0.5)
+        local ba = Instance.new("ScreenGui")
+        local ca = Instance.new("TextLabel")
+        local da = Instance.new("Frame")
+        local _b = Instance.new("TextLabel")
+        local ab = Instance.new("TextLabel")
+        ba.Parent = game.CoreGui
+        ba.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+        ca.Parent = ba
+        ca.Active = true
+        ca.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+        ca.Draggable = true
+        ca.Position = UDim2.new(0.698610067, 0, 0.098096624, 0)
+        ca.Size = UDim2.new(0, 370, 0, 52)
+        ca.Font = Enum.Font.SourceSansSemibold
+        ca.Text = "Anti AFK Script"
+        ca.TextColor3 = Color3.new(0, 1, 1)
+        ca.TextSize = 22
+        da.Parent = ca
+        da.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+        da.Position = UDim2.new(0, 0, 1.0192306, 0)
+        da.Size = UDim2.new(0, 370, 0, 107)
+        _b.Parent = da
+        _b.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+        _b.Position = UDim2.new(0, 0, 0.800455689, 0)
+        _b.Size = UDim2.new(0, 370, 0, 21)
+        _b.Font = Enum.Font.Arial
+        _b.Text = "made by simon"
+        _b.TextColor3 = Color3.new(0, 1, 1)
+        _b.TextSize = 20
+        ab.Parent = da
+        ab.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
+        ab.Position = UDim2.new(0, 0, 0.158377, 0)
+        ab.Size = UDim2.new(0, 370, 0, 44)
+        ab.Font = Enum.Font.ArialBold
+        ab.Text = "Status: Active"
+        ab.TextColor3 = Color3.new(0, 1, 1)
+        ab.TextSize = 20
+
+        local bb = game:service "VirtualUser"
+        game:service "Players".LocalPlayer.Idled:connect(
+            function()
+                bb:CaptureController()
+                bb:ClickButton2(Vector2.new())
+                ab.Text = "机器人想踢你，但我踢了他"
+                wait(2)
+                ab.Text = "状态：Active"
+            end
+        )
+    end
+)
+
+about:Button(
+    "无限方块",
+    function()
+        spawn(
+            function()
+                local guiinf =
+                    game:GetService("Players").LocalPlayer.PlayerGui.BuildGui.InventoryFrame.ScrollingFrame.BlocksFrame
+                _G.Blocks = false
+                while game:GetService("RunService").RenderStepped:wait() do
+                    if _G.Blocks then
+                        return
+                    end
+                    for i, v in pairs(guiinf:GetDescendants()) do
+                        if v.Name == "AmountText" then
+                            v.Text = math.huge
+                        end
+                    end
+                end
+            end
+        )
+    end
+)
+
+about:Button("复制别人的船",function()
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/max2007killer/auto-build-not-limit/main/autobuild.txt"))()  
+end)
+
+local UITab4 = window:Tab("『奎尔湖』",'18930406865')
+
+local about = UITab4:section("主要功能",true)
+
+about:Toggle("无敌模式","", false, function(Value)
+        game.ReplicatedStorage.DamageHumanoid:FireServer(-2e9)
+    end)
+    
+    about:Button("无限金钱", function()
+    local money = {
+       [1] = -9999,
+       [2] = "Buy"
+    }
+    
+    game:GetService("ReplicatedStorage").Pay:FireServer(unpack(money))
+    end)
+    
+    about:Button("无限金币", function()
+    local gold = {
+       [1] = game:GetService("Players").LocalPlayer.GoldCoins,
+       [2] = 99999
+    }
+    
+    game:GetService("ReplicatedStorage").ChangeValue:FireServer(unpack(gold))
+    end)
+    
+    about:Button("给所有物品", function()
+    game.ReplicatedStorage.GiveTool:FireServer("SeaScooter")
+    game.ReplicatedStorage.GiveTool:FireServer("Lantern")
+    game.ReplicatedStorage.GiveTool:FireServer("Compass")
+    game.ReplicatedStorage.GiveTool:FireServer("ItemFinder")
+    game.ReplicatedStorage.GiveTool:FireServer("Aquabreather")
+    end)
+    
+    about:Button("红色套装", function()
+    game.ReplicatedStorage.ChangeOutfits:FireServer("FireSuit")
+    end)
+    
+    about:Button("黄色套装", function()
+    game.ReplicatedStorage.ChangeOutfits:FireServer("HazmatSuit")
+    end)
+    
+    about:Button("海盗套装", function()
+    game.ReplicatedStorage.ChangeOutfits:FireServer("PirateCostume")
+    end)
+    
+    about:Button("动力套装", function()
+    game.ReplicatedStorage.ChangeOutfits:FireServer("SuperScuba")
+    end)
+local UITab4 = window:Tab("彩虹朋友",'18930406865')
+
+local about = UITab4:section("主要功能",true)
+
+about:Toggle(
+    "收集物品项目",
+    "text",
+    false,
+    function()
+    for _,v in ipairs(game:GetService("Workspace"):GetChildren()) do
+        if v:FindFirstChild("TouchTrigger") then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.TouchTrigger.CFrame
+            wait(0.1)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52, 140, -8)
+            wait(0.2)
+        end
+    end
+    end
+)
+
+about:Toggle(
+    "怪物ESP",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(0, 0, 255)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+
+local UITab4 = window:Tab("感染性微笑",'18930406865')
+
+local about = UITab4:section("主要功能",true)
+
+about:Button("防止微笑感染",function()
+for _,v in pairs(game.workspace:GetDescendants()) do
+
+if string.find(v.Name,"Infector") then
+v:Destroy()
+end
+end
+end)
+about:Button("删除门",function()
+for _,v in pairs(game.workspace:GetDescendants()) do
+
+if string.find(v.Name,"AntiSmiler") then
+v:Destroy()
+end
+end
+end)
+about:Button("反外挂",function()
+workspace.Map.AntiHack:Destroy() game.Players.LocalPlayer.Character.AntiFly:Destroy()
+end)
+about:Toggle("速度-微笑感染","text",false,function(s)
+getgenv().SlowDownSpeed = getgenv().SlowDownSpeed or 16
+        getgenv().NoSlowDown = Value
+        if getgenv().NoSlowDown then
+            SteppedConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().SlowDownSpeed
+                end)
+            end)
+        else
+            if SteppedConnection then
+                SteppedConnection:Disconnect()
+                SteppedConnection = nil
+            end
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        end
+end)
+about:Toggle("打击微笑感染","text",false,function(s)
+getgenv().InfectAura = Value
+        if getgenv().InfectAura then
+            getgenv().InfectAuraConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    game:GetService("Players").LocalPlayer.Character.Infected.InfectEvent:FireServer()
+                end)
+            end)
+        else
+            if getgenv().InfectAuraConnection then
+                getgenv().InfectAuraConnection:Disconnect()
+                getgenv().InfectAuraConnection = nil
+            end
+        end
+end)
+about:Toggle("Bat自动打击","text",false,function(s)
+getgenv().HitAura = s
+        if getgenv().HitAura then
+            getgenv().HitAuraConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    local character = game:GetService("Players").LocalPlayer.Character
+                    if character then
+                        local bat = character:FindFirstChildOfClass("Tool")
+                        if bat and bat.Name == "Bat" and bat:FindFirstChild("SwingEvent") then
+                            bat.SwingEvent:FireServer()
+                        end
+                           if packedice and packedice.Name == "Packed Ice" and packedice:FindFirstChild("SwingEvent") then
+                           packedice.SwingEvent:FireServer()
+                        end
+                    end
+                end)
+            end)
+        else
+            if getgenv().HitAuraConnection then
+                getgenv().HitAuraConnection:Disconnect()
+                getgenv().HitAuraConnection = nil
+            end
+        end
+end)
+about:Toggle("瓶子自动打击","text",false,function(s)
+getgenv().HitAura = s
+        if getgenv().HitAura then
+            getgenv().HitAuraConnection = game:GetService("RunService").Stepped:Connect(function()
+                pcall(function()
+                    local character = game:GetService("Players").LocalPlayer.Character
+                    if character then
+                        local bottle = character:FindFirstChildOfClass("Tool")
+                        if bottle and bottle.Name == "Bottle" and bottle:FindFirstChild("SwingEvent") then
+                            bottle.SwingEvent:FireServer()
+                        end
+                           if packedice and packedice.Name == "Packed Ice" and packedice:FindFirstChild("SwingEvent") then
+                           packedice.SwingEvent:FireServer()
+                        end
+                    end
+                end)
+            end)
+        else
+            if getgenv().HitAuraConnection then
+                getgenv().HitAuraConnection:Disconnect()
+                getgenv().HitAuraConnection = nil
+            end
+        end
+end)    
