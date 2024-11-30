@@ -1855,6 +1855,22 @@ while tpwalking and hb:Wait() and chr and hum and hum.Parent do
 end
 end)
 
+bin:Toggle("立即互动","Valkiry",false,function(state)
+game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(prompt)
+    if _G.II == true then
+        fireproximityprompt(prompt)
+    end
+end)
+end)
+
+bin:Toggle("移除screech","Valkiry",false,function(state)
+workspace.CurrentCamera.ChildAdded:Connect(function(child)
+    if child.Name == "Screech" and _G.NS == true then
+        child:Destroy()
+    end
+end)
+end)
+
 bin:Toggle("怪物提示","Valkiry",false,function(state)
     if state then
             local entityNames = {"BackdoorRush", "BackdoorLookman", "RushMoving", "AmbushMoving", "Eyes", "JeffTheKiller", "Dread", "A60", "A120"}  --enity
@@ -6071,3 +6087,235 @@ about:Toggle("自动购买最大尺寸", "", false, function(state)
     end
 end
 end)
+
+
+local creds = window:Tab("传送玩家", "6035145364")
+local Section = creds:section("内容", true)
+    
+about:Toggle("移除红色怪物模型", "", false, function(state)
+game:GetService("Workspace").Mobs.Barnabe:Destroy()
+end)
+
+    about:Toggle("怪物刷新提示","Valkiry",false,function(state)
+    if state then
+            local entityNames = {"Barnabe", "Mobs", "无", "无", "无", "无", "无", "无"}  --enity
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
+
+            -- Ensure flags and plr are defined
+            local flags = flags or {} --Prevent Error
+            local plr = game.Players.LocalPlayer --Prevent Error2
+
+            local function notifyEntitySpawn(entity)
+                    OrionLib:MakeNotification({
+                    Name = "怪物已经开始刷新",
+                    Content = "注意安全",
+                    Time = 3
+                })     
+            end
+
+            local function onChildAdded(child)
+                if table.find(entityNames, child.Name) then
+                    repeat
+                        task.wait()
+                    until plr:DistanceFromCharacter(child:GetPivot().Position) < 1000 or not child:IsDescendantOf(workspace)
+                    
+                    if child:IsDescendantOf(workspace) then
+                        notifyEntitySpawn(child)
+                    end
+                end
+            end
+
+            -- Infinite loop to keep the script running and check for hintrush flag
+            local running = true
+            while running do
+                local connection = workspace.ChildAdded:Connect(onChildAdded)
+                
+                repeat
+                    task.wait(1) -- Adjust the wait time as needed
+                until not flags.hint or not running
+                
+                connection:Disconnect()
+            end 
+        else 
+            -- Close message or any other cleanup if needed
+            running = false
+        end
+    end)
+    
+    about:Toggle("主要红色怪物文字透视","MainHouse",false,function(state)
+        if state then
+            _G.MainHouseESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorMainHouse()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "Barnabe" then
+                        createBillboard(instance, "红色怪物", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "Barnabe" then
+                        createBillboard(instance, "红色怪物", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorMainHouse()
+            table.insert(_G.MainHouseESPInstances, esptable)
+				
+        else
+            if _G.MonsterModelESPInstances then
+                for _, instance in pairs(_G.MainHouseESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.MainHouseESPInstances = nil
+            end
+        end
+    end)
+        
+    about:Toggle(
+    "主要怪物高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").Mobs.Barnabe:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(255, 0, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").Mobs.Barnabe:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+    
+    about:Toggle(
+    "其余物品高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").Elevator:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(255, 255, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").Elevator:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+    
+        about:Toggle(
+    "其余高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").EnvironmentalThreats:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(0, 0, 255)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").EnvironmentalThreats:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+    about:Toggle(
+    "所有物品高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").ItemDrops:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(0, 255, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").ItemDrops:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
