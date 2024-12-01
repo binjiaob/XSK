@@ -1374,94 +1374,6 @@ Wredits:Button(
     local creds = window:Tab("元素力量大亨", "6035145364")
     local HEHE = creds:section("内容", true)
    
-       HEHE:Toggle(
-    "钱箱透视高亮（可以关闭）",
-    "text",
-    false,
-    function(bool)
-    if bool then
-        local runService = game:GetService("RunService")
-        event = runService.RenderStepped:Connect(function()
-            for _,v in pairs(game:GetService("Workspace").BalloonCrate:GetChildren()) do
-                if not v:FindFirstChild("Lol") then
-                    local esp = Instance.new("Highlight", v)
-                    esp.Name = "Lol"
-                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                    esp.FillColor = Color3.new(255, 0, 0)
-                end
-            end
-        end)
-    end
-    if not bool then
-        event:Disconnect()
-        for _,v in pairs(game:GetService("Workspace").BalloonCrate:GetChildren()) do
-            v:FindFirstChild("Lol"):Destroy()
-        end
-    end
-    end
-)
-   
-   HEHE:Toggle(
-    "收集物品项目",
-    "text",
-    false,
-    function()
-    for _,v in ipairs(game:GetService("Workspace"):GetChildren()) do
-        if v:FindFirstChild("BalloonCrate") then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.TouchTrigger.CFrame
-            wait(0.1)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(52, 140, -8)
-            wait(0.2)
-        end
-    end
-    end
-)
-
-
-
-about:Toggle("自动存活", "ToggleInfo", false, function(bool)
-    AutoBank1 = bool
-        if AutoBank1 then
-            AutoBank2()
-        end
-end)
-
-AutoBank2 = function()
-    while AutoBank1 do
-        wait()
-        local BankDoor = game:GetService("Workspace").BalloonCrate
-        local BankCashs = game:GetService("Workspace").BalloonCrate
-        local epoh2 = game:GetService('Players')
-        local epoh3 = epoh2.LocalPlayer.Character.HumanoidRootPart
-        if BankDoor.Door.Attachment.ProximityPrompt.Enabled == true then
-            BankDoor.Door.Attachment.ProximityPrompt.HoldDuration = 0
-            BankDoor.Door.Attachment.ProximityPrompt.MaxActivationDistance = 16
-            local epoh1 = CFrame.new(1071.955810546875, 9, -343.80816650390625)
-            epoh3.CFrame = epoh1
-           wait(1)
-            BankDoor.Door.Attachment.ProximityPrompt:InputHoldBegin()
-            BankDoor.Door.Attachment.ProximityPrompt:InputHoldEnd()
-            BankDoor.Door.Attachment.ProximityPrompt.Enabled = false
-        end
-        if BankCashs.Cash.Bundle then
-            local epoh1 = CFrame.new(1055.872802734375, 10, -344.6944580078125)
-            epoh3.CFrame = epoh1
-            BankCashs.Main.Attachment.ProximityPrompt.MaxActivationDistance = 16
-            if BankCashs.Cash.Bundle then
-            BankCashs.Main.Attachment.ProximityPrompt:InputHoldBegin()
-            wait(45)
-            BankCashs.Main.Attachment.ProximityPrompt:InputHoldEnd()
-            local epoh1 = CFrame.new(240.52850341796875, -120, -620)
-            epoh3.CFrame = epoh1
-            end
-        end   
-        if not BankCashs.Cash.Bundle then
-            local epoh1 = CFrame.new(240.52850341796875, -120, -620)
-            epoh3.CFrame = epoh1
-        end
-    end
-end
-   
    HEHE:Textbox("速度永远不掉【推荐1和2】", "tpwalking", "输入速度", function(king)
 local tspeed = king
 local hb = game:GetService("RunService").Heartbeat
@@ -7499,7 +7411,7 @@ about:Button("复制别人的船",function()
       loadstring(game:HttpGet("https://raw.githubusercontent.com/max2007killer/auto-build-not-limit/main/autobuild.txt"))()  
 end)
 
-local UITab4 = window:Tab("『奎尔湖』",'18930406865')
+local UITab4 = window:Tab("奎尔湖",'18930406865')
 
 local about = UITab4:section("主要功能",true)
 
@@ -7595,106 +7507,579 @@ about:Toggle(
     end
 )
 
-local UITab4 = window:Tab("感染性微笑",'18930406865')
 
-local about = UITab4:section("主要功能",true)
-
-about:Button("防止微笑感染",function()
-for _,v in pairs(game.workspace:GetDescendants()) do
-
-if string.find(v.Name,"Infector") then
-v:Destroy()
-end
+local creds = window:Tab("狗熊岭", "6035145364")
+local about = creds:section("内容", true)
+    
+    local EAT = false
+    
+    about:Textbox("反作弊【熊出没】速度", "tpwalking", "输入速度", function(king)
+local tspeed = king
+local hb = game:GetService("RunService").Heartbeat
+local tpwalking = true
+local player = game:GetService("Players")
+local lplr = player.LocalPlayer
+local chr = lplr.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+  if hum.MoveDirection.Magnitude > 0 then
+    if tspeed then
+      chr:TranslateBy(hum.MoveDirection * tonumber(tspeed))
+    else
+      chr:TranslateBy(hum.MoveDirection)
+    end
+  end
 end
 end)
-about:Button("删除门",function()
-for _,v in pairs(game.workspace:GetDescendants()) do
+  
+about:Toggle("聊天框刷屏", "", false, function(state)
+    EAT = state
+    if EAT then
+        while EAT do
+        local args = {
+    [1] = "熊大过来吃你了 By 小玄奘",
+    [2] = "All"
+}
 
-if string.find(v.Name,"AntiSmiler") then
-v:Destroy()
-end
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+        wait()
+    end
 end
 end)
-about:Button("反外挂",function()
-workspace.Map.AntiHack:Destroy() game.Players.LocalPlayer.Character.AntiFly:Destroy()
+
+about:Toggle("骂人聊天框刷屏", "", false, function(state)
+    EAT = state
+    if EAT then
+        while EAT do
+        local args = {
+    [1] = "你妈死了 By 小玄奘",
+    [2] = "All"
+}
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+        wait()
+    end
+end
 end)
-about:Toggle("速度-微笑感染","text",false,function(s)
-getgenv().SlowDownSpeed = getgenv().SlowDownSpeed or 16
-        getgenv().NoSlowDown = Value
-        if getgenv().NoSlowDown then
-            SteppedConnection = game:GetService("RunService").Stepped:Connect(function()
-                pcall(function()
-                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = getgenv().SlowDownSpeed
-                end)
-            end)
-        else
-            if SteppedConnection then
-                SteppedConnection:Disconnect()
-                SteppedConnection = nil
+
+about:Toggle("温馨聊天框刷屏", "", false, function(state)
+    EAT = state
+    if EAT then
+        while EAT do
+        local args = {
+    [1] = "宝宝 By 小玄奘",
+    [2] = "All"
+}
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+        wait()
+    end
+end
+end)
+    
+about:Toggle("脚本聊天框刷屏", "", false, function(state)
+    EAT = state
+    if EAT then
+        while EAT do
+        local args = {
+    [1] = "狗熊岭危机脚本 By 小玄奘",
+    [2] = "All"
+}
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+        wait()
+    end
+end
+end)        
+    
+    local about = creds:section("娱乐删除", true)    
+    
+       about:Toggle("贵鬼熊大刷新提示【无法关闭】","Valkiry",false,function(state)
+    running = state
+     if state then
+            local entityNames = {"MonsterAI"}  --enity
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
+
+            -- Ensure flags and plr are defined
+            local flags = flags or {} --Prevent Error
+            local plr = game.Players.LocalPlayer --Prevent Error2
+
+            local function notifyEntitySpawn(entity)
+                    OrionLib:MakeNotification({
+                    Name = "By Xuan",
+                    Content = "鬼熊大开始移动",
+                    Time = 7
+                })    
+                 
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://4590662766"
+sound:Play()
+
+                    OrionLib:MakeNotification({
+                    Name = "提示",
+                    Content = "娱乐项目哈",
+                    Time = 7
+                })
+                
+                local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://4590662766"
+sound:Play()
             end
-            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-        end
-end)
-about:Toggle("打击微笑感染","text",false,function(s)
-getgenv().InfectAura = Value
-        if getgenv().InfectAura then
-            getgenv().InfectAuraConnection = game:GetService("RunService").Stepped:Connect(function()
-                pcall(function()
-                    game:GetService("Players").LocalPlayer.Character.Infected.InfectEvent:FireServer()
-                end)
-            end)
-        else
-            if getgenv().InfectAuraConnection then
-                getgenv().InfectAuraConnection:Disconnect()
-                getgenv().InfectAuraConnection = nil
+
+            local function onChildAdded(child)
+                if table.find(entityNames, child.Name) then
+                    repeat
+                        task.wait()
+                    until plr:DistanceFromCharacter(child:GetPivot().Position) < 1000 or not child:IsDescendantOf(workspace)
+                    
+                    if child:IsDescendantOf(workspace) then
+                        notifyEntitySpawn(child)
+                    end
+                end
             end
+
+            -- Infinite loop to keep the script running and check for hintrush flag
+            local running = true
+            while running do
+                local connection = workspace.ChildAdded:Connect(onChildAdded)
+                
+                repeat
+                    task.wait(1) -- Adjust the wait time as needed
+                until not flags.hint or not running
+                
+                connection:Disconnect()
+            end 
+        else 
+            -- Close message or any other cleanup if needed
+            running = false
         end
+    end)
+    
+    about:Toggle("移除光头强", "", false, function(state)
+game:GetService("Workspace").GTQR15:Destroy()
 end)
-about:Toggle("Bat自动打击","text",false,function(s)
-getgenv().HitAura = s
-        if getgenv().HitAura then
-            getgenv().HitAuraConnection = game:GetService("RunService").Stepped:Connect(function()
-                pcall(function()
-                    local character = game:GetService("Players").LocalPlayer.Character
-                    if character then
-                        local bat = character:FindFirstChildOfClass("Tool")
-                        if bat and bat.Name == "Bat" and bat:FindFirstChild("SwingEvent") then
-                            bat.SwingEvent:FireServer()
+    
+    about:Toggle("移除熊二", "", false, function(state)
+game:GetService("Workspace").Bear2:Destroy()
+end)
+    
+    about:Toggle("移除熊大怪物模型", "", false, function(state)
+game:GetService("Workspace").MonsterAI:Destroy()
+end)
+    
+    about:Toggle("文件删除熊大伤害【娱乐】", "", false, function(state)
+game:GetService("Workspace").MonsterAI.Kill:Destroy()
+end)
+    
+local about = creds:section("自动化", true)
+    
+    about:Toggle("自动红色宝石", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-806.5623168945312, 6.999999523162842, 260.8219299316406)
+        end
+end
+end)
+    
+    about:Toggle("自动蓝色宝石", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-955.5512084960938, 6.997325897216797, 232.35826110839844)
+        end
+end
+end)
+    
+    about:Toggle("自动绿色宝石", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1002.9083862304688, 6.578201770782471, 367.93402099609375)
+        end
+end
+end)
+    
+    about:Toggle("自动黑色宝石", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-888.572021484375, 7.085513114929199, 67.50879669189453)
+        end
+end
+end)
+    
+    about:Toggle("自动黄色宝石", "ToggleInfo", false, function(bool)
+    _G.autowinfarm = bool;
+    while wait(.1) do
+        if _G.autowinfarm == true then
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1008.2556762695312, 6.078857898712158, 505.9426574707031)
+        end
+end
+end)
+
+local about = creds:section("高亮", true)
+    
+    about:Toggle(
+    "鬼熊大透视高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").MonsterAI:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(255, 255, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").MonsterAI:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+   
+    about:Toggle(
+    "宝石高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").Collections:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(255, 255, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").Collections:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+         
+about:Toggle(
+    "展示台高亮",
+    "text",
+    false,
+    function(bool)
+    if bool then
+        local runService = game:GetService("RunService")
+        event = runService.RenderStepped:Connect(function()
+            for _,v in pairs(game:GetService("Workspace").PartDestroyer.Model:GetChildren()) do
+                if not v:FindFirstChild("Lol") then
+                    local esp = Instance.new("Highlight", v)
+                    esp.Name = "Lol"
+                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    esp.FillColor = Color3.new(0, 255, 0)
+                end
+            end
+        end)
+    end
+    if not bool then
+        event:Disconnect()
+        for _,v in pairs(game:GetService("Workspace").PartDestroyer.Model:GetChildren()) do
+            v:FindFirstChild("Lol"):Destroy()
+        end
+    end
+    end
+)
+
+local about = creds:section("文字ESP", true)
+
+        about:Toggle("怪物熊大【文字透视】","Sign",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
                         end
-                           if packedice and packedice.Name == "Packed Ice" and packedice:FindFirstChild("SwingEvent") then
-                           packedice.SwingEvent:FireServer()
-                        end
+                        task.wait()
                     end
                 end)
-            end)
-        else
-            if getgenv().HitAuraConnection then
-                getgenv().HitAuraConnection:Disconnect()
-                getgenv().HitAuraConnection = nil
             end
-        end
-end)
-about:Toggle("瓶子自动打击","text",false,function(s)
-getgenv().HitAura = s
-        if getgenv().HitAura then
-            getgenv().HitAuraConnection = game:GetService("RunService").Stepped:Connect(function()
-                pcall(function()
-                    local character = game:GetService("Players").LocalPlayer.Character
-                    if character then
-                        local bottle = character:FindFirstChildOfClass("Tool")
-                        if bottle and bottle.Name == "Bottle" and bottle:FindFirstChild("SwingEvent") then
-                            bottle.SwingEvent:FireServer()
-                        end
-                           if packedice and packedice.Name == "Packed Ice" and packedice:FindFirstChild("SwingEvent") then
-                           packedice.SwingEvent:FireServer()
-                        end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "MonsterAI" then
+                        createBillboard(instance, "鬼熊大", Color3.new(255, 0, 0)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "MonsterAI" then
+                        createBillboard(instance, "鬼熊大", Color3.new(255, 0, 0)) -- Change color as needed
                     end
                 end)
-            end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
         else
-            if getgenv().HitAuraConnection then
-                getgenv().HitAuraConnection:Disconnect()
-                getgenv().HitAuraConnection = nil
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
             end
         end
-end)    
+    end)
+    
+    about:Toggle("宝石放置台【文字透视】","Sign",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "PartDestroyer.Model" then
+                        createBillboard(instance, "宝石放置台", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "PartDestroyer.Model" then
+                        createBillboard(instance, "宝石放置台", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
+        else
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
+    end)
+    
+    about:Toggle("熊二透视【文字正常】","Sign",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "Bear2" then
+                        createBillboard(instance, "熊二", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "Bear2" then
+                        createBillboard(instance, "熊二", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
+        else
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
+    end)
+    
+    about:Toggle("光头强透视（文字透视）","Sign",false,function(state)
+        if state then
+            _G.Tree2ESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTree2()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "GTQR15" then
+                        createBillboard(instance, "光头强", Color3.new(197, 124, 125)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "GTQR15" then
+                        createBillboard(instance, "光头强", Color3.new(197, 124, 125)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTree2()
+            table.insert(_G.Tree2ESPInstances, esptable)
+				
+        else
+            if _G.Tree2ESPInstances then
+                for _, instance in pairs(_G.Tree2ESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.Tree2ESPInstances = nil
+            end
+        end
+    end)
