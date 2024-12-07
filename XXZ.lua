@@ -5,17 +5,18 @@ local LocalPlayer = Players.LocalPlayer
 
 -- 创建ScreenGui
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "XKScriptCenterNotification"
+ScreenGui.Name = "XKScriptCenterFullScreenNotification"
 ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
 -- 定义全屏Notification样式
 local notificationStyle = {
-    Size = UDim2.new(1, 0, 1, 0),  -- 填充整个屏幕
-    Position = UDim2.new(0, 0, 0, 0),  -- 左上角
-    BackgroundColor3 = Color3.fromRGB(0, 0, 0),  -- 黑色背景
-    BorderSizePixel = 0,
-    ZIndex = 10,
-    BackgroundTransparency = 1,  -- 初始不透明
+    Size = UDim2.new(1, 0, 0, 0),  -- 初始高度为0，宽度为全屏
+    Position = UDim2.new(0, 0, 0, -1),  -- 初始位置在屏幕顶部外
+    AnchorPoint = Vector2.new(0, 0),  -- 锚点为左上角
+    BackgroundColor3 = Color3.fromRGB(0, 255, 0),  -- 绿色背景
+    BorderSizePixel = 0,  -- 无边框
+    ZIndex = 10,  -- UI层级
+    BackgroundTransparency = 0.7,  -- 30%透明
 }
 
 -- 创建全屏Notification Frame
@@ -23,6 +24,7 @@ local FullScreenFrame = Instance.new("Frame")
 FullScreenFrame.Name = "FullScreenFrame"
 FullScreenFrame.Size = notificationStyle.Size
 FullScreenFrame.Position = notificationStyle.Position
+FullScreenFrame.AnchorPoint = notificationStyle.AnchorPoint
 FullScreenFrame.BackgroundColor3 = notificationStyle.BackgroundColor3
 FullScreenFrame.BorderSizePixel = notificationStyle.BorderSizePixel
 FullScreenFrame.ZIndex = notificationStyle.ZIndex
@@ -33,52 +35,66 @@ FullScreenFrame.Parent = ScreenGui
 local TextLabel = Instance.new("TextLabel")
 TextLabel.Size = UDim2.new(1, 0, 1, 0)  -- 填充整个Frame
 TextLabel.Position = UDim2.new(0, 0, 0, 0)  -- 左上角
-TextLabel.Text = "XK脚本中心"  -- 显示的文本
-TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)  -- 白色文本
+TextLabel.Text = "欢迎使用XK脚本中心"  -- 显示的文本
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)  -- 黑色文本
 TextLabel.BackgroundTransparency = 1  -- 透明背景
 TextLabel.TextScaled = true
-TextLabel.TextSize = 24
+TextLabel.TextSize = 48
 TextLabel.Font = Enum.Font.Gotham  -- 使用Gotham字体
 TextLabel.ZIndex = 11
 TextLabel.Parent = FullScreenFrame
 
--- 创建淡入淡出动画信息
-local fadeInfo = TweenInfo.new(
+-- 创建从上到下滑入的动画信息
+local slideInInfo = TweenInfo.new(
+    0.5,  -- 持续时间
+    Enum.EasingStyle.Quad,  -- 缓动样式
+    Enum.EasingDirection.Out
+)
+
+-- 创建淡入动画信息
+local fadeInInfo = TweenInfo.new(
     0.5,  -- 持续时间
     Enum.EasingStyle.Sine,
     Enum.EasingDirection.Out
 )
 
--- 显示全屏文本Notification函数
-local function showFullScreenTextNotification(text, duration)
-    -- 设置文本
-    TextLabel.Text = text
+-- 创建淡出动画信息
+local fadeOutInfo = TweenInfo.new(
+    0.5,  -- 持续时间
+    Enum.EasingStyle.Sine,
+    Enum.EasingDirection.Out
+)
 
-    -- 重置透明度
-    FullScreenFrame.BackgroundTransparency = 0  -- 初始不透明
+-- 显示全屏Notification函数
+local function showFullScreenGreenNotification(text, duration)
+    -- 播放从上到下滑入的动画
+    local slideInTween = TweenService:Create(FullScreenFrame, slideInInfo, {Size = UDim2.new(1, 0, 1, 0)})  -- 最终大小为全屏
+    slideInTween:Play()
 
     -- 播放淡入动画
-    local fadeIn = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 0})
-    fadeIn:Play()
-    fadeIn.Completed:Wait()
+    local fadeInTween = TweenService:Create(FullScreenFrame, fadeInInfo, {BackgroundTransparency = 0.7})  -- 最终透明度为70%
+    fadeInTween:Play()
+
+    -- 设置文本
+    TextLabel.Text = text
 
     -- 等待指定的时间
     wait(duration)
 
     -- 播放淡出动画
-    local fadeOut = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 1})
-    fadeOut:Play()
-    fadeOut.Completed:Wait()
+    local fadeOutTween = TweenService:Create(FullScreenFrame, fadeOutInfo, {BackgroundTransparency = 1})  -- 最终透明度为100%
+    fadeOutTween:Play()
+    fadeOutTween.Completed:Wait()
 
     -- 移除Notification
     FullScreenFrame:Destroy()
 end
 
--- 示例：显示“XK脚本中心”的全屏Notification，显示7秒后自动消失
-local text = "XK脚本中心"  -- 要显示的文本
-local displayDuration = 7  -- 显示时间（秒）
+-- 示例：显示“XK脚本中心”的全屏绿色Notification，显示5秒后自动消失
+local text = "欢迎使用XK脚本中心"  -- 要显示的文本
+local displayDuration = 5  -- 显示时间（秒）
 
-showFullScreenTextNotification(text, displayDuration)
+showFullScreenGreenNotification(text, displayDuration)
 
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
 local LBLG = Instance.new("ScreenGui", getParent)
@@ -123,15 +139,20 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/blood
 Library.DefaultColor = Color3.fromRGB(255,0,0)
 
             Library:Notification({
-        	Text = "XK脚本中心V11.2",
+        	Text = "更新内容:巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机-格蕾丝",
         	Duration = 6
             })
-            
+
             Library:Notification({
         	Text = "欢迎使用XK脚本中心",
         	Duration = 6
             })
-            
+
+            Library:Notification({
+        	Text = "XK脚本中心V11.2",
+        	Duration = 6
+            })
+           
             Library:Notification({
         	Text = "作者:小玄",
         	Duration = 6
