@@ -5,15 +5,15 @@ local LocalPlayer = Players.LocalPlayer
 
 -- 创建ScreenGui
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "XKScriptCenterFullScreenNotification"
+ScreenGui.Name = "XKScriptCenterV2Notification"
 ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
 -- 定义全屏Notification样式
 local notificationStyle = {
-    Size = UDim2.new(1, 0, 0, 0),  -- 初始高度为0，宽度为全屏
-    Position = UDim2.new(0, 0, 0, -1),  -- 初始位置在屏幕顶部外
-    AnchorPoint = Vector2.new(0, 0),  -- 锚点为左上角
-    BackgroundColor3 = Color3.fromRGB(0, 255, 0),  -- 绿色背景
+    Size = UDim2.new(0, 0, 0, 0),  -- 初始大小为0
+    Position = UDim2.new(0.5, 0, 0.5, 0),  -- 初始位置在屏幕中央
+    AnchorPoint = Vector2.new(0.5, 0.5),  -- 锚点居中
+    BackgroundColor3 = Color3.fromRGB(173, 216, 230),  -- 浅蓝色背景 (Light Blue)
     BorderSizePixel = 0,  -- 无边框
     ZIndex = 10,  -- UI层级
     BackgroundTransparency = 0.7,  -- 30%透明
@@ -35,8 +35,8 @@ FullScreenFrame.Parent = ScreenGui
 local TextLabel = Instance.new("TextLabel")
 TextLabel.Size = UDim2.new(1, 0, 1, 0)  -- 填充整个Frame
 TextLabel.Position = UDim2.new(0, 0, 0, 0)  -- 左上角
-TextLabel.Text = "欢迎使用XK脚本中心"  -- 显示的文本
-TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)  -- 黑色文本
+TextLabel.Text = "正在加载中..."  -- 初始显示的文本
+TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)  -- 绿色文本
 TextLabel.BackgroundTransparency = 1  -- 透明背景
 TextLabel.TextScaled = true
 TextLabel.TextSize = 48
@@ -44,57 +44,79 @@ TextLabel.Font = Enum.Font.Gotham  -- 使用Gotham字体
 TextLabel.ZIndex = 11
 TextLabel.Parent = FullScreenFrame
 
--- 创建从上到下滑入的动画信息
-local slideInInfo = TweenInfo.new(
+-- 创建动画信息
+local scaleInfo = TweenInfo.new(
     0.5,  -- 持续时间
-    Enum.EasingStyle.Quad,  -- 缓动样式
+    Enum.EasingStyle.Elastic,  -- 弹性缓动
     Enum.EasingDirection.Out
 )
 
--- 创建淡入动画信息
-local fadeInInfo = TweenInfo.new(
+local moveInfo = TweenInfo.new(
     0.5,  -- 持续时间
-    Enum.EasingStyle.Sine,
+    Enum.EasingStyle.Quad,  -- 二次缓动
     Enum.EasingDirection.Out
 )
 
--- 创建淡出动画信息
-local fadeOutInfo = TweenInfo.new(
+local fadeInfo = TweenInfo.new(
     0.5,  -- 持续时间
     Enum.EasingStyle.Sine,
     Enum.EasingDirection.Out
 )
 
--- 显示全屏Notification函数
-local function showFullScreenGreenNotification(text, duration)
-    -- 播放从上到下滑入的动画
-    local slideInTween = TweenService:Create(FullScreenFrame, slideInInfo, {Size = UDim2.new(1, 0, 1, 0)})  -- 最终大小为全屏
-    slideInTween:Play()
+-- 显示Notification函数
+local function showXKScriptCenterV2Notification(text, duration)
+    -- 播放从小变大的动画
+    local scaleTween = TweenService:Create(FullScreenFrame, scaleInfo, {Size = UDim2.new(0.5, 0, 0.5, 0)})  -- 放大到屏幕的一半
+    scaleTween:Play()
+
+    -- 等待放大动画完成
+    scaleTween.Completed:Wait()
+
+    -- 等待5秒
+    wait(5)
+
+    -- 播放向右移动的动画
+    local moveTween = TweenService:Create(FullScreenFrame, moveInfo, {Position = UDim2.new(1, 0, 0.5, 0)})  -- 向右移动到屏幕右侧
+    moveTween:Play()
+
+    -- 等待移动动画完成
+    moveTween.Completed:Wait()
+
+    -- 播放回到中间的动画
+    local backTween = TweenService:Create(FullScreenFrame, moveInfo, {Position = UDim2.new(0.5, 0, 0.5, 0)})  -- 回到屏幕中央
+    backTween:Play()
+
+    -- 设置文本为“XK脚本中心V2”
+    TextLabel.Text = text
+
+    -- 播放放大动画
+    local finalScaleTween = TweenService:Create(FullScreenFrame, scaleInfo, {Size = UDim2.new(1, 0, 1, 0)})  -- 放大到全屏
+    finalScaleTween:Play()
+
+    -- 等待回到中间的动画完成
+    backTween.Completed:Wait()
 
     -- 播放淡入动画
-    local fadeInTween = TweenService:Create(FullScreenFrame, fadeInInfo, {BackgroundTransparency = 0.7})  -- 最终透明度为70%
-    fadeInTween:Play()
-
-    -- 设置文本
-    TextLabel.Text = text
+    local fadeIn = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 0.7})  -- 背景透明度为70%
+    fadeIn:Play()
 
     -- 等待指定的时间
     wait(duration)
 
     -- 播放淡出动画
-    local fadeOutTween = TweenService:Create(FullScreenFrame, fadeOutInfo, {BackgroundTransparency = 1})  -- 最终透明度为100%
-    fadeOutTween:Play()
-    fadeOutTween.Completed:Wait()
+    local fadeOut = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 1})  -- 背景透明度为100%
+    fadeOut:Play()
+    fadeOut.Completed:Wait()
 
     -- 移除Notification
     FullScreenFrame:Destroy()
 end
 
--- 示例：显示“XK脚本中心”的全屏绿色Notification，显示5秒后自动消失
-local text = "欢迎使用XK脚本中心"  -- 要显示的文本
-local displayDuration = 5  -- 显示时间（秒）
+-- 示例：显示“XK脚本中心V2”的全屏浅蓝色背景绿色文字Notification，显示5秒后自动消失
+local text = "XK脚本中心V2"  -- 要显示的文本
+local displayDuration = 4  -- 显示时间（秒）
 
-showFullScreenGreenNotification(text, displayDuration)
+showXKScriptCenterV2Notification(text, displayDuration)
 
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
 local LBLG = Instance.new("ScreenGui", getParent)
