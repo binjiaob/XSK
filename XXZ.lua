@@ -163,9 +163,9 @@ local WSBTab = Window:MakeTab({
 })
 
 WSBTab:AddParagraph("当前版本","V11.2正式版11月10日更新")
-WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机")
+WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机-格蕾丝")
 WSBTab:AddParagraph("正式版版","更新服务器与ID")
-WSBTab:AddParagraph("通知","V11.0正式版更新")
+WSBTab:AddParagraph("通知","V11.2正式版更新")
 WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
 WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
 WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
@@ -2664,7 +2664,7 @@ Tab:AddButton({
 Tab:AddButton({
 	Name = "mspaint V3汉化【无敌推荐】",
 	Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/DOORS.txt"))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-Chinese-XXZ/refs/heads/main/rename.txt"))()
   	end    
 })
 
@@ -12205,6 +12205,6 @@ local coTab = Window:MakeTab({
 coTab:AddButton({
     Name="格蕾丝脚本",
     Callback=function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%87%AA%E5%88%B6%E6%B5%8B%E8%AF%95%E7%89%88%E6%BA%90%E7%A0%81.txt"))()
+        loadstring("\112\114\105\110\116\40\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\97\115\51\48\51\50\54\47\71\114\97\99\101\45\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\71\114\97\99\101\37\69\56\37\56\52\37\57\65\37\69\54\37\57\67\37\65\67\46\108\117\97\34\41\41\40\41\41\10")()
     end
 })
