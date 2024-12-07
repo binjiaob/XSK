@@ -1,3 +1,85 @@
+-- 获取服务
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+
+-- 创建ScreenGui
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "XKScriptCenterNotification"
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+-- 定义全屏Notification样式
+local notificationStyle = {
+    Size = UDim2.new(1, 0, 1, 0),  -- 填充整个屏幕
+    Position = UDim2.new(0, 0, 0, 0),  -- 左上角
+    BackgroundColor3 = Color3.fromRGB(0, 0, 0),  -- 黑色背景
+    BorderSizePixel = 0,
+    ZIndex = 10,
+    BackgroundTransparency = 1,  -- 初始不透明
+}
+
+-- 创建全屏Notification Frame
+local FullScreenFrame = Instance.new("Frame")
+FullScreenFrame.Name = "FullScreenFrame"
+FullScreenFrame.Size = notificationStyle.Size
+FullScreenFrame.Position = notificationStyle.Position
+FullScreenFrame.BackgroundColor3 = notificationStyle.BackgroundColor3
+FullScreenFrame.BorderSizePixel = notificationStyle.BorderSizePixel
+FullScreenFrame.ZIndex = notificationStyle.ZIndex
+FullScreenFrame.BackgroundTransparency = notificationStyle.BackgroundTransparency
+FullScreenFrame.Parent = ScreenGui
+
+-- 创建文本标签
+local TextLabel = Instance.new("TextLabel")
+TextLabel.Size = UDim2.new(1, 0, 1, 0)  -- 填充整个Frame
+TextLabel.Position = UDim2.new(0, 0, 0, 0)  -- 左上角
+TextLabel.Text = "XK脚本中心"  -- 显示的文本
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)  -- 白色文本
+TextLabel.BackgroundTransparency = 1  -- 透明背景
+TextLabel.TextScaled = true
+TextLabel.TextSize = 24
+TextLabel.Font = Enum.Font.Gotham  -- 使用Gotham字体
+TextLabel.ZIndex = 11
+TextLabel.Parent = FullScreenFrame
+
+-- 创建淡入淡出动画信息
+local fadeInfo = TweenInfo.new(
+    0.5,  -- 持续时间
+    Enum.EasingStyle.Sine,
+    Enum.EasingDirection.Out
+)
+
+-- 显示全屏文本Notification函数
+local function showFullScreenTextNotification(text, duration)
+    -- 设置文本
+    TextLabel.Text = text
+
+    -- 重置透明度
+    FullScreenFrame.BackgroundTransparency = 0  -- 初始不透明
+
+    -- 播放淡入动画
+    local fadeIn = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 0})
+    fadeIn:Play()
+    fadeIn.Completed:Wait()
+
+    -- 等待指定的时间
+    wait(duration)
+
+    -- 播放淡出动画
+    local fadeOut = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 1})
+    fadeOut:Play()
+    fadeOut.Completed:Wait()
+
+    -- 移除Notification
+    FullScreenFrame:Destroy()
+end
+
+-- 示例：显示“XK脚本中心”的全屏Notification，显示7秒后自动消失
+local text = "XK脚本中心"  -- 要显示的文本
+local displayDuration = 7  -- 显示时间（秒）
+
+showFullScreenTextNotification(text, displayDuration)
+
 local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
 local LBLG = Instance.new("ScreenGui", getParent)
 local LBL = Instance.new("TextLabel", getParent)
@@ -37,52 +119,23 @@ local function HeartbeatUpdate()
 	CurrentFPS = CurrentFPS - CurrentFPS % 1
 	FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
 end
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))()
+Library.DefaultColor = Color3.fromRGB(255,0,0)
 
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-wait(1)
-
-OrionLib:MakeNotification({
-                    Name = "你的注入器："..identifyexecutor(),
-                    Content = "脚本中心",
-                    Time = 1
-                })
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-wait(1)
-
-OrionLib:MakeNotification({
-                    Name = "用户名："..game.Players.LocalPlayer.Character.Name,
-                    Content = "XK脚本中心",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://7153945201"
-sound:Play()
-
-wait(1)
-
-OrionLib:MakeNotification({
-                    Name = "服务器ID："..game.PlaceId,
-                    Content = "XK脚本中心",
-                    Time = 1
-                })
-                
-    local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://134446555948919"
-sound:Play()
+            Library:Notification({
+        	Text = "XK脚本中心V11.2",
+        	Duration = 6
+            })
+            
+            Library:Notification({
+        	Text = "欢迎使用XK脚本中心",
+        	Duration = 6
+            })
+            
+            Library:Notification({
+        	Text = "作者:小玄",
+        	Duration = 6
+            })
 
 print("索引开启反挂机")
 		local vu = game:GetService("VirtualUser")
@@ -98,31 +151,6 @@ OrionLib:MakeNotification({
                     Time = 1
                 })           
 Start = tick()
-
-game:GetService("StarterGui"):SetCore("SendNotification",{ 
-     Title = "XK脚本中心【正式版】", 
-     Text = "欢迎你的使用", 
-     Icon = "rbxassetid://117494350103589", 
-     Duration = 60, 
-     Callback = bindable, 
-     Button1 = "开启", 
-     Button2 = "关闭" 
- })
-
-game:GetService("StarterGui"):SetCore("SendNotification",{ 
-     Title = "XK脚本中心【正式版V2】", 
-     Text = "加载成功", 
-     Icon = "rbxassetid://117494350103589", 
-     Duration = 60, 
-     Callback = bindable, 
-     Button1 = "开启", 
-     Button2 = "关闭" 
- })
- 
- local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6729922069"
-sound:Play()
-
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
@@ -134,87 +162,7 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-OrionLib:MakeNotification({
-                    Name = "XK 脚本中心",
-                    Content = "脚本中心正在加载",
-                    Time = 1
-                })    
-                
-                local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-WSBTab:AddParagraph("当前版本","V11.0正式版11月10日更新")
+WSBTab:AddParagraph("当前版本","V11.2正式版11月10日更新")
 WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机")
 WSBTab:AddParagraph("正式版版","更新服务器与ID")
 WSBTab:AddParagraph("通知","V11.0正式版更新")
@@ -313,6 +261,13 @@ local coTab = Window:MakeTab({
 	Name = "Mireng XKcore V3",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
+})
+
+coTab:AddButton({
+    Name="XK脚本V3",
+    Callback=function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/XUAN.lua"))()
+    end
 })
 
 coTab:AddButton({
@@ -2673,9 +2628,9 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddButton({
-	Name = "mspaint V3汉化【已更新】",
+	Name = "mspaint V3汉化【12月7日】",
 	Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-Chinese-XXZ/refs/heads/main/rename.txt"))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/DOORS.txt"))()
   	end    
 })
 
@@ -2709,7 +2664,7 @@ Tab:AddButton({
 Tab:AddButton({
 	Name = "mspaint V3汉化【无敌推荐】",
 	Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-Chinese-XXZ/refs/heads/main/rename.txt"))()
+     loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/DOORS.txt"))()
   	end    
 })
 
@@ -12235,7 +12190,20 @@ local coTab = Window:MakeTab({
 })
 
 coTab:AddButton({
-    Name="狗熊岭危机【XK自制测试版】",
+    Name="狗熊岭危机【12月7日最新版】",
+    Callback=function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/Gouxiongling.lua"))()
+    end
+})
+
+local coTab = Window:MakeTab({
+	Name = "格蕾丝",
+	Icon = "rbxassetid://7733765592",
+	PremiumOnly = false
+})
+
+coTab:AddButton({
+    Name="格蕾丝脚本",
     Callback=function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%87%AA%E5%88%B6%E6%B5%8B%E8%AF%95%E7%89%88%E6%BA%90%E7%A0%81.txt"))()
     end
