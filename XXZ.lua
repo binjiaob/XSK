@@ -12246,8 +12246,15 @@ local coTab = Window:MakeTab({
 })
 
 coTab:AddButton({
-    Name="格蕾丝脚本",
+    Name="格蕾丝脚本【修复版】",
     Callback=function()
-            loadstring("\112\114\105\110\116\40\104\116\116\112\115\58\47\47\103\105\116\104\117\98\46\99\111\109\47\97\115\51\48\51\50\54\47\71\114\97\99\101\45\47\98\108\111\98\47\55\100\54\50\51\55\97\55\56\57\97\101\98\57\50\101\98\53\99\52\55\51\56\48\57\52\50\98\97\55\102\51\97\52\98\101\51\101\57\53\47\71\114\97\99\101\37\69\56\37\56\52\37\57\65\37\69\54\37\57\67\37\65\67\37\69\54\37\65\68\37\65\51\37\69\54\37\57\68\37\56\51\46\108\117\97\41\10")()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/GraceXJ.lua"))()
+    end
+})
+
+coTab:AddButton({
+    Name="格蕾丝脚本【云端版】",
+    Callback=function()
+            loadstring(game:HttpGet("https://github.com/as30326/Grace-/blob/main/Grace%E8%84%9A%E6%9C%AC%E6%AD%A3%E6%9D%83.lua"))()
     end
 })
