@@ -94,7 +94,7 @@ function lib:Window(text, preset, closebind)
     Main.Size = UDim2.new(0, 0, 0, 0)
     Main.ClipsDescendants = true
     Main.Visible = true
-    Main.Image = "rbxassetid://7743872365"--脚本背景图
+    Main.Image = "rbxassetid://132190838922049"--脚本背景图
     TabHold.Name = "TabHold"
     TabHold.Parent = Main
     TabHold.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -112,11 +112,11 @@ function lib:Window(text, preset, closebind)
     Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Title.BackgroundTransparency = 1.000
     Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
-    Title.Size = UDim2.new(0, 250, 0, 70)
+    Title.Size = UDim2.new(10, 210, 10, 40)
     Title.Font = Enum.Font.GothamSemibold
     Title.Text = text
     Title.TextColor3 = Color3.fromRGB(0, 255, 0)
-    Title.TextSize = 15.000
+    Title.TextSize = 20.000
     Title.TextXAlignment = Enum.TextXAlignment.Left
     DragFrame.Name = "DragFrame"
     DragFrame.Parent = Main
