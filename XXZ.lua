@@ -1,3 +1,8 @@
+--不是，哥们儿，谁告诉你翻我这个源码的？
+--你可真是个大牛，我都佩服你
+
+local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
+
 -- 获取服务
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
@@ -118,50 +123,11 @@ local displayDuration = 4  -- 显示时间（秒）
 
 showXKScriptCenterV2Notification(text, displayDuration)
 
-local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
-local LBLG = Instance.new("ScreenGui", getParent)
-local LBL = Instance.new("TextLabel", getParent)
-local player = game.Players.LocalPlayer
-
-LBLG.Name = "LBLG"
-LBLG.Parent = game.CoreGui
-LBLG.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-LBLG.Enabled = true
-LBL.Name = "LBL"
-LBL.Parent = LBLG
-LBL.BackgroundColor3 = Color3.new(1, 1, 1)
-LBL.BackgroundTransparency = 1
-LBL.BorderColor3 = Color3.new(0, 0, 0)
-LBL.Position = UDim2.new(0.75,0,0.010,0)
-LBL.Size = UDim2.new(0, 133, 0, 30)
-LBL.Font = Enum.Font.GothamSemibold
-LBL.Text = "XK脚本中心"
-LBL.TextColor3 = Color3.new(0, 255, 0)
-LBL.TextScaled = true
-LBL.TextSize = 14
-LBL.TextWrapped = true
-LBL.Visible = true
-
-local FpsLabel = LBL
-local Heartbeat = game:GetService("RunService").Heartbeat
-local LastIteration, Start
-local FrameUpdateTable = { }
-
-local function HeartbeatUpdate()
-	LastIteration = tick()
-	for Index = #FrameUpdateTable, 1, -1 do
-		FrameUpdateTable[Index + 1] = (FrameUpdateTable[Index] >= LastIteration - 1) and FrameUpdateTable[Index] or nil
-	end
-	FrameUpdateTable[1] = LastIteration
-	local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
-	CurrentFPS = CurrentFPS - CurrentFPS % 1
-	FpsLabel.Text = ("LOL"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
-end
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))()
 Library.DefaultColor = Color3.fromRGB(255,0,0)
 
             Library:Notification({
-        	Text = "更新内容:巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机-格蕾丝-Doors",
+        	Text = "更新内容:巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机-格蕾丝",
         	Duration = 6
             })
 
@@ -176,139 +142,65 @@ Library.DefaultColor = Color3.fromRGB(255,0,0)
             })
            
             Library:Notification({
-        	Text = "LOL",
+        	Text = "作者:小玄",
         	Duration = 6
             })
+            
+            local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
+local LBLG = Instance.new("ScreenGui", game.CoreGui)
+local LBL = Instance.new("TextLabel", LBLG)
+local player = game.Players.LocalPlayer
 
-function esp(what,color,core,name)
-    local parts
-    
-    if typeof(what) == "Instance" then
-        if what:IsA("Model") then
-            parts = what:GetChildren()
-        elseif what:IsA("BasePart") then
-            parts = {what,table.unpack(what:GetChildren())}
-        end
-    elseif typeof(what) == "table" then
-        parts = what
+LBLG.Name = "LBLG"
+LBLG.Enabled = true
+LBL.Name = "LBL"
+LBL.Parent = LBLG
+LBL.BackgroundColor3 = Color3.new(1, 1, 1)
+LBL.BackgroundTransparency = 1
+LBL.BorderColor3 = Color3.new(0, 0, 0)
+LBL.Position = UDim2.new(0.75, 0, 0.010, 0)
+LBL.Size = UDim2.new(0, 133, 0, 30)
+LBL.Font = Enum.Font.GothamSemibold
+LBL.Text = "XK脚本中心"
+LBL.TextColor3 = Color3.new(0, 85, 255)
+LBL.TextScaled = true
+LBL.TextSize = 14
+LBL.TextWrapped = true
+LBL.Visible = true
+
+local FpsLabel = LBL
+local Heartbeat = game:GetService("RunService").Heartbeat
+local LastIteration, Start
+local FrameUpdateTable = { }
+
+local function HeartbeatUpdate()
+    LastIteration = tick()
+    for Index = #FrameUpdateTable, 1, -1 do
+        FrameUpdateTable[Index + 1] = (FrameUpdateTable[Index] >= LastIteration - 1) and FrameUpdateTable[Index] or nil
     end
-    
-    local bill
-    local boxes = {}
-    
-    for i,v in pairs(parts) do
-        if v:IsA("BasePart") then
-            local box = Instance.new("BoxHandleAdornment")
-            box.Size = v.Size
-            box.AlwaysOnTop = true
-            box.ZIndex = 1
-            box.AdornCullingMode = Enum.AdornCullingMode.Never
-            box.Color3 = color
-            box.Transparency = 0.7
-            box.Adornee = v
-            box.Parent = game.CoreGui
-            
-            table.insert(boxes,box)
-            
-            task.spawn(function()
-                while box do
-                    if box.Adornee == nil or not box.Adornee:IsDescendantOf(workspace) then
-                        box.Adornee = nil
-                        box.Visible = false
-                        box:Destroy()
-                    end  
-                    task.wait()
-                end
-            end)
-        end
-    end
-    
-    if core and name then
-        bill = Instance.new("BillboardGui",game.CoreGui)
-        bill.AlwaysOnTop = true
-        bill.Size = UDim2.new(0,400,0,100)
-        bill.Adornee = core
-        bill.MaxDistance = 2000
-        
-        local mid = Instance.new("Frame",bill)
-        mid.AnchorPoint = Vector2.new(0.5,0.5)
-        mid.BackgroundColor3 = color
-        mid.Size = UDim2.new(0,8,0,8)
-        mid.Position = UDim2.new(0.5,0,0.5,0)
-        Instance.new("UICorner",mid).CornerRadius = UDim.new(1,0)
-        Instance.new("UIStroke",mid)
-        
-        local txt = Instance.new("TextLabel",bill)
-        txt.AnchorPoint = Vector2.new(0.5,0.5)
-        txt.BackgroundTransparency = 1
-        txt.BackgroundColor3 = color
-        txt.TextColor3 = color
-        txt.Size = UDim2.new(1,0,0,20)
-        txt.Position = UDim2.new(0.5,0,0.7,0)
-        txt.Text = name
-        Instance.new("UIStroke",txt)
-        
-        task.spawn(function()
-            while bill do
-                if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
-                    bill.Enabled = false
-                    bill.Adornee = nil
-                    bill:Destroy() 
-                end  
-                task.wait()
-            end
-        end)
-    end
-    
-    local ret = {}
-    
-    ret.delete = function()
-        for i,v in pairs(boxes) do
-            v.Adornee = nil
-            v.Visible = false
-            v:Destroy()
-        end
-        
-        if bill then
-            bill.Enabled = false
-            bill.Adornee = nil
-            bill:Destroy() 
-        end
-    end
-    
-    return ret 
+    FrameUpdateTable[1] = LastIteration
+    local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
+    CurrentFPS = CurrentFPS - CurrentFPS % 1
+    -- 更新FPS文本
+    FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
+    -- 更新文本标签颜色为彩虹色
+    local rainbowColors = {
+        Color3.new(1, 0, 0), -- 红色
+        Color3.new(1, 1, 0), -- 黄色
+        Color3.new(0, 1, 0), -- 绿色
+        Color3.new(0, 0, 1), -- 蓝色
+        Color3.new(1, 0, 1), -- 紫色
+        Color3.new(1, 1, 1), -- 白色
+        Color3.new(0, 0, 0), -- 黑色
+    }
+    local rainbowIndex = math.floor((tick() % 6) + 1)
+    FpsLabel.TextColor3 = rainbowColors[rainbowIndex]
 end
 
-local flags = {
-    speed = 0,
-    espdoors = false,
-    espkeys = false,
-    espitems = false,
-    espbooks = false,
-    esprush = false,
-    espchest = false,
-    esplocker = false,
-    esphumans = false,
-    espgold = false,
-    goldespvalue = 0,
-    hintrush = false,
-    light = false,
-    instapp = false,
-    noseek = false,
-    nogates = false,
-    nopuzzle = false,
-    noa90 = false,
-    noskeledoors = false,
-    noscreech = false,
-    getcode = false,
-    roomsnolock = false,
-    draweraura = false,
-    autorooms = false,
-}
-
-local DELFLAGS = {table.unpack(flags)}
-local esptable = {doors={},keys={},items={},books={},entity={},chests={},lockers={},people={},gold={}}
-
+-- 初始化开始时间
+Start = tick()
+-- 连接到Heartbeat事件
+Heartbeat:Connect(HeartbeatUpdate)
 
 print("索引开启反挂机")
 		local vu = game:GetService("VirtualUser")
@@ -318,11 +210,12 @@ print("索引开启反挂机")
 		   vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 		end)      
                 wait(1)
-OrionLib:MakeNotification({
-                    Name = "反外挂已开启",
-                    Content = "等待2秒",
-                    Time = 1
-                })           
+notification:ForceNotify({
+        Name = "小玄奘 丨 XK脚本中心 丨 防反外挂",
+        Text = "验证成功",
+        Icon = "rbxassetid://11401835376",
+        Duration = 5,
+    })
 Start = tick()
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
@@ -335,13 +228,295 @@ local WSBTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("当前版本","V11.2正式版11月10日更新")
-WSBTab:AddParagraph("更新内容","巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机-格蕾丝")
-WSBTab:AddParagraph("正式版版","更新服务器与ID")
-WSBTab:AddParagraph("通知","V11.2正式版更新")
-WSBTab:AddParagraph("您的用户名:"," "..game.Players.LocalPlayer.Name.."")
-WSBTab:AddParagraph("您的注入器:"," "..identifyexecutor().."")
-WSBTab:AddParagraph("您当前服务器的ID"," "..game.GameId.."")
+local XuanTab = Window:MakeTab({
+	Name = "黑名单",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local Tab = Window:MakeTab({
+    Name = "玩家与通用",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local LXBTab = Window:MakeTab({
+	Name = "绘制玩家",
+	Icon = "rbxassetid://15862434941",
+	PremiumOnly = false
+})
+
+local NNN2Tab = Window:MakeTab({
+    Name = "自瞄",
+    Icon = "rbxassetid://7733655912",
+    PremiumOnly = false
+})
+
+local QWERTab = Window:MakeTab({
+    Name = "彩虹朋友",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local DJTab = Window:MakeTab({
+	Name = "旋转",
+	Icon = "rbxassetid://7743873633",
+	PremiumOnly = false
+})
+
+local LTTTab = Window:MakeTab({
+    Name = "范围",
+    Icon = "rbxassetid://7733920519",
+    PremiumOnly = false
+})
+
+local QYYTab = Window:MakeTab({
+	Name = "FE脚本",
+	Icon = "rbxassetid://6087485864",
+	PremiumOnly = false
+})
+
+local XTab = Window:MakeTab({
+    Name = "骨折模拟器",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local playerL = Window:MakeTab({
+	Name = "其他注入器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local SBBBBTab = Window:MakeTab({
+    Name = "骨折模拟器脚本",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local CNMMMTab = Window:MakeTab({
+	Name = " Doors道具",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local POPTab = Window:MakeTab({
+	Name = " Doors floor2脚本",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local OPOTab = Window:MakeTab({
+	Name = " Doors脚本",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local SZTab = Window:MakeTab({
+	Name = "火箭发射模拟",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local NAMETab = Window:MakeTab({
+    Name = "Color or die",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local GUNGUNTab = Window:MakeTab({
+    Name = "鱿鱼游戏",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local YINTab = Window:MakeTab({
+    Name = "驾驶帝国",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local JIJITab = Window:MakeTab({
+    Name = "光影加画质",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local NBLLTab = Window:MakeTab({
+    Name = "战争大亨",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local RNGTab = Window:MakeTab({
+	Name = " sol’sRNG",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local QXXTab = Window:MakeTab({
+	Name = "口渴的吸血鬼",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local QICHETab = Window:MakeTab({
+	Name = "骑车模拟器",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local TabAOBI = Window:MakeTab({
+	Name = "非常容易的奥比跑酷",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local IATab = Window:MakeTab({
+	Name = "自然灾害",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local YINGPTab = Window:MakeTab({
+	Name = "音频",
+	Icon = "rbxassetid://7734020554",
+	PremiumOnly = false
+})
+
+local BADTab = Window:MakeTab({
+	Name = "Doors but bad",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local ESPLTab = Window:MakeTab({
+    Name = "ESP",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local JianyuTab = Window:MakeTab({
+    Name = "监狱人生",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local weizTab = Window:MakeTab({
+    Name = "监狱人生位置",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
+
+local xqwTab = Window:MakeTab({
+	Name = "动感星期五",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local IPTab = Window:MakeTab({
+	Name = "Refinery cave1",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local ZXCVBNTab = Window:MakeTab({
+	Name = "Refinery cave2",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local CWTab = Window:MakeTab({
+	Name = "战斗勇士",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local HBTXTab = Window:MakeTab({
+	Name = "河北唐县",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local ZONTab = Window:MakeTab({
+	Name = "进击的僵尸",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local NTab = Window:MakeTab({
+	Name = "MM2",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local CHPYTab = Window:MakeTab({
+	Name = "彩虹朋友",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local CTDHTab = Window:MakeTab({
+	Name = "餐厅大亨",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local NVTab = Window:MakeTab({
+	Name = "最强战场",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+local Badge = Window:MakeTab({
+	Name = "巴掌模拟器-非自动",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+		
+local Badge2 = Window:MakeTab({
+	Name = "巴掌模拟器-自动获取",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge4 = Window:MakeTab({
+	Name = "巴掌模拟器-农场区",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge3 = Window:MakeTab({
+	Name = "巴掌模拟器-传送功能",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Teleport = Window:MakeTab({
+	Name = "巴掌模拟器-传送到地点",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge5 = Window:MakeTab({
+	Name = "巴掌模拟器-其他功能",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge6 = Window:MakeTab({
+	Name = "巴掌模拟器-自动农场",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+local Badge7 = Window:MakeTab({
+	Name = "巴掌模拟器-获取",
+	Icon = "rbxassetid://7733955740",
+	PremiumOnly = false
+})
+
+
 
 WSBTab:AddButton ({
 	Name = "复制一群【已升2000人】",
@@ -430,51 +605,6 @@ WSBTab:AddButton ({
 WSBTab:AddParagraph("更新内容:UI与小部分东西")
 WSBTab:AddParagraph("半缝合脚本","勿喷")
 
-local coTab = Window:MakeTab({
-	Name = "Mireng XKcore V3",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
-coTab:AddButton({
-    Name="XK脚本V3",
-    Callback=function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/XUAN.lua"))()
-    end
-})
-
-coTab:AddButton({
-    Name="Mireng XKcore V3压力",
-    Callback=function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%BF%83V3.lua"))()
-    end
-})
-
-coTab:AddButton({
-    Name="吃掉世界",
-    Callback=function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E5%90%83%E6%8E%89%E4%B8%96%E7%95%8C%E6%BA%90%E7%A0%81.lua"))()
-    end
-})  
-coTab:AddButton({
-    Name="Color or die",
-    Callback=function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/ColorDie.lua"))()
-    end
-})
-coTab:AddButton({
-    Name="xhxh backrooms[🇨🇳]",
-    Callback=function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/backrooms.x/refs/heads/main/XhxhRooms.lua"))()
-    end
-})
-
-local XuanTab = Window:MakeTab({
-	Name = "黑名单",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
 XuanTab:AddParagraph("一名单一","Kwkw")
 XuanTab:AddParagraph("快手号","3358074444")
 XuanTab:AddParagraph("一最傻逼的黑名单人员一","QQ:1392086396")
@@ -493,11 +623,7 @@ XuanTab:AddButton ({
 	end
 })
 
-local Tab = Window:MakeTab({
-    Name = "玩家与通用",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
+
 
 Tab:AddSlider({
 
@@ -1254,7 +1380,51 @@ Name = "XK飞行",
     loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/%E9%A3%9E%E8%A1%8C%E8%84%9A%E6%9C%AC(%E5%8F%AF%E8%87%AA%E7%94%B1%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F)%20%E6%B1%89%E5%8C%96%20(3)%20(1).txt"))()
   end
 })
-
+creditsB:Toggle("穿墙 (概率卡住) (真卡住了重新启动一遍)","MainHouse",false,function(state)
+        if state then
+game.Players.LocalPlayer.Character.Head.CanQuery = false
+game.Players.LocalPlayer.Character.LeftFoot.CanQuery = false
+game.Players.LocalPlayer.Character.LeftHand.CanQuery = false
+game.Players.LocalPlayer.Character.LeftLowerArm.CanQuery = false
+game.Players.LocalPlayer.Character.LeftLowerLeg.CanQuery = false
+game.Players.LocalPlayer.Character.LeftUpperArm.CanQuery = false
+game.Players.LocalPlayer.Character.LeftUpperLeg.CanQuery = false
+game.Players.LocalPlayer.Character.LowerTorso.CanQuery = false
+game.Players.LocalPlayer.Character.RightFoot.CanQuery = false
+game.Players.LocalPlayer.Character.RightHand.CanQuery = false
+game.Players.LocalPlayer.Character.RightLowerArm.CanQuery = false
+game.Players.LocalPlayer.Character.RightLowerLeg.CanQuery = false
+game.Players.LocalPlayer.Character.RightUpperArm.CanQuery = false
+game.Players.LocalPlayer.Character.RightUpperLeg.CanQuery = false
+game.Players.LocalPlayer.Character.UpperTorso.CanQuery = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanQuery = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanTouch = false
+game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
+game.Players.LocalPlayer.Character.LowerTorso.CanCollide = false
+else
+game.Players.LocalPlayer.Character.Head.CanQuery = true
+game.Players.LocalPlayer.Character.LeftFoot.CanQuery = true
+game.Players.LocalPlayer.Character.LeftHand.CanQuery = true
+game.Players.LocalPlayer.Character.LeftLowerArm.CanQuery = true
+game.Players.LocalPlayer.Character.LeftLowerLeg.CanQuery = true
+game.Players.LocalPlayer.Character.LeftUpperArm.CanQuery = true
+game.Players.LocalPlayer.Character.LeftUpperLeg.CanQuery = true
+game.Players.LocalPlayer.Character.LowerTorso.CanQuery = true
+game.Players.LocalPlayer.Character.RightFoot.CanQuery = true
+game.Players.LocalPlayer.Character.RightHand.CanQuery = true
+game.Players.LocalPlayer.Character.RightLowerArm.CanQuery = true
+game.Players.LocalPlayer.Character.RightLowerLeg.CanQuery = true
+game.Players.LocalPlayer.Character.RightUpperArm.CanQuery = true
+game.Players.LocalPlayer.Character.RightUpperLeg.CanQuery = true
+game.Players.LocalPlayer.Character.UpperTorso.CanQuery = true
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanQuery = true
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = true
+game.Players.LocalPlayer.Character.HumanoidRootPart.CanTouch = true
+game.Players.LocalPlayer.Character.UpperTorso.CanCollide = true
+game.Players.LocalPlayer.Character.LowerTorso.CanCollide = true
+end
+    end)
 Tab:AddButton ({
 	Name = "飞行v3(修复）",
 	Callback = function ()
@@ -1399,13 +1569,9 @@ Tab:AddButton({
    end 
  })
 
-local Tab = Window:MakeTab({
-	Name = "音频",
-	Icon = "rbxassetid://7734020554",
-	PremiumOnly = false
-})
 
-Tab:AddButton({ 
+
+YINGPTab:AddButton({ 
    Name = "国歌", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1415,7 +1581,7 @@ Tab:AddButton({
    end 
  })
  
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "钢管落地", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1425,7 +1591,7 @@ Tab:AddButton({
    end 
  })
 
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "钢管落地【全损音质】", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1435,7 +1601,7 @@ Tab:AddButton({
    end 
  })
 
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "化粪池爆炸", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1445,7 +1611,7 @@ Tab:AddButton({
    end 
  })
 
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "串稀", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1455,7 +1621,7 @@ Tab:AddButton({
    end 
  })
 
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "全损音质【串稀】", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1464,7 +1630,7 @@ Tab:AddButton({
      sound:Play() 
    end 
  })
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "骂人", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1473,7 +1639,7 @@ Tab:AddButton({
      sound:Play() 
    end 
  })
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "在我们之中", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1482,7 +1648,7 @@ Tab:AddButton({
      sound:Play() 
    end 
  })
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "doors拿金币", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1491,7 +1657,7 @@ Tab:AddButton({
      sound:Play() 
    end 
  })
-Tab:AddButton({ 
+YINGPTab:AddButton({ 
    Name = "苹果手机【闹钟】", 
    Callback = function () 
          local sound = Instance.new("Sound") 
@@ -1500,13 +1666,9 @@ Tab:AddButton({
      sound:Play() 
    end 
  })
-local Tab = Window:MakeTab({
-	Name = "绘制玩家",
-	Icon = "rbxassetid://15862434941",
-	PremiumOnly = false
-})
 
-Tab: AddButton({
+
+LXBTab: AddButton({
 	Name = "绘制玩家名字",
 	Callback = function(value)
 		print(value)
@@ -1591,7 +1753,7 @@ ps.PlayerAdded:Connect(p_added)
 end
 })
 
-Tab: AddButton({
+LXBTab: AddButton({
 	Name = "绘制玩家位置",
 	Callback = function(value)
 		print(value)
@@ -1789,7 +1951,7 @@ end)
 end
 })
 
-Tab: AddButton({
+LXBTab: AddButton({
 	Name = "绘制玩家边框",
 	Callback = function(value)
 		print(value)
@@ -1845,7 +2007,7 @@ end)
 end
 })
 
-Tab: AddButton({
+LXBTab: AddButton({
 	Name = "透视骨骼",
 	Callback = function(value)
 		print(value)
@@ -1860,214 +2022,157 @@ end)
 end
 })
 
-Tab:AddButton({
+LXBTab:AddButton({
 	Name = "忍者ESP",
 	Callback = function()
      loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Universal-Esp-Library-9382"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "自瞄",
-    Icon = "rbxassetid://7733655912",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+
+NNN2Tab:AddButton({
 	Name = "自瞄30",
 	Callback = function()
     local fov = 30 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄40",
 	Callback = function()
     local fov = 40 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄50",
 	Callback = function()
     local fov = 50 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄60",
 	Callback = function()
     local fov = 60 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄70",
 	Callback = function()
     local fov = 70 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄80",
 	Callback = function()
     local fov = 80 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄90",
 	Callback = function()
     local fov = 90 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄100",
 	Callback = function()
     local fov = 100 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄110",
 	Callback = function()
     local fov = 110 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄120",
 	Callback = function()
     local fov = 120 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄130",
 	Callback = function()
     local fov = 130 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄140",
 	Callback = function()
     local fov = 140 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄150",
 	Callback = function()
     local fov = 150 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄160",
 	Callback = function()
     local fov = 160 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄170",
 	Callback = function()
     local fov = 170 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄180",
 	Callback = function()
     local fov = 180 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄190",
 	Callback = function()
     local fov = 190 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄200",
 	Callback = function()
     local fov = 200 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-Tab:AddButton({
+NNN2Tab:AddButton({
 	Name = "自瞄250",
 	Callback = function()
     local fov = 250 local RunService = game:GetService("RunService") local UserInputService = game:GetService("UserInputService") local Players = game:GetService("Players") local Cam = game.Workspace.CurrentCamera local FOVring = Drawing.new("Circle") FOVring.Visible = true FOVring.Thickness = 2 FOVring.Color = Color3.fromRGB(231, 231, 236) FOVring.Filled = false FOVring.Radius = fov FOVring.Position = Cam.ViewportSize / 2 local function updateDrawings() local camViewportSize = Cam.ViewportSize FOVring.Position = camViewportSize / 2 end local function onKeyDown(input) if input.KeyCode == Enum.KeyCode.Delete then RunService:UnbindFromRenderStep("FOVUpdate") FOVring:Remove() end end UserInputService.InputBegan:Connect(onKeyDown) local function lookAt(target) local lookVector = (target - Cam.CFrame.Position).unit local newCFrame = CFrame.new(Cam.CFrame.Position, Cam.CFrame.Position + lookVector) Cam.CFrame = newCFrame end local function getClosestPlayerInFOV(trg_part) local nearest = nil local last = math.huge local playerMousePos = Cam.ViewportSize / 2 for _, player in ipairs(Players:GetPlayers()) do if player ~= Players.LocalPlayer then local part = player.Character and player.Character:FindFirstChild(trg_part) if part then local ePos, isVisible = Cam:WorldToViewportPoint(part.Position) local distance = (Vector2.new(ePos.x, ePos.y) - playerMousePos).Magnitude if distance < last and isVisible and distance < fov then last = distance nearest = player end end end end return nearest end RunService.RenderStepped:Connect(function() updateDrawings() local closest = getClosestPlayerInFOV("Head") if closest and closest.Character:FindFirstChild("Head") then lookAt(closest.Character.Head.Position) end end)
 	end
 })
 
-local QWERTab = Window:MakeTab({
-    Name = "XKHUB",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-QWERTab:AddButton ({
-	Name = "DOORS",
-	Callback = function ()
-	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
-	end
-})
 
 QWERTab:AddButton({
-	Name = "巴掌模拟器",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/main.lua%20(3).txt"))()
-	end
-})
-QWERTab:AddButton({
-	Name = "彩虹朋友",
+	Name = "彩虹朋友脚本",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E5%BD%A9%E8%99%B9%E6%9C%8B%E5%8F%8B.lua"))()
 	end
 })
-QWERTab:AddButton({
-	Name = "力量传奇",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E5%8A%9B%E9%87%8F%E4%BC%A0%E5%A5%87.lua"))()
-	end
-})
-QWERTab:AddButton({
-	Name = "忍者传奇",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E7%9B%91%E7%8B%B1.lua"))()
-	end
-})
-QWERTab:AddButton({
-	Name = "监狱人生",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E7%9B%91%E7%8B%B1%E4%BA%BA%E7%94%9F.lua"))()
-	end
-})
-QWERTab:AddButton({
-	Name = "自然灾害",
-	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/%E8%87%AA%E7%84%B6%E7%81%BE%E5%AE%B3.lua"))()
-	end
-})
 
-QWERTab:AddButton ({
-	Name = "巴掌模拟器（旧版）",
-	Callback = function ()
-	 loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/XBAZHANGK.lua"))()
-	end
-})
-
-local DJTab = Window:MakeTab({
-	Name = "旋转",
-	Icon = "rbxassetid://7743873633",
-	PremiumOnly = false
-})
 
 DJTab:AddButton ({
 	Name = "旋转10",
@@ -2339,212 +2444,198 @@ velocity.Name = "Spinbot"
 	end
 })
 
-local Tab = Window:MakeTab({
-    Name = "范围",
-    Icon = "rbxassetid://7733920519",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+
+LTTTab:AddButton({
 	Name = "范围10",
 	Callback = function()
     _G.HeadSize = 10 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围20",
 	Callback = function()
     _G.HeadSize = 20 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围30",
 	Callback = function()
     _G.HeadSize = 30 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
-
-Tab:AddButton({
+LTTab:AddButton({
 	Name = "范围40",
 	Callback = function()
     G.HeadSize = 40 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围50",
 	Callback = function()
     _G.HeadSize = 50 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围60",
 	Callback = function()
     _G.HeadSize = 60 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围70",
 	Callback = function()
     _G.HeadSize = 70 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围80",
 	Callback = function()
     _G.HeadSize = 80 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围90",
 	Callback = function()
     _G.HeadSize = 90 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围100",
 	Callback = function()
     _G.HeadSize = 100 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围150",
 	Callback = function()
     _G.HeadSize = 150 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围200",
 	Callback = function()
     _G.HeadSize = 200 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围250",
 	Callback = function()
     _G.HeadSize = 250 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围300",
 	Callback = function()
     _G.HeadSize = 300 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-Tab:AddButton({
+LTTTab:AddButton({
 	Name = "范围350",
 	Callback = function()
     _G.HeadSize = 350 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
-local Tab = Window:MakeTab({
-	Name = "FE脚本",
-	Icon = "rbxassetid://6087485864",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+QYYTab:AddButton({
 	Name = "C00lgui",
 	Callback = function()
      loadstring(game:GetObjects("rbxassetid://8127297852")[1].Source)()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "操人脚本",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/UWU/main/AHAJAJAKAK/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A/A.LUA", true))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "香蕉枪",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "超长坤巴",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/ESWSFND7", true))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "变怪物",
 	Callback = function()
      loadstring(game:HttpGetAsync("https://pastebin.com/raw/jfryBKds"))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "鼠标",
 	Callback = function()
      loadstring(game:HttpGet(('https://pastefy.ga/V75mqzaz/raw'),true))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "复仇者",
 	Callback = function()
      loadstring(game:HttpGet(('https://pastefy.ga/iGyVaTvs/raw'),true))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "头",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/BK4Q0DfU"))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "大长腿",
 	Callback = function()
      loadstring(game:HttpGet('https://gist.githubusercontent.com/1BlueCat/7291747e9f093555573e027621f08d6e/raw/23b48f2463942befe19d81aa8a06e3222996242c/FE%2520Da%2520Feets'))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "1x1x1x1",
 	Callback = function()
      loadstring(game:HttpGet(('https://pastebin.com/raw/JipYNCht'),true))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "变玩家（R6）",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/XR4sGcgJ"))()
   	end    
 })
 
-Tab:AddButton({
+QYYTab:AddButton({
 	Name = "动画中心",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Animation-Hub/main/Animation%20Gui", true))()
   	end    
 })
 
-local XTab = Window:MakeTab({
-    Name = "骨折模拟器",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
 XTab:AddParagraph("全部自制","好像都会被拉回去")
 
@@ -2620,1127 +2711,257 @@ XTab:AddButton({
 
 XTab:AddParagraph("By","未知用户X")
 
-local STab = Window:MakeTab({
-    Name = "骨折模拟器脚本",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-STab:AddParagraph("By注入器","注入器里面找到，好用的")
 
-STab:AddButton({
+SBBBBTab:AddParagraph("By注入器","注入器里面找到，好用的")
+
+SBBBBTab:AddButton({
   Name = "Broken farm Cash V2",
   Callback = function ()
     loadstring(game:HttpGet("https://scriptblox.com/raw/Broken-Bones-4-IV-autofarm-6615"))()
   end
 })
 
-local player = Window:MakeTab({
-	Name = "其他注入器",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-player:AddButton({ 
+
+playerL:AddButton({ 
 	Name = "fl",
 	Callback = function()
   loadstring(game:HttpGet("https://shz.al/wmyndGxRyd8SN4D3iXTAB3NR"))()
   	end
 })
 
-player:AddButton({ 
+playerL:AddButton({ 
 	Name = "忍者",
 	Callback = function()
   loadstring(game:HttpGet("https://shz.al/y47yrfmjZNzRKkWnYPsBT7Zt"))()
   	end
 })
 
-player:AddButton({ 
+playerL:AddButton({ 
 	Name = "codex",
 	Callback = function()
   loadstring(game:HttpGet("https://shz.al/hCpNTpZ78Tys43N3EzDnd6HE"))()
   	end
 })
 
-player:AddButton({ 
+playerL:AddButton({ 
 	Name = "阿尔宙斯",
 	Callback = function()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/AZYsGithub/chillz-workshop/main/Arceus%20X%20V3"))()
   	end
 })
 
-local Tab = Window:MakeTab({
-	Name = " Doors道具",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+TabCNMMM:AddButton({
 	Name = "圣光手雷",
 	Callback = function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/HolyGrenadeByNerd.lua"))()
   	end
 })
-  Tab:AddButton({
+  TabCNMMM:AddButton({
 	Name = "十字架",
 	Callback = function()
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/PenguinManiack/Crucifix/main/Crucifix.lua'))()
   	end
 })
-Tab:AddButton ({
+TabCNMMM:AddButton ({
 	Name = "臭猫",
 	Callback = function ()
 	 loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell Plushie"))()
 	end
 })
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "seek枪",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/seekgun.lua"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "魔法书",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Magic%20Book"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "无线电量的手电筒",
 	Callback = function()
         loadstring(game:HttpGet('https://pastebin.com/raw/9Daqa4hD'))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "香蕉枪",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/BananaGunByNerd.lua"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "糖果",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/persopoiu/scripts/main/candyscript/candy.lua"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "幸运方块",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Lucky%20Block"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "磁铁",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/MagnetByNerd.lua"))()
   	end    
 })
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "变身",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Morphing/MorphScript.lua"))();
   	end    
 })
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "蜡烛",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Items/Candle.lua"))()
   	end    
 })
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "吸尘器",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/EverythingGunByNeRD.lua"))()
   	end    
 })
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "火箭筒",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/sharksharksharkshark/musical-pancake/main/huo.txt"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "臭猫",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell%20Plushie"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNNM:AddButton({
 	Name = "巧克力",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell%20Plushie"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "炸弹",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/MrNeRD0/Doors-Hack/main/IcegunByNerd.lua"))()
   	end    
 })
 
-Tab:AddButton({
+TabCNMMM:AddButton({
 	Name = "木棍刚开门使用",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Debug%20Stick"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = " Doors floor2脚本",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+POPTab:AddButton({
 	Name = "mspaint V3汉化【12月7日】",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/DOORS.txt"))()
   	end    
 })
 
-Tab:AddButton({
+POPTab:AddButton({
 	Name = "ZS【不推荐】",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/zuohongjian/bjb/main/ZS%20III", true))()
   	end    
 })
 
-Tab:AddButton({
+POPTab:AddButton({
 	Name = "NBDOORS【推荐】",
 	Callback = function()
      loadstring(game:HttpGet("https://github.com/DocYogurt/Main/raw/main/Scripts/DF2RW.lua"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = " Doors脚本",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddToggle({
-Name = "门显示",
-Default = false,
-Callback = function(val)
-    flags.espdoors = val
-    
-    if val then
-        local function setup(room)
-            local door = room:WaitForChild("Door"):WaitForChild("Door")
-            
-            task.wait(0.1)
-            local h = esp(door,Color3.fromRGB(255,240,0),door,"门")
-            table.insert(esptable.doors,h)
-            
-            door:WaitForChild("Open").Played:Connect(function()
-                h.delete()
-            end)
-            
-            door.AncestryChanged:Connect(function()
-                h.delete()
-            end)
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espdoors
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.doors) do
-            v.delete()
-        end 
-    end
-end    
-})
 
-Tab:AddToggle({
-Name = "钥匙显示",
-Default = false,
-Callback = function(val)
-    flags.espkeys = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") and (v.Name == "LeverForGate" or v.Name == "KeyObtain") then
-                task.wait(0.1)
-                if v.Name == "KeyObtain" then
-                    local hitbox = v:WaitForChild("Hitbox")
-                    local parts = hitbox:GetChildren()
-                    table.remove(parts,table.find(parts,hitbox:WaitForChild("PromptHitbox")))
-                    
-                    local h = esp(parts,Color3.fromRGB(90,255,40),hitbox,"钥匙")
-                    table.insert(esptable.keys,h)
-                    
-                elseif v.Name == "LeverForGate" then
-                    local h = esp(v,Color3.fromRGB(90,255,40),v.PrimaryPart,"Lever")
-                    table.insert(esptable.keys,h)
-                    
-                    v.PrimaryPart:WaitForChild("SoundToPlay").Played:Connect(function()
-                        h.delete()
-                    end) 
-                end
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            assets.DescendantAdded:Connect(function(v)
-                check(v) 
-            end)
-                
-            for i,v in pairs(assets:GetDescendants()) do
-                check(v)
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espkeys
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.keys) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "书显示",
-Default = false,
-Callback = function(val)
-    flags.espbooks = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
-                task.wait(0.1)
-                
-                local h = esp(v,Color3.fromRGB(160,190,255),v.PrimaryPart,"书")
-                table.insert(esptable.books,h)
-                
-                v.AncestryChanged:Connect(function()
-                    if not v:IsDescendantOf(room) then
-                        h.delete() 
-                    end
-                end)
-            end
-        end
-        
-        local function setup(room)
-            if room.Name == "50" or room.Name == "100" then
-                room.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(room:GetDescendants()) do
-                    check(v)
-                end
-            end
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
-        end
-        
-        repeat task.wait() until not flags.espbooks
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.books) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "柜子显示",
-Default = false,
-Callback = function(val)
-    flags.esplocker = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") then
-                task.wait(0.1)
-                if v.Name == "Wardrobe" then
-                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"柜子")
-                    table.insert(esptable.lockers,h) 
-                elseif (v.Name == "Rooms_Locker" or v.Name == "Rooms_Locker_Fridge") then
-                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"Locker")
-                    table.insert(esptable.lockers,h) 
-                end
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            if assets then
-                local subaddcon
-                subaddcon = assets.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(assets:GetDescendants()) do
-                    check(v)
-                end
-                
-                task.spawn(function()
-                    repeat task.wait() until not flags.esplocker
-                    subaddcon:Disconnect()  
-                end) 
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
-        end
-        
-        repeat task.wait() until not flags.esplocker
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.lockers) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "物品显示",
-Default = false,
-Callback = function(val)
-    flags.espitems = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") and (v:GetAttribute("Pickup") or v:GetAttribute("PropType")) then
-                task.wait(0.1)
-                
-                local part = (v:FindFirstChild("Handle") or v:FindFirstChild("Prop"))
-                local h = esp(part,Color3.fromRGB(160,190,255),part,v.Name)
-                table.insert(esptable.items,h)
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            if assets then  
-                local subaddcon
-                subaddcon = assets.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(assets:GetDescendants()) do
-                    check(v)
-                end
-                
-                task.spawn(function()
-                    repeat task.wait() until not flags.espitems
-                    subaddcon:Disconnect()  
-                end) 
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espitems
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.items) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-local entitynames = {"RushMoving","AmbushMoving","Snare","A60","A120"}
-Tab:AddToggle({
-Name = "怪物显示",
-Default = false,
-Callback = function(val)
-    flags.esprush = val
-    
-    if val then
-        local addconnect
-        addconnect = workspace.ChildAdded:Connect(function(v)
-            if table.find(entitynames,v.Name) then
-                task.wait(0.1)
-                
-                local h = esp(v,Color3.fromRGB(255,25,25),v.PrimaryPart,v.Name:gsub("Moving",""))
-                table.insert(esptable.entity,h)
-            end
-        end)
-        
-        local function setup(room)
-            if room.Name == "50" or room.Name == "100" then
-                local figuresetup = room:WaitForChild("FigureSetup")
-            
-                if figuresetup then
-                    local fig = figuresetup:WaitForChild("FigureRagdoll")
-                    task.wait(0.1)
-                    
-                    local h = esp(fig,Color3.fromRGB(255,25,25),fig.PrimaryPart,"Figure")
-                    table.insert(esptable.entity,h)
-                end 
-            else
-                local assets = room:WaitForChild("Assets")
-                
-                local function check(v)
-                    if v:IsA("Model") and table.find(entitynames,v.Name) then
-                        task.wait(0.1)
-                        
-                        local h = esp(v:WaitForChild("Base"),Color3.fromRGB(255,25,25),v.Base,"Snare")
-                        table.insert(esptable.entity,h)
-                    end
-                end
-                
-                assets.DescendantAdded:Connect(function(v)
-                    check(v) 
-                end)
-                
-                for i,v in pairs(assets:GetDescendants()) do
-                    check(v)
-                end
-            end 
-        end
-        
-        local roomconnect
-        roomconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
-            setup(room) 
-        end
-        
-        repeat task.wait() until not flags.esprush
-        addconnect:Disconnect()
-        roomconnect:Disconnect()
-        
-        for i,v in pairs(esptable.entity) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "人物显示",
-Default = false,
-Callback = function(val)
-    flags.esphumans = val
-    
-    if val then
-        local function personesp(v)
-            v.CharacterAdded:Connect(function(vc)
-                local vh = vc:WaitForChild("Humanoid")
-                local torso = vc:WaitForChild("UpperTorso")
-                task.wait(0.1)
-                
-                local h = esp(vc,Color3.fromRGB(255,255,255),torso,v.DisplayName)
-                table.insert(esptable.people,h) 
-            end)
-            
-            if v.Character then
-                local vc = v.Character
-                local vh = vc:WaitForChild("Humanoid")
-                local torso = vc:WaitForChild("UpperTorso")
-                task.wait(0.1)
-                
-                local h = esp(vc,Color3.fromRGB(255,255,255),torso,v.DisplayName)
-                table.insert(esptable.people,h) 
-            end
-        end
-        
-        local addconnect
-        addconnect = game.Players.PlayerAdded:Connect(function(v)
-            if v ~= plr then
-                personesp(v)
-            end
-        end)
-        
-        for i,v in pairs(game.Players:GetPlayers()) do
-            if v ~= plr then
-                personesp(v) 
-            end
-        end
-        
-        repeat task.wait() until not flags.esphumans
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.people) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "金币显示",
-Default = false,
-Callback = function(val)
-    flags.espgold = val
-    
-    if val then
-        local function check(v)
-            if v:IsA("Model") then
-                task.wait(0.1)
-                local goldvalue = v:GetAttribute("GoldValue")
-                
-                if goldvalue and goldvalue >= flags.goldespvalue then
-                    local hitbox = v:WaitForChild("Hitbox")
-                    local h = esp(hitbox:GetChildren(),Color3.fromRGB(255,255,0),hitbox,"钱 [".. tostring(goldvalue).."]")
-                    table.insert(esptable.gold,h)
-                end
-            end
-        end
-        
-        local function setup(room)
-            local assets = room:WaitForChild("Assets")
-            
-            local subaddcon
-            subaddcon = assets.DescendantAdded:Connect(function(v)
-                check(v) 
-            end)
-            
-            for i,v in pairs(assets:GetDescendants()) do
-                check(v)
-            end
-            
-            task.spawn(function()
-                repeat task.wait() until not flags.espchest
-                subaddcon:Disconnect()  
-            end)  
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.espgold
-        addconnect:Disconnect()
-        
-        for i,v in pairs(esptable.gold) do
-            v.delete()
-        end 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "怪来提醒",
-Default = false,
-Callback = function(val)
-    flags.hintrush = val
-    
-    if val then
-        local addconnect
-        addconnect = workspace.ChildAdded:Connect(function(v)
-            if table.find(entitynames,v.Name) then
-                repeat task.wait() until plr:DistanceFromCharacter(v:GetPivot().Position) < 1000 or not v:IsDescendantOf(workspace)
-                
-                if v:IsDescendantOf(workspace) then
-                    message(v.Name:gsub("Moving",""):lower().." 要他妈来了，快躲起来！")
-                end
-            end
-        end) 
-        
-        repeat task.wait() until not flags.hintrush
-        addconnect:Disconnect()
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "屏幕亮度",
-Default = false,
-Callback = function(val)
-    flags.light = val
-   
-    if val then
-        local l = Instance.new("PointLight")
-        l.Range = 10000
-        l.Brightness = 2
-        l.Parent = char.PrimaryPart
-       
-        repeat task.wait() until not flags.light
-        l:Destroy() 
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "一秒开锁",
-Default = false,
-Callback = function(val)
-    flags.instapp = val
-    
-    local holdconnect
-    holdconnect = game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(p)
-		fireproximityprompt(p)
-	end)
-    
-    repeat task.wait() until not flags.instapp
-    holdconnect:Disconnect()
-end    
-})
-
-Tab:AddToggle({
-Name = "删除Seek追逐",
-Default = false,
-Callback = function(val)
-    flags.noseek = val
-    
-    if val then
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            local trigger = room:WaitForChild("TriggerEventCollision",2)
-            
-            if trigger then
-                trigger:Destroy() 
-            end
-        end)
-        
-        repeat task.wait() until not flags.noseek
-        addconnect:Disconnect()
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "删除拼图门",
-Default = false,
-Callback = function(val)
-    flags.nopuzzle = val
-    
-    if val then
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            local assets = room:WaitForChild("Assets")
-            local paintings = assets:WaitForChild("Paintings",2)
-            
-            if paintings then
-                local door = paintings:WaitForChild("MovingDoor",2)
-            
-                if door then
-                    door:Destroy() 
-                end 
-            end
-        end)
-        
-        repeat task.wait() until not flags.nopuzzle
-        addconnect:Disconnect()
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "删除小黑子",
-Default = false,
-Callback = function(val)
-    flags.noscreech = val
-        
-    if val then
-            screechremote.Parent = nil
-            repeat task.wait() until not flags.noscreech
-            screechremote.Parent = entityinfo
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "显示密码",
-Default = false,
-Callback = function(val)
-    flags.getcode = val
-    
-    if val then
-        local function deciphercode()
-        local paper = char:FindFirstChild("LibraryHintPaper")
-        local hints = plr.PlayerGui:WaitForChild("PermUI"):WaitForChild("Hints")
-        
-        local code = {[1]="_",[2]="_",[3]="_",[4]="_",[5]="_"}
-            
-            if paper then
-                for i,v in pairs(paper:WaitForChild("UI"):GetChildren()) do
-                    if v:IsA("ImageLabel") and v.Name ~= "Image" then
-                        for i,img in pairs(hints:GetChildren()) do
-                            if img:IsA("ImageLabel") and img.Visible and v.ImageRectOffset == img.ImageRectOffset then
-                                local num = img:FindFirstChild("TextLabel").Text
-                                
-                                code[tonumber(v.Name)] = num 
-                            end
-                        end
-                    end
-                end 
-            end
-            
-            return code
-        end
-        
-        local addconnect
-        addconnect = char.ChildAdded:Connect(function(v)
-            if v:IsA("Tool") and v.Name == "LibraryHintPaper" then
-                task.wait()
-                
-                local code = table.concat(deciphercode())
-                
-                if code:find("_") then
-                    message("首先获取所有提示")
-                else
-                    message("这个密码是 ".. code)
-                end
-            end
-        end)
-        
-        repeat task.wait() until not flags.getcode
-        addconnect:Disconnect()
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "A-000无锁",
-Default = false,
-Callback = function(val)
-    flags.roomsnolock = val
-    
-    if val then
-        local function check(room)
-            local door = room:WaitForChild("RoomsDoor_Entrance",2)
-            
-            if door then
-                local prompt = door:WaitForChild("Door"):WaitForChild("EnterPrompt")
-                prompt.Enabled = true
-            end 
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            check(room)
-        end)
-        
-        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
-            check(room)
-        end
-        
-        repeat task.wait() until not flags.roomsnolock
-        addconnect:Disconnect()
-    end
-end  
-})
-
-Tab:AddToggle({
-Name = "自动拾取",
-Default = false,
-Callback = function(val)
-    flags.draweraura = val
-    
-    if val then
-        local function setup(room)
-            local function check(v)
-                if v:IsA("Model") then
-                    if v.Name == "DrawerContainer" then
-                        local knob = v:WaitForChild("Knobs")
-                        
-                        if knob then
-                            local prompt = knob:WaitForChild("ActivateEventPrompt")
-                            local interactions = prompt:GetAttribute("Interactions")
-                            
-                            if not interactions then
-                                task.spawn(function()
-                                    repeat task.wait(0.1)
-                                        if plr:DistanceFromCharacter(knob.Position) <= 12 then
-                                            fireproximityprompt(prompt)
-                                        end
-                                    until prompt:GetAttribute("Interactions") or not flags.draweraura
-                                end)
-                            end
-                        end
-                    elseif v.Name == "GoldPile" then
-                        local prompt = v:WaitForChild("LootPrompt")
-                        local interactions = prompt:GetAttribute("Interactions")
-                            
-                        if not interactions then
-                            task.spawn(function()
-                                repeat task.wait(0.1)
-                                    if plr:DistanceFromCharacter(v.PrimaryPart.Position) <= 12 then
-                                        fireproximityprompt(prompt) 
-                                    end
-                                until prompt:GetAttribute("Interactions") or not flags.draweraura
-                            end)
-                        end
-                    elseif v.Name:sub(1,8) == "ChestBox" then
-                        local prompt = v:WaitForChild("ActivateEventPrompt")
-                        local interactions = prompt:GetAttribute("Interactions")
-                        
-                        if not interactions then
-                            task.spawn(function()
-                                repeat task.wait(0.1)
-                                    if plr:DistanceFromCharacter(v.PrimaryPart.Position) <= 12 then
-                                        fireproximityprompt(prompt)
-                                    end
-                                until prompt:GetAttribute("Interactions") or not flags.draweraura
-                            end)
-                        end
-                    elseif v.Name == "RolltopContainer" then
-                        local prompt = v:WaitForChild("ActivateEventPrompt")
-                        local interactions = prompt:GetAttribute("Interactions")
-                        
-                        if not interactions then
-                            task.spawn(function()
-                                repeat task.wait(0.1)
-                                    if plr:DistanceFromCharacter(v.PrimaryPart.Position) <= 12 then
-                                        fireproximityprompt(prompt)
-                                    end
-                                until prompt:GetAttribute("Interactions") or not flags.draweraura
-                            end)
-                        end
-                    end 
-                end
-            end
-    
-            local subaddcon
-            subaddcon = room.DescendantAdded:Connect(function(v)
-                check(v) 
-            end)
-            
-            for i,v in pairs(room:GetDescendants()) do
-                check(v)
-            end
-            
-            task.spawn(function()
-                repeat task.wait() until not flags.draweraura
-                subaddcon:Disconnect() 
-            end)
-        end
-        
-        local addconnect
-        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
-            setup(room)
-        end)
-        
-        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
-            if room:FindFirstChild("Assets") then
-                setup(room) 
-            end
-        end
-        
-        repeat task.wait() until not flags.draweraura
-        addconnect:Disconnect()
-    end
-end    
-})
-
-Tab:AddToggle({
-Name = "人物穿墙",
-Default = false,
-Callback = function(Value)
-        if Value then
-		    Noclip = true
-		    Stepped = game.RunService.Stepped:Connect(function()
-			    if Noclip == true then
-				    for a, b in pairs(game.Workspace:GetChildren()) do
-                        if b.Name == game.Players.LocalPlayer.Name then
-                            for i, v in pairs(game.Workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
-                                if v:IsA("BasePart") then
-                                    v.CanCollide = false
-                                end
-                            end
-                        end
-                    end
-			    else
-				    Stepped:Disconnect()
-			    end
-		    end)
-	    else
-		    Noclip = false
-	    end
-end    
-})
-
-Tab:AddButton({
-Name = "删除小蜘蛛",
-Callback = function()
-        pcall(function()
-            game:GetService("ReplicatedStorage").Bricks.Jumpscare:Destroy()
-        end)
-end
-})
-
-Tab:AddButton({
-Name = "自动完成断路器游戏",
-Callback = function()
-    game:GetService("ReplicatedStorage").Bricks.EBF:FireServer()
-end    
-})
-
-Tab:AddButton({
-Name = "自动A-1000",
-Callback = function()
-loadstring(game:HttpGet(('https://pastebin.com/raw/qe7CYfwB')))()
-end
-})
-
-Tab:AddParagraph("提示","自动A-1000开启功能即可躲柜子！")
-
-Tab:AddButton({
-Name = "50关解锁",
-Callback = function()
-        local CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
-        game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
-end    
-})
-
-Tab:AddButton({
-Name = "生成红房",
-Callback = function()
-    local v1 = require(game.ReplicatedStorage.ClientModules.Module_Events)
-    local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
-    local seconds = 1000000
-    v1.tryp(workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], seconds)
-end    
-})
-
-Tab:AddButton({
-    Name = "自动完成心跳小游戏",
-    Callback = function ()
-        firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent) 
-    end
-})
-
-Tab:AddButton({
-	Name = "XKHUB",
-	Callback = function()
-     loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/XSK/refs/heads/main/DOORS.lua"))()
-  	end    
-})
-
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "mspaint V3汉化【无敌推荐】",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/XSKMS/MS-Chinese-XXZ/refs/heads/main/rename.txt"))()
   	end    
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "旧版NBDOORS无法使用",
 	Callback = function()
      loadstring(game:HttpGet("https://github.com/DocYogurt/DOORS/raw/main/Loader.lua"))()
   	end    
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "BobHUB",
 	Callback = function()
      --[[Doors Blackking And BobHub脚本汉化]]loadstring(game:HttpGet("\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\54\53\84\119\84\56\106\97"))()
   	end    
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
   Name = "门绘图显示",
   Callback = function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/cbhlyy/lyycbh/main/doors1"))()
   end
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
     Name="FFJHUB",
     Callback=function()
         loadstring(game:HttpGet('https://rawscripts.net/raw/DOORS-FFJ-Hub-11365'))()
     end
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "MSpaint V3【超级推荐】",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/notpoiu/mspaint/main/main.lua"))()
   	end    
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "小云汉化",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/EntitySpawner/main/doors(orionlib).lua"))()
   	end    
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "变身",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/ChronoAccelerator/Public-Scripts/main/Morphing/MorphScript.lua"))();
   	end    
 })
 
-Tab:AddButton({
+OPOTab:AddButton({
 	Name = "DX",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/DXuwu/replicator-lol/main/dor.lua"))()
   	end    
 })
 
-local SZTab = Window:MakeTab({
-	Name = "火箭发射模拟",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
+
 
 WSBTab:AddParagraph("以下是功能","脚本在最下面")
 
@@ -3880,660 +3101,619 @@ SZTab:AddButton({
 	end
 })
 
-local Tab = Window:MakeTab({
-    Name = "Color or die",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-local Section = Tab:AddSection({	Name = "刷子不全"})
 
-Tab:AddButton({
+local Section = NAMETab:AddSection({	Name = "刷子不全"})
+
+NAMETab:AddButton({
 	Name = "笔刷5％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(108.3765869140625, 2.8261330127716064, -56.11078643798828)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷10％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(176.77020263671875, 2.8261330127716064, -122.37640380859375)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷15％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(106.70597839355469, 2.8261330127716064, 77.07504272460938)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷20％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(109.28363037109375, 2.8261330127716064, -6.814320087432861)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷25％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(216.3707733154297, 2.8261332511901855, 75.98402404785156)
   	end    
 })
-Tab:AddButton({
+MAMETab:AddButton({
 	Name = "笔刷30％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(710.4590454101562, 151.68980407714844, 378.8439636230469)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷35％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(850.8873291015625, 42.06087112426758, -74.47248077392578)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷40％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(837.8712768554688, 69.13433074951172, -594.424560546875)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷45％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(310.772705078125, 27.880992889404297, -128.11724853515625)
   	end    
 })
 
-local Section = Tab:AddSection({	Name = "隐藏房间"})
+local Section = NAMETab:AddSection({	Name = "隐藏房间"})
 
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间1",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11.780367851257324, 2.8261330127716064, 47.119266510009766)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间2",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(45.382774353027344, 27.826128005981445, -27.568164825439453)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间3",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(682.5320434570312, 5.827143669128418, -43.59938049316406)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间4",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-345.1400451660156, 4.7261528968811035, -2612.85302734375)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间5",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-405.47802734375, 3.176142930984497, -2390.422607421875)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间6",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-380.22491455078125, 3.3010048866271973, -1925.7362060546875)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏房间7",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-380.22491455078125, 3.3010048866271973, -1925.7362060546875)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "隐藏地点8",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-967.6585083007812, 2.8261330127716064, 333.0981750488281)
   	end    
 })
 
-local Section = Tab:AddSection({	Name = "不同颜色的门"})
+local Section = NAMETab:AddSection({	Name = "不同颜色的门"})
 
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "橙色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(256.5617980957031, 2.924128770828247, 38.21192932128906)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "绿色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(322.87713623046875, 2.9405789375305176, 70.53765106201172)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "粉色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(328.2287902832031, 2.9444220066070557, 9.933579444885254)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "黄色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(201.60107421875, 2.9451215267181396, -34.76359939575195)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "红色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(195.18211364746094, 2.8261330127716064, 28.475357055664062)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "紫色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(216.9456329345703, 2.8261330127716064, -127.30233764648438)
   	end    
 })
-Tab:AddButton({
+NAMETab:AddButton({
 	Name = "蓝色",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(287.21331787109375, 2.8261330127716064, -106.50820922851562)
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "鱿鱼游戏",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+
+GUNGUNTab:AddButton({
 	Name = "传送到游戏匹配区域",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-28.388307571411133, 3.099999189376831, -107.24565887451172)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "木头人到达终点",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-131.06849670410156, 6.099994659423828, -628.919677734375)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "熄灯时安全位置",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20.447216033935547, -184.45005798339844, 836.5003051757812)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "传送至拔河",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(23.213382720947266, -157.85006713867188, -513.2476196289062)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "传蛋安全区域",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2513.013916015625, 75.27884674072266, 3979.76318359375)
   	end    
 })
 
-Tab:AddButton({
+GUNGINTab:AddButton({
 	Name = "传送至石头剪刀布场地",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11108.1748046875, 14.22500991821289, 4119.64990234375)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "玻璃桥直接通关",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-311.7968444824219, -124.78739929199219, -381.4742736816406)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "水楼梯最高层",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(102.51017761230469, -73.91390228271484, -50.787132263183594)
   	end    
 })
 
-Tab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "传送至抠糖饼",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-32.886051177978516, -116.39778900146484, -195.81053161621094)
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "驾驶帝国",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+
+YINTab:AddButton({
 	Name = "Supported games自动刷钱",
 	Callback = function()
      loadstring(game:HttpGet(('https://raw.githubusercontent.com/cool83birdcarfly02six/Lightux/main/README.md'),true))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "光影加画质",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+
+JIJITab:AddButton({
 	Name = "深色",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
   	end    
 })
 
-Tab:AddButton({
+JIJITab:AddButton({
 	Name = "普通",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/jHBfJYmS"))()
   	end    
 })
 
-Tab:AddButton({
+JIJITab:AddButton({
 	Name = "光影1",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
   	end    
 })
 
-Tab:AddButton({
+JIJITab:AddButton({
 	Name = "光影2",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
   	end    
 })
 
-Tab:AddButton({
+JIJITab:AddButton({
 	Name = "RTX",
 	Callback = function()
      loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
   	end    
 })
 
-Tab:AddButton({
+JIJITab:AddButton({
 	Name = "画质",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/jHBfJYmS"))()
   	end    
 })
 
-Tab:AddButton({
+JIJITab:AddButton({
 	Name = "光影3",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/MZEEN2424/Graphics/main/Graphics.xml"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "战争大亨",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+
+NBLLTab:AddButton({
 	Name = "寻找空投",
 	Callback = function()
      local Folder = workspace["Game Systems"] local player = game.Players.LocalPlayer.Character.HumanoidRootPart for _, Child in ipairs(Folder:GetDescendants()) do if Child.Name:match("Airdrop_") then player.CFrame = Child.MainPart.CFrame end end
   	end    
 })
 
-Tab:AddButton({
+NBLLTab:AddButton({
 	Name = "回到基地",
 	Callback = function()
      game:GetService("Players").LocalPlayer.Character:MoveTo(workspace.Tycoon.Tycoons[game:GetService("Players").LocalPlayer.leaderstats.Team.Value].Essentials.Spawn.Position)
   	end    
 })
 
-Tab:AddButton({
+NBLLTab:AddButton({
 	Name = "旗帜",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(73.22032928466797, 47.9999885559082, 191.06993103027344)
   	end    
 })
 
-Tab:AddButton({
+NBLLTab:AddButton({
 	Name = "油桶1",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9.748652458190918, 48.662540435791016, 700.2245483398438)
   	end    
 })
 
-Tab:AddButton({
+NBLLTab:AddButton({
 	Name = "油桶2",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(76.48243713378906, 105.25657653808594, -2062.3896484375)
   	end    
 })
 
-Tab:AddButton({
+NBLLTab:AddButton({
 	Name = "油桶3",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-28.840208053588867, 49.34040069580078, -416.9921569824219)
   	end    
 })
 
-Tab:AddButton({
+NBLLTab:AddButton({
 	Name = "油桶4",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(69.48390197753906, 105.25657653808594, 3434.9033203125)
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = " sol’sRNG",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+RNGTab:AddButton({
 	Name = "AL sol’sRNG",
 	Callback = function()
      AL = "制作人员 之前风（AL）"loadstring(game:HttpGet("https://raw.githubusercontent.com/123hubd7gh/123hubd7gh/main/Sol's%20RNG"))()
   	end    
 })
 
-Tab:AddButton({
+RNGTab:AddButton({
 	Name = " sol’sRNG",
 	Callback = function()
      loadstring(game:HttpGet("https://raw.githubusercontent.com/LOLking123456/upd/main/rng"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = "口渴的吸血鬼",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-local Section = Tab:AddSection({	Name = "获取物品"})
 
-Tab:AddButton({
+local Section = QXXTab:AddSection({	Name = "获取物品"})
+
+QXXTab:AddButton({
 	Name = "瓶子和棍子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-112.8075180053711, 5.999983310699463, 0.5670039057731628)
   	end    
 })
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "伞",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(562.47802734375, 29.9999942779541, 2.587369441986084)
   	end    
 })
 
-local Section = Tab:AddSection({	Name = "出生点"})
+local Section = QXXTab:AddSection({	Name = "出生点"})
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "人类",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-128.1279754638672, 5.999998092651367, -8.657987594604492)
   	end    
 })
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "吸血鬼",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(585.8688354492188, 28.465534210205078, 6.979799270629883)
   	end    
 })
 
-local Section = Tab:AddSection({	Name = "传送"})
+local Section = QXXTab:AddSection({	Name = "传送"})
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "树屋",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(20.34555435180664, 37.92866897583008, 0.7193217277526855)
   	end    
 })
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "吸血鬼堡垒顶",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(227.00357055664062, 46.959415435791016, 5.113242149353027)
   	end    
 })
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "墓地",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(489.66925048828125, 3.156771183013916, -6.834047794342041)
   	end    
 })
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "素食吸血鬼公司",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(322.8680725097656, 4.4650702476501465, -9.942120552062988)
   	end    
 })
 
-Tab:AddButton({
+QXXTab:AddButton({
 	Name = "人类居住地",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(98.33629608154297, 2.9999988079071045, -5.08137321472168)
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = "骑车模拟器",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-local Section = Tab:AddSection({	Name = "首先请开飞行V3才可使用，否则无效，自制"})
 
-Tab:AddButton({
+local Section = QICHETab:AddSection({	Name = "首先请开飞行V3才可使用，否则无效，自制"})
+
+QICHETab:AddButton({
 	Name = "100钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16001.91015625, -484.7783203125, 1166.12060546875)
   	end    
 })
 
-Tab:AddButton({
+QICGETab:AddButton({
 	Name = "500钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15991.3935546875, -498.0973205566406, 1541.9925537109375)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "1000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15977.3720703125, -493.6873779296875, 2045.116943359375)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "1500钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15982.46484375, -490.99786376953125, 2523.935791015625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "2000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15989.6015625, -488.6612548828125, 3029.7109375)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "2500钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15986.7470703125, -484.88739013671875, 3551.99853515625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "3000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15985.83203125, -489.3097839355469, 4026.004150390625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "10000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16009.40234375, -466.3914489746094, 11432.7099609375)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "15000顶子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15927.1982421875, -482.3123474121094, 16763.01171875)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "25000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15957.4658203125, -485.9298095703125, 26626.009765625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "41000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16018.380859375, -481.1128845214844, 41688.41015625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "60000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16046.5166015625, -471.4388122558594, 61321.09765625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "80000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15997.578125, -473.1864929199219, 81562.2734375)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "100000钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16064.6513671875, -411.9496154785156, 101889.765625)
   	end    
 })
 
-Tab:AddButton({
+QICHETab:AddButton({
 	Name = "120000钉子尽头",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-16043.1240234375, -462.8470153808594, 122180.296875)
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = "非常容易的奥比跑酷",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+AOBITab:AddButton({
 	Name = "出生点",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-182.2427520751953, 3.9999992847442627, 335.4162292480469)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点10％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-182.2427520751953, 3.9999992847442627, 335.4162292480469)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点20％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-563.90625, 4.000216484069824, 50.80440139770508)
   	end    
 })
 
-Tab:AddButton({
+QOBITab:AddButton({
 	Name = "检查点30％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-414.72900390625, 4.000216484069824, 402.66302490234375)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点40％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4.025746822357178, 4.000216484069824, -67.1259765625)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点50%",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-504.6578063964844, 3.0002167224884033, 488.8363037109375)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点60%",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-427.9334411621094, 3.0002167224884033, -186.4127960205078)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点70%",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(67.12358093261719, 3.0002129077911377, 346.26177978515625)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点80%",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-237.27981567382812, 3.000206708908081, -243.19766235351562)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点90%",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-237.27981567382812, 3.000206708908081, -243.19766235351562)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点100%",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(126.80488586425781, 4.000211238861084, 33.88198471069336)
   	end    
 })
 
-Tab:AddButton({
+AOBITab:AddButton({
 	Name = "直接通关",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(123.45298767089844, 43.59965515136719, 79.51469421386719)
   	end    
 })
 
-local IATab = Window:MakeTab({
-	Name = "自然灾害",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
 IATab:AddButton({
 	Name = "回到出生点",
@@ -4549,334 +3729,300 @@ IATab:AddButton({
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = "Doors but bad",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+BADTab:AddButton({
 	Name = "到达酒店",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12.605226516723633, 10003.9970703125, 52.6931266784668)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "seek追逐战1",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(267.9065856933594, 10003.9970703125, 57.02412414550781)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "图书馆",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(165.12872314453125, 10004.9970703125, 129.6620635986328)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "seek追逐战2",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-258.4086608886719, 10009.998046875, -0.5703067779541016)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "到达100门",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-805.6561889648438, 10009.998046875, -494.2725524902344)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "电路管",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-813.710205078125, 10009.998046875, -566.4942626953125)
   	end    
 })
 
-local Section = Tab:AddSection({	Name = "通关之类，全自制"})
+local Section = BADTab:AddSection({	Name = "通关之类，全自制"})
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "100门通关",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-778.195068359375, 10010.1279296875, -582.7162475585938)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "50门通关",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(63.65373611450195, 10009.9970703125, 131.28587341308594)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "追逐战1通关",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(422.2347412109375, 10003.9970703125, 101.21116638183594)
   	end    
 })
 
-Tab:AddButton({
+BADTab:AddButton({
 	Name = "追逐战2通关",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-431.0469970703125, 10009.9970703125, -134.97120666503906)
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "ESP",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-Tab:AddButton({
+ESPLTab:AddButton({
 	Name = "忍者ESP",
 	Callback = function()
      loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Universal-Esp-Library-9382"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "监狱人生",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-local Section = Tab:AddSection({	Name = "自制脚本"})
 
-Tab:AddButton({
+local Section = JianyuTab:AddSection({	Name = "脚本"})
+
+JianyuTab:AddButton({
   Name = "XK监狱人生",
   Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/JianYuRenShengXK.txt"))()
   end
 })
 
-local Section = Tab:AddSection({	Name = "功能"})
+local Section = JianyuTab:AddSection({	Name = "功能"})
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "单车",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/zLe3e4BS"))()
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "kill全部人",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/kXjfpFPh"))()
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "变身死神",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/ewv9bbRp"))()
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "变身警察",
 	Callback = function()
      workspace.Remote.TeamEvent:FireServer("Bright blue");
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "变身囚犯",
 	Callback = function()
      workspace.Remote.TeamEvent:FireServer("Bright orange");
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "钢筋",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/7prijqYH"))()
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "手里剑",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/mSLiAZHk"))()
   	end    
 })
 
-Tab:AddButton({
+JianyuTab:AddButton({
 	Name = "无敌",
 	Callback = function()
      loadstring(game:HttpGet("https://pastebin.com/raw/LdTVujTA"))()
   	end    
 })
 
-local Tab = Window:MakeTab({
-    Name = "监狱人生位置",
-    Icon = "rbxassetid://7733779610",
-    PremiumOnly = false
-})
 
-local Section = Tab:AddSection({	Name = "这里是传送"})
 
-Tab:AddButton({
+local Section = weizTab:AddSection({	Name = "这里是传送"})
+
+weizTab:AddButton({
 	Name = "食堂",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(921.0059204101562, 99.98993682861328, 2289.23095703125)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "下水道",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(917.4256591796875, 78.69828033447266, 2416.18359375)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "警车库",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(602.7301635742188, 98.20000457763672, 2503.56982421875)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "院子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(788.5759887695312, 97.99992370605469, 2455.056640625)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "犯罪复活点",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-937.5891723632812, 93.09876251220703, 2063.031982421875)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "监狱外面",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(760.6033325195312, 96.96992492675781, 2475.405029296875)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "监狱内",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(919.2575073242188, 98.95999908447266, 2379.74169921875)
   	end    
 })
-Tab:AddButton({
+weizTab:AddButton({
 	Name = "警卫室",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(847.7261352539062, 98.95999908447266, 2267.387451171875)
   	end    
 })
 
-local Tab = Window:MakeTab({
-	Name = "动感星期五",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-Tab:AddButton({
+
+xqwTab:AddButton({
   Name = "Mobile推荐",
   Callback = function ()
     loadstring(game:HttpGet("https://scriptblox.com/raw/XMAS-Event-or-Funky-Friday-Auto-Player-Mobile-6721"))()
   end
 })
 
-local Tab = Window:MakeTab({
-	Name = "Refinery cave1",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+IPTab:AddButton({
   Name = "Caves script",
   Callback = function ()
     loadstring(game:HttpGet("https://scriptblox.com/raw/Refinery-Caves-Script-Teleport-6296"))()
   end
 })
 
-Tab:AddButton({
+IPTab:AddButton({
   Name = "迷惑",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1121, -198, 540)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "列车端",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-160, 200, 500)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "密室",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(132, 90, 1080)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "销售区",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-465, 7, -65)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "主要商店外",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1155, 6, -600)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "传送至主要商店",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1025, 6, -610)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "洞口",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(60, 5, 15)
   end
 })
-Tab:AddButton({
+IPTab:AddButton({
   Name = "石材店",
   Callback = function ()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(745, 5, 60)
   end
 })
 
-local Tab = Window:MakeTab({
-	Name = "Refinery cave2",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+ZXCVBNTab:AddButton({
   Name = "Retardware",
   Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/RETARDWAR3/retardware-main/main/Refinery-Caves-2.lua"))()
   end
 })
 
-local Tab = Window:MakeTab({
-	Name = "战斗勇士",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-Tab:AddButton({
+
+CWTab:AddButton({
   Name = "WarriorsHub",
   Callback = function ()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/leakediz/top-g/main/combat%20warriors"))() 
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "无限体力1",
   Callback = function()
 loadstring(game:HttpGet("https://shz.al/~KSK"))()
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "无限体力2",
   Callback = function ()
     for i,v in pairs(getgc(true)) do
@@ -4931,14 +4077,14 @@ game.StarterGui:SetCore("SendNotification", {Title = "你好", Text = "Script lo
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "Zab HUB",
   Callback = function ()
     loadstring(game:HttpGet('https://itots.tk/zaphub/ZapHubFreeVersion'))()
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "反盾",
   Callback = function ()
     local lp = game.Players.LocalPlayer
@@ -5009,7 +4155,7 @@ game.Players.PlayerAdded:Connect(playerAdded)
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "敌人打不死",
   Callback = function ()
     local HRP = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -5019,70 +4165,61 @@ HRP.CFrame = spawnbox.SpawnPart.CFrame
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "KK Hub",
   Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/IsaaaKK/cwhb/main/cw.txt"))()
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "淘汰光环",
   Callback = function ()
    loadstring(game:HttpGet("https://projecthook.xyz/scripts/free.lua"))() 
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "nova Hub",
   Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/novahub"))()
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "TopG Hub",
   Callback = function ()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/leakediz/top-g/main/combat%20warriors"))()
   end
 })
 
-Tab:AddButton({
+CWTab:AddButton({
   Name = "foytHUB",
   Callback = function ()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/master/novahub"))()
   end
 })
 
-local Tab = Window:MakeTab({
-	Name = "河北唐县",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-local Section = Tab:AddSection({	Name = "全部群聊唯一一个可以用而简洁的"})
+local Section = HBTXTab:AddSection({	Name = "全部群聊唯一一个可以用而简洁的"})
 
-Tab:AddButton({
+HBTXTab:AddButton({
   Name = "自动刷钱推荐",
   Callback = function ()
     loadstring(game:HttpGet("https://scriptblox.com/raw/Update-V3.10-T-ang-County-Hebei-Auo-Farm-15577"))()
   end
 })
 
-local Tab = Window:MakeTab({
-	Name = "进击的僵尸",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+ZONTab:AddButton({
   Name = "指令",
   Callback = function ()
     loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-unfair-Hub-3936"))()
   end
 })
 
-Tab:AddButton({
+ZONTab:AddButton({
   Name = "寻找僵尸",
   Callback = function ()
     local groundDistance = 8
@@ -5144,11 +4281,7 @@ Tab:AddButton({
   end
 })
 
-local NTab = Window:MakeTab({
-	Name = "MM2",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
+
 
 NTab:AddParagraph("破坏者谜团2","脚本")
 
@@ -5192,20 +4325,16 @@ NTab:AddButton({
 	end
 })
 
-local Tab = Window:MakeTab({
-	Name = "彩虹朋友",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+CHPYTab:AddButton({
   Name = "KEPA",
   Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Keparetiolpxe/rbxscript/main/RainbowFriendsKEPA"))()
   end
 })
 
-Tab:AddButton({
+CHPyTab:AddButton({
 	Name = "自动收集",
 	Callback = function()
 		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
@@ -5218,31 +4347,22 @@ end
 	end
 })
 
-local Tab = Window:MakeTab({
-	Name = "餐厅大亨",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
-Tab:AddButton({
+
+CTDHTab:AddButton({
   Name = "Description",
   Callback = function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/iz037/Zeld-Hub/main/Script/Restaurant%20Tycoon%202.lua"))()
   end
 })
 
-Tab:AddButton({
+CTDHTab:AddButton({
   Name = "Cann't execute",
   Callback = function ()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/ThatSick/ArrayField/main/SymphonyHub.lua'))()
   end
 })
 
-local NVTab = Window:MakeTab({
-	Name = "最强战场",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
 
 NVTab:AddButton({
   Name = "SkibidCen",
@@ -10341,48 +9461,6 @@ local Badge = Window:MakeTab({
 	PremiumOnly = false
 })
 		
-local Badge2 = Window:MakeTab({
-	Name = "巴掌模拟器-自动获取",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
-local Badge4 = Window:MakeTab({
-	Name = "巴掌模拟器-农场区",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
-local Badge3 = Window:MakeTab({
-	Name = "巴掌模拟器-传送功能",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
-local Teleport = Window:MakeTab({
-	Name = "巴掌模拟器-传送到地点",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
-local Badge5 = Window:MakeTab({
-	Name = "巴掌模拟器-其他功能",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
-local Badge6 = Window:MakeTab({
-	Name = "巴掌模拟器-自动农场",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
-local Badge7 = Window:MakeTab({
-	Name = "巴掌模拟器-获取",
-	Icon = "rbxassetid://7733955740",
-	PremiumOnly = false
-})
-
 local TeleportToGames1 = Teleport:AddSection({
 	Name = "常规游戏模式"
 })
@@ -13215,14 +12293,14 @@ local coTab = Window:MakeTab({
 })
 
 coTab:AddButton({
-    Name="格蕾丝脚本XK重制版",
+    Name="格蕾丝脚本",
     Callback=function()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/XKscript/refs/heads/main/GraceXJ.lua"))()
     end
 })
 
 coTab:AddButton({
-    Name="格蕾丝共创脚本",
+    Name="格蕾丝脚本",
     Callback=function()
             loadstring(game:HttpGet("https://github.com/as30326/Grace-/blob/main/Grace%E8%84%9A%E6%9C%AC%E6%AD%A3%E6%9D%83.lua"))()
     end
