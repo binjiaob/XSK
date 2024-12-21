@@ -15,7 +15,7 @@ local OrionLib = {
         Themes = {
                 Default = {
                         Main = Color3.fromRGB(60, 179, 113),
-                        Second = Color3.fromRGB(0, 0, 0),
+                        Second = Color3.fromRGB(60, 179, 113),
                         Stroke = Color3.fromRGB(127, 255, 0),
                         Divider = Color3.fromRGB(127, 255, 0),
                         Text = Color3.fromRGB(0, 255, 0),
@@ -557,13 +557,13 @@ function OrionLib:MakeWindow(WindowConfig)
                                 AddThemeObject(MakeElement("Stroke"), "Stroke"),
                                 MakeElement("Corner", 1)
                         }),
-                        AddThemeObject(SetProps(MakeElement("Label", "名::"..game.Players.LocalPlayer.DisplayName.."", WindowConfig.HidePremium and 14 or 13), {
+                        AddThemeObject(SetProps(MakeElement("Label", "你的名字"..game.Players.LocalPlayer.DisplayName.."", WindowConfig.HidePremium and 14 or 13), {
                                 Size = UDim2.new(1, -60, 0, 13),
                                 Position = WindowConfig.HidePremium and UDim2.new(0, 50, 0, 19) or UDim2.new(0, 50, 0, 12),
                                 Font = Enum.Font.FredokaOne,
                                 ClipsDescendants = true
                         }), "Text"),
-                        AddThemeObject(SetProps(MakeElement("Label", "半缝秋枫", 12), {
+                        AddThemeObject(SetProps(MakeElement("Label", "XK脚本中心使用者", 12), {
                                 Size = UDim2.new(1, -60, 0, 12),
                                 Position = UDim2.new(0, 50, 1, -25),
                                 Visible = not WindowConfig.HidePremium
