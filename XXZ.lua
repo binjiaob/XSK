@@ -178,6 +178,13 @@ shuaxinlb(true)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/V3-Orion.UI.Lua')))()
 local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V3",Name = "XK脚本中心 V3 你的注入器" ..identifyexecutor() , HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
+notification:ForceNotify({
+        Name = "特别提醒丨警告",
+        Text = "使用此脚本会改变天空贴图，他人不变",
+        Icon = "rbxassetid://11401835376",
+        Duration = 10,
+    })
+
 local Tab = Window:MakeTab({
 	Name = "传送玩家",
 	Icon = "rbxassetid://7733779610",
@@ -287,6 +294,24 @@ hideImageNotification()
 
 local sound = Instance.new("Sound", workspace)
 sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "播放Tuber93弹窗音乐",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "播放Tuber93说话音频",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://7153945201"
 sound:Play()
 	end
 })
@@ -12200,3 +12225,13 @@ coTab:AddButton({
             loadstring(game:HttpGet("https://github.com/as30326/Grace-/blob/main/Grace%E8%84%9A%E6%9C%AC%E6%AD%A3%E6%9D%83.lua"))()
     end
 })
+
+local sky = Instance.new("Sky")
+		sky.CelestialBodiesShown = false
+		sky.Parent = game.Lighting
+		sky.SkyboxUp = "http://www.roblox.com/asset/?id=92498946514918"
+		sky.SkyboxBk = "http://www.roblox.com/asset/?id=92498946514918"
+		sky.SkyboxDn = "http://www.roblox.com/asset/?id=92498946514918"
+		sky.SkyboxRt = "http://www.roblox.com/asset/?id=92498946514918"
+		sky.SkyboxLf = "http://www.roblox.com/asset/?id=92498946514918"
+		sky.SkyboxFt = "http://www.roblox.com/asset/?id=92498946514918"
