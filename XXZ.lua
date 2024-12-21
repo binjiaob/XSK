@@ -1,109 +1,3 @@
---不是，哥们儿，谁告诉你翻我这个源码的？
---你可真是个大牛，我都佩服你
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-
--- 获取服务
-local Players = game:GetService("Players")
-local RunService = game:GetService("RunService")
-local Workspace = game:GetService("Workspace")
-
--- 获取本地玩家
-local LocalPlayer = Players.LocalPlayer
-
--- 创建ScreenGui用于显示Notification
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "ImageNotification"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
-
--- 创建ImageLabel显示图片
-local ImageLabel = Instance.new("ImageLabel")
-ImageLabel.Name = "ImageNotificationImage"
-ImageLabel.Size = UDim2.new(1, 0, 1, 0) -- 全屏大小
-ImageLabel.BackgroundTransparency = 0 -- 不透明背景
-ImageLabel.Image = "rbxassetid://4891344370" -- 替换为实际的图片资源ID
-ImageLabel.ImageColor3 = Color3.new(1, 1, 1) -- 图片颜色（白色）
-ImageLabel.ZIndex = 10
-ImageLabel.Parent = ScreenGui
-
--- 控制显示Notification
-local function showImageNotification()
-    ScreenGui.Enabled = true
-end
-
--- 控制隐藏Notification
-local function hideImageNotification()
-    ScreenGui.Enabled = false
-end
-
--- 显示Notification
-showImageNotification()
-
--- 在15秒后隐藏Notification
-wait(5)
-hideImageNotification()
-
 local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
 -- 获取服务
@@ -221,7 +115,7 @@ local function showXKScriptCenterV2Notification(text, duration)
 end
 
 -- 示例：显示“XK脚本中心V2”的全屏浅蓝色背景绿色文字Notification，显示5秒后自动消失
-local text = "XK脚本中心V2"  -- 要显示的文本
+local text = "XK脚本中心V3"  -- 要显示的文本
 local displayDuration = 4  -- 显示时间（秒）
 
 showXKScriptCenterV2Notification(text, displayDuration)
@@ -230,17 +124,12 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/blood
 Library.DefaultColor = Color3.fromRGB(255,0,0)
 
             Library:Notification({
-        	Text = "更新内容:巴掌模拟器-极速传奇-俄亥俄州-Nico nextbots怪物透视-力量传奇-狗熊岭危机-格蕾丝",
-        	Duration = 6
-            })
-
-            Library:Notification({
         	Text = "欢迎使用XK脚本中心",
         	Duration = 6
             })
 
             Library:Notification({
-        	Text = "XK脚本中心V11.2",
+        	Text = "XK脚本中心V11.6",
         	Duration = 6
             })
            
@@ -322,65 +211,235 @@ notification:ForceNotify({
 Start = tick()
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
+local bin = {
+    playernamedied = "",
+    dropdown = {}
+}
+
+function shuaxinlb(zji)
+    bin.dropdown = {}
+    if zji == true then
+        for _, player in pairs(game.Players:GetPlayers()) do
+            table.insert(bin.dropdown, player.Name)
+        end
+    else
+        local lp = game.Players.LocalPlayer
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if player ~= lp then
+                table.insert(bin.dropdown, player.Name)
+            end
+        end
+    end
+end
+local function teleportPlayer()
+    if bin.toggleTeleportState and bin.playernamedied then
+        local localPlayer = game.Players.LocalPlayer
+        local targetPlayer = game.Players:FindFirstChild(bin.playernamedied)
+        if targetPlayer and targetPlayer.Character and targetPlayer.Character.HumanoidRootPart then
+            local localHumanoidRootPart = localPlayer.Character.HumanoidRootPart
+            local targetPosition = targetPlayer.Character.HumanoidRootPart.Position
+            localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(targetPosition) * CFrame.new(0, 5, 0)
+        end
+    end
+end
+local virtualUser = game:GetService('VirtualUser')
+virtualUser:CaptureController()
+
+function teleportTo(CFrame) 
+	game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame
+end
+wait(0.1)
+shuaxinlb(true)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V11.0",Name = "XK脚本中心 V2", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心",Name = "XK脚本中心 V3", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+
+local Tab = Window:MakeTab({
+	Name = "传送玩家",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "输入玩家用户名《注意需要输入两次才可以正常使用》",
+	Default = "请输入",
+	TextDisappear = true,
+	Callback = function(v)
+		bin.playernamedied = v
+	end	 
+})
+
+Tab:AddToggle({
+	Name = "查看玩家",
+	Default = false,
+	Callback = function(state)
+if state then
+        game:GetService('Workspace').CurrentCamera.CameraSubject =
+            game:GetService('Players'):FindFirstChild(bin.playernamedied).Character.Humanoid
+    else
+        local lp = game.Players.LocalPlayer
+        game:GetService('Workspace').CurrentCamera.CameraSubject = lp.Character.Humanoid
+    end
+	end
+})
+
+Tab:AddButton({
+	Name = "传送一次",
+	Callback = function()
+		local HumRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local tp_player = game.Players:FindFirstChild(bin.playernamedied)
+    if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
+        HumRoot.CFrame = tp_player.Character.HumanoidRootPart.CFrame + Vector3.new(20, 5, 314)
+    else
+        Notify("传送失败：未找到玩家或玩家没有角色/HumanoidRootPart")
+    end
+	end
+})
+
+Tab:AddToggle({
+	Name = "传送玩家",
+	Default = false,
+	Callback = function(state)
+    if state then
+        bin.toggleTeleportState = true
+    else
+        bin.toggleTeleportState = false
+    end
+	end
+})
+
+game:GetService("RunService").Heartbeat:Connect(teleportPlayer)
+
+local Tab = Window:MakeTab({
+	Name = "本地客户端",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton ({
+	Name = "Tuber93弹窗+显示我自己抓的",
+	Callback = function ()
+	 local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+
+-- 获取服务
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+-- 获取本地玩家
+local LocalPlayer = Players.LocalPlayer
+
+-- 创建ScreenGui用于显示Notification
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ImageNotification"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+-- 创建ImageLabel显示图片
+local ImageLabel = Instance.new("ImageLabel")
+ImageLabel.Name = "ImageNotificationImage"
+ImageLabel.Size = UDim2.new(1, 0, 1, 0) -- 全屏大小
+ImageLabel.BackgroundTransparency = 0 -- 不透明背景
+ImageLabel.Image = "rbxassetid://4891344370" -- 替换为实际的图片资源ID
+ImageLabel.ImageColor3 = Color3.new(1, 1, 1) -- 图片颜色（白色）
+ImageLabel.ZIndex = 10
+ImageLabel.Parent = ScreenGui
+
+-- 控制显示Notification
+local function showImageNotification()
+    ScreenGui.Enabled = true
+end
+
+-- 控制隐藏Notification
+local function hideImageNotification()
+    ScreenGui.Enabled = false
+end
+
+-- 显示Notification
+showImageNotification()
+
+-- 在15秒后隐藏Notification
+wait(5)
+hideImageNotification()
+	end
+})
+
+Tab:AddButton ({
+	Name = "黑客入侵",
+	Callback = function ()
+	 --[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+-- Configuration --
+local Message = "XK脚本中心已经毁灭了!!!!!!!"
+local mes2text = "XK脚本中心已被入侵!!!!!!!"
+
+-- Don't touch unless you know what You're doing --
+
+local mes = Instance.new("Hint")
+mes.Parent = workspace
+mes.Text = Message
+game.Lighting:ClearAllChildren()
+game.Lighting.FogEnd = 100
+game.Lighting.FogColor = Color3.new(0, 0, 0)
+local sound = Instance.new("Sound")
+sound.Parent = workspace
+sound.Looped = true
+sound.PlaybackSpeed = 0.3
+sound.Volume = 5
+sound.SoundId = "rbxassetid://1842908121"
+sound:Play()
+local mes2 = Instance.new("Message")
+mes2.Parent = workspace
+mes2.Text = mes2text
+for i, v in pairs(workspace:GetDescendants()) do
+	if v:IsA("BasePart") and v.Parent:IsA("Model") then
+		local outline = Instance.new("SelectionBox")
+		v.Name = Message
+		outline.Parent = v
+		outline.Adornee = v
+		outline.Color3 = Color3.new(1, 1, 1)
+		v.Color = Color3.new(0, 0, 0)
+		local fire = Instance.new("Fire")
+		fire.Parent = v
+		fire.Size = 100
+		fire.Color = Color3.new(1, 1, 1)
+		local sky = Instance.new("Sky")
+		sky.CelestialBodiesShown = false
+		sky.Parent = game.Lighting
+		sky.SkyboxUp = "http://www.roblox.com/asset/?id=99915080584370"
+		sky.SkyboxBk = "http://www.roblox.com/asset/?id=99915080584370"
+		sky.SkyboxDn = "http://www.roblox.com/asset/?id=99915080584370"
+		sky.SkyboxRt = "http://www.roblox.com/asset/?id=99915080584370"
+		sky.SkyboxLf = "http://www.roblox.com/asset/?id=99915080584370"
+		sky.SkyboxFt = "http://www.roblox.com/asset/?id=99915080584370"
+		local bill = Instance.new("BillboardGui")
+		local Text = Instance.new("TextLabel")
+		bill.Parent = v
+		bill.Adornee = v
+		bill.Size = UDim2.new(0, 200, 0, 200)
+		Text.Parent = bill
+		Text.Size = UDim2.new(0, 200, 0, 200)
+		Text.BackgroundTransparency = 1
+		Text.TextScaled = false
+		Text.TextSize = 30
+		Text.TextColor3 = Color3.new(1, 0, 0.0156863)
+		Text.TextTransparency = 0
+		Text.Font = Enum.Font.Cartoon
+		Text.Text = Message
+	end
+end
+	end
+})
 
 local WSBTab = Window:MakeTab({
 	Name = "关于",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 WSBTab:AddButton ({
 	Name = "复制一群【已升2000人】",
@@ -1254,51 +1313,7 @@ Name = "XK飞行",
     loadstring(game:HttpGet("https://raw.githubusercontent.com/BINjiaobzx6/BINjiao/main/%E9%A3%9E%E8%A1%8C%E8%84%9A%E6%9C%AC(%E5%8F%AF%E8%87%AA%E7%94%B1%E5%85%B3%E9%97%AD%E9%9A%90%E8%97%8F)%20%E6%B1%89%E5%8C%96%20(3)%20(1).txt"))()
   end
 })
-creditsB:Toggle("穿墙 (概率卡住) (真卡住了重新启动一遍)","MainHouse",false,function(state)
-        if state then
-game.Players.LocalPlayer.Character.Head.CanQuery = false
-game.Players.LocalPlayer.Character.LeftFoot.CanQuery = false
-game.Players.LocalPlayer.Character.LeftHand.CanQuery = false
-game.Players.LocalPlayer.Character.LeftLowerArm.CanQuery = false
-game.Players.LocalPlayer.Character.LeftLowerLeg.CanQuery = false
-game.Players.LocalPlayer.Character.LeftUpperArm.CanQuery = false
-game.Players.LocalPlayer.Character.LeftUpperLeg.CanQuery = false
-game.Players.LocalPlayer.Character.LowerTorso.CanQuery = false
-game.Players.LocalPlayer.Character.RightFoot.CanQuery = false
-game.Players.LocalPlayer.Character.RightHand.CanQuery = false
-game.Players.LocalPlayer.Character.RightLowerArm.CanQuery = false
-game.Players.LocalPlayer.Character.RightLowerLeg.CanQuery = false
-game.Players.LocalPlayer.Character.RightUpperArm.CanQuery = false
-game.Players.LocalPlayer.Character.RightUpperLeg.CanQuery = false
-game.Players.LocalPlayer.Character.UpperTorso.CanQuery = false
-game.Players.LocalPlayer.Character.HumanoidRootPart.CanQuery = false
-game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
-game.Players.LocalPlayer.Character.HumanoidRootPart.CanTouch = false
-game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
-game.Players.LocalPlayer.Character.LowerTorso.CanCollide = false
-else
-game.Players.LocalPlayer.Character.Head.CanQuery = true
-game.Players.LocalPlayer.Character.LeftFoot.CanQuery = true
-game.Players.LocalPlayer.Character.LeftHand.CanQuery = true
-game.Players.LocalPlayer.Character.LeftLowerArm.CanQuery = true
-game.Players.LocalPlayer.Character.LeftLowerLeg.CanQuery = true
-game.Players.LocalPlayer.Character.LeftUpperArm.CanQuery = true
-game.Players.LocalPlayer.Character.LeftUpperLeg.CanQuery = true
-game.Players.LocalPlayer.Character.LowerTorso.CanQuery = true
-game.Players.LocalPlayer.Character.RightFoot.CanQuery = true
-game.Players.LocalPlayer.Character.RightHand.CanQuery = true
-game.Players.LocalPlayer.Character.RightLowerArm.CanQuery = true
-game.Players.LocalPlayer.Character.RightLowerLeg.CanQuery = true
-game.Players.LocalPlayer.Character.RightUpperArm.CanQuery = true
-game.Players.LocalPlayer.Character.RightUpperLeg.CanQuery = true
-game.Players.LocalPlayer.Character.UpperTorso.CanQuery = true
-game.Players.LocalPlayer.Character.HumanoidRootPart.CanQuery = true
-game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = true
-game.Players.LocalPlayer.Character.HumanoidRootPart.CanTouch = true
-game.Players.LocalPlayer.Character.UpperTorso.CanCollide = true
-game.Players.LocalPlayer.Character.LowerTorso.CanCollide = true
-end
-    end)
+
 Tab:AddButton ({
 	Name = "飞行v3(修复）",
 	Callback = function ()
@@ -2337,116 +2352,6 @@ velocity.MaxTorque = math.huge
 velocity.AngularVelocity = Vector3.new(0, speed, 0)
 velocity.Parent = humRoot
 velocity.Name = "Spinbot"
-	end
-})
-
-local LTTTab = Window:MakeTab({
-    Name = "范围",
-    Icon = "rbxassetid://7733920519",
-    PremiumOnly = false
-})
-
-LTTTab:AddButton({
-	Name = "范围10",
-	Callback = function()
-    _G.HeadSize = 10 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围20",
-	Callback = function()
-    _G.HeadSize = 20 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围30",
-	Callback = function()
-    _G.HeadSize = 30 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-LTTab:AddButton({
-	Name = "范围40",
-	Callback = function()
-    G.HeadSize = 40 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围50",
-	Callback = function()
-    _G.HeadSize = 50 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围60",
-	Callback = function()
-    _G.HeadSize = 60 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围70",
-	Callback = function()
-    _G.HeadSize = 70 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围80",
-	Callback = function()
-    _G.HeadSize = 80 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围90",
-	Callback = function()
-    _G.HeadSize = 90 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围100",
-	Callback = function()
-    _G.HeadSize = 100 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围150",
-	Callback = function()
-    _G.HeadSize = 150 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围200",
-	Callback = function()
-    _G.HeadSize = 200 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围250",
-	Callback = function()
-    _G.HeadSize = 250 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围300",
-	Callback = function()
-    _G.HeadSize = 300 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
-	end
-})
-
-LTTTab:AddButton({
-	Name = "范围350",
-	Callback = function()
-    _G.HeadSize = 350 _G.Disabled = true game:GetService('RunService').RenderStepped:connect(function() if _G.Disabled then for i,v in next, game:GetService('Players'):GetPlayers() do if v.Name ~= game:GetService('Players').LocalPlayer.Name then pcall(function() v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize) v.Character.HumanoidRootPart.Transparency = 0.7 v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really blue") v.Character.HumanoidRootPart.Material = "Neon" v.Character.HumanoidRootPart.CanCollide = false end) end end end end)
 	end
 })
 
