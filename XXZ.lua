@@ -2525,7 +2525,11 @@ XTab:AddButton({
 
 XTab:AddParagraph("By","未知用户X")
 
-
+local SBBBBTab = Window:MakeTab({
+    Name = "骨折模拟器脚本",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
 
 SBBBBTab:AddParagraph("By注入器","注入器里面找到，好用的")
 
@@ -2536,7 +2540,11 @@ SBBBBTab:AddButton({
   end
 })
 
-
+local playerL = Window:MakeTab({
+    Name = "其余注入器可能无法使用",
+    Icon = "rbxassetid://7733779610",
+    PremiumOnly = false
+})
 
 playerL:AddButton({ 
 	Name = "fl",
@@ -2566,7 +2574,7 @@ playerL:AddButton({
   	end
 })
 
-local CNMMMTab = Window:MakeTab({
+local TabCNMMM = Window:MakeTab({
 	Name = " Doors道具",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
@@ -2670,7 +2678,7 @@ TabCNMMM:AddButton({
   	end    
 })
 
-TabCNNM:AddButton({
+TabCNMMM:AddButton({
 	Name = "巧克力",
 	Callback = function()
         loadstring(game:HttpGet("https://raw.githubusercontent.com/K0t1n/Public/main/Maxwell%20Plushie"))()
@@ -2969,7 +2977,7 @@ NAMETab:AddButton({
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(216.3707733154297, 2.8261332511901855, 75.98402404785156)
   	end    
 })
-MAMETab:AddButton({
+NAMETab:AddButton({
 	Name = "笔刷30％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(710.4590454101562, 151.68980407714844, 378.8439636230469)
@@ -3131,7 +3139,7 @@ GUNGUNTab:AddButton({
   	end    
 })
 
-GUNGINTab:AddButton({
+GUNGUNTab:AddButton({
 	Name = "传送至石头剪刀布场地",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11108.1748046875, 14.22500991821289, 4119.64990234375)
@@ -3392,7 +3400,7 @@ QICHETab:AddButton({
   	end    
 })
 
-QICGETab:AddButton({
+QICHETab:AddButton({
 	Name = "500钉子",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-15991.3935546875, -498.0973205566406, 1541.9925537109375)
@@ -3490,7 +3498,7 @@ QICHETab:AddButton({
   	end    
 })
 
-local TabAOBI = Window:MakeTab({
+local AOBITab = Window:MakeTab({
 	Name = "非常容易的奥比跑酷",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
@@ -3517,7 +3525,7 @@ AOBITab:AddButton({
   	end    
 })
 
-QOBITab:AddButton({
+AOBITab:AddButton({
 	Name = "检查点30％",
 	Callback = function()
      game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-414.72900390625, 4.000216484069824, 402.66302490234375)
@@ -4258,7 +4266,7 @@ CHPYTab:AddButton({
   end
 })
 
-CHPyTab:AddButton({
+CHPYTab:AddButton({
 	Name = "自动收集",
 	Callback = function()
 		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
