@@ -1,124 +1,49 @@
 local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
--- 获取服务
 local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+-- 获取本地玩家
 local LocalPlayer = Players.LocalPlayer
 
--- 创建ScreenGui
+-- 创建ScreenGui用于显示Notification
 local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "XKScriptCenterV2Notification"
+ScreenGui.Name = "ImageNotification"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
--- 定义全屏Notification样式
-local notificationStyle = {
-    Size = UDim2.new(0, 0, 0, 0),  -- 初始大小为0
-    Position = UDim2.new(0.5, 0, 0.5, 0),  -- 初始位置在屏幕中央
-    AnchorPoint = Vector2.new(0.5, 0.5),  -- 锚点居中
-    BackgroundColor3 = Color3.fromRGB(173, 216, 230),  -- 浅蓝色背景 (Light Blue)
-    BorderSizePixel = 0,  -- 无边框
-    ZIndex = 10,  -- UI层级
-    BackgroundTransparency = 0.7,  -- 30%透明
-}
+-- 创建ImageLabel显示图片
+local ImageLabel = Instance.new("ImageLabel")
+ImageLabel.Name = "ImageNotificationImage"
+ImageLabel.Size = UDim2.new(1, 0, 1, 0) -- 全屏大小
+ImageLabel.BackgroundTransparency = 0 -- 不透明背景
+ImageLabel.Image = "rbxassetid://92498946514918" -- 替换为实际的图片资源ID
+ImageLabel.ImageColor3 = Color3.new(1, 1, 1) -- 图片颜色（白色）
+ImageLabel.ZIndex = 10
+ImageLabel.Parent = ScreenGui
 
--- 创建全屏Notification Frame
-local FullScreenFrame = Instance.new("Frame")
-FullScreenFrame.Name = "FullScreenFrame"
-FullScreenFrame.Size = notificationStyle.Size
-FullScreenFrame.Position = notificationStyle.Position
-FullScreenFrame.AnchorPoint = notificationStyle.AnchorPoint
-FullScreenFrame.BackgroundColor3 = notificationStyle.BackgroundColor3
-FullScreenFrame.BorderSizePixel = notificationStyle.BorderSizePixel
-FullScreenFrame.ZIndex = notificationStyle.ZIndex
-FullScreenFrame.BackgroundTransparency = notificationStyle.BackgroundTransparency
-FullScreenFrame.Parent = ScreenGui
-
--- 创建文本标签
-local TextLabel = Instance.new("TextLabel")
-TextLabel.Size = UDim2.new(1, 0, 1, 0)  -- 填充整个Frame
-TextLabel.Position = UDim2.new(0, 0, 0, 0)  -- 左上角
-TextLabel.Text = "正在加载中..."  -- 初始显示的文本
-TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)  -- 绿色文本
-TextLabel.BackgroundTransparency = 1  -- 透明背景
-TextLabel.TextScaled = true
-TextLabel.TextSize = 48
-TextLabel.Font = Enum.Font.Gotham  -- 使用Gotham字体
-TextLabel.ZIndex = 11
-TextLabel.Parent = FullScreenFrame
-
--- 创建动画信息
-local scaleInfo = TweenInfo.new(
-    0.5,  -- 持续时间
-    Enum.EasingStyle.Elastic,  -- 弹性缓动
-    Enum.EasingDirection.Out
-)
-
-local moveInfo = TweenInfo.new(
-    0.5,  -- 持续时间
-    Enum.EasingStyle.Quad,  -- 二次缓动
-    Enum.EasingDirection.Out
-)
-
-local fadeInfo = TweenInfo.new(
-    0.5,  -- 持续时间
-    Enum.EasingStyle.Sine,
-    Enum.EasingDirection.Out
-)
-
--- 显示Notification函数
-local function showXKScriptCenterV2Notification(text, duration)
-    -- 播放从小变大的动画
-    local scaleTween = TweenService:Create(FullScreenFrame, scaleInfo, {Size = UDim2.new(0.5, 0, 0.5, 0)})  -- 放大到屏幕的一半
-    scaleTween:Play()
-
-    -- 等待放大动画完成
-    scaleTween.Completed:Wait()
-
-    -- 等待5秒
-    wait(5)
-
-    -- 播放向右移动的动画
-    local moveTween = TweenService:Create(FullScreenFrame, moveInfo, {Position = UDim2.new(1, 0, 0.5, 0)})  -- 向右移动到屏幕右侧
-    moveTween:Play()
-
-    -- 等待移动动画完成
-    moveTween.Completed:Wait()
-
-    -- 播放回到中间的动画
-    local backTween = TweenService:Create(FullScreenFrame, moveInfo, {Position = UDim2.new(0.5, 0, 0.5, 0)})  -- 回到屏幕中央
-    backTween:Play()
-
-    -- 设置文本为“XK脚本中心V2”
-    TextLabel.Text = text
-
-    -- 播放放大动画
-    local finalScaleTween = TweenService:Create(FullScreenFrame, scaleInfo, {Size = UDim2.new(1, 0, 1, 0)})  -- 放大到全屏
-    finalScaleTween:Play()
-
-    -- 等待回到中间的动画完成
-    backTween.Completed:Wait()
-
-    -- 播放淡入动画
-    local fadeIn = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 0.7})  -- 背景透明度为70%
-    fadeIn:Play()
-
-    -- 等待指定的时间
-    wait(duration)
-
-    -- 播放淡出动画
-    local fadeOut = TweenService:Create(FullScreenFrame, fadeInfo, {BackgroundTransparency = 1})  -- 背景透明度为100%
-    fadeOut:Play()
-    fadeOut.Completed:Wait()
-
-    -- 移除Notification
-    FullScreenFrame:Destroy()
+-- 控制显示Notification
+local function showImageNotification()
+    ScreenGui.Enabled = true
 end
 
--- 示例：显示“XK脚本中心V2”的全屏浅蓝色背景绿色文字Notification，显示5秒后自动消失
-local text = "XK脚本中心V3"  -- 要显示的文本
-local displayDuration = 4  -- 显示时间（秒）
+-- 控制隐藏Notification
+local function hideImageNotification()
+    ScreenGui.Enabled = false
+end
 
-showXKScriptCenterV2Notification(text, displayDuration)
+-- 显示Notification
+showImageNotification()
+
+-- 在15秒后隐藏Notification
+wait(5)
+hideImageNotification()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))()
 Library.DefaultColor = Color3.fromRGB(255,0,0)
@@ -250,8 +175,8 @@ function teleportTo(CFrame)
 end
 wait(0.1)
 shuaxinlb(true)
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/UILibrary.lua.txt')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心",Name = "XK脚本中心 V3", HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/V3-Orion.UI.Lua')))()
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V3",Name = "XK脚本中心 V3 你的注入器" ..identifyexecutor() , HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local Tab = Window:MakeTab({
 	Name = "传送玩家",
@@ -318,11 +243,6 @@ local Tab = Window:MakeTab({
 Tab:AddButton ({
 	Name = "Tuber93弹窗+显示我自己抓的",
 	Callback = function ()
-	 local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-
 -- 获取服务
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -364,6 +284,10 @@ showImageNotification()
 -- 在15秒后隐藏Notification
 wait(5)
 hideImageNotification()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
 	end
 })
 
