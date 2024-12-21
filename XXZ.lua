@@ -1,4 +1,138 @@
+function esp(what,color,core,name)
+    local parts
+    
+    if typeof(what) == "Instance" then
+        if what:IsA("Model") then
+            parts = what:GetChildren()
+        elseif what:IsA("BasePart") then
+            parts = {what,table.unpack(what:GetChildren())}
+        end
+    elseif typeof(what) == "table" then
+        parts = what
+    end
+    
+    local bill
+    local boxes = {}
+    
+    for i,v in pairs(parts) do
+        if v:IsA("BasePart") then
+            local box = Instance.new("BoxHandleAdornment")
+            box.Size = v.Size
+            box.AlwaysOnTop = true
+            box.ZIndex = 1
+            box.AdornCullingMode = Enum.AdornCullingMode.Never
+            box.Color3 = color
+            box.Transparency = 0.7
+            box.Adornee = v
+            box.Parent = game.CoreGui
+            
+            table.insert(boxes,box)
+            
+            task.spawn(function()
+                while box do
+                    if box.Adornee == nil or not box.Adornee:IsDescendantOf(workspace) then
+                        box.Adornee = nil
+                        box.Visible = false
+                        box:Destroy()
+                    end  
+                    task.wait()
+                end
+            end)
+        end
+    end
+    
+    if core and name then
+        bill = Instance.new("BillboardGui",game.CoreGui)
+        bill.AlwaysOnTop = true
+        bill.Size = UDim2.new(0,400,0,100)
+        bill.Adornee = core
+        bill.MaxDistance = 2000
+        
+        local mid = Instance.new("Frame",bill)
+        mid.AnchorPoint = Vector2.new(0.5,0.5)
+        mid.BackgroundColor3 = color
+        mid.Size = UDim2.new(0,8,0,8)
+        mid.Position = UDim2.new(0.5,0,0.5,0)
+        Instance.new("UICorner",mid).CornerRadius = UDim.new(1,0)
+        Instance.new("UIStroke",mid)
+        
+        local txt = Instance.new("TextLabel",bill)
+        txt.AnchorPoint = Vector2.new(0.5,0.5)
+        txt.BackgroundTransparency = 1
+        txt.BackgroundColor3 = color
+        txt.TextColor3 = color
+        txt.Size = UDim2.new(1,0,0,20)
+        txt.Position = UDim2.new(0.5,0,0.7,0)
+        txt.Text = name
+        Instance.new("UIStroke",txt)
+        
+        task.spawn(function()
+            while bill do
+                if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                    bill.Enabled = false
+                    bill.Adornee = nil
+                    bill:Destroy() 
+                end  
+                task.wait()
+            end
+        end)
+    end
+    
+    local ret = {}
+    
+    ret.delete = function()
+        for i,v in pairs(boxes) do
+            v.Adornee = nil
+            v.Visible = false
+            v:Destroy()
+        end
+        
+        if bill then
+            bill.Enabled = false
+            bill.Adornee = nil
+            bill:Destroy() 
+        end
+    end
+    
+    return ret 
+end
+
+local flags = {
+    speed = 0,
+    espdoors = false,
+    espkeys = false,
+    espitems = false,
+    espbooks = false,
+    esprush = false,
+    espchest = false,
+    esplocker = false,
+    esphumans = false,
+    espgold = false,
+    goldespvalue = 0,
+    hintrush = false,
+    light = false,
+    instapp = false,
+    noseek = false,
+    nogates = false,
+    nopuzzle = false,
+    noa90 = false,
+    noskeledoors = false,
+    noscreech = false,
+    getcode = false,
+    roomsnolock = false,
+    draweraura = false,
+    autorooms = false,
+}
+
+local DELFLAGS = {table.unpack(flags)}
+local esptable = {doors={},keys={},items={},books={},entity={},chests={},lockers={},people={},gold={}}
+
 local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -19,7 +153,7 @@ local ImageLabel = Instance.new("ImageLabel")
 ImageLabel.Name = "ImageNotificationImage"
 ImageLabel.Size = UDim2.new(1, 0, 1, 0) -- 全屏大小
 ImageLabel.BackgroundTransparency = 0 -- 不透明背景
-ImageLabel.Image = "rbxassetid://92498946514918" -- 替换为实际的图片资源ID
+ImageLabel.Image = "rbxassetid://4891344370" -- 替换为实际的图片资源ID
 ImageLabel.ImageColor3 = Color3.new(1, 1, 1) -- 图片颜色（白色）
 ImageLabel.ZIndex = 10
 ImageLabel.Parent = ScreenGui
@@ -40,10 +174,6 @@ showImageNotification()
 -- 在15秒后隐藏Notification
 wait(5)
 hideImageNotification()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))()
 Library.DefaultColor = Color3.fromRGB(255,0,0)
@@ -133,6 +263,13 @@ notification:ForceNotify({
         Icon = "rbxassetid://11401835376",
         Duration = 5,
     })
+    
+    notification:ForceNotify({
+        Name = "特别提醒丨警告",
+        Text = "使用此脚本会改变天空贴图，他人不变",
+        Icon = "rbxassetid://11401835376",
+        Duration = 10,
+    })
 Start = tick()
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
@@ -178,13 +315,6 @@ shuaxinlb(true)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/V3-Orion.UI.Lua')))()
 local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V3",Name = "XK脚本中心 V3 你的注入器" ..identifyexecutor() , HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
-notification:ForceNotify({
-        Name = "特别提醒丨警告",
-        Text = "使用此脚本会改变天空贴图，他人不变",
-        Icon = "rbxassetid://11401835376",
-        Duration = 10,
-    })
-
 local Tab = Window:MakeTab({
 	Name = "传送玩家",
 	Icon = "rbxassetid://7733779610",
@@ -192,8 +322,8 @@ local Tab = Window:MakeTab({
 })
 
 Tab:AddTextbox({
-	Name = "输入玩家用户名《注意需要输入两次才可以正常使用》",
-	Default = "请输入",
+	Name = "输入玩家用户名《才可以使用》",
+	Default = "",
 	TextDisappear = true,
 	Callback = function(v)
 		bin.playernamedied = v
@@ -222,7 +352,12 @@ Tab:AddButton({
     if tp_player and tp_player.Character and tp_player.Character.HumanoidRootPart then
         HumRoot.CFrame = tp_player.Character.HumanoidRootPart.CFrame + Vector3.new(20, 5, 314)
     else
-        Notify("传送失败：未找到玩家或玩家没有角色/HumanoidRootPart")
+        notification:ForceNotify({
+        Name = "特别提醒丨警告",
+        Text = "未找到此人",
+        Icon = "rbxassetid://11401835376",
+        Duration = 10,
+    })
     end
 	end
 })
@@ -250,51 +385,51 @@ local Tab = Window:MakeTab({
 Tab:AddButton ({
 	Name = "Tuber93弹窗+显示我自己抓的",
 	Callback = function ()
--- 获取服务
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 
--- 获取本地玩家
+
 local LocalPlayer = Players.LocalPlayer
 
--- 创建ScreenGui用于显示Notification
+
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ImageNotification"
 ScreenGui.ResetOnSpawn = false
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
--- 创建ImageLabel显示图片
+
 local ImageLabel = Instance.new("ImageLabel")
 ImageLabel.Name = "ImageNotificationImage"
-ImageLabel.Size = UDim2.new(1, 0, 1, 0) -- 全屏大小
-ImageLabel.BackgroundTransparency = 0 -- 不透明背景
-ImageLabel.Image = "rbxassetid://4891344370" -- 替换为实际的图片资源ID
-ImageLabel.ImageColor3 = Color3.new(1, 1, 1) -- 图片颜色（白色）
+ImageLabel.Size = UDim2.new(1, 0, 1, 0) 
+ImageLabel.BackgroundTransparency = 0 
+ImageLabel.Image = "rbxassetid://4891344370" 
+ImageLabel.ImageColor3 = Color3.new(1, 1, 1) 
 ImageLabel.ZIndex = 10
 ImageLabel.Parent = ScreenGui
 
--- 控制显示Notification
+
 local function showImageNotification()
     ScreenGui.Enabled = true
 end
 
--- 控制隐藏Notification
+
 local function hideImageNotification()
     ScreenGui.Enabled = false
 end
 
--- 显示Notification
+
 showImageNotification()
 
--- 在15秒后隐藏Notification
+
 wait(5)
 hideImageNotification()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
 	end
 })
 
@@ -312,6 +447,15 @@ Tab:AddButton ({
 	Callback = function ()
 local sound = Instance.new("Sound", workspace)
 sound.SoundId = "rbxassetid://7153945201"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "不知名音频",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://1842908121"
 sound:Play()
 	end
 })
@@ -2015,13 +2159,37 @@ NNN2Tab:AddButton({
 	end
 })
 
-local QWERTab = Window:MakeTab({
+local Tab = Window:MakeTab({
     Name = "彩虹朋友",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
 })
 
-QWERTab:AddButton({
+Tab:AddButton({
+  Name = "自动放置",
+  Callback = function()  	
+  game:GetService("Workspace").GroupBuildStructures:FindFirstChild("Trigger", true)
+firetouchinterest(game:GetService("Workspace").GroupBuildStructures:FindFirstChild("Trigger", true), game.Players.LocalPlayer.Character.HumanoidRootPart, 0)
+task.wait()
+firetouchinterest(game:GetService("Workspace").GroupBuildStructures:FindFirstChild("Trigger", true), game.Players.LocalPlayer.Character.HumanoidRootPart, 1)
+   end
+})
+
+ Tab:AddButton({
+  Name = "自动收集",
+  Callback = function()  	
+  attempts = 0
+   for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+ if v:FindFirstChild("TouchTrigger") and attempts < 10 then
+     attempts = attempts + 1
+       firetouchinterest(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,v.TouchTrigger,0)
+ 
+   end
+end
+   end
+})
+
+Tab:AddButton({
 	Name = "彩虹朋友脚本",
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/binjiaob/XSK/refs/heads/main/XK%E5%BD%A9%E8%99%B9%E6%9C%8B%E5%8F%8B.lua"))()
@@ -2648,6 +2816,849 @@ TabCNMMM:AddButton({
   	end    
 })
 
+local Tab = Window:MakeTab({
+	Name = " Doors主要功能",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+Name = "门显示",
+Default = false,
+Callback = function(val)
+    flags.espdoors = val
+    
+    if val then
+        local function setup(room)
+            local door = room:WaitForChild("Door"):WaitForChild("Door")
+            
+            task.wait(0.1)
+            local h = esp(door,Color3.fromRGB(255,240,0),door,"门")
+            table.insert(esptable.doors,h)
+            
+            door:WaitForChild("Open").Played:Connect(function()
+                h.delete()
+            end)
+            
+            door.AncestryChanged:Connect(function()
+                h.delete()
+            end)
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
+            if room:FindFirstChild("Assets") then
+                setup(room) 
+            end
+        end
+        
+        repeat task.wait() until not flags.espdoors
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.doors) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "钥匙显示",
+Default = false,
+Callback = function(val)
+    flags.espkeys = val
+    
+    if val then
+        local function check(v)
+            if v:IsA("Model") and (v.Name == "LeverForGate" or v.Name == "KeyObtain") then
+                task.wait(0.1)
+                if v.Name == "KeyObtain" then
+                    local hitbox = v:WaitForChild("Hitbox")
+                    local parts = hitbox:GetChildren()
+                    table.remove(parts,table.find(parts,hitbox:WaitForChild("PromptHitbox")))
+                    
+                    local h = esp(parts,Color3.fromRGB(90,255,40),hitbox,"钥匙")
+                    table.insert(esptable.keys,h)
+                    
+                elseif v.Name == "LeverForGate" then
+                    local h = esp(v,Color3.fromRGB(90,255,40),v.PrimaryPart,"Lever")
+                    table.insert(esptable.keys,h)
+                    
+                    v.PrimaryPart:WaitForChild("SoundToPlay").Played:Connect(function()
+                        h.delete()
+                    end) 
+                end
+            end
+        end
+        
+        local function setup(room)
+            local assets = room:WaitForChild("Assets")
+            
+            assets.DescendantAdded:Connect(function(v)
+                check(v) 
+            end)
+                
+            for i,v in pairs(assets:GetDescendants()) do
+                check(v)
+            end 
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
+            if room:FindFirstChild("Assets") then
+                setup(room) 
+            end
+        end
+        
+        repeat task.wait() until not flags.espkeys
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.keys) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "书显示",
+Default = false,
+Callback = function(val)
+    flags.espbooks = val
+    
+    if val then
+        local function check(v)
+            if v:IsA("Model") and (v.Name == "LiveHintBook" or v.Name == "LiveBreakerPolePickup") then
+                task.wait(0.1)
+                
+                local h = esp(v,Color3.fromRGB(160,190,255),v.PrimaryPart,"本子")
+                table.insert(esptable.books,h)
+                
+                v.AncestryChanged:Connect(function()
+                    if not v:IsDescendantOf(room) then
+                        h.delete() 
+                    end
+                end)
+            end
+        end
+        
+        local function setup(room)
+            if room.Name == "50" or room.Name == "100" then
+                room.DescendantAdded:Connect(function(v)
+                    check(v) 
+                end)
+                
+                for i,v in pairs(room:GetDescendants()) do
+                    check(v)
+                end
+            end
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
+            setup(room) 
+        end
+        
+        repeat task.wait() until not flags.espbooks
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.books) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "柜子显示",
+Default = false,
+Callback = function(val)
+    flags.esplocker = val
+    
+    if val then
+        local function check(v)
+            if v:IsA("Model") then
+                task.wait(0.1)
+                if v.Name == "Wardrobe" then
+                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"老王家")
+                    table.insert(esptable.lockers,h) 
+                elseif (v.Name == "Rooms_Locker" or v.Name == "Rooms_Locker_Fridge") then
+                    local h = esp(v.PrimaryPart,Color3.fromRGB(145,100,25),v.PrimaryPart,"Locker")
+                    table.insert(esptable.lockers,h) 
+                end
+            end
+        end
+        
+        local function setup(room)
+            local assets = room:WaitForChild("Assets")
+            
+            if assets then
+                local subaddcon
+                subaddcon = assets.DescendantAdded:Connect(function(v)
+                    check(v) 
+                end)
+                
+                for i,v in pairs(assets:GetDescendants()) do
+                    check(v)
+                end
+                
+                task.spawn(function()
+                    repeat task.wait() until not flags.esplocker
+                    subaddcon:Disconnect()  
+                end) 
+            end 
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
+            setup(room) 
+        end
+        
+        repeat task.wait() until not flags.esplocker
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.lockers) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "物品显示",
+Default = false,
+Callback = function(val)
+    flags.espitems = val
+    
+    if val then
+        local function check(v)
+            if v:IsA("Model") and (v:GetAttribute("Pickup") or v:GetAttribute("PropType")) then
+                task.wait(0.1)
+                
+                local part = (v:FindFirstChild("Handle") or v:FindFirstChild("Prop"))
+                local h = esp(part,Color3.fromRGB(160,190,255),part,v.Name)
+                table.insert(esptable.items,h)
+            end
+        end
+        
+        local function setup(room)
+            local assets = room:WaitForChild("Assets")
+            
+            if assets then  
+                local subaddcon
+                subaddcon = assets.DescendantAdded:Connect(function(v)
+                    check(v) 
+                end)
+                
+                for i,v in pairs(assets:GetDescendants()) do
+                    check(v)
+                end
+                
+                task.spawn(function()
+                    repeat task.wait() until not flags.espitems
+                    subaddcon:Disconnect()  
+                end) 
+            end 
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
+            if room:FindFirstChild("Assets") then
+                setup(room) 
+            end
+        end
+        
+        repeat task.wait() until not flags.espitems
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.items) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+local entitynames = {"RushMoving","AmbushMoving","Snare","A60","A120"}
+Tab:AddToggle({
+Name = "怪物显示",
+Default = false,
+Callback = function(val)
+    flags.esprush = val
+    
+    if val then
+        local addconnect
+        addconnect = workspace.ChildAdded:Connect(function(v)
+            if table.find(entitynames,v.Name) then
+                task.wait(0.1)
+                
+                local h = esp(v,Color3.fromRGB(255,25,25),v.PrimaryPart,v.Name:gsub("Moving",""))
+                table.insert(esptable.entity,h)
+            end
+        end)
+        
+        local function setup(room)
+            if room.Name == "50" or room.Name == "100" then
+                local figuresetup = room:WaitForChild("FigureSetup")
+            
+                if figuresetup then
+                    local fig = figuresetup:WaitForChild("FigureRagdoll")
+                    task.wait(0.1)
+                    
+                    local h = esp(fig,Color3.fromRGB(255,25,25),fig.PrimaryPart,"Figure")
+                    table.insert(esptable.entity,h)
+                end 
+            else
+                local assets = room:WaitForChild("Assets")
+                
+                local function check(v)
+                    if v:IsA("Model") and table.find(entitynames,v.Name) then
+                        task.wait(0.1)
+                        
+                        local h = esp(v:WaitForChild("Base"),Color3.fromRGB(255,25,25),v.Base,"Snare")
+                        table.insert(esptable.entity,h)
+                    end
+                end
+                
+                assets.DescendantAdded:Connect(function(v)
+                    check(v) 
+                end)
+                
+                for i,v in pairs(assets:GetDescendants()) do
+                    check(v)
+                end
+            end 
+        end
+        
+        local roomconnect
+        roomconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
+            setup(room) 
+        end
+        
+        repeat task.wait() until not flags.esprush
+        addconnect:Disconnect()
+        roomconnect:Disconnect()
+        
+        for i,v in pairs(esptable.entity) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "人物显示",
+Default = false,
+Callback = function(val)
+    flags.esphumans = val
+    
+    if val then
+        local function personesp(v)
+            v.CharacterAdded:Connect(function(vc)
+                local vh = vc:WaitForChild("Humanoid")
+                local torso = vc:WaitForChild("UpperTorso")
+                task.wait(0.1)
+                
+                local h = esp(vc,Color3.fromRGB(255,255,255),torso,v.DisplayName)
+                table.insert(esptable.people,h) 
+            end)
+            
+            if v.Character then
+                local vc = v.Character
+                local vh = vc:WaitForChild("Humanoid")
+                local torso = vc:WaitForChild("UpperTorso")
+                task.wait(0.1)
+                
+                local h = esp(vc,Color3.fromRGB(255,255,255),torso,v.DisplayName)
+                table.insert(esptable.people,h) 
+            end
+        end
+        
+        local addconnect
+        addconnect = game.Players.PlayerAdded:Connect(function(v)
+            if v ~= plr then
+                personesp(v)
+            end
+        end)
+        
+        for i,v in pairs(game.Players:GetPlayers()) do
+            if v ~= plr then
+                personesp(v) 
+            end
+        end
+        
+        repeat task.wait() until not flags.esphumans
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.people) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "金币显示",
+Default = false,
+Callback = function(val)
+    flags.espgold = val
+    
+    if val then
+        local function check(v)
+            if v:IsA("Model") then
+                task.wait(0.1)
+                local goldvalue = v:GetAttribute("GoldValue")
+                
+                if goldvalue and goldvalue >= flags.goldespvalue then
+                    local hitbox = v:WaitForChild("Hitbox")
+                    local h = esp(hitbox:GetChildren(),Color3.fromRGB(255,255,0),hitbox,"钱 [".. tostring(goldvalue).."]")
+                    table.insert(esptable.gold,h)
+                end
+            end
+        end
+        
+        local function setup(room)
+            local assets = room:WaitForChild("Assets")
+            
+            local subaddcon
+            subaddcon = assets.DescendantAdded:Connect(function(v)
+                check(v) 
+            end)
+            
+            for i,v in pairs(assets:GetDescendants()) do
+                check(v)
+            end
+            
+            task.spawn(function()
+                repeat task.wait() until not flags.espchest
+                subaddcon:Disconnect()  
+            end)  
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
+            if room:FindFirstChild("Assets") then
+                setup(room) 
+            end
+        end
+        
+        repeat task.wait() until not flags.espgold
+        addconnect:Disconnect()
+        
+        for i,v in pairs(esptable.gold) do
+            v.delete()
+        end 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "怪来提醒",
+Default = false,
+Callback = function(val)
+    flags.hintrush = val
+    
+    if val then
+        local addconnect
+        addconnect = workspace.ChildAdded:Connect(function(v)
+            if table.find(entitynames,v.Name) then
+                repeat task.wait() until plr:DistanceFromCharacter(v:GetPivot().Position) < 1000 or not v:IsDescendantOf(workspace)
+                
+                if v:IsDescendantOf(workspace) then
+                    message(v.Name:gsub("Moving",""):lower().." 要他妈来了，快躲起来！")
+                end
+            end
+        end) 
+        
+        repeat task.wait() until not flags.hintrush
+        addconnect:Disconnect()
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "屏幕亮度",
+Default = false,
+Callback = function(val)
+    flags.light = val
+   
+    if val then
+        local l = Instance.new("PointLight")
+        l.Range = 10000
+        l.Brightness = 2
+        l.Parent = char.PrimaryPart
+       
+        repeat task.wait() until not flags.light
+        l:Destroy() 
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "一秒开锁",
+Default = false,
+Callback = function(val)
+    flags.instapp = val
+    
+    local holdconnect
+    holdconnect = game:GetService("ProximityPromptService").PromptButtonHoldBegan:Connect(function(p)
+		fireproximityprompt(p)
+	end)
+    
+    repeat task.wait() until not flags.instapp
+    holdconnect:Disconnect()
+end    
+})
+
+Tab:AddToggle({
+Name = "删除Seek追逐",
+Default = false,
+Callback = function(val)
+    flags.noseek = val
+    
+    if val then
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            local trigger = room:WaitForChild("TriggerEventCollision",2)
+            
+            if trigger then
+                trigger:Destroy() 
+            end
+        end)
+        
+        repeat task.wait() until not flags.noseek
+        addconnect:Disconnect()
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "删除拼图门",
+Default = false,
+Callback = function(val)
+    flags.nopuzzle = val
+    
+    if val then
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            local assets = room:WaitForChild("Assets")
+            local paintings = assets:WaitForChild("Paintings",2)
+            
+            if paintings then
+                local door = paintings:WaitForChild("MovingDoor",2)
+            
+                if door then
+                    door:Destroy() 
+                end 
+            end
+        end)
+        
+        repeat task.wait() until not flags.nopuzzle
+        addconnect:Disconnect()
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "删除小黑子",
+Default = false,
+Callback = function(val)
+    flags.noscreech = val
+        
+    if val then
+            screechremote.Parent = nil
+            repeat task.wait() until not flags.noscreech
+            screechremote.Parent = entityinfo
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "显示密码",
+Default = false,
+Callback = function(val)
+    flags.getcode = val
+    
+    if val then
+        local function deciphercode()
+        local paper = char:FindFirstChild("LibraryHintPaper")
+        local hints = plr.PlayerGui:WaitForChild("PermUI"):WaitForChild("Hints")
+        
+        local code = {[1]="_",[2]="_",[3]="_",[4]="_",[5]="_"}
+            
+            if paper then
+                for i,v in pairs(paper:WaitForChild("UI"):GetChildren()) do
+                    if v:IsA("ImageLabel") and v.Name ~= "Image" then
+                        for i,img in pairs(hints:GetChildren()) do
+                            if img:IsA("ImageLabel") and img.Visible and v.ImageRectOffset == img.ImageRectOffset then
+                                local num = img:FindFirstChild("TextLabel").Text
+                                
+                                code[tonumber(v.Name)] = num 
+                            end
+                        end
+                    end
+                end 
+            end
+            
+            return code
+        end
+        
+        local addconnect
+        addconnect = char.ChildAdded:Connect(function(v)
+            if v:IsA("Tool") and v.Name == "LibraryHintPaper" then
+                task.wait()
+                
+                local code = table.concat(deciphercode())
+                
+                if code:find("_") then
+                    message("首先获取所有提示")
+                else
+                    message("这个密码是 ".. code)
+                end
+            end
+        end)
+        
+        repeat task.wait() until not flags.getcode
+        addconnect:Disconnect()
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "A-000无锁",
+Default = false,
+Callback = function(val)
+    flags.roomsnolock = val
+    
+    if val then
+        local function check(room)
+            local door = room:WaitForChild("RoomsDoor_Entrance",2)
+            
+            if door then
+                local prompt = door:WaitForChild("Door"):WaitForChild("EnterPrompt")
+                prompt.Enabled = true
+            end 
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            check(room)
+        end)
+        
+        for i,v in pairs(workspace.CurrentRooms:GetChildren()) do
+            check(room)
+        end
+        
+        repeat task.wait() until not flags.roomsnolock
+        addconnect:Disconnect()
+    end
+end  
+})
+
+Tab:AddToggle({
+Name = "自动拾取",
+Default = false,
+Callback = function(val)
+    flags.draweraura = val
+    
+    if val then
+        local function setup(room)
+            local function check(v)
+                if v:IsA("Model") then
+                    if v.Name == "DrawerContainer" then
+                        local knob = v:WaitForChild("Knobs")
+                        
+                        if knob then
+                            local prompt = knob:WaitForChild("ActivateEventPrompt")
+                            local interactions = prompt:GetAttribute("Interactions")
+                            
+                            if not interactions then
+                                task.spawn(function()
+                                    repeat task.wait(0.1)
+                                        if plr:DistanceFromCharacter(knob.Position) <= 12 then
+                                            fireproximityprompt(prompt)
+                                        end
+                                    until prompt:GetAttribute("Interactions") or not flags.draweraura
+                                end)
+                            end
+                        end
+                    elseif v.Name == "GoldPile" then
+                        local prompt = v:WaitForChild("LootPrompt")
+                        local interactions = prompt:GetAttribute("Interactions")
+                            
+                        if not interactions then
+                            task.spawn(function()
+                                repeat task.wait(0.1)
+                                    if plr:DistanceFromCharacter(v.PrimaryPart.Position) <= 12 then
+                                        fireproximityprompt(prompt) 
+                                    end
+                                until prompt:GetAttribute("Interactions") or not flags.draweraura
+                            end)
+                        end
+                    elseif v.Name:sub(1,8) == "ChestBox" then
+                        local prompt = v:WaitForChild("ActivateEventPrompt")
+                        local interactions = prompt:GetAttribute("Interactions")
+                        
+                        if not interactions then
+                            task.spawn(function()
+                                repeat task.wait(0.1)
+                                    if plr:DistanceFromCharacter(v.PrimaryPart.Position) <= 12 then
+                                        fireproximityprompt(prompt)
+                                    end
+                                until prompt:GetAttribute("Interactions") or not flags.draweraura
+                            end)
+                        end
+                    elseif v.Name == "RolltopContainer" then
+                        local prompt = v:WaitForChild("ActivateEventPrompt")
+                        local interactions = prompt:GetAttribute("Interactions")
+                        
+                        if not interactions then
+                            task.spawn(function()
+                                repeat task.wait(0.1)
+                                    if plr:DistanceFromCharacter(v.PrimaryPart.Position) <= 12 then
+                                        fireproximityprompt(prompt)
+                                    end
+                                until prompt:GetAttribute("Interactions") or not flags.draweraura
+                            end)
+                        end
+                    end 
+                end
+            end
+    
+            local subaddcon
+            subaddcon = room.DescendantAdded:Connect(function(v)
+                check(v) 
+            end)
+            
+            for i,v in pairs(room:GetDescendants()) do
+                check(v)
+            end
+            
+            task.spawn(function()
+                repeat task.wait() until not flags.draweraura
+                subaddcon:Disconnect() 
+            end)
+        end
+        
+        local addconnect
+        addconnect = workspace.CurrentRooms.ChildAdded:Connect(function(room)
+            setup(room)
+        end)
+        
+        for i,room in pairs(workspace.CurrentRooms:GetChildren()) do
+            if room:FindFirstChild("Assets") then
+                setup(room) 
+            end
+        end
+        
+        repeat task.wait() until not flags.draweraura
+        addconnect:Disconnect()
+    end
+end    
+})
+
+Tab:AddToggle({
+Name = "人物穿墙",
+Default = false,
+Callback = function(Value)
+        if Value then
+		    Noclip = true
+		    Stepped = game.RunService.Stepped:Connect(function()
+			    if Noclip == true then
+				    for a, b in pairs(game.Workspace:GetChildren()) do
+                        if b.Name == game.Players.LocalPlayer.Name then
+                            for i, v in pairs(game.Workspace[game.Players.LocalPlayer.Name]:GetChildren()) do
+                                if v:IsA("BasePart") then
+                                    v.CanCollide = false
+                                end
+                            end
+                        end
+                    end
+			    else
+				    Stepped:Disconnect()
+			    end
+		    end)
+	    else
+		    Noclip = false
+	    end
+end    
+})
+
+Tab:AddButton({
+Name = "删除小蜘蛛",
+Callback = function()
+        pcall(function()
+            game:GetService("ReplicatedStorage").Bricks.Jumpscare:Destroy()
+        end)
+end
+})
+
+Tab:AddButton({
+Name = "自动完成断路器游戏",
+Callback = function()
+    game:GetService("ReplicatedStorage").Bricks.EBF:FireServer()
+end    
+})
+
+Tab:AddButton({
+Name = "自动A-1000",
+Callback = function()
+loadstring(game:HttpGet(('https://pastebin.com/raw/qe7CYfwB')))()
+end
+})
+
+Tab:AddButton({
+Name = "50关解锁",
+Callback = function()
+        local CurrentDoor = workspace.CurrentRooms[tostring(LatestRoom+1)]:WaitForChild("Door")
+        game.Players.LocalPlayer.Character:PivotTo(CF(CurrentDoor.Door.Position))
+end    
+})
+
+Tab:AddButton({
+Name = "生成红房",
+Callback = function()
+    local v1 = require(game.ReplicatedStorage.ClientModules.Module_Events)
+    local room = workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")]
+    local seconds = 1000000
+    v1.tryp(workspace.CurrentRooms[game.Players.LocalPlayer:GetAttribute("CurrentRoom")], seconds)
+end    
+})
+
+Tab:AddButton({
+    Name = "自动完成心跳小游戏",
+    Callback = function ()
+        firesignal(game.ReplicatedStorage.Bricks.ClutchHeartbeat.OnClientEvent) 
+    end
+})
+
 local POPTab = Window:MakeTab({
 	Name = " Doors floor2脚本",
 	Icon = "rbxassetid://7733779610",
@@ -2750,7 +3761,59 @@ local SZTab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-WSBTab:AddParagraph("以下是功能","脚本在最下面")
+local buyFuel = false
+local buyBackpack = false
+local buyRocket = false
+
+SZTab:AddToggle({
+	Name = "自动购买火箭",
+	Default = false,
+	Callback = function(Value)
+    buyRocket = state
+    if buyRocket then
+        while buyRocket do
+            for i = 1, 10, 1 do
+                game:GetService("ReplicatedStorage").BuyRocket:InvokeServer("Rocket", i)
+                wait(1)
+            end
+        end
+    end
+	end
+})
+
+SZTab:AddToggle({
+	Name = "自动购买收集器",
+	Default = false,
+	Callback = function(Value)
+    buyFuel = state
+    if buyFuel then
+        while buyFuel do
+            for i = 1, 12, 1 do
+                game:GetService("ReplicatedStorage").BuyFuelScoop:InvokeServer("FuelScoop", i)
+                wait(1)
+            end
+        end
+    end
+	end
+})
+
+SZTab:AddToggle({
+	Name = "自动购买背包",
+	Default = false,
+	Callback = function(Value)
+    buyBackpack = state
+    if buyBackpack then
+        while buyBackpack do
+            for i = 1, 13, 1 do
+                game:GetService("ReplicatedStorage").BuyItem:InvokeServer("Backpack", i)
+                wait(1)
+            end
+        end
+    end
+	end
+})
+
+SZTab:AddParagraph("下面功能","可能无法使用")
 
 SZTab:AddButton({  
     Name = "自动收集燃料",
@@ -4064,21 +5127,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/maste
   end
 })
 
-local HBTXTab = Window:MakeTab({
-	Name = "河北唐县",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
-local Section = HBTXTab:AddSection({	Name = "全部群聊唯一一个可以用而简洁的"})
-
-HBTXTab:AddButton({
-  Name = "自动刷钱推荐",
-  Callback = function ()
-    loadstring(game:HttpGet("https://scriptblox.com/raw/Update-V3.10-T-ang-County-Hebei-Auo-Farm-15577"))()
-  end
-})
-
 local ZONTab = Window:MakeTab({
 	Name = "进击的僵尸",
 	Icon = "rbxassetid://7733779610",
@@ -4199,32 +5247,6 @@ NTab:AddButton({
 	Name = "修改武器Kosy Hub",
 	Callback = function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/trdrock/mm2/main/KosyHub"))()
-	end
-})
-
-local CHPYTab = Window:MakeTab({
-	Name = "彩虹朋友",
-	Icon = "rbxassetid://7733779610",
-	PremiumOnly = false
-})
-
-CHPYTab:AddButton({
-  Name = "KEPA",
-  Callback = function ()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Keparetiolpxe/rbxscript/main/RainbowFriendsKEPA"))()
-  end
-})
-
-CHPYTab:AddButton({
-	Name = "自动收集",
-	Callback = function()
-		for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
- if v:FindFirstChild("TouchTrigger") and attempts < 10 then
-     attempts = attempts + 1
-       firetouchinterest(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart,v.TouchTrigger,0)
- 
-   end
-end
 	end
 })
 
@@ -4438,6 +5460,53 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
+
+ Tab:AddButton({         
+ Name = "最强Lua_WareLoader",         
+ Callback = function()         
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/frencaliber/LuaWareLoader.lw/main/luawareloader.wtf",true))() 
+      end 
+ }) 
+ Tab:AddButton({  
+        Name = "小云bark2.0",  
+        Callback = function()  
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/UWU/main/bark2.0.lua"))()  
+        end  
+  })  
+  
+ Tab:AddButton({         
+     Name = "无汉化-Burrer-Hub",         
+     Callback = function()         
+ loadstring(game:HttpGet('https://raw.githubusercontent.com/Butterisgood/butter-hub/main/Butterhub.txt'))() 
+    end 
+ }) 
+  
+ Tab:AddButton({         
+     Name = "汉化Butter-hub",         
+     Callback = function()         
+ loadstring(game:HttpGet('https://raw.githubusercontent.com/Butterisgood/butter-hub/main/Butterhub.txt'))() 
+    end 
+ }) 
+  
+ Tab:AddButton({         
+     Name = "白-伐木脚本",         
+     Callback = function()         
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/CloudX-ScriptsWane/ScriptsDache/main/%E4%BC%90%E6%9C%A8%E5%A4%A7%E4%BA%A822.lua", true))() 
+    end 
+ }) 
+ Tab:AddButton({         
+ Name = "idk😱",         
+ Callback = function()         
+           loadstring(game:HttpGet"https://raw.githubusercontent.com/darkxwin/darkxsourcethinkyoutousedarkx/main/darkx")() 
+      end 
+ }) 
+  
+ Tab:AddButton({         
+ Name = "NOOBARMY-hub",         
+ Callback = function()         
+           loadstring(game:HttpGet(("https://raw.githubusercontent.com/NOOBARMYSCRIPTER/NOOBARMYSCRIPTER/main/AXE%20LOOP%20SCRIPT"), true))() 
+      end 
+ }) 
 
 Tab:AddButton({
   Name = "灯塔",
@@ -5658,6 +6727,47 @@ local WTab = Window:MakeTab({
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
+
+ WTab:AddButton({         
+ Name = "Qumu-HUb(推荐)",         
+ Callback = function()         
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/lolditto-q-u-m-u-u-qwq-idk/Seeds-NEXT--LOL/main/auto_parry___lol____________idk.lua"))()
+           
+      end 
+ })
+  WTab:AddButton({         
+ Name = "喵娘中心(推荐)",         
+ Callback = function()         
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/Akirascripts/Lunar/refs/heads/main/LuanrOnTop"))()
+           
+      end 
+ })
+ 
+  WTab:AddButton({  
+    Name = "BDOLL-HUB",  
+    Callback = function ()  
+      _G.UI_Size = 200 -- config ui size  
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/3345-c-a-t-s-u-s/-beta-/main/AutoParry.lua"))()  
+    end  
+  })  
+  WTab:AddButton({  
+    Name = "红圈格挡V3",  
+    Callback = function ()  
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/1f0yt/community/main/RedCircleBlock"))()  
+    end  
+  })  
+ WTab:AddButton({         
+ Name = "ScouT-Hub",         
+ Callback = function()         
+           loadstring(game:HttpGet(("https://raw.githubusercontent.com/Kozukiremboukk/Aqui-mesml/main/blades")))() 
+      end 
+ }) 
+ WTab:AddButton({         
+ Name = "Pitbull-Hub",         
+ Callback = function()         
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/SoyAdriYT/PitbullHub/main/Scripting", true))()  
+      end 
+ }) 
 
 WTab:AddButton({
 	Name = "Files V3",
@@ -12226,6 +13336,823 @@ coTab:AddButton({
     end
 })
 
+local coTab = Window:MakeTab({
+	Name = "压力",
+	Icon = "rbxassetid://7733765592",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "自动躲避",
+	Default = false,
+	Callback = function(state)
+        if state then
+            local entityNames = {"Angler", "Blitz", "Pinkie", "Froger", "Chainsmoker", "Pandemonium"} -- List of entities to monitor
+            local platformHeight = 900 -- Height for the safe platform
+            local platformSize = Vector3.new(1000, 1, 1000) -- Size of the platform
+            local platform -- Variable to hold the created platform
+            local entityTriggerMap = {} -- Map to keep track of which entities triggered the platform
+            local playerOriginalPositions = {} -- Table to store original positions of players
+            local isMonitoring = true
+
+            -- Function to create or update the safe platform
+            local function createSafePlatform()
+                if platform then
+                    platform:Destroy() -- Remove existing platform if any
+                end
+
+                platform = Instance.new("Part")
+                platform.Size = platformSize
+                platform.Position = Vector3.new(0, platformHeight, 0) -- Center position
+                platform.Anchored = true
+                platform.Parent = workspace
+            end
+
+            -- Function to teleport a player to the safe platform
+            local function teleportPlayerToPlatform(player)
+                if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+                    local targetPosition = platform.Position + Vector3.new(0, platform.Size.Y / 2 + 5, 0)
+                    playerOriginalPositions[player.UserId] = player.Character.HumanoidRootPart.CFrame -- Store original position
+                    player.Character.HumanoidRootPart.CFrame = CFrame.new(targetPosition)
+                end
+            end
+
+            -- Function to teleport a player back to their original position
+            local function teleportPlayerBack(player)
+                if playerOriginalPositions[player.UserId] then
+                    player.Character.HumanoidRootPart.CFrame = playerOriginalPositions[player.UserId]
+                    playerOriginalPositions[player.UserId] = nil -- Clear the stored position
+                end
+            end
+
+            -- Function to handle entity detection
+            local function onChildAdded(child)
+                if table.find(entityNames, child.Name) then
+                    -- Create platform and teleport players when entity is detected
+                    createSafePlatform()
+                    entityTriggerMap[child] = true -- Mark entity as having triggered the platform
+                    for _, player in pairs(game.Players:GetPlayers()) do
+                        teleportPlayerToPlatform(player)
+                    end
+                end
+            end
+
+            -- Function to handle entity removal
+            local function onChildRemoved(child)
+                if entityTriggerMap[child] then
+                    -- Entity was previously responsible for creating the platform
+                    entityTriggerMap[child] = nil -- Remove entity from the map
+                    -- Teleport players back to their original positions
+                    for _, player in pairs(game.Players:GetPlayers()) do
+                        teleportPlayerBack(player)
+                    end
+                end
+            end
+
+            -- Connect the ChildAdded and ChildRemoved events
+            local addConnection = workspace.ChildAdded:Connect(onChildAdded)
+            local removeConnection = workspace.ChildRemoved:Connect(onChildRemoved)
+
+            -- Loop to keep the script running based on the toggle state
+            while isMonitoring do
+                task.wait(1) -- Adjust the wait time as needed
+
+                if not state then
+                    -- Cleanup if defense is turned off
+                    if platform then
+                        -- Keep the platform, but ensure players are teleported back
+                        for _, player in pairs(game.Players:GetPlayers()) do
+                            teleportPlayerBack(player)
+                        end
+                    end
+                    isMonitoring = false
+                    addConnection:Disconnect() -- Disconnect the event listener
+                    removeConnection:Disconnect() -- Disconnect the event listener
+                end
+            end 
+        else
+            -- Cleanup if defense is turned off
+            if platform then
+                -- Keep the platform, but ensure players are teleported back
+                for _, player in pairs(game.Players:GetPlayers()) do
+                    teleportPlayerBack(player)
+                end
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "钥匙透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.keyCardESPInstances = {}
+            local esptable = {keyCards = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorNormalKeyCard()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "NormalKeyCard" then
+                        createBillboard(instance, "钥匙", Color3.new(1, 0, 0)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "NormalKeyCard" then
+                        createBillboard(instance, "钥匙", Color3.new(1, 0, 0)) -- Change color as needed
+                    end
+                end)
+            end
+
+            local function monitorInnerKeyCard()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "InnerKeyCard" then
+                        createBillboard(instance, "InnerKeyCard", Color3.new(255, 255, 255)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "InnerKeyCard" then
+                        createBillboard(instance, "InnerKeyCard", Color3.new(255, 255, 255)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorNormalKeyCard()
+            monitorInnerKeyCard()
+            table.insert(_G.keyCardESPInstances, esptable)
+				
+        else
+            if _G.keyCardESPInstances then
+                for _, instance in pairs(_G.keyCardESPInstances) do
+                    for _, v in pairs(instance.keyCards) do
+                        v.delete()
+                    end
+                end
+                _G.keyCardESPInstances = nil
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "大门透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.bigRoomDoorESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorBigRoomDoor()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "BigRoomDoor" then
+                        createBillboard(instance, "大门", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "BigRoomDoor" then
+                        createBillboard(instance, "大门", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorBigRoomDoor()
+            table.insert(_G.bigRoomDoorESPInstances, esptable)
+                
+        else
+            if _G.bigRoomDoorESPInstances then
+                for _, instance in pairs(_G.bigRoomDoorESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        if v:FindFirstChild("BillboardGui") then
+                            v.BillboardGui:Destroy()
+                        end
+                    end
+                end
+                _G.bigRoomDoorESPInstances = nil
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "假柜子透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.MonsterLockerESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorMonsterLocker()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "MonsterLocker" then
+                        createBillboard(instance, "假柜子", Color3.new(50, 10, 25)) -- Change color as neededPipesDoorESPInstances
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "MonsterLocker" then
+                        createBillboard(instance, "假柜子", Color3.new(50, 10, 25)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorMonsterLocker()
+            table.insert(_G.MonsterLockerESPInstances, esptable)
+				
+        else
+            if _G.MonsterLockerESPInstances then
+                for _, instance in pairs(_G.MonsterLockerESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.MonsterLockerESPInstances = nil
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "怪物通知",
+	Default = false,
+	Callback = function(state)
+    if state then
+            local entityNames = {"Angler", "Eyefestation", "Blitz", "Pinkie", "Froger", "Chainsmoker", "Pandemonium", "Body"}  --enity
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
+            local OrionLib = loadstring(game:HttpGet(('https://pastebin.com/raw/1mPger1J')))()
+
+            -- Ensure flags and plr are defined
+            local flags = flags or {} --Prevent Error
+            local plr = game.Players.LocalPlayer --Prevent Error2
+
+            local function notifyEntitySpawn(entity)
+                    OrionLib:MakeNotification({
+                    Name = "怪物刷新",
+                    Content = "怪物出现",
+                    Time = 3
+                })     
+            end
+
+            local function onChildAdded(child)
+                if table.find(entityNames, child.Name) then
+                    repeat
+                        task.wait()
+                    until plr:DistanceFromCharacter(child:GetPivot().Position) < 1000 or not child:IsDescendantOf(workspace)
+                    
+                    if child:IsDescendantOf(workspace) then
+                        notifyEntitySpawn(child)
+                    end
+                end
+            end
+
+            -- Infinite loop to keep the script running and check for hintrush flag
+            local running = true
+            while running do
+                local connection = workspace.ChildAdded:Connect(onChildAdded)
+                
+                repeat
+                    task.wait(1) -- Adjust the wait time as needed
+                until not flags.hint or not running
+                
+                connection:Disconnect()
+            end 
+        else 
+            -- Close message or any other cleanup if needed
+            running = false
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "发电机透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.EncounterGeneratorESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorEncounterGenerator()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "EncounterGenerator" then
+                        createBillboard(instance, "EncounterGenerator", Color3.new(50, 10, 25)) -- Change color as neededPipesDoorESPInstances
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "EncounterGenerator" then
+                        createBillboard(instance, "EncounterGenerator", Color3.new(50, 10, 25)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorEncounterGenerator()
+            table.insert(_G.EncounterGeneratorESPInstances, esptable)
+				
+        else
+            if _G.EncounterGeneratorESPInstances then
+                for _, instance in pairs(_G.EncounterGeneratorESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.EncounterGeneratorESPInstances = nil
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "柜子透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.ItemLockerESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorItemLocker()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "ItemLocker" then
+                        createBillboard(instance, "储物柜", Color3.new(50, 10, 255)) -- Change color as neededPipesDoorESPInstances
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "ItemLocker" then
+                        createBillboard(instance, "储物柜", Color3.new(50, 10, 255)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorItemLocker()
+            table.insert(_G.ItemLockerESPInstances, esptable)
+				
+        else
+            if _G.ItemLockerESPInstances then
+                for _, instance in pairs(_G.ItemLockerESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.ItemLockerESPInstances = nil
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "门透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.NormalDoorESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorNormalDoor()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "NormalDoor" then
+                        createBillboard(instance, "门", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "NormalDoor" then
+                        createBillboard(instance, "门", Color3.new(125, 125, 125)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorNormalDoor()
+            table.insert(_G.NormalDoorESPInstances, esptable)
+				
+        else
+            if _G.NormalDoorESPInstances then
+                for _, instance in pairs(_G.NormalDoorESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.NormalDoorESPInstances = nil
+            end
+        end
+	end
+})
+
+Tab:AddToggle({
+	Name = "假门透视",
+	Default = false,
+	Callback = function(state)
+        if state then
+            _G.TricksterRoomESPInstances = {}
+            local esptable = {doors = {}}
+
+            local function createBillboard(instance, name, color)
+                local bill = Instance.new("BillboardGui", game.CoreGui)
+                bill.AlwaysOnTop = true
+                bill.Size = UDim2.new(0, 100, 0, 50)
+                bill.Adornee = instance
+                bill.MaxDistance = 2000
+
+                local mid = Instance.new("Frame", bill)
+                mid.AnchorPoint = Vector2.new(0.5, 0.5)
+                mid.BackgroundColor3 = color
+                mid.Size = UDim2.new(0, 8, 0, 8)
+                mid.Position = UDim2.new(0.5, 0, 0.5, 0)
+                Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+                Instance.new("UIStroke", mid)
+
+                local txt = Instance.new("TextLabel", bill)
+                txt.AnchorPoint = Vector2.new(0.5, 0.5)
+                txt.BackgroundTransparency = 1
+                txt.TextColor3 = color
+                txt.Size = UDim2.new(1, 0, 0, 20)
+                txt.Position = UDim2.new(0.5, 0, 0.7, 0)
+                txt.Text = name
+                Instance.new("UIStroke", txt)
+
+                task.spawn(function()
+                    while bill do
+                        if bill.Adornee == nil or not bill.Adornee:IsDescendantOf(workspace) then
+                            bill.Enabled = false
+                            bill.Adornee = nil
+                            bill:Destroy()
+                        end
+                        task.wait()
+                    end
+                end)
+            end
+
+            local function monitorTricksterRoom()
+                for _, instance in pairs(workspace:GetDescendants()) do
+                    if instance:IsA("Model") and instance.Name == "TricksterRoom" then
+                        createBillboard(instance, "假门", Color3.new(50, 10, 25)) -- Change color as neededPipesDoorESPInstances
+                    end
+                end
+
+                workspace.DescendantAdded:Connect(function(instance)
+                    if instance:IsA("Model") and instance.Name == "TricksterRoom" then
+                        createBillboard(instance, "假门", Color3.new(50, 10, 25)) -- Change color as needed
+                    end
+                end)
+            end
+
+            monitorTricksterRoom()
+            table.insert(_G.TricksterRoomESPInstances, esptable)
+				
+        else
+            if _G.TricksterRoomESPInstances then
+                for _, instance in pairs(_G.TricksterRoomESPInstances) do
+                    for _, v in pairs(instance.doors) do
+                        v.delete()
+                    end
+                end
+                _G.TricksterRoomESPInstances = nil
+            end
+        end
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "The Rake",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+  Tab:AddButton({          
+  Name = "Zeerox-Hub",          
+  Callback = function()
+  loadstring(game:HttpGet'https://raw.githubusercontent.com/RunDTM/ZeeroxHub/main/Loader.lua')()  
+       end  
+  })  
+  Tab:AddButton({          
+  Name = "CE-hub",          
+  Callback = function()          
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/scriptemt/CE-Technologies/main/script', true))()  
+       end  
+  })  
+  Tab:AddButton({          
+  Name = "Sussy-Tech",          
+  Callback = function()          
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Sussy-Tech/Scripts/main/RakeScript.lua"))()  
+       end  
+  })  
+  Tab:AddButton({          
+  Name = "REMASTERED",          
+  Callback = function()          
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/CHEATERFUN/The-Rake-REMASTERED-Script/main/Source.lua"))()  
+       end  
+  })  
+  Tab:AddButton({          
+  Name = "filesV3",          
+  Callback = function()          
+  
+  loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/c2c886534e662c614423ee5748353fe4.lua"))()  
+  
+       end  
+  })  
+  Tab:AddButton({          
+  Name = "Devva",          
+  Callback = function()          
+            loadstring(game:HttpGet("https://gist.githubusercontent.com/OtarDevv/49186047e758b9b263ec5a6583a99b4b/raw/d98e767de166fa6361066e9d43ec13ab05fdad89/Rake"))();  
+       end  
+  })
+  Tab:AddButton({  
+    Name = "云The Rake",  
+    Callback = function ()  
+      loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoYunCN/Cloud-script/main/The%20Rake.lua"))()  
+    end  
+  })  
+  Tab:AddButton({          
+  Name = "Tiger_Admin",          
+  Callback = function()          
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/H17S32/Tiger_Admin/main/MAIN'))()   
+       end  
+  })  
+  
+  local Tab = Window:MakeTab({
+	Name = "河北唐县",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "速度防拉回",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(king)
+		local tspeed = king
+local hb = game:GetService("RunService").Heartbeat
+local tpwalking = true
+local player = game:GetService("Players")
+local lplr = player.LocalPlayer
+local chr = lplr.Character
+local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
+while tpwalking and hb:Wait() and chr and hum and hum.Parent do
+  if hum.MoveDirection.Magnitude > 0 then
+    if tspeed then
+      chr:TranslateBy(hum.MoveDirection * tonumber(tspeed))
+    else
+      chr:TranslateBy(hum.MoveDirection)
+    end
+  end
+end
+	end	 
+})
+
+Tab:AddButton({
+  Name = "警察局",
+  Callback = function()  	
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5513.97412109375, 8.656171798706055, 4964.291015625)
+   end
+})
+Tab:AddButton({
+  Name = "出生点",
+  Callback = function()  	
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3338.31982421875, 10.048742294311523, 3741.84033203125)
+   end
+})
+
+Tab:AddButton({
+  Name = "医院",
+  Callback = function()  	
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5471.482421875, 14.149418830871582, 4259.75341796875)
+   end
+})
+Tab:AddButton({
+  Name = "手机店",
+  Callback = function()  	
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6789.2041015625, 11.197686195373535, 1762.687255859375)
+   end
+})
+Tab:AddButton({
+  Name = "火锅店",
+  Callback = function()  	
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5912.84765625, 12.217276573181152, 1058.29443359375)
+   end
+})
+
+Tab:AddButton({
+  Name = "自动刷钱脚本",
+  Callback = function ()
+    loadstring(game:HttpGet("https://scriptblox.com/raw/Update-V3.10-T-ang-County-Hebei-Auo-Farm-15577"))()
+  end
+})
 local sky = Instance.new("Sky")
 		sky.CelestialBodiesShown = false
 		sky.Parent = game.Lighting
@@ -12235,3 +14162,5 @@ local sky = Instance.new("Sky")
 		sky.SkyboxRt = "http://www.roblox.com/asset/?id=92498946514918"
 		sky.SkyboxLf = "http://www.roblox.com/asset/?id=92498946514918"
 		sky.SkyboxFt = "http://www.roblox.com/asset/?id=92498946514918"
+		
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoFenHG/XilolHHG/refs/heads/main/free"))()
