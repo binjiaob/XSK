@@ -122,6 +122,7 @@ sound.SoundId = "rbxassetid://6129291390"
 sound:Play()
 
 
+-- 获取服务
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
@@ -151,8 +152,17 @@ local function showImageNotification()
     ScreenGui.Enabled = true
 end
 
+-- 控制隐藏Notification
+local function hideImageNotification()
+    ScreenGui.Enabled = false
+end
+
 -- 显示Notification
 showImageNotification()
+
+-- 在15秒后隐藏Notification
+wait(15)
+hideImageNotification()
 
 local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
