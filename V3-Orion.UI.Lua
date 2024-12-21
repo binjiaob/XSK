@@ -16,10 +16,10 @@ local OrionLib = {
                 Default = {
                         Main = Color3.fromRGB(60, 179, 113),
                         Second = Color3.fromRGB(60, 179, 113),
-                        Stroke = Color3.fromRGB(127, 255, 0),
-                        Divider = Color3.fromRGB(127, 255, 0),
-                        Text = Color3.fromRGB(0, 255, 0),
-                        TextDark = Color3.fromRGB(0, 255, 0)
+                        Stroke = Color3.fromRGB(0, 255, 0),
+                        Divider = Color3.fromRGB(0, 255, 0),
+                        Text = Color3.fromRGB(255, 255, 255),
+                        TextDark = Color3.fromRGB(255, 255, 255)
                 }
         },
         SelectedTheme = "Default",
@@ -460,12 +460,12 @@ function OrionLib:MakeWindow(WindowConfig)
         if WindowConfig.IntroEnabled == nil then
                 WindowConfig.IntroEnabled = true
         end
-        WindowConfig.IntroToggleIcon = WindowConfig.IntroToggleIcon or "rbxassetid://8834748103"
-        WindowConfig.IntroText = WindowConfig.IntroText or "欢迎使用秋枫脚本."
+        WindowConfig.IntroToggleIcon = WindowConfig.IntroToggleIcon or "rbxassetid://92498946514918"
+        WindowConfig.IntroText = WindowConfig.IntroText or "XK脚本中心."
         WindowConfig.CloseCallback = WindowConfig.CloseCallback or function() end
         WindowConfig.ShowIcon = WindowConfig.ShowIcon or false
-        WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://8834748103"
-        WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://8834748103"
+        WindowConfig.Icon = WindowConfig.Icon or "rbxassetid://92498946514918"
+        WindowConfig.IntroIcon = WindowConfig.IntroIcon or "rbxassetid://92498946514918"
         OrionLib.Folder = WindowConfig.ConfigFolder
         OrionLib.SaveCfg = WindowConfig.SaveConfig
 
