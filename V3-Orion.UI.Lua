@@ -1,3 +1,4 @@
+local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 --那咋了
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -630,7 +631,7 @@ function OrionLib:MakeWindow(WindowConfig)
                 BackgroundColor3 = OrionLib.Themes[OrionLib.SelectedTheme].Main,
                 Visible = false
         }), {
-                AddThemeObject(SetProps(MakeElement("Image", WindowConfig.IntroToggleIcon or "http://www.roblox.com/asset/?id=8834748103"), {
+                AddThemeObject(SetProps(MakeElement("Image", WindowConfig.IntroToggleIcon or "http://www.roblox.com/asset/?id=92498946514918"), {
                         AnchorPoint = Vector2.new(0.5, 0.5),
                         Position = UDim2.new(0.5, 0, 0.5, 0),
                         Size = UDim2.new(0.7, 0, 0.7, 0),
@@ -642,11 +643,12 @@ function OrionLib:MakeWindow(WindowConfig)
                 MainWindow.Visible = false
                 MobileReopenButton.Visible = true
                 UIHidden = true
-                OrionLib:MakeNotification({
-                        Name = "秋枫:OrionLibe已缩小",
-                        Content = " 点击窗口打开界面! \n 窗口作者:Q3E4. \n 定制:1211373508. \n 这个«冷»笑死我了",
-                        Time = 5
-                })
+                notification:ForceNotify({
+        Name = "小玄奘 丨 通知 丨 XK脚本中心",
+        Text = "已关闭此UI",
+        Icon = "rbxassetid://11401835376",
+        Duration = 10,
+    })
                 WindowConfig.CloseCallback()
         end)
 
