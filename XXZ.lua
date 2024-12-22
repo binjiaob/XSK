@@ -14216,46 +14216,6 @@ local Tab = Window:MakeTab({
 	PremiumOnly = false
 })
 
-Tab:AddButton({
-    Name = "刷新提示",
-    Callback = function()
-function tableContains(table, element)
-    for key, value in pairs(table) do
-        if key == element then
-            return true
-        end
-    end
-    return false
-end
-
-function notify(text)
-    notification:ForceNotify({
-        Name = "BY XK脚本中心",
-        Text = text,
-        Icon = "rbxassetid://11401835376",
-        Duration = 5,
-    })
-end
-
-local MS = {
-    ["BalloonCrate"] = "钱箱已刷新",
-    ["Coins"] = "coins出现",
-    ["Chests"] = "宝箱刷新",
-    ["Spirit"] = "A-100出现",
-    ["corpse"] = "A-100死亡",
-    ["monster2"] = "涂鸦出现",
-    ["monsterstopped"] = "怪物消失"
-}
-
-workspace.ChildAdded:Connect(function(child)
-    
-    if tableContains(MS, child.Name) then 
-        notify(MS[child.Name])
-    end
-end)
-  end
-})
-
 Tab:AddToggle({
 	Name = "钱箱透视",
 	Default = false,
