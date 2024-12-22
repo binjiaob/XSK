@@ -118,18 +118,17 @@ function lib:Window(text, preset, closebind)
     TabHoldLayout.SortOrder = Enum.SortOrder.LayoutOrder
     TabHoldLayout.Padding = UDim.new(0, 11)
 
-local Title = Instance.new("TextLabel")
-Title.Name = "Title"
-Title.Parent = Main
-Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Title.BackgroundTransparency = 1.000
-Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
-Title.Size = UDim2.new(0, 200, 0, 23)
-Title.Font = Enum.Font.GothamSemibold
-Title.Text = text
-Title.TextColor3 = Color3.new(0, 255, 0) -- 设置为绿色
-
-local rainbowColors = {
+    Title.Name = "Title"
+    Title.Parent = Main
+    Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Title.BackgroundTransparency = 1.000
+    Title.Position = UDim2.new(0.0339285731, 0, 0.0564263314, 0)
+    Title.Size = UDim2.new(0, 200, 0, 23)
+    Title.Font = Enum.Font.GothamSemibold
+    Title.Text = text
+    Title.TextColor3 = Color3.fromRGB(0, 255, 0)
+    
+    local TextColor3 = {
      Color3.new(1, 0, 0), -- 红色
      Color3.new(1, 1, 0), -- 黄色
      Color3.new(0, 1, 0), -- 绿色
@@ -141,13 +140,13 @@ local rainbowColors = {
 
 local function HeartbeatUpdate()
      local rainbowIndex = math.floor((tick() % #rainbowColors) + 1)
-     Title.TextColor3 = rainbowColors[rainbowIndex]
+     FpsLabel.TextColor3 = rainbowColors[rainbowIndex]
 end
 
 script:WaitForChild("Heartbeat"):Connect(HeartbeatUpdate)
-
-Title.TextSize = 20.000
-Title.TextXAlignment = Enum.TextXAlignment.Left
+    
+    Title.TextSize = 20.000
+    Title.TextXAlignment = Enum.TextXAlignment.Left
 
     DragFrame.Name = "DragFrame"
     DragFrame.Parent = Main
