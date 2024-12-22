@@ -14141,71 +14141,205 @@ local Tab = Window:MakeTab({
        end  
   })  
   
-  local Tab = Window:MakeTab({
-	Name = "河北唐县",
+local Tab = Window:MakeTab({
+	Name = "忍者元素大亨",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
-Tab:AddTextbox({
-	Name = "速度防拉回",
-	Default = "",
-	TextDisappear = true,
-	Callback = function(king)
-		local tspeed = king
-local hb = game:GetService("RunService").Heartbeat
-local tpwalking = true
-local player = game:GetService("Players")
-local lplr = player.LocalPlayer
-local chr = lplr.Character
-local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-while tpwalking and hb:Wait() and chr and hum and hum.Parent do
-  if hum.MoveDirection.Magnitude > 0 then
-    if tspeed then
-      chr:TranslateBy(hum.MoveDirection * tonumber(tspeed))
-    else
-      chr:TranslateBy(hum.MoveDirection)
+Tab:AddButton({
+    Name = "提醒",
+    Callback = function()
+          local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
+
+function tableContains(table, element)
+    for key, value in pairs(table) do
+        if key == element then
+            return true
+        end
     end
-  end
+    return false
 end
-	end	 
-})
 
-Tab:AddButton({
-  Name = "警察局",
-  Callback = function()  	
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5513.97412109375, 8.656171798706055, 4964.291015625)
-   end
-})
-Tab:AddButton({
-  Name = "出生点",
-  Callback = function()  	
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3338.31982421875, 10.048742294311523, 3741.84033203125)
-   end
-})
+function notify(text)
+    notification:ForceNotify({
+        Name = "XK脚本中心提醒",
+        Text = text,
+        Icon = "rbxassetid://11401835376",
+        Duration = 5,
+    })
+end
 
-Tab:AddButton({
-  Name = "医院",
-  Callback = function()  	
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5471.482421875, 14.149418830871582, 4259.75341796875)
-   end
-})
-Tab:AddButton({
-  Name = "手机店",
-  Callback = function()  	
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-6789.2041015625, 11.197686195373535, 1762.687255859375)
-   end
-})
-Tab:AddButton({
-  Name = "火锅店",
-  Callback = function()  	
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5912.84765625, 12.217276573181152, 1058.29443359375)
-   end
-})
+local MS = {
+    ["BalloonCrate"] = "钱箱已刷新",
+}
 
-Tab:AddButton({
-  Name = "自动刷钱脚本",
-  Callback = function ()
-    loadstring(game:HttpGet("https://scriptblox.com/raw/Update-V3.10-T-ang-County-Hebei-Auo-Farm-15577"))()
+workspace.ChildAdded:Connect(function(child)
+    
+    if tableContains(MS, child.Name) then 
+        notify(MS[child.Name])
+    end
+end)
   end
 })
+
+Tab:AddToggle({
+	Name = "钱箱透视",
+	Default = false,
+	Callback = function(target)
+    if target then
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+        local markedTargets = {}
+
+        local function createCircularUI(parent, color)
+            local mid = Instance.new("Frame", parent)
+            mid.AnchorPoint = Vector2.new(0.5, 0.5)
+            mid.BackgroundColor3 = color
+            mid.Size = UDim2.new(0, 8, 0, 8)
+            mid.Position = UDim2.new(0.5, 0, 0.0001, 0) -- Adjusted position
+            Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+            Instance.new("UIStroke", mid)
+            
+            return mid
+        end
+
+        local function markTarget(target, customName)
+            if not target then return end
+            local oldTag = target:FindFirstChild("Batteries")
+            if oldTag then
+                oldTag:Destroy()
+            end
+            local oldHighlight = target:FindFirstChild("Highlight")
+            if oldHighlight then
+                oldHighlight:Destroy()
+            end
+            local tag = Instance.new("BillboardGui")
+            tag.Name = "Batteries"
+            tag.Size = UDim2.new(0, 200, 0, 50)
+            tag.StudsOffset = Vector3.new(0, 0.7, 0) -- Adjusted offset
+            tag.AlwaysOnTop = true
+            local textLabel = Instance.new("TextLabel")
+            textLabel.Size = UDim2.new(1, 0, 1, 0)
+            textLabel.BackgroundTransparency = 1
+            textLabel.TextStrokeTransparency = 0 
+            textLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+            textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+            textLabel.Font = Enum.Font.Jura
+            textLabel.TextScaled = true
+            textLabel.Text = customName
+            textLabel.Parent = tag
+            tag.Parent = target
+            local highlight = Instance.new("Highlight")
+            highlight.Name = "Highlight"
+            highlight.Adornee = target
+            highlight.FillColor = Color3.fromRGB(0, 255, 0)--中心高亮颜色
+            highlight.OutlineColor = Color3.fromRGB(255, 0, 0)--高亮边框颜色
+            highlight.Parent = target
+            markedTargets[target] = customName
+            
+            -- 添加优质圆圈 UI这里被我删掉了，因为太丑了。
+        end
+
+        local function recursiveFindAll(parent, name, targets)
+            for _, child in ipairs(parent:GetChildren()) do
+                if child.Name == name then
+                    table.insert(targets, child)
+                end
+                recursiveFindAll(child, name, targets)
+            end
+        end
+
+        local function Itemlocationname(name, customName)
+            local targets = {}
+            recursiveFindAll(game, name, targets)
+            for _, target in ipairs(targets) do
+                markTarget(target, customName)
+            end
+        end
+
+        local function Invalidplayername(playerName, customName)
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player.Name == playerName and player.Character then
+                    local head = player.Character:FindFirstChild("Head")
+                    if head then
+                        markTarget(head, customName)
+                    end
+                end
+            end
+        end
+
+        if target then
+            Players.PlayerAdded:Connect(function(player)
+                player.CharacterAdded:Connect(function(character)
+                    local head = character:FindFirstChild("Head")
+                    if head then
+                        markTarget(head, player.Name)
+                    end
+                end)
+            end)
+
+            game.DescendantAdded:Connect(function(descendant)
+                if descendant.Name == "BalloonCrate" then
+                    markTarget(descendant, "钱箱")
+                end
+            end)
+
+            RunService.RenderStepped:Connect(function()
+                for target, customName in pairs(markedTargets) do
+                    if target and target:FindFirstChild("Batteries") then
+                        target.Batteries.TextLabel.Text = customName
+                    else
+                        if target then
+                            markTarget(target, customName)
+                        end
+                    end
+                end
+            end)
+
+            Invalidplayername("玩家名称", "玩家")
+            Itemlocationname("BalloonCrate", "钱箱")
+        else
+            for target, _ in pairs(markedTargets) do
+                if target:FindFirstChild("Batteries") then
+                    target.Batteries:Destroy()
+                end
+                if target:FindFirstChild("Highlight") then
+                    target.Highlight:Destroy()
+                end
+            end
+            markedTargets = {}
+        end
+    end
+	end
+})
+
+Tab:AddToggle({
+	Name = "穿墙",
+	Default = false,
+	Callback = function(Value)
+    local player = game.Players.LocalPlayer
+        local char = player.Character
+        local runService = game:GetService("RunService")
+        if state then
+            _G.NoClip = runService.Stepped:Connect(function()
+                for _, v in pairs(char:GetDescendants()) do
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end
+            end)
+        else
+            if _G.NoClip then
+                _G.NoClip:Disconnect()
+                _G.NoClip = nil
+            end
+            for _, v in pairs(char:GetDescendants()) do
+                if v:IsA("BasePart") then
+                    v.CanCollide = true
+                end
+            end
+        end
+	end
+})
+
