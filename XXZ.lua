@@ -133,6 +133,33 @@ local sound = Instance.new("Sound", workspace)
 sound.SoundId = "rbxassetid://6129291390"
 sound:Play()
 
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
 
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
@@ -172,7 +199,7 @@ end
 showImageNotification()
 
 -- 在15秒后隐藏Notification
-wait(5)
+wait(7.5)
 hideImageNotification()
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))()
