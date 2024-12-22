@@ -133,34 +133,6 @@ local sound = Instance.new("Sound", workspace)
 sound.SoundId = "rbxassetid://6129291390"
 sound:Play()
 
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
-local sound = Instance.new("Sound", workspace)
-sound.SoundId = "rbxassetid://6129291390"
-sound:Play()
-
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
