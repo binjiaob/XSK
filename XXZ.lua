@@ -133,6 +133,18 @@ local sound = Instance.new("Sound", workspace)
 sound.SoundId = "rbxassetid://6129291390"
 sound:Play()
 
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://6129291390"
+sound:Play()
+
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
@@ -152,7 +164,7 @@ local ImageLabel = Instance.new("ImageLabel")
 ImageLabel.Name = "ImageNotificationImage"
 ImageLabel.Size = UDim2.new(1, 0, 1, 0) -- 全屏大小
 ImageLabel.BackgroundTransparency = 0 -- 不透明背景
-ImageLabel.Image = "rbxassetid://4891344370" -- 替换为实际的图片资源ID
+ImageLabel.Image = "rbxassetid://102401784207635" -- 替换为实际的图片资源ID
 ImageLabel.ImageColor3 = Color3.new(1, 1, 1) -- 图片颜色（白色）
 ImageLabel.ZIndex = 10
 ImageLabel.Parent = ScreenGui
@@ -171,7 +183,7 @@ end
 showImageNotification()
 
 -- 在15秒后隐藏Notification
-wait(7.5)
+wait(10)
 hideImageNotification()
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/Revenant", true))()
@@ -181,24 +193,15 @@ Library.DefaultColor = Color3.fromRGB(255,0,0)
         	Text = "欢迎使用XK脚本中心",
         	Duration = 6
             })
-
-            Library:Notification({
-        	Text = "XK脚本中心V11.6",
-        	Duration = 6
-            })
-           
-            Library:Notification({
-        	Text = "作者:小玄",
-        	Duration = 6
-            })
             
             local OrionLib = loadstring(game:HttpGet("https://pastebin.com/raw/VeaMSRZK"))()
 local LBLG = Instance.new("ScreenGui", game.CoreGui)
-local LBL = Instance.new("TextLabel", LBLG)
-local player = game.Players.LocalPlayer
-
 LBLG.Name = "LBLG"
 LBLG.Enabled = true
+
+local player = game.Players.LocalPlayer
+
+local LBL = Instance.new("TextLabel", LBLG)
 LBL.Name = "LBL"
 LBL.Parent = LBLG
 LBL.BackgroundColor3 = Color3.new(1, 1, 1)
@@ -214,22 +217,25 @@ LBL.TextSize = 14
 LBL.TextWrapped = true
 LBL.Visible = true
 
-local FpsLabel = LBL
 local Heartbeat = game:GetService("RunService").Heartbeat
-local LastIteration, Start
+local LastIteration, Start = 0, tick()
 local FrameUpdateTable = { }
 
 local function HeartbeatUpdate()
     LastIteration = tick()
-    for Index = #FrameUpdateTable, 1, -1 do
-        FrameUpdateTable[Index + 1] = (FrameUpdateTable[Index] >= LastIteration - 1) and FrameUpdateTable[Index] or nil
+    table.insert(FrameUpdateTable, LastIteration)
+    if #FrameUpdateTable > 60 then 
+        table.remove(FrameUpdateTable, 1)
     end
-    FrameUpdateTable[1] = LastIteration
-    local CurrentFPS = (tick() - Start >= 1 and #FrameUpdateTable) or (#FrameUpdateTable / (tick() - Start))
-    CurrentFPS = CurrentFPS - CurrentFPS % 1
 
-    FpsLabel.Text = ("XK＝"..os.date("%H").."时"..os.date("%M").."分"..os.date("%S"))
+    local CurrentFPS = #FrameUpdateTable / (LastIteration - Start)
+    CurrentFPS = math.floor(CurrentFPS + 0.5)
 
+   
+    local formattedTime = string.format("%02d:%02d:%02d", os.date("%H"), os.date("%M"), os.date("%S"))
+    LBL.Text = ("XK=" .. formattedTime)
+
+    -- 彩虹颜色周期
     local rainbowColors = {
         Color3.new(1, 0, 0), -- 红色
         Color3.new(1, 1, 0), -- 黄色
@@ -239,10 +245,9 @@ local function HeartbeatUpdate()
         Color3.new(1, 1, 1), -- 白色
         Color3.new(0, 0, 0), -- 黑色
     }
-    local rainbowIndex = math.floor((tick() % 6) + 1)
-    FpsLabel.TextColor3 = rainbowColors[rainbowIndex]
+    local rainbowIndex = math.floor((LastIteration % 6) + 1)
+    LBL.TextColor3 = rainbowColors[rainbowIndex]
 end
-
 
 Start = tick()
 
@@ -263,12 +268,6 @@ notification:ForceNotify({
         Duration = 5,
     })
     
-    notification:ForceNotify({
-        Name = "特别提醒丨警告",
-        Text = "使用此脚本会改变天空贴图，他人不变",
-        Icon = "rbxassetid://11401835376",
-        Duration = 10,
-    })
 Start = tick()
 wait(2)
 Heartbeat:Connect(HeartbeatUpdate)
@@ -1507,104 +1506,6 @@ Tab:AddButton({
     loadstring(game:HttpGet("https://pastebin.com/raw/CAQ9x4A7"))()
   end
 })
-
-local Section = Tab:AddSection({	Name = "音频"})
-
-Tab:AddButton({ 
-   Name = "国歌", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://1845918434" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
- 
-Tab:AddButton({ 
-   Name = "钢管落地", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://6011094380" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-
-Tab:AddButton({ 
-   Name = "钢管落地【全损音质】", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://6729922069" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-
-Tab:AddButton({ 
-   Name = "化粪池爆炸", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://3175432527" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-
-Tab:AddButton({ 
-   Name = "串稀", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://4809574295" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-
-Tab:AddButton({ 
-   Name = "全损音质【串稀】", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://6445594239" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-Tab:AddButton({ 
-   Name = "骂人", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://7334239757" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-Tab:AddButton({ 
-   Name = "在我们之中", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://6453086701" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-Tab:AddButton({ 
-   Name = "doors拿金币", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://8646410774" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
-Tab:AddButton({ 
-   Name = "苹果手机【闹钟】", 
-   Callback = function () 
-         local sound = Instance.new("Sound") 
-     sound.SoundId = "rbxassetid://4203251375" 
-     sound.Parent = game.Workspace 
-     sound:Play() 
-   end 
- })
 
 local YINGPTab = Window:MakeTab({
 	Name = "音频",
