@@ -1,3 +1,72 @@
+LocalPlayer = game:GetService("Players").LocalPlayer
+          Camera = workspace.CurrentCamera
+          RunService = game:GetService("RunService")
+          VirtualUser = game:GetService("VirtualUser")
+          MarketplaceService = game:GetService("MarketplaceService")
+
+          function GetCurrentVehicle()
+            return LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("Humanoid") and LocalPlayer.Character.Humanoid.SeatPart and LocalPlayer.Character.Humanoid.SeatPart.Parent
+          end
+          MT = getrawmetatable(game)
+          Old_Index = MT.__index
+          setreadonly(MT, false)
+          MT.__index = newcclosure(function(self, K)
+            if self:IsA("Sound") and self:IsDescendantOf(workspace.SessionVehicles) and AntiSkidMarkSounds then
+              self:Stop()
+              return
+            end
+            return Old_Index(self, K)
+          end)
+          setreadonly(MT, true)
+          function TP(cframe)
+            GetCurrentVehicle():SetPrimaryPartCFrame(cframe)
+          end
+          function VelocityTP(cframe)
+            TeleportSpeed = 500
+            Car = GetCurrentVehicle()
+            for I,V in pairs(GetCurrentVehicle():GetDescendants()) do
+              if V:IsA("BodyGyro") then
+                V:Destroy()
+              end
+            end
+            local BodyGyro = Instance.new("BodyGyro", Car.PrimaryPart)
+            BodyGyro.P = 5000
+            BodyGyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+            BodyGyro.CFrame = Car.PrimaryPart.CFrame
+            local BodyVelocity = Instance.new("BodyVelocity", Car.PrimaryPart)
+            BodyVelocity.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+            BodyVelocity.Velocity = CFrame.new(Car.PrimaryPart.Position, cframe.p).LookVector * TeleportSpeed
+            wait((Car.PrimaryPart.Position - cframe.p).Magnitude / TeleportSpeed)
+            BodyVelocity.Velocity = Vector3.new()
+            wait(0.1)
+            BodyVelocity:Destroy()
+            BodyGyro:Destroy()
+          end
+
+          --Auto Farm
+          StartPosition = CFrame.new(Vector3.new(-1818, -79, -10685), Vector3.new(-880, -79, -10769))
+          EndPosition = CFrame.new(Vector3.new(-965, -79, -10761), Vector3.new(-880, -79, -10769))
+          AutoFarmFunc = coroutine.create(function()
+            while wait() do
+              if not AutoFarm then
+                AutoFarmRunning = false
+                coroutine.yield()
+              end
+              AutoFarmRunning = true
+              pcall(function()
+                if not GetCurrentVehicle() and tick() - (LastNotif or 0) > 5 then
+                  LastNotif = tick()
+                  SendNotification("Aloha Scripts", "Please Enter A Vehicle!")
+                 else
+                  TP(StartPosition + (TouchTheRoad and Vector3.new() or Vector3.new(0, 1, 0)))
+                  VelocityTP(EndPosition + (TouchTheRoad and Vector3.new() or Vector3.new(0, 1, 0)))
+                  TP(EndPosition + (TouchTheRoad and Vector3.new() or Vector3.new(0, 1, 0)))
+                  VelocityTP(StartPosition + (TouchTheRoad and Vector3.new() or Vector3.new(0, 1, 0)))
+                end
+              end)
+            end
+          end)
+
 function esp(what,color,core,name)
     local parts
     
@@ -136,11 +205,10 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoX
 Library.DefaultColor = Color3.fromRGB(255,0,0)
 
             Library:Notification({
-        	Text = "XK脚本中心，本次更新通用优化",
+        	Text = "已更新",
         	Duration = 6
             })
-            
-            local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/V3-Orion.UI.Lua"))()
+           
 local LBLG = Instance.new("ScreenGui", game.CoreGui)
 LBLG.Name = "LBLG"
 LBLG.Enabled = true
@@ -7699,15 +7767,15 @@ end
 	end
 })
 
-local MPTab = Window:MakeTab({
+local Tab = Window:MakeTab({
 	Name = "一路向西",
 	Icon = "rbxassetid://7733779610",
 	PremiumOnly = false
 })
 
-MPTab:AddParagraph("推荐使用下面那个","好像都可以通用")
+Tab:AddParagraph("推荐使用下面那个","好像都可以通用")
 
-MPTab:AddButton({
+Tab:AddButton({
 	Name = "全图杀人",
 	Callback = function()
 	local L_1_ = true;
@@ -7786,6 +7854,367 @@ game.Players.PlayerAdded:Connect(function(L_13_arg1)
 	end           
 end)	
 	end
+})
+
+Tab:AddTextbox({
+        Name = "移动速度",
+        Default = "",
+        TextDisappear = true,
+        Callback = function(Value)
+    game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").WalkSpeed = Value
+        end
+})
+
+Tab:AddButton({
+     Name = "子弹追踪",
+     Callback = function()
+local Camera = game:GetService("Workspace").CurrentCamera
+local Players = game:GetService("Players")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local function GetClosestPlayer()
+   local ClosestPlayer = nil
+   local FarthestDistance = math.huge
+
+   for i, v in pairs(Players.GetPlayers(Players)) do
+       if v ~= LocalPlayer and v.Character and v.Character.FindFirstChild(v.Character, "HumanoidRootPart") then
+           local DistanceFromPlayer = (LocalPlayer.Character.HumanoidRootPart.Position - v.Character.HumanoidRootPart.Position).Magnitude
+
+           if DistanceFromPlayer < FarthestDistance then
+               FarthestDistance = DistanceFromPlayer
+               ClosestPlayer = v
+           end
+       end
+   end
+
+   if ClosestPlayer then
+       return ClosestPlayer
+   end
+end
+
+local GameMetaTable = getrawmetatable(game)
+local OldGameMetaTableNamecall = GameMetaTable.__namecall
+setreadonly(GameMetaTable, false)
+
+GameMetaTable.__namecall = newcclosure(function(object, ...)
+   local NamecallMethod = getnamecallmethod()
+   local Arguments = {...}
+
+   if tostring(NamecallMethod) == "FindPartOnRayWithIgnoreList" then
+       local ClosestPlayer = GetClosestPlayer()
+
+       if ClosestPlayer and ClosestPlayer.Character then
+           Arguments[1] = Ray.new(Camera.CFrame.Position, (ClosestPlayer.Character.Head.Position - Camera.CFrame.Position).Unit * (Camera.CFrame.Position - ClosestPlayer.Character.Head.Position).Magnitude)
+       end
+   end
+
+   return OldGameMetaTableNamecall(object, unpack(Arguments))
+end)
+  end
+})
+
+Tab:AddButton({
+     Name = "魔改手枪",
+     Callback = function()
+     local list = require(game:GetService("ReplicatedStorage").GunScripts.GunStats)
+for i,v in pairs(list) do
+    v.Spread = 0
+    v.prepTime = 0.1
+    v.equipTime = 0.1
+    v.MaxShots = math.huge
+    v.ReloadSpeed = 0.1
+    v.BulletSpeed = 250
+    v.HipFireAccuracy = 0
+    v.ZoomAccuracy = 0
+end
+  end
+})
+
+Tab:AddButton({
+     Name = "防踢/防拉回",
+     Callback = function()
+local mt = getrawmetatable(game)
+
+setreadonly(mt, false)
+
+local oldmt = mt.__namecall
+
+mt.__namecall = newcclosure(function(Self, ...)
+
+
+  local method = getnamecallmethod()
+
+  if method == 'Kick' then
+
+    wait(9e9)
+    return nil
+
+end
+
+return oldmt(Self, ...)
+
+end)
+
+setreadonly(mt, true)
+  end
+})
+
+Tab:AddToggle({
+        Name = "名字显示",
+        Default = false,
+    Callback = function(name)
+local function API_Check()
+
+            if Drawing == nil then
+
+                return "No"
+            else
+                return "Yes"
+            end
+        end
+
+        local Find_Required = API_Check()
+
+        if Find_Required == "No" then
+            game:GetService("StarterGui"):SetCore("SendNotification",{
+                Title = "An error lol";
+                Text = "ESP script could not be loaded because your exploit is unsupported.";
+                Duration = math.huge;
+                Button1 = "OK"
+            })
+
+            return
+        end
+
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+        local UserInputService = game:GetService("UserInputService")
+        local Camera = workspace.CurrentCamera
+
+        local Typing = false
+
+        _G.SendNotifications = false 
+        _G.DefaultSettings = false 
+
+        _G.TeamCheck = true   
+        _G.ESPVisible = name  
+        _G.TextColor = Color3.fromRGB(0, 1, 0.749019)  -- The color that the boxes would appear as.
+        _G.TextSize = 14 
+        _G.Center = true   
+        _G.Outline = false   
+        _G.TextTransparency = 0.7   
+        _G.TextFont = Drawing.Fonts.UI  
+
+        _G.DisableKey = Enum.KeyCode.RightAlt   
+
+        local function CreateESP()
+            for _, v in next, Players:GetPlayers() do
+                if v.Name ~= Players.LocalPlayer.Name then
+                    local ESP = Drawing.new("Text")
+
+                    RunService.RenderStepped:Connect(function()
+                        if workspace:FindFirstChild(v.Name) ~= nil and workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
+                            local Vector, OnScreen = Camera:WorldToViewportPoint(workspace[v.Name]:WaitForChild("Head", math.huge).Position)
+
+                            ESP.Size = _G.TextSize
+                            ESP.Center = _G.Center
+                            ESP.Outline = _G.Outline
+                            ESP.OutlineColor = _G.OutlineColor
+                            ESP.Color = _G.TextColor
+                            ESP.Transparency = _G.TextTransparency
+                            ESP.Font = _G.TextFont
+
+                            if OnScreen == true then
+                                local Part1 = workspace:WaitForChild(v.Name, math.huge):WaitForChild("HumanoidRootPart", math.huge).Position
+                                local Part2 = workspace:WaitForChild(Players.LocalPlayer.Name, math.huge):WaitForChild("HumanoidRootPart", math.huge).Position or 0
+                                local Dist = (Part1 - Part2).Magnitude
+                                ESP.Position = Vector2.new(Vector.X, Vector.Y - 25)
+                                ESP.Text = ("("..tostring(math.floor(tonumber(Dist)))..") "..v.Name.." ["..workspace[v.Name].Humanoid.Health.."]")
+                                if _G.TeamCheck == true then 
+                                    if Players.LocalPlayer.Team ~= v.Team then
+                                        ESP.Visible = _G.ESPVisible
+                                    else
+                                        ESP.Visible = false
+                                    end
+                                else
+                                    ESP.Visible = _G.ESPVisible
+                                end
+                            else
+                                ESP.Visible = false
+                            end
+                        else
+                            ESP.Visible = false
+                        end
+                    end)
+
+                    Players.PlayerRemoving:Connect(function()
+                        ESP.Visible = false
+                    end)
+                end
+            end
+
+            Players.PlayerAdded:Connect(function(Player)
+                Player.CharacterAdded:Connect(function(v)
+                    if v.Name ~= Players.LocalPlayer.Name then 
+                        local ESP = Drawing.new("Text")
+
+                        RunService.RenderStepped:Connect(function()
+                            if workspace:FindFirstChild(v.Name) ~= nil and workspace[v.Name]:FindFirstChild("HumanoidRootPart") ~= nil then
+                                local Vector, OnScreen = Camera:WorldToViewportPoint(workspace[v.Name]:WaitForChild("Head", math.huge).Position)
+
+                                ESP.Size = _G.TextSize
+                                ESP.Center = _G.Center
+                                ESP.Outline = _G.Outline
+                                ESP.OutlineColor = _G.OutlineColor
+                                ESP.Color = _G.TextColor
+                                ESP.Transparency = _G.TextTransparency
+
+                                if OnScreen == true then
+                                    local Part1 = workspace:WaitForChild(v.Name, math.huge):WaitForChild("HumanoidRootPart", math.huge).Position
+                                local Part2 = workspace:WaitForChild(Players.LocalPlayer.Name, math.huge):WaitForChild("HumanoidRootPart", math.huge).Position or 0
+                                    local Dist = (Part1 - Part2).Magnitude
+                                    ESP.Position = Vector2.new(Vector.X, Vector.Y - 25)
+                                    ESP.Text = ("("..tostring(math.floor(tonumber(Dist)))..") "..v.Name.." ["..workspace[v.Name].Humanoid.Health.."]")
+                                    if _G.TeamCheck == true then 
+                                        if Players.LocalPlayer.Team ~= Player.Team then
+                                            ESP.Visible = _G.ESPVisible
+                                        else
+                                            ESP.Visible = false
+                                        end
+                                    else
+                                        ESP.Visible = _G.ESPVisible
+                                    end
+                                else
+                                    ESP.Visible = false
+                                end
+                            else
+                                ESP.Visible = false
+                            end
+                        end)
+
+                        Players.PlayerRemoving:Connect(function()
+                            ESP.Visible = false
+                        end)
+                    end
+                end)
+            end)
+        end
+
+        if _G.DefaultSettings == true then
+            _G.TeamCheck = false
+            _G.ESPVisible = true
+            _G.TextColor = Color3.fromRGB(40, 90, 255)
+            _G.TextSize = 14
+            _G.Center = true
+            _G.Outline = false
+            _G.OutlineColor = Color3.fromRGB(0, 0, 0)
+            _G.DisableKey = Enum.KeyCode.Q
+            _G.TextTransparency = 0.75
+        end
+
+        UserInputService.TextBoxFocused:Connect(function()
+            Typing = true
+        end)
+
+        UserInputService.TextBoxFocusReleased:Connect(function()
+            Typing = false
+        end)
+
+        UserInputService.InputBegan:Connect(function(Input)
+            if Input.KeyCode == _G.DisableKey and Typing == false then
+                _G.ESPVisible = not _G.ESPVisible
+
+                if _G.SendNotifications == true then
+                    game:GetService("StarterGui"):SetCore("SendNotification",{
+                        Title = "Exunys Developer";
+                        Text = "The ESP's visibility is now set to "..tostring(_G.ESPVisible)..".";
+                        Duration = 5;
+                    })
+                end
+            end
+        end)
+
+        local Success, Errored = pcall(function()
+            CreateESP()
+        end)
+
+        if Success and not Errored then
+            if _G.SendNotifications == true then
+                game:GetService("StarterGui"):SetCore("SendNotification",{
+                    Title = "Epic gamer esp";
+                    Text = "Epic gamer esp has been successful loaded";
+                    Duration = 5;
+                })
+            end
+        elseif Errored and not Success then
+            if _G.SendNotifications == true then
+                game:GetService("StarterGui"):SetCore("SendNotification",{
+                    Title = "Ash01 Developer";
+                    Text = "ESP script has errored while loading, please check the developer console! (F9)";
+                    Duration = 5;
+                })
+            end
+            TestService:Message("The ESP script has errored, please notify Ash01 with the following information :")
+            warn(Errored)
+            print("!! IF THE ERROR IS A FALSE POSITIVE (says that a player cannot be found) THEN DO NOT BOTHER !!")
+        end
+    end
+})
+
+local PTeleport = Window:MakeTab({
+        Name = "一路向西_传送",
+        Icon = "rbxassetid://17345436140",
+        PremiumOnly = false
+})
+
+
+PTeleport:AddButton({
+        Name = "滚筒",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("Tumbleweed", false)
+        end
+})
+
+PTeleport:AddButton({
+        Name = "岩石溪",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("StoneCreek", false)
+        end
+})
+
+PTeleport:AddButton({
+        Name = "灰色山脊",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("Grayridge", false)
+        end
+})
+
+PTeleport:AddButton({
+        Name = "大矿洞",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("Quarry", false)
+        end
+})
+
+PTeleport:AddButton({
+        Name = "堡垒",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("FortCassidy", true)
+        end
+})
+
+PTeleport:AddButton({
+        Name = "阿瑟堡",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("FortArthur", true)
+        end
+})
+
+PTeleport:AddButton({
+        Name = "红色岩石营地",
+        Callback = function()
+                game:GetService("ReplicatedStorage").GeneralEvents.Spawn:FireServer("RedRocks", true)
+        end
 })
 
 local WDTab = Window:MakeTab({
@@ -15031,6 +15460,107 @@ Tab:AddToggle({
                 end
             end
         end
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "奎尔湖",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton ({
+	Name = "给予所有物品",
+	Callback = function ()
+       	    game.ReplicatedStorage.GiveTool:FireServer("SeaScooter")
+            game.ReplicatedStorage.GiveTool:FireServer("Lantern")
+            game.ReplicatedStorage.GiveTool:FireServer("Compass")
+            game.ReplicatedStorage.GiveTool:FireServer("ItemFinder")
+            game.ReplicatedStorage.GiveTool:FireServer("Aquabreather")
+	end
+})
+
+Tab:AddButton ({
+	Name = "红色套装",
+	Callback = function ()
+	 game.ReplicatedStorage.ChangeOutfits:FireServer("FireSuit")
+	end
+})
+
+Tab:AddButton ({
+	Name = "黄色套装",
+	Callback = function ()
+	 game.ReplicatedStorage.ChangeOutfits:FireServer("HazmatSuit")
+	end
+})
+
+Tab:AddButton ({
+	Name = "海盗套装",
+	Callback = function ()
+	 game.ReplicatedStorage.ChangeOutfits:FireServer("PirateCostume")
+	end
+})
+
+Tab:AddButton ({
+	Name = "动力套装",
+	Callback = function ()
+	 game.ReplicatedStorage.ChangeOutfits:FireServer("SuperScuba")
+	end
+})
+
+Tab:AddButton ({
+	Name = "无限金币",
+	Callback = function ()
+	             local gold = {
+              [1] = game:GetService("Players").LocalPlayer.GoldCoins,
+              [2] = 99999
+            }
+
+            game:GetService("ReplicatedStorage").ChangeValue:FireServer(unpack(gold))
+	end
+})
+
+Tab:AddButton ({
+	Name = "无限金钱",
+	Callback = function ()
+	             local money = {
+              [1] = -9999,
+              [2] = "Buy"
+            }
+
+            game:GetService("ReplicatedStorage").Pay:FireServer(unpack(money))
+	end
+})
+
+Tab:AddButton ({
+	Name = "无敌模式",
+	Callback = function ()
+	 game.ReplicatedStorage.DamageHumanoid:FireServer(-2e9)
+	end
+})
+
+local Tab = Window:MakeTab({
+	Name = "格林威尔",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "触碰地面",
+	Default = false,
+	Callback = function(value)
+            TouchTheRoad = value
+	end
+})
+
+Tab:AddToggle({
+	Name = "自动驾驶",
+	Default = false,
+	Callback = function(value)
+            AutoFarm = value
+            if value and not AutoFarmRunning then
+              coroutine.resume(AutoFarmFunc)
+            end
 	end
 })
 
