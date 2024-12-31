@@ -1860,35 +1860,7 @@ end
    end
 })
 
-Tab:AddToggle({
-Name = "物品透视",
-Default = false,
-Callback = function(bool)
-    if bool then
-        local runService = game:GetService("RunService")
-        event = runService.RenderStepped:Connect(function()
-            for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
-                if v:FindFirstChild("TouchTrigger") then
-                    if not v:FindFirstChild("Lol") then
-                        local esp = Instance.new("Highlight", v)
-                        esp.Name = "Lol"
-                        esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                        esp.FillColor = Color3.new(0, 255, 0)
-                    end
-                end
-            end
-        end)
-    end
-    if not bool then
-        event:Disconnect()
-        for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
-            if v:FindFirstChild("TouchTrigger") then
-                v:FindFirstChild("Lol"):Destroy()
-            end
-        end
-    end
-end    
-})
+
 
 Tab:AddToggle({
 Name = "人物穿墙",
@@ -1914,32 +1886,6 @@ Callback = function(Value)
 	    else
 		    Noclip = false
 	    end
-end    
-})
-
-Tab:AddToggle({
-Name = "怪物透视",
-Default = false,
-Callback = function(bool)
-    if bool then
-        local runService = game:GetService("RunService")
-        event = runService.RenderStepped:Connect(function()
-            for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
-                if not v:FindFirstChild("Lol") then
-                    local esp = Instance.new("Highlight", v)
-                    esp.Name = "Lol"
-                    esp.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                    esp.FillColor = Color3.new(0, 0, 255)
-                end
-            end
-        end)
-    end
-    if not bool then
-        event:Disconnect()
-        for _,v in pairs(game:GetService("Workspace").Monsters:GetChildren()) do
-            v:FindFirstChild("Lol"):Destroy()
-        end
-    end
 end    
 })
 
