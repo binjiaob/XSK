@@ -197,9 +197,7 @@ local flags = {
 local DELFLAGS = {table.unpack(flags)}
 local esptable = {Door={},keys={},items={},books={},entity={},chests={},lockers={},people={},gold={}}
 
-    link = "https://raw.githubusercontent.com/gycgchgyfytdttr/shenqin/refs/heads/main/Video_384329290916045.mp4"
-	sec = 14
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/lyyanai/Asset/main/VideoPlayer"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/ThroughSuccess.lua"))()
 
 local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/notification.lua'))()
 
