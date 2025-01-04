@@ -197,17 +197,13 @@ local flags = {
 local DELFLAGS = {table.unpack(flags)}
 local esptable = {Door={},keys={},items={},books={},entity={},chests={},lockers={},people={},gold={}}
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/ThroughSuccess.lua"))()
+    link = "https://raw.githubusercontent.com/gycgchgyfytdttr/shenqin/refs/heads/main/Video_384329290916045.mp4"
+	sec = 14
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/lyyanai/Asset/main/VideoPlayer"))()
 
 local notification = loadstring(game:HttpGet('https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/notification.lua'))()
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/Revenantnotification.txt", true))()
-Library.DefaultColor = Color3.fromRGB(255,0,0)
-
-            Library:Notification({
-        	Text = "已更新",
-        	Duration = 6
-            })
            
 local LBLG = Instance.new("ScreenGui", game.CoreGui)
 LBLG.Name = "LBLG"
@@ -325,7 +321,197 @@ end
 wait(0.1)
 shuaxinlb(true)
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XiaoXuAnZang/test-Actuator/refs/heads/main/V3-Orion.UI.Lua')))()
-local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V3",Name = "XK脚本中心 V3" ..identifyexecutor() , HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V3",Name = "XK脚本中心 V3丨" ..identifyexecutor() , HidePremium = false, SaveConfig = true, ConfigFolder = ""})
+
+local Tab = Window:MakeTab({
+	Name = "DOORS音频",
+	Icon = "rbxassetid://7733779610",
+	PremiumOnly = false
+})
+
+Tab:AddButton ({
+	Name = "显示矿井图1 以下所有音频请在DOORS服务器使用",
+	Callback = function ()
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+
+local LocalPlayer = Players.LocalPlayer
+
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ImageNotification"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+
+local ImageLabel = Instance.new("ImageLabel")
+ImageLabel.Name = "ImageNotificationImage"
+ImageLabel.Size = UDim2.new(1, 0, 1, 0) 
+ImageLabel.BackgroundTransparency = 0 
+ImageLabel.Image = "rbxassetid://17702883727" 
+ImageLabel.ImageColor3 = Color3.new(1, 1, 1) 
+ImageLabel.ZIndex = 10
+ImageLabel.Parent = ScreenGui
+
+
+local function showImageNotification()
+    ScreenGui.Enabled = true
+end
+
+
+local function hideImageNotification()
+    ScreenGui.Enabled = false
+end
+
+
+showImageNotification()
+
+
+wait(5)
+hideImageNotification()
+	end
+})
+
+Tab:AddButton ({
+	Name = "显示矿井图2",
+	Callback = function ()
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local Workspace = game:GetService("Workspace")
+
+
+local LocalPlayer = Players.LocalPlayer
+
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ImageNotification"
+ScreenGui.ResetOnSpawn = false
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+ScreenGui.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+
+local ImageLabel = Instance.new("ImageLabel")
+ImageLabel.Name = "ImageNotificationImage"
+ImageLabel.Size = UDim2.new(1, 0, 1, 0) 
+ImageLabel.BackgroundTransparency = 0 
+ImageLabel.Image = "rbxassetid://17702889650" 
+ImageLabel.ImageColor3 = Color3.new(1, 1, 1) 
+ImageLabel.ZIndex = 10
+ImageLabel.Parent = ScreenGui
+
+
+local function showImageNotification()
+    ScreenGui.Enabled = true
+end
+
+
+local function hideImageNotification()
+    ScreenGui.Enabled = false
+end
+
+
+showImageNotification()
+
+
+wait(5)
+hideImageNotification()
+	end
+})
+
+
+
+Tab:AddButton ({
+	Name = "游戏开始",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://17703358163"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "结束音乐",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://122783049876254"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "第二个追逐战音乐",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://78871989755856"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "第二个追逐战",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://81113562966654"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "seek出现",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://100154887211100"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "seek矿车追逐战",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://100154887211100"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "seek追逐战",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://95630147219938"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "坠入矿车",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://135689125680749"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "第二章开始",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://17701603783"
+sound:Play()
+	end
+})
+
+Tab:AddButton ({
+	Name = "Grumble结束",
+	Callback = function ()
+local sound = Instance.new("Sound", workspace)
+sound.SoundId = "rbxassetid://122877652380364"
+sound:Play()
+	end
+})
 
 local Tab = Window:MakeTab({
 	Name = "传送玩家",
