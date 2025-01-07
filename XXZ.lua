@@ -2017,7 +2017,7 @@ firetouchinterest(game:GetService("Workspace").GroupBuildStructures:FindFirstChi
 })
 
  Tab:AddButton({
-  Name = "自动收集",
+  Name = "自动收集物品",
   Callback = function()  	
 attempts = 0
    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
@@ -2030,7 +2030,85 @@ end
    end
 })
 
+Tab:AddButton({
+        Name = "自动Battery",
+        Callback = function()
+        for v=1, 24 do
+            if workspace:FindFirstChild("Battery") then
+                Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("Battery").TouchTrigger.CFrame
+                wait(0.2)
+                Character.HumanoidRootPart.CFrame = workspace["GroupBuildStructures"]:FindFirstChildOfClass("Model").Trigger.CFrame
+                wait(0.2)
+                tpSpawn()
+                wait(0.2)
+            end
+        end
+        end    
+})
 
+Tab:AddButton({
+        Name = "自动收集FoodGreen",
+        Callback = function()
+        for v=1, 15 do
+            if workspace:FindFirstChild("FoodGreen") then
+                Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("FoodGreen").TouchTrigger.CFrame
+                wait(0.2)
+                Character.HumanoidRootPart.CFrame = workspace["GroupBuildStructures"]:FindFirstChildOfClass("Model").Trigger.CFrame
+                wait(0.2)
+                tpSpawn()
+                wait(0.2)
+            end
+            if workspace:FindFirstChild("FoodOrange") then
+                Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("FoodOrange").TouchTrigger.CFrame
+                wait(0.2)
+                Character.HumanoidRootPart.CFrame = workspace["GroupBuildStructures"]:FindFirstChildOfClass("Model").Trigger.CFrame
+                wait(0.2)
+                tpSpawn()
+                wait(0.2)
+            end
+            if workspace:FindFirstChild("FoodPink") then
+                Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("FoodPink").TouchTrigger.CFrame
+                wait(0.2)
+                Character.HumanoidRootPart.CFrame = workspace["GroupBuildStructures"]:FindFirstChildOfClass("Model").Trigger.CFrame
+                wait(0.2)
+                tpSpawn()
+                wait(0.2)
+            end
+        end
+        end    
+})
+
+Tab:AddButton({
+        Name = "收集Fuse",
+        Callback = function()
+        for v=1, 14 do
+            if workspace:FindFirstChild("Fuse"..v) then
+                Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("Fuse"..v).TouchTrigger.CFrame
+                wait(0.2)
+                Character.HumanoidRootPart.CFrame = workspace["GroupBuildStructures"]:FindFirstChildOfClass("Model").Trigger.CFrame
+                wait(0.2)
+                tpSpawn()
+                wait(0.2)
+            end
+        end
+        end    
+})
+
+Tab:AddButton({
+        Name = "自动收集Trigger",
+        Callback = function()
+        for v=1, 24 do
+            if workspace:FindFirstChild("Block"..v) then
+                Character.HumanoidRootPart.CFrame = workspace:FindFirstChild("Block"..v).TouchTrigger.CFrame
+                wait(0.2)
+                Character.HumanoidRootPart.CFrame = workspace["GroupBuildStructures"]:FindFirstChildOfClass("Model").Trigger.CFrame
+                wait(0.2)
+                tpSpawn()
+                wait(0.2)
+            end
+        end
+        end    
+})
 
 Tab:AddToggle({
 Name = "人物穿墙",
@@ -8265,7 +8343,7 @@ local function API_Check()
 
 local PTeleport = Window:MakeTab({
         Name = "一路向西_传送",
-        Icon = "rbxassetid://17345436140",
+        Icon = "rbxassetid://7733779610",
         PremiumOnly = false
 })
 
@@ -8557,6 +8635,268 @@ local Tab = Window:MakeTab({
     Name = "奇怪严格的爸爸",
     Icon = "rbxassetid://7733779610",
     PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "怪物透视【Xenobus】",
+	Default = false,
+	Callback = function(target)
+    if target then
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+        local markedTargets = {}
+
+        local function createCircularUI(parent, color)
+            local mid = Instance.new("Frame", parent)
+            mid.AnchorPoint = Vector2.new(0.5, 0.5)
+            mid.BackgroundColor3 = color
+            mid.Size = UDim2.new(0, 8, 0, 8)
+            mid.Position = UDim2.new(0.5, 0, 0.0001, 0) -- Adjusted position
+            Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+            Instance.new("UIStroke", mid)
+            
+            return mid
+        end
+
+        local function markTarget(target, customName)
+            if not target then return end
+            local oldTag = target:FindFirstChild("Batteries")
+            if oldTag then
+                oldTag:Destroy()
+            end
+            local oldHighlight = target:FindFirstChild("Highlight")
+            if oldHighlight then
+                oldHighlight:Destroy()
+            end
+            local tag = Instance.new("BillboardGui")
+            tag.Name = "Batteries"
+            tag.Size = UDim2.new(0, 200, 0, 50)
+            tag.StudsOffset = Vector3.new(0, 0.7, 0) -- Adjusted offset
+            tag.AlwaysOnTop = true
+            local textLabel = Instance.new("TextLabel")
+            textLabel.Size = UDim2.new(1, 0, 1, 0)
+            textLabel.BackgroundTransparency = 1
+            textLabel.TextStrokeTransparency = 0 
+            textLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+            textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+            textLabel.Font = Enum.Font.Jura
+            textLabel.TextScaled = true
+            textLabel.Text = customName
+            textLabel.Parent = tag
+            tag.Parent = target
+            local highlight = Instance.new("Highlight")
+            highlight.Name = "Highlight"
+            highlight.Adornee = target
+            highlight.FillColor = Color3.fromRGB(0, 255, 0)--中心高亮颜色
+            highlight.OutlineColor = Color3.fromRGB(255, 0, 0)--高亮边框颜色
+            highlight.Parent = target
+            markedTargets[target] = customName
+            
+            -- 添加优质圆圈 UI这里被我删掉了，因为太丑了。
+        end
+
+        local function recursiveFindAll(parent, name, targets)
+            for _, child in ipairs(parent:GetChildren()) do
+                if child.Name == name then
+                    table.insert(targets, child)
+                end
+                recursiveFindAll(child, name, targets)
+            end
+        end
+
+        local function Itemlocationname(name, customName)
+            local targets = {}
+            recursiveFindAll(game, name, targets)
+            for _, target in ipairs(targets) do
+                markTarget(target, customName)
+            end
+        end
+
+        local function Invalidplayername(playerName, customName)
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player.Name == playerName and player.Character then
+                    local head = player.Character:FindFirstChild("Head")
+                    if head then
+                        markTarget(head, customName)
+                    end
+                end
+            end
+        end
+
+        if target then
+            Players.PlayerAdded:Connect(function(player)
+                player.CharacterAdded:Connect(function(character)
+                    local head = character:FindFirstChild("Head")
+                    if head then
+                        markTarget(head, player.Name)
+                    end
+                end)
+            end)
+
+            game.DescendantAdded:Connect(function(descendant)
+                if descendant.Name == "Xenobus" then
+                    markTarget(descendant, "怪物")
+                end
+            end)
+
+            RunService.RenderStepped:Connect(function()
+                for target, customName in pairs(markedTargets) do
+                    if target and target:FindFirstChild("Batteries") then
+                        target.Batteries.TextLabel.Text = customName
+                    else
+                        if target then
+                            markTarget(target, customName)
+                        end
+                    end
+                end
+            end)
+
+            Invalidplayername("玩家名称", "玩家")
+            Itemlocationname("Xenobus", "怪物")
+        else
+            for target, _ in pairs(markedTargets) do
+                if target:FindFirstChild("Batteries") then
+                    target.Batteries:Destroy()
+                end
+                if target:FindFirstChild("Highlight") then
+                    target.Highlight:Destroy()
+                end
+            end
+            markedTargets = {}
+        end
+    end
+	end
+})
+
+Tab:AddToggle({
+	Name = "爸爸透视【Dad】",
+	Default = false,
+	Callback = function(target)
+    if target then
+        local Players = game:GetService("Players")
+        local RunService = game:GetService("RunService")
+        local markedTargets = {}
+
+        local function createCircularUI(parent, color)
+            local mid = Instance.new("Frame", parent)
+            mid.AnchorPoint = Vector2.new(0.5, 0.5)
+            mid.BackgroundColor3 = color
+            mid.Size = UDim2.new(0, 8, 0, 8)
+            mid.Position = UDim2.new(0.5, 0, 0.0001, 0) -- Adjusted position
+            Instance.new("UICorner", mid).CornerRadius = UDim.new(1, 0)
+            Instance.new("UIStroke", mid)
+            
+            return mid
+        end
+
+        local function markTarget(target, customName)
+            if not target then return end
+            local oldTag = target:FindFirstChild("Batteries")
+            if oldTag then
+                oldTag:Destroy()
+            end
+            local oldHighlight = target:FindFirstChild("Highlight")
+            if oldHighlight then
+                oldHighlight:Destroy()
+            end
+            local tag = Instance.new("BillboardGui")
+            tag.Name = "Batteries"
+            tag.Size = UDim2.new(0, 200, 0, 50)
+            tag.StudsOffset = Vector3.new(0, 0.7, 0) -- Adjusted offset
+            tag.AlwaysOnTop = true
+            local textLabel = Instance.new("TextLabel")
+            textLabel.Size = UDim2.new(1, 0, 1, 0)
+            textLabel.BackgroundTransparency = 1
+            textLabel.TextStrokeTransparency = 0 
+            textLabel.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
+            textLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+            textLabel.Font = Enum.Font.Jura
+            textLabel.TextScaled = true
+            textLabel.Text = customName
+            textLabel.Parent = tag
+            tag.Parent = target
+            local highlight = Instance.new("Highlight")
+            highlight.Name = "Highlight"
+            highlight.Adornee = target
+            highlight.FillColor = Color3.fromRGB(0, 255, 0)--中心高亮颜色
+            highlight.OutlineColor = Color3.fromRGB(255, 0, 0)--高亮边框颜色
+            highlight.Parent = target
+            markedTargets[target] = customName
+            
+            -- 添加优质圆圈 UI这里被我删掉了，因为太丑了。
+        end
+
+        local function recursiveFindAll(parent, name, targets)
+            for _, child in ipairs(parent:GetChildren()) do
+                if child.Name == name then
+                    table.insert(targets, child)
+                end
+                recursiveFindAll(child, name, targets)
+            end
+        end
+
+        local function Itemlocationname(name, customName)
+            local targets = {}
+            recursiveFindAll(game, name, targets)
+            for _, target in ipairs(targets) do
+                markTarget(target, customName)
+            end
+        end
+
+        local function Invalidplayername(playerName, customName)
+            for _, player in ipairs(Players:GetPlayers()) do
+                if player.Name == playerName and player.Character then
+                    local head = player.Character:FindFirstChild("Head")
+                    if head then
+                        markTarget(head, customName)
+                    end
+                end
+            end
+        end
+
+        if target then
+            Players.PlayerAdded:Connect(function(player)
+                player.CharacterAdded:Connect(function(character)
+                    local head = character:FindFirstChild("Head")
+                    if head then
+                        markTarget(head, player.Name)
+                    end
+                end)
+            end)
+
+            game.DescendantAdded:Connect(function(descendant)
+                if descendant.Name == "Dad" then
+                    markTarget(descendant, "爸爸")
+                end
+            end)
+
+            RunService.RenderStepped:Connect(function()
+                for target, customName in pairs(markedTargets) do
+                    if target and target:FindFirstChild("Batteries") then
+                        target.Batteries.TextLabel.Text = customName
+                    else
+                        if target then
+                            markTarget(target, customName)
+                        end
+                    end
+                end
+            end)
+
+            Invalidplayername("玩家名称", "玩家")
+            Itemlocationname("Dad", "爸爸")
+        else
+            for target, _ in pairs(markedTargets) do
+                if target:FindFirstChild("Batteries") then
+                    target.Batteries:Destroy()
+                end
+                if target:FindFirstChild("Highlight") then
+                    target.Highlight:Destroy()
+                end
+            end
+            markedTargets = {}
+        end
+    end
+	end
 })
 
 Tab:AddButton({  
