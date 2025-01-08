@@ -1,3 +1,7 @@
+setclipboard("小玄奘牛逼")
+
+setclipboard("XK脚本中心群915207093")
+
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -16038,14 +16042,4 @@ Tab:AddToggle({
 	end
 })
 
-local sky = Instance.new("Sky")
-		sky.CelestialBodiesShown = false
-		sky.Parent = game.Lighting
-		sky.SkyboxUp = "http://www.roblox.com/asset/?id=102401784207635"
-		sky.SkyboxBk = "http://www.roblox.com/asset/?id=102401784207635"
-		sky.SkyboxDn = "http://www.roblox.com/asset/?id=102401784207635"
-		sky.SkyboxRt = "http://www.roblox.com/asset/?id=102401784207635"
-		sky.SkyboxLf = "http://www.roblox.com/asset/?id=102401784207635"
-		sky.SkyboxFt = "http://www.roblox.com/asset/?id=102401784207635"
-		
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/XiaoFenHG/XilolHHG/refs/heads/main/free"))()
