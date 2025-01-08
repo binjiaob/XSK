@@ -346,7 +346,7 @@ function teleportTo(CFrame)
 end
 wait(0.1)
 shuaxinlb(true)
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/nnzhonhxin/XIAOXUANZANG/refs/heads/main/V3CHONGZHIUI.txt')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XiaoXuAnZang/UI-Lib/refs/heads/main/V3CHONGZHIUI.txt')))()
 local Window = OrionLib:MakeWindow({IntroText = "XK脚本中心V3",Name = "XK脚本中心 V3丨" ..identifyexecutor() , HidePremium = false, SaveConfig = true, ConfigFolder = ""})
 
 local Tab = Window:MakeTab({
@@ -354,6 +354,10 @@ local Tab = Window:MakeTab({
 	Icon = "rbxassetid://131925604610622",
 	PremiumOnly = false
 })
+
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "XK脚本中心";Text = "UI验证成功";Icon = "rbxassetid://121203363140066"})Duration = 8;
+
+game:GetService("StarterGui"):SetCore("SendNotification", {Title = "XK脚本中心";Text = "脚本加载验证成功";Icon = "rbxassetid://121203363140066"})Duration = 8;
 
 Tab:AddButton ({
 	Name = "显示矿井图1 以下所有音频请在DOORS服务器使用",
